@@ -6,6 +6,7 @@ Title: Maven Dependencies
 
 The following dependencies needs to be added to the pom.xml of the consuming project:
 
+```xml
     <dependency>
       <groupId>org.apache.olingo</groupId>
       <artifactId>olingo-odata2-api</artifactId>
@@ -18,11 +19,13 @@ The following dependencies needs to be added to the pom.xml of the consuming pro
       <version>${olingo.version}</version>
       <scope>runtime</scope>
     </dependency>
+```
 
 ### Consuming OData 2.0 JPA Processor Extension
 
 To use the JPA Processor Extension following dependencies are required:
 
+```xml
     <dependency>
       <groupId>org.apache.olingo</groupId>
       <artifactId>olingo-odata2-jpa-processor-api</artifactId>
@@ -41,6 +44,7 @@ To use the JPA Processor Extension following dependencies are required:
       <version>${olingo.version}</version>
       <scope>runtime</scope>
     </dependency>
+```
 
 ${olingo.version} == the concrete version of the library. See also:
 

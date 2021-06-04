@@ -16,15 +16,21 @@ you get these files from the
 [main distribution directory](http://www.apache.org/dist/olingo/), 
 rather than from a mirror. Then verify the signatures using
 
+```sh
     % pgpk -a KEYS
     % pgpv <file>.asc
+```
 
 or
 
+```sh
     % pgp -ka KEYS
     % pgp <file>.asc
+```
 
 or
 
+```sh
     % gpg --import KEYS
     % gpg --verify <file>.asc
+```

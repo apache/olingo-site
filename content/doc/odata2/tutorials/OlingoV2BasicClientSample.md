@@ -19,28 +19,20 @@ Therefore it just requires an installed *Java 6 Runtime*, *Maven 3* and an inter
 
   1. Start in some folder (e.g. `Quickstart`) which is called our `$ROOT` in the steps below.
   1. Create sample Client project ([more details](#projectstructure))
-    2. Create project folder `ClientSample` (in `$ROOT`) and within create following folder structure: `./src/main/java/org/apache/olingo/sample/client` (e.g. `mkdir -p src/main/java/org/apache/olingo/sample/client/`).
-    3. In project folder (`ClientSample`) create file `pom.xml` and copy [this sample pom into](#pom).
-    4. In folder `./src/main/java/org/apache/olingo/sample/client` create file `OlingoSampleApp.java` and copy [the whole sample client into](#sampleclient).
-    5. In project folder `ClientSample` run `mvn` to build the project.
+     2. Create project folder `ClientSample` (in `$ROOT`) and within create following folder structure: `./src/main/java/org/apache/olingo/sample/client` (e.g. `mkdir -p src/main/java/org/apache/olingo/sample/client/`).
+     3. In project folder (`ClientSample`) create file `pom.xml` and copy [this sample pom into](#pom).
+     4. In folder `./src/main/java/org/apache/olingo/sample/client` create file `OlingoSampleApp.java` and copy [the whole sample client into](#sampleclient).
+     5. In project folder `ClientSample` run `mvn` to build the project.
   1. Create and start sample Service ([more details](#sampleservice))
-    1. Go to `$ROOT` and create service project from archetype via
+     1. Go to `$ROOT` and create service project from archetype via
 
-```
-  mvn archetype:generate
-    -DinteractiveMode=false
-    -Dversion=1.0.0-SNAPSHOT
-    -DgroupId=com.sample
-    -DartifactId=my-car-service
-    -DarchetypeGroupId=org.apache.olingo
-    -DarchetypeArtifactId=olingo-odata2-sample-cars-annotation-archetype
-    -DarchetypeVersion=2.0.0
-```
+     	`mvn archetype:generate -DinteractiveMode=false -Dversion=1.0.0-SNAPSHOT -DgroupId=com.sample -DartifactId=my-car-service -DarchetypeGroupId=org.apache.olingo
+	-DarchetypeArtifactId=olingo-odata2-sample-cars-annotation-archetype -DarchetypeVersion=2.0.0`
 
-    3. Go into from archetype created folder `my-car-service` and just run `mvn` to start the Sample Service on a *Jetty Web Server* at [http://localhost:8080](http://localhost:8080).
-  4. Run `OlingoSampleApp` against sample Service ([more details](#runsample))
-    1. Go into sample project folder (`ClientSample`) and execute sample client via `java -cp target/OlingoSampleClient.jar org.apache.olingo.sample.client.OlingoSampleApp`.
-    2. Now the result of the *read metadata*, *read/create/update/delete data* calls is printed as well as the corresponding *JSON* requests and response body. Within the following section [Explaining the Client](#start) the therefore implemented client methods are shown and explained.
+     3. Go into from archetype created folder `my-car-service` and just run `mvn` to start the Sample Service on a *Jetty Web Server* at [http://localhost:8080](http://localhost:8080).
+     4. Run `OlingoSampleApp` against sample Service ([more details](#runsample))
+     1. Go into sample project folder (`ClientSample`) and execute sample client via `java -cp target/OlingoSampleClient.jar org.apache.olingo.sample.client.OlingoSampleApp`.
+     2. Now the result of the *read metadata*, *read/create/update/delete data* calls is printed as well as the corresponding *JSON* requests and response body. Within the following section [Explaining the Client](#start) the therefore implemented client methods are shown and explained.
 
 **Optional**
 With running `mvn eclipse:eclipse` within the created sample client and sample server projects the necessary Eclipse project files will be generated so that both projects can easily imported into Eclipse (Eclipse -> *File* -> *Import...* *Import existing projects into workspace*).
@@ -68,12 +60,12 @@ Hence the first step in this sample is to read the whole *EDM* of an OData Servi
 
 **Code sample: Read EDM ($metadata)**
 
-~~~java
+```java
 public Edm readEdm(String serviceUrl) throws IOException, ODataException {
   InputStream content = execute(serviceUrl + "/" + METADATA, APPLICATION_XML, HTTP_METHOD_GET);
   return EntityProvider.readMetadata(content, false);
 }
-~~~
+```
 
 As shown in the sample code to read the *EDM* a *HTTP GET* on the corresponding *$metadata* URI of the OData Service. The resulting conent in form of an *EDMX* is received via basic `HttpURLConnection` is pased into the `EntityProvider.readMetadata(InputStream content, boolean validate)` method which de-serialize the *EDMX* into an *EDM* object.
 
@@ -96,7 +88,7 @@ Hence the code samples looks very similar. The main difference is the creation o
 
 **Read complete Feed**
 
-~~~java
+```java
   public ODataFeed readFeed(Edm edm, String serviceUri, String contentType, String entitySetName)
       throws IOException, ODataException {
     EdmEntityContainer entityContainer = edm.getDefaultEntityContainer();
@@ -108,13 +100,13 @@ Hence the code samples looks very similar. The main difference is the creation o
         content,
         EntityProviderReadProperties.init().build());
   }
-~~~
+```
 
 For read of a complete `ODataFeed` the *HTTP GET* request URI is a *EntitySet*. Via the `connect(...)` method the request is done against the created absolut uri and the responding content is returned as `InputStream`. This `InputStream` than will be de-serialized by the `EntitProvider.readFeed(...)` into an `ODataFeed` object which contains all entities provided by the OData Service as well as `FeedMetadata` like *inline count* and *next link*.
 
 **Read single Entry**
 
-~~~java
+```java
   public ODataEntry readEntry(Edm edm, String serviceUri, String contentType, String entitySetName, String keyValue)
       throws IOException, ODataException {
     // working with the default entity container
@@ -129,7 +121,7 @@ For read of a complete `ODataFeed` the *HTTP GET* request URI is a *EntitySet*. 
         content,
         EntityProviderReadProperties.init().build());
   }
-~~~
+```
 
 For read of a single `ODataEntry` the *HTTP GET* request URI is an *Entity* for which a *key value* is required for creation of the absolut uri. Via the `connect(...)` method the request is done against the absolut uri and the responding content is returned as `InputStream`. 
 This `InputStream` than will be de-serialized by the `EntitProvider.readEntry(...)` into an `ODataEntry` object which contains the data / properties of the entry in form of a Map as well as `EntryMetadata` (which contains *etag*, *id*, *association uris* and *uri* information), `MediaMetadata` if the entry is a *media resource*, information about the entry *contains inline entries* and the `ExpandSelectTreeNode`.
@@ -147,7 +139,7 @@ Additional the parts below are only code snippets (and no complete method which 
 
 **Part 1: POST entry**  
     
-~~~java
+```java
     // Map<String, Object> data // ...is a method parameter
         
     HttpURLConnection connection = initializeConnection(absolutUri, contentType, httpMethod);
@@ -162,7 +154,7 @@ Additional the parts below are only code snippets (and no complete method which 
     byte[] buffer = streamToArray((InputStream) response.getEntity());
     // do the POST   
     connection.getOutputStream().write(buffer);
-~~~
+```
 
 First the `HttpURLConnection` is initialized.
 Then the Apache Olingo related objects are prepared in form of the `EdmEntitySet` and `EntityProviderWriteProperties`. With the `EntityProviderWriteProperties` is is possible to configure the serialization of the entity. But for the basic create use case it is sufficient to set the *rootUri* of the service which in the sample is the name of the entity set.
@@ -174,7 +166,7 @@ After this the entity is posted (created) and the response can be read.
 
 **Part 2: Read response**  
     
-~~~java
+```java
     // if a entity is created (via POST request) the response body contains the new created entity
     HttpStatusCodes statusCode = HttpStatusCodes.fromStatusCode(connection.getResponseCode());
     if(statusCode == HttpStatusCodes.CREATED) {
@@ -184,7 +176,7 @@ After this the entity is posted (created) and the response can be read.
       ODataEntry entry = EntityProvider.readEntry(contentType,
           entitySet, content, EntityProviderReadProperties.init().build());
     }
-~~~
+```
 
 When the *HTTP Post* is done the response can be read.
 Starting with the response status code to validate that the creation of the entity was successfull, which is the case if it is a `HttpStatusCodes.CREATED`.
@@ -194,13 +186,13 @@ The result is a de-serialized `ODataEntry` which represents the created entity f
       
 **Part 3: Create single Entry method**
 
-~~~java
+```java
   public ODataEntry createEntry(Edm edm, String serviceUri, String contentType, 
       String entitySetName, Map<String, Object> data) throws Exception {
     String absolutUri = createUri(serviceUri, entitySetName, null);
     return writeEntity(edm, absolutUri, entitySetName, data, contentType, HTTP_METHOD_POST);
   }
-~~~
+```
 
 The *Part 1* and *Part 2* code snippets are copied from the shared `writeEntity(...)` method of the sample which is called for *create* and *update* of entities. Hence the convenience method `createEntry` only creates the `absolutUri` for the entity set and then delegates to the `writeEntity` method with correct set `HTTP_METHOD_POST`.
 
@@ -227,7 +219,7 @@ For simplicity in the code sample below the prepare and execute of the *PUT/PATC
 
 **Part 1: PUT entry**  
     
-~~~java
+```java
     // Map<String, Object> data // ...is a method parameter
         
     HttpURLConnection connection = initializeConnection(absolutUri, contentType, httpMethod);
@@ -244,7 +236,7 @@ For simplicity in the code sample below the prepare and execute of the *PUT/PATC
     connection.getOutputStream().write(buffer);
     //
     HttpStatusCodes statusCode = HttpStatusCodes.fromStatusCode(connection.getResponseCode());
-~~~
+```
 
 <!-- Copy pasted from POST/create -->
 
@@ -261,13 +253,13 @@ After this the entity is update and the response status code can be checked.
 
 **Part 2: Update Entry method**
 
-~~~java
+```java
   public void updateEntry(Edm edm, String serviceUri, String contentType, String entitySetName, 
       String id, Map<String, Object> data) throws Exception {
     String absolutUri = createUri(serviceUri, entitySetName, id);
     writeEntity(edm, absolutUri, entitySetName, data, contentType, HTTP_METHOD_PUT);
   }
-~~~
+```
 
 The *Part 1* is copied from the shared `writeEntity(...)` method of the sample which is called for *create* and *update* of entities. Hence the convenience method `createEntry` in *Part 2* only creates the `absolutUri` for the entity and then delegates to the `writeEntity` method with correct set `HTTP_METHOD_PUT`.
 
@@ -277,13 +269,13 @@ The *Part 1* is copied from the shared `writeEntity(...)` method of the sample w
 
 For deletion of an entry just an *HTTP DELETE* request is necessary on the URI of the entity. Hence the Apache Olingo is not necessary to serialize or de-serialize anything for this use case.
 
-~~~java
+```java
   public HttpStatusCodes deleteEntry(String serviceUri, String entityName, String id) throws IOException {
     String absolutUri = createUri(serviceUri, entityName, id);
     HttpURLConnection connection = connect(absolutUri, APPLICATION_XML, HTTP_METHOD_DELETE);
     return HttpStatusCodes.fromStatusCode(connection.getResponseCode());
   }
-~~~      
+```      
 
 So the code for delete of an entry the *HTTP DELETE* request URI is an *Entity* for which a *key value* is required for creation of the absolut uri. Via the `connect(...)` method the request is done against the absolut uri and the responding http status code is returned, which is, if the entry was deleted successfully, an *HTTP Status: 204 No content*.
   
@@ -296,7 +288,7 @@ In this section are all methods shared and used from the more Apache Olingo rele
 
 The `writeEntity(...)` method is used for *creation* and *update* of an entry. Simplified it executes the given `httpMethod` on the given `absolutUri` for the serialized entry based on given `contentType`, `entitySetName` and `data`. Additional for the case of an successfull *create* the `ODataEntry` is returned otherwise `null` is returned.
 
-~~~java
+```java
   private ODataEntry writeEntity(Edm edm, String absolutUri, String entitySetName, 
       Map<String, Object> data, String contentType, String httpMethod) 
       throws EdmException, MalformedURLException, IOException, EntityProviderException, URISyntaxException {
@@ -337,13 +329,13 @@ The `writeEntity(...)` method is used for *creation* and *update* of an entry. S
         
     return entry;
   }
-~~~
+```
 
 **Creation of absolut URI**    
 
 The `createUri(...)` method is used in every convenience method (*read*, *create*, *update* and *delete*) to build the absolut uri based on the `serviceUri`, `entitySetName` and `id` for the case of a single Entry.
     
-~~~java
+```java
   private String createUri(String serviceUri, String entitySetName, String id) {
     final StringBuilder absolutUri = new StringBuilder(serviceUri).append("/").append(entitySetName);
     if(id != null) {
@@ -351,13 +343,13 @@ The `createUri(...)` method is used in every convenience method (*read*, *create
     }
     return absolutUri.toString();
   }
-~~~
+```
 
 **Basic HTTP connection initailization and validation**
 
 The `exectute(...)`, `connect(...)` and `initializeConnection(...)` methods are used for initialization of the connection, execute and/or connect and check basic connection success (via `checkStatus(...)` method) to the OData Service and is therefore used in every use case (*read*, *create*, *update* and *delete*).
 
-~~~java
+```java
   private InputStream execute(String relativeUri, String contentType, String httpMethod) throws IOException {
     HttpURLConnection connection = initializeConnection(relativeUri, contentType, httpMethod);
 
@@ -400,13 +392,13 @@ The `exectute(...)`, `connect(...)` and `initializeConnection(...)` methods are 
     }
     return httpStatusCode;
   }
-~~~
+```
 
 **Logging**
 
 The `logRawContent(...)` (in combination with `streamToArray(...)`) method is simply used for logging the content of the given `InputStream` and re-creation of an readable `InputStream` which is returned.
 
-~~~java
+```java
   private InputStream logRawContent(String prefix, InputStream content, String postfix) throws IOException {
     if(PRINT_RAW_CONTENT) {
       byte[] buffer = streamToArray(content);
@@ -432,7 +424,7 @@ The `logRawContent(...)` (in combination with `streamToArray(...)`) method is si
     }
     return result;
   }
-~~~
+```
 
 <!--
 ### Extended Operations
@@ -456,7 +448,7 @@ Instead of copy and paste all code samples from above and the main sample method
 
 **Main sample method**
 
-~~~java
+```java
   public static void main(String[] paras) throws Exception {
     OlingoSampleApp app = new OlingoSampleApp();
     
@@ -519,13 +511,13 @@ Instead of copy and paste all code samples from above and the main sample method
       print(e.getMessage());
     }
   }
-~~~
+```
 
 **Genration of sample data**
 
 The `generateSampleData` method is used for creation of sample data at the *ODataService* based on the [Apache Olingo archetype sample service](#sampleservice)).
 
-~~~java
+```java
 public void generateSampleData(String serviceUrl) throws MalformedURLException, IOException {
   String url = serviceUrl.substring(0, serviceUrl.lastIndexOf(SEPARATOR));
   HttpURLConnection connection = initializeConnection(url + INDEX, APPLICATION_FORM, HTTP_METHOD_POST);
@@ -534,13 +526,13 @@ public void generateSampleData(String serviceUrl) throws MalformedURLException, 
   print("Generate response: " + checkStatus(connection));
   connection.disconnect();
 }
-~~~
+```
 
 **Print methods**
 
 The `print` methods are only for simplified print/write logging to some output channel. In the sample it is just the `System.out` stream.
 
-~~~java
+```java
   private static void print(String content) {
     System.out.println(content);
   }
@@ -576,7 +568,7 @@ The `print` methods are only for simplified print/write logging to some output c
       builder.append("  ");
     }
   }
-~~~
+```
 
 <a name="sampleservice"></a>
 
@@ -633,7 +625,7 @@ If the corresponding OData Service based on the *archetypeArtifactId=olingo-odat
 
 Maven project POM (`pom.xml`)
 
-~~~xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one
@@ -717,7 +709,7 @@ Maven project POM (`pom.xml`)
     </dependency>
   </dependencies>
 </project>
-~~~
+```
 
 <a name="sampleclient"></a>
 
@@ -725,7 +717,7 @@ Maven project POM (`pom.xml`)
 
 Complete `OlingoSampleApp` with `main` which can be *copy/pasted* into a `OlingoSampleApp.java`, then compiled and run.
 
-~~~java
+```java
 /*******************************************************************************
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements. See the NOTICE file
@@ -1110,4 +1102,4 @@ public class OlingoSampleApp {
     return connection;
   }
 }
-~~~
+```

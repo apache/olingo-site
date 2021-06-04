@@ -47,7 +47,8 @@ The result is a new and ready to build Maven project. Switch to *my-car-service*
 
 If a Apache Olingo dependency is not available via Maven standard configuration than adding the Apache Maven Repository (or in case you want to use SNAPSHOTS the Apache Snapshot Repository) into your Maven `settings.xml` or the `pom.xml` of this project can solve the issue.
 
-    …
+```xml
+     …
       <repositories>
         <repository>
           <id>apache.central</id>
@@ -62,7 +63,7 @@ If a Apache Olingo dependency is not available via Maven standard configuration 
         </repository>
       </repositories>
     …
-
+```
 
 Maven will build the project with the result **car-service.war** in the Maven *target* directory which can be deployed to any JEE compliant web application server.
 To call the deployed and running OData service enter this URI in a browser:
