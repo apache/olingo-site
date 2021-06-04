@@ -21,7 +21,7 @@ An Apache Olingo release consists of:
 
   * All POMs/JARs/WARs built as part of the standard Maven build process. For
 an overview on the released modules see artifacts with groupId
-_org.apache.olingo_ in the [Apache Maven Repository](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo```~).
+_org.apache.olingo_ in the [Apache Maven Repository](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo~~~~).
 In detail, per every module, where applicable, the following artifacts are produced:
    * **Main artifact**: `<artifactId>-<version>.<ext>`
    * **Source artifact**: `<artifactId>-<version>-sources.<ext>`
@@ -189,7 +189,7 @@ Of course the Release Manager can also use this checklist to make sure all artif
 If the release candidate gets approved, we can proceed to release publishing:
 
   - Release candidate maven artifacts are promoted in the Apache Maven Repository and
-made available [here](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo```~).
+made available [here](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo~~~~).
   - Publish final release Version to [Apache Repository](https://repository.apache.org/)
     - First publish via `mvn deploy -Papache-release` into the *Staging Area*
     - From *Staging Area* close and release the staged Artifacts to finish publishing
