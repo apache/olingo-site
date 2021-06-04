@@ -16,7 +16,7 @@ It is assumed that an OData service implementation is deployed as a native web a
 
 Adding this servlet filter to the service servlet configuration can solve this problem. The filter can bind the application classloader to the servlet request object, which is then used by the Apache Olingo core bundle to load applications factory class. 
 
-~~~java
+```java
 	public class ServiceFactoryFilter implements Filter {
 	
 	  @Override
@@ -29,7 +29,7 @@ Adding this servlet filter to the service servlet configuration can solve this p
 	     chain.doFilter(request, response); 
 	  }
 	}
-~~~
+```
 
 ### Extended OSGi Support
 
@@ -40,7 +40,7 @@ The filter approach works fine for servlets but the Apache Olingo library can be
 A service has to implement an own `ODataApplication` and return the service factory class:
 
 
-~~~java
+```java
 	import org.apache.olingo.odata2.core.rest.app.AbstractODataApplication;
 	
 	public class CarODataApplication extends AbstractODataApplication {
@@ -50,13 +50,13 @@ A service has to implement an own `ODataApplication` and return the service fact
 	     return CarODataServiceFactory.class; 
 	  }
 	}
-~~~
+```
 
 ##### Register Application in Servlet Context
 
 Then register the application for any JAX-RS servlet implementation. Here it is the Apache CXF JAX-RS servlet.
 
-~~~xml
+```xml
 	<servlet>
 	  <servlet-name>CarServiceServlet</servlet-name>
 	  <servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
@@ -66,4 +66,4 @@ Then register the application for any JAX-RS servlet implementation. Here it is 
 	  </init-param>
 	  <load-on-startup>1</load-on-startup>
 	</servlet>
-~~~
+```

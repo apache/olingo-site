@@ -65,7 +65,7 @@ As conclusion the `getEntityType(…)` method is extended as follows:
 
 ##### Sample Code
 
-~~~java
+```java
 …
   } else if (ENTITY_TYPE_1_3.getName().equals(edmFQName.getName())) {
     List<Property> properties = new ArrayList<Property>();
@@ -95,22 +95,22 @@ As conclusion the `getEntityType(…)` method is extended as follows:
         .setMapping(new Mapping().setMimeType("image/png"));
 }
 ...
-~~~
+```
 
 In addition it is necessary to extend the `getSchemas(…)` method with the according `EntityType` and `EntitySet` of the new Driver.
 
-~~~java
+```java
 entityTypes.add(getEntityType(ENTITY_TYPE_1_3));
 entitySets.add(getEntitySet(ENTITY_CONTAINER, ENTITY_SET_NAME_DRIVERS));
-~~~
+```
 
 And at last following constants are added to the `MyEdmProvider` for cleaner code.
 
-~~~java
+```java
   static final String ENTITY_SET_NAME_DRIVERS = "Drivers";
   static final String ENTITY_NAME_DRIVER = "Driver";
   private static final FullQualifiedName ENTITY_TYPE_1_3 = new FullQualifiedName(NAMESPACE, ENTITY_NAME_DRIVER);
-~~~
+```
 
 **Extend `MyODataSingleProcessor` with `readEntityMedia(uriInfo:GetMediaResourceUriInfo, contentType:String):ODataResponse` method**<br>
 All requests for media resources are done via the specified $value property in the URL (e.g. *.../MyODataSample.svc/Drivers(1)/$value*). Such a request will be dispatched to an `EntityMediaProcessor` which is in our case the `MyODataSingleProcessor` (inherited from `ODataSingleProcessor`).
@@ -119,7 +119,7 @@ For our scenario we simply have to validate the correct requested target `Entity
 Seems a lot but in code this are only these few lines:
 
 
-~~~java
+```java
 @Override
 public ODataResponse readEntityMedia(final GetMediaResourceUriInfo uriInfo, final String contentType) throws ODataException {
     
@@ -137,7 +137,7 @@ public ODataResponse readEntityMedia(final GetMediaResourceUriInfo uriInfo, fina
     
   throw new ODataNotImplementedException();
 }
-~~~
+```
 
 With these extension it is possible to read the media resource, but for access to the Driver `EntitySet` and `Entity` the according read methods have to be extended.
 
@@ -148,7 +148,7 @@ But its quite the same procedure as in the basic read. Validate the requested En
 
 The resulting extension for `readEntity(…)`:
 
-~~~java
+```java
   } else if (ENTITY_SET_NAME_DRIVERS.equals(entitySet.getName())) {
     int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
     Map<String, Object> data = dataStore.getDriver(id);
@@ -159,14 +159,14 @@ The resulting extension for `readEntity(…)`:
 
       return EntityProvider.writeEntry(contentType, entitySet, data, propertiesBuilder.build());
     }
-~~~
+```
 
 and `readEntitySet(…)`:
 
-~~~java
+```java
   } else if (ENTITY_SET_NAME_DRIVERS.equals(entitySet.getName())) {
     return EntityProvider.writeFeed(contentType, entitySet, dataStore.getDrivers(),     EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
-~~~
+```
 
 **Conclusion for media resource extension**<br>
 After finishing all steps above the project can be built and deployed containing a Driver type which is a media link entry with associated media resource. *Congratulations.*
@@ -179,7 +179,7 @@ For a more interesting sample we now create an association between a Driver and 
 **Extend Driver and Car in MyEdmProvider with a navigation property**<br>
 At first we introduce the necessary constants:
 
-~~~java
+```java
   private static final FullQualifiedName ASSOCIATION_DRIVER_CAR = new FullQualifiedName(NAMESPACE, "Driver_Car-Car_Driver");
     
   private static final String ROLE_1_3 = "Car_Driver";
@@ -187,32 +187,32 @@ At first we introduce the necessary constants:
     
   private static final String ASSOCIATION_SET = "Cars_Manufacturers";
   private static final String ASSOCIATION_SET_CARS_DRIVERS = "Cars_Drivers";
-~~~
+```
 
 Then the `getSchemas()` in `MyEdmProvider` is extended with the new association:
 
-~~~java
+```java
 associations.add(getAssociation(ASSOCIATION_DRIVER_CAR));
 ...
 associationSets.add(getAssociationSet(ENTITY_CONTAINER, ASSOCIATION_DRIVER_CAR, ENTITY_SET_NAME_DRIVERS, ROLE_3_1));
-~~~
+```
 
 Next step is the extension of the entity types in `getEntityType()` in `MyEdmProvider`.
 
 For the Car:
 
-~~~java
+```java
   if (ENTITY_TYPE_1_1.getName().equals(edmFQName.getName())) {
 ...
     navigationProperties.add(new NavigationProperty().setName("Driver")
         .setRelationship(ASSOCIATION_DRIVER_CAR).setFromRole(ROLE_1_3).setToRole(ROLE_3_1));
 …
 }
-~~~
+```
 
 And the Driver:
 
-~~~java
+```java
   if (ENTITY_TYPE_1_3.getName().equals(edmFQName.getName())) {
 ...
     properties.add(new SimpleProperty().setName("CarId").setType(EdmSimpleTypeKind.Int32));
@@ -220,11 +220,11 @@ And the Driver:
     navigationProperties.add(new NavigationProperty().setName("Car").setRelationship(ASSOCIATION_DRIVER_CAR).setFromRole(ROLE_3_1).setToRole(ROLE_1_3));
 ...
 }
-~~~
+```
 
 At last the `getAssociation(…)` and `getAssociationSet(...)` has also to be extended and has to look like:
 
-~~~java
+```java
 @Override
 public Association getAssociation(FullQualifiedName edmFQName) throws ODataException {
   if (NAMESPACE.equals(edmFQName.getNamespace())) {
@@ -258,12 +258,12 @@ public AssociationSet getAssociationSet(String entityContainer, FullQualifiedNam
   }
   return null;
 }
-~~~
+```
 
 **Extend existing `readreadEntitySet(...)` and `readEntity(...)` methods in `MyODataSingleProcessor`**<br>
 For cleaner code we introduce at first following method in the `MyODataSingleProcessor` which validate if the uri contains the expected association.
 
-~~~java
+```java
 private boolean isAssociation(GetEntityUriInfo uriInfo, String startName, String targetName) throws EdmException {
   if(startName == null || targetName == null) {
     return false;
@@ -273,11 +273,11 @@ private boolean isAssociation(GetEntityUriInfo uriInfo, String startName, String
     
   return startName.equals(startEntitySet.getName()) && targetName.equals(targetEntitySet.getName());
 }
-~~~
+```
 
 The procedure should be already familiar. At first it is checked for the correct association of the requested Entity, then the key for requesting the DataStore is get as well as the data and then result data is written via the `EntityProvider`.
 
-~~~java
+```java
 } else if (uriInfo.getNavigationSegments().size() == 1) {
   //navigation first level, simplified example for illustration purposes only
   EdmEntitySet entitySet = uriInfo.getTargetEntitySet();
@@ -302,7 +302,7 @@ The procedure should be already familiar. At first it is checked for the correct
 
   throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
 }
-~~~
+```
 
 **Add $expand support for Driver to/from Car association**<br>
 The last missing step is to add the `$expand` support for the new Driver to/from Car association.
@@ -313,7 +313,7 @@ The procedure is similar to the Cars - Manufacturers association. At first it is
 
 The resulting method extension is:
 
-~~~java
+```java
 ...
   if(isNavigationFromTo(context, ENTITY_SET_NAME_CARS, ENTITY_NAME_DRIVER)) {
     EntityProviderWriteProperties inlineProperties = EntityProviderWriteProperties.serviceRoot(serviceRoot)
@@ -336,14 +336,14 @@ The resulting method extension is:
     result.setInlineProperties(inlineProperties);        
   }
 ...
-~~~
+```
 
 **Add registration of MyCallback for Driver and Car association**<br>
 After extension of `MyCallback` it is necessary to register a callback within the `readEntity()` in the `MyODataSingleProcessor`.
 
 For the Driver we add the complete callback registration (code between the comments) which results in final code for the complete Driver Entity handling:
 
-~~~java
+```java
 ...
    } else if (ENTITY_SET_NAME_DRIVERS.equals(entitySet.getName())) {
     int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
@@ -364,17 +364,17 @@ For the Driver we add the complete callback registration (code between the comme
     }
   }
 ...
-~~~
+```
 
 For the Car it is only necessary to add the single code line below to register the additional callback and enable the `$expand`:
 
-~~~java
+```java
 if (ENTITY_SET_NAME_CARS.equals(entitySet.getName())) {
 ...
     callbacks.put(ENTITY_NAME_DRIVER, new MyCallback(dataStore, serviceRoot));
 ...
 }
-~~~
+```
 
 Deploy, run and test
 Like in the basic read scenario follow these steps:

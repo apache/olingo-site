@@ -114,7 +114,7 @@ In order to declare the metadata of our OData service, we open the class myservi
 
 In the previous tutorial we’ve already created the metadata for the “Product” entity type:
 
-~~~xml
+```xml
     <EntityType Name="Product">
         <Key>
           <PropertyRef Name="ID" />
@@ -123,7 +123,7 @@ In the previous tutorial we’ve already created the metadata for the “Product
         <Property Name="Name" Type="Edm.String" Nullable="false" />
         <Property Name="Description" Type="Edm.String" Nullable="false" />
     </EntityType>
-~~~
+```
 
 Now we have to add a navigation property.
 That navigation property element has the following attributes:
@@ -156,7 +156,7 @@ In our example, we can navigate from product to category and from category to pr
 In our example, the metadata of our “Product” entity type looks as follows:
 
 
-~~~xml
+```xml
      <EntityType Name="Product">
        <Key>
          <PropertyRef Name="ID"/>
@@ -166,30 +166,30 @@ In our example, the metadata of our “Product” entity type looks as follows:
        <Property Name="Description" Type="Edm.String"/>
        <NavigationProperty Name="Category" Type="OData.Demo.Category" Nullable="false" Partner="Products"/>
      </EntityType>
-~~~
+```
 
 Implementation-wise we have to create and configure an object of type `CsdlNavigationProperty`:
 
-~~~java
+```java
     CsdlNavigationProperty navProp = new CsdlNavigationProperty()
                                         .setName("Category")
                                         .setType(ET_CATEGORY_FQN)
                                         .setNullable(false)
                                         .setPartner("Products");
-~~~
+```
 
 Since an entity type can have multiple navigation properties, we have to put it into a list:
 
-~~~java
+```java
     List<CsdlNavigationProperty> navPropList = new ArrayList<CsdlNavigationProperty>();
     navPropList.add(navProp);
-~~~
+```
 
 That list becomes relevant for the entity type that has been created earlier:
 
-~~~java
+```java
     entityType.setNavigationProperties(navPropList);
-~~~
+```
 
 There’s one more step to consider with respect to the navigation: the entity set.
 At runtime, we need to know how to implement the navigation, when an entity set is invoked.
@@ -206,22 +206,22 @@ In our example it is the entity set “Categories” (which we will create below
 
 In our example, the definition of our “Products” entity set looks as follows:
 
-~~~xml
+```xml
     <EntitySet Name="Products" EntityType="OData.Demo.Product">
       <NavigationPropertyBinding Path="Category" Target="Categories"/>
     </EntitySet>
-~~~
+```
 
 Code-wise, the getEntitySet method is extended as follows:
 
-~~~java
+```java
     CsdlNavigationPropertyBinding navPropBinding = new CsdlNavigationPropertyBinding();
     navPropBinding.setPath("Category"); // the path from entity type to navigation property
     navPropBinding.setTarget("Categories"); //target entitySet, where the nav prop points to
     List<CsdlNavigationPropertyBinding> navPropBindingList = new ArrayList<CsdlNavigationPropertyBinding>();
     navPropBindingList.add(navPropBinding);
     entitySet.setNavigationPropertyBindings(navPropBindingList);
-~~~
+```
 
 
 ### 3.1.2. Create the Entity Type “Category”
@@ -247,7 +247,7 @@ In our example, we’re defining a bi-directional navigation, so here we specify
 
 In our example, the metadata of our “Category” entity type looks as follows:
 
-~~~xml
+```xml
     <EntityType Name="Category">
       <Key>
         <PropertyRef Name="ID"/>
@@ -256,11 +256,11 @@ In our example, the metadata of our “Category” entity type looks as follows:
       <Property Name="Name" Type="Edm.String"/>
       <NavigationProperty Name="Products" Type="Collection(OData.Demo.Product)" Partner="Category"/>
     </EntityType>
-~~~
+```
 
 The code for the “Category” entity type:
 
-~~~java
+```java
     if (entityTypeName.equals(ET_CATEGORY_FQN)){
 	    //create EntityType properties
 	    CsdlProperty id = new CsdlProperty()
@@ -290,7 +290,7 @@ The code for the “Category” entity type:
     	entityType.setKey(Arrays.asList(propertyRef));
     	entityType.setNavigationProperties(navPropList);
     }
-~~~
+```
 
 The `NavigationPropertyBinding` element and its attributes for the entity set “Categories”:
 
@@ -303,22 +303,22 @@ In our example it is the entity set “Products”
 
 In our example, the definition of our “Categories” entity set looks as follows:
 
-~~~xml
+```xml
     <EntitySet Name="Categories" EntityType="OData.Demo.Category">
       <NavigationPropertyBinding Path="Products" Target="Products"/>
     </EntitySet>
-~~~
+```
 
 And the implementation in the `getEntitySet` method:
 
-~~~java
+```java
     CsdlNavigationPropertyBinding navPropBinding = new CsdlNavigationPropertyBinding();
     navPropBinding.setTarget("Products");//target entitySet, where the nav prop points to
     navPropBinding.setPath("Products"); // the path from entity type to navigation property
     List<CsdlNavigationPropertyBinding> navPropBindingList = new ArrayList<CsdlNavigationPropertyBinding>();
     navPropBindingList.add(navPropBinding);
     entitySet.setNavigationPropertyBindings(navPropBindingList);
-~~~
+```
 
 
 ---
@@ -360,7 +360,7 @@ Example URL for two segments: <http://localhost:8080/DemoService/DemoService.svc
 
 As such, in our code we distinguish these 2 cases:
 
-~~~java
+```java
     if(segmentCount == 1){
         // here the “normal” entity set is requested
     }else if (segmentCount == 2){
@@ -369,26 +369,26 @@ As such, in our code we distinguish these 2 cases:
         // in our example, we don’t support URIs like Products(1)/Category/Products
         throw new ODataApplicationException("Not supported", HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(),Locale.ENGLISH);
     }
-~~~
+```
 
 The segments of the URI are retrieved from the uriInfo parameter:
 
-~~~java
+```java
     List<UriResource> resourceParts = uriInfo.getUriResourceParts();
     int segmentCount = resourceParts.size();
-~~~
+```
 
 In both cases, we have to retrieve the list of entities to be returned.
 For the first case, we have only one entitySet, so the implementation is straight forward:
 
-~~~java
+```java
     EdmEntitySet startEdmEntitySet = uriResourceEntitySet.getEntitySet();
     if(segmentCount == 1) {
         // 2nd: fetch the data from backend for this requested EntitySetName
         responseEntityCollection = storage.readEntitySetData(responseEdmEntitySet);
         responseEdmEntitySet = startEdmEntitySet; //there’s only one entity set
     }
-~~~
+```
 
 Now let’s focus on the second case, the navigation.
 
@@ -424,10 +424,10 @@ In our example, the URL would be: <http://localhost:8080/DemoService/DemoService
 For this example, we would have to retrieve the Category with *ID=3*.  
 The code looks like a normal `READ` operation:
 
-~~~java
+```java
     List<UriParameter> keyPredicates = uriResourceEntitySet.getKeyPredicates();
     Entity sourceEntity = storage.readEntityData(startEdmEntitySet, keyPredicates);
-~~~
+```
 
 In our example, the result is an entity that represents the “Monitors” – category.
 
@@ -439,9 +439,9 @@ In our example, we have to retrieve all products that are monitors.
 
 This is backend logic, so we can directly call a helper method in our Storage class:
 
-~~~java
+```java
     responseEntityCollection = storage.getRelatedEntityCollection(sourceEntity, targetEntityType);
-~~~
+```
 
 This helper method requires the source entity and returns the target collection.
 Additionally, the method needs the `EdmEntityType` that corresponds to the requested target.
@@ -460,31 +460,31 @@ First, we have to analyze the URI, and find out if the URI segment is used for n
 As mentioned, in our simple example we assume that the second segment is used for navigation (in advanced services, a segment could as well be an action or function import, etc).
 The navigation URI segment can then be asked for the corresponding `EdmNavigationProperty`
 
-~~~java
+```java
     UriResource lastSegment = resourceParts.get(1);
     if(lastSegment instanceof UriResourceNavigation){
 	    UriResourceNavigation uriResourceNavigation = (UriResourceNavigation)lastSegment;
 	    EdmNavigationProperty edmNavigationProperty = uriResourceNavigation.getProperty();
-~~~
+```
 
 The bad news is that the `EdmNavigationProperty` doesn’t know about the target `EdmEntitySet`.
 This is as per design, just check the metadata:
 
-~~~xml
+```xml
     <EntityType Name="Category">
 	    ...
 	    <NavigationProperty Name="Products" Type="Collection(OData.Demo.Product)" Partner="Category"/>
     </EntityType>
-~~~
+```
 
 The navigation property is defined on entity-type-level and as such, it does know the target entity type.
 The target entity set is defined in the navigation property binding element on entity-set-level:
 
-~~~xml
+```xml
     <EntitySet Name="Categories" EntityType="OData.Demo.Category">
 	    <NavigationPropertyBinding Path="Products" Target="Products"/>
     </EntitySet>
-~~~
+```
 
 This is where we get the information that we need.
 
@@ -496,11 +496,11 @@ For our implementation, this means:
 
 As shown below, from the source `EdmEntitySet` we get the binding target, based on the navigation property.
 
-~~~java
+```java
     EdmBindingTarget edmBindingTarget = startEdmEntitySet.getRelatedBindingTarget(navPropName);
     if(edmBindingTarget instanceof EdmEntitySet){
 	    navigationTargetEntitySet = (EdmEntitySet)edmBindingTarget;
-~~~
+```
 
 This target is the entity set that we need.
 
@@ -515,7 +515,7 @@ Furthermore, configure the response object, i.e. set the response body, the cont
 
 The following snippet shows the implementation of the `readEntityCollection(…)` method.
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
                                     throws ODataApplicationException, SerializerException {
 
@@ -576,7 +576,7 @@ The following snippet shows the implementation of the `readEntityCollection(…)
         response.setStatusCode(HttpStatusCode.OK.getStatusCode());
         response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());   
     }
-~~~
+```
 
 ## 3.3. Implement the to-one navigation
 
@@ -586,13 +586,13 @@ In our example, the following URL represents a to-one navigation: <http://localh
 The user of our service has chosen a product and wants to know to which category it belongs. He can find it out by following the navigation property.
 As per design, a product can only belong to **one** category (obviously, a product can only be a Notebook or a Monitor, not both). Therefore in our service, we’ve defined a navigation property that is not of type collection:
 
-~~~xml
+```xml
     <NavigationProperty
         Name="Category"
         Type="OData.Demo.Category"
         Nullable="false"
         Partner="Products"/>
-~~~
+```
 
 So when the user follows the navigation property in order to display the product category, he expects a response that contains only one entry.
 This means that we have to do the implementation in the `EntityProcessor`.
@@ -602,13 +602,13 @@ Open the class `myservice.mynamespace.service.DemoEntityProcessor.java`
 As usual, we first have to analyze the URI.
 Just like we did in the `EntityCollectionProcessor`, we have to distinguish between navigation and “normal” read of an entity:
 
-~~~java
+```java
     if(segmentCount == 1){
         // in case of directly adressing of an entity
     }else if (segmentCount == 2){
         // this is reached in case of navigation
     }
-~~~
+```
 
 In the following section, we will focus on the navigation case only.
 In our example, our task is to find the category of a chosen product.
@@ -621,10 +621,10 @@ In our example, we have to perform a read operation for retrieving the product w
 
 The code is the same like in the previous chapter (to-many navigation):
 
-~~~java
+```java
     List<UriParameter> keyPredicates = uriResourceEntitySet.getKeyPredicates();
     Entity sourceEntity = storage.readEntityData(startEdmEntitySet, keyPredicates);
-~~~
+```
 
 **B) get the data for the navigation**
 
@@ -632,25 +632,25 @@ Now we have to follow the navigation, based on the retrieved entity.
 In our example, we have to find the category corresponding to the chosen product.
 Therefore, we invoke our helper method and pass the source Entity (Product) and the required target entity type (Category). The method will find the category which is related to the chosen product.
 
-~~~java
+```java
     responseEntity = storage.getRelatedEntity(sourceEntity, responseEdmEntityType);
-~~~
+```
 
 Before we can serialize the `responseEntity`, we have to retrieve the `EdmEntitySet` that corresponds to the response entity, because we need it for building the ContextURL.
 
 The procedure is the same like in the chapter above, where we treated the to-many navigation:
 
-~~~java
+```java
     EdmNavigationProperty edmNavigationProperty = uriResourceNavigation.getProperty();
     responseEdmEntityType = edmNavigationProperty.getType();
     responseEdmEntitySet = Util.getNavigationTargetEntitySet(startEdmEntitySet, edmNavigationProperty);
-~~~
+```
 
 In our example, the value of the variable `responseEdmEntitySet` will be “Categories” and it will be used for building the contextURL, which will look as follows:
 
-~~~xml
+```xml
     "$metadata#Categories/$entity"
-~~~
+```
 
 ## 3.4. Implement the to-many navigation with key access
 
@@ -682,9 +682,9 @@ It also provides a method `getKeyPredicates()`
 We can make use of it in order to distinguish between “to-one navigation” and “navigation with key access”.
 If the call to
 
-~~~java
+```java
     List<UriParmeter> navKeyPredicates = uriResourceNavigation.getKeyPredicates();
-~~~
+```
 
 returns an empty list, then we can assume that our OData service has been called for a “to-one navigation”.
 This to-one navigation has been explained in the chapter 3.3. above.
@@ -694,14 +694,14 @@ then the method `getKeyPredicates()` will return a list of with one element that
 
 In our implementation of the `EntityProcessor`, we add the following code:
 
-~~~java
+```java
     List<UriParameter> navKeyPredicates = uriResourceNavigation.getKeyPredicates();
     if(navKeyPredicates.isEmpty()){
 	    responseEntity = storage.getRelatedEntity(sourceEntity, responseEdmEntityType);
     }else{
 	    responseEntity = storage.getRelatedEntity(sourceEntity, responseEdmEntityType, navKeyPredicates);
     }
-~~~
+```
 
 We get the key predicates for the navigation segment.
 Then we check if returned list is empty.
@@ -709,9 +709,9 @@ If yes, we use the line that we implemented in chapter 3.3.
 If not, we have to create a new helper method that uses the key predicates for retrieving the desired entity.
 The new helper method
 
-~~~java
+```java
     responseEntity = storage.getRelatedEntity(sourceEntity, responseEdmEntityType, navKeyPredicates);
-~~~
+```
 
 will take care of getting the collection of products (`responseEntityType`) that are in scope of the chosen category (`sourceEntity`) and will then pick the requested product, based on the given key (`navKeyPredicates`).
 
@@ -725,11 +725,11 @@ With other words: it is not valid to navigate from category "Monitors" to a prod
 If this is the case, we have to throw an appropriate exception.
 However, in our simple example we’re satisfied with simply checking if an entity was found at all:
 
-~~~java
+```java
     if(responseEntity == null) {
 	    throw new ODataApplicationException("Nothing found.", HttpStatusCode.NOT_FOUND.getStatusCode(), Locale.ROOT);
     }
-~~~
+```
 
 **Note**
 When implementing this navigation for the first time, our first intention might have been:
@@ -748,7 +748,7 @@ We don’t need to do an additional effort to retrieve the `EdmEntitySet` for th
 
 So now we can finally have a look at the full implementation of the `readEntity()` method, the covers both the cases of chapter 3.3. and 3.4.
 
-~~~java
+```java
     public void readEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
 				throws ODataApplicationException, SerializerException {
 
@@ -828,7 +828,7 @@ So now we can finally have a look at the full implementation of the `readEntity(
     	response.setStatusCode(HttpStatusCode.OK.getStatusCode());
     	response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 ---
 
@@ -902,7 +902,7 @@ When reaching the point where your OData service has to become production ready 
 
 ## 7.1. Find the EdmEntitySet for the navigation target
 
-~~~java
+```java
     public static EdmEntitySet getNavigationTargetEntitySet(final UriInfoResource uriInfo) throws ODataApplicationException {
 
     	EdmEntitySet entitySet;
@@ -932,11 +932,11 @@ When reaching the point where your OData service has to become production ready 
 
     	return entitySet;
     }
-~~~
+```
 
 ## 7.2. Find the last navigation segment
 
-~~~java
+```java
     public static UriResourceNavigation getLastNavigation(final UriInfoResource uriInfo) {
 
     	final List<UriResource> resourcePaths = uriInfo.getUriResourceParts();
@@ -948,4 +948,4 @@ When reaching the point where your OData service has to become production ready 
 
     	return (UriResourceNavigation) resourcePaths.get(--navigationCount);
     }
-~~~
+```

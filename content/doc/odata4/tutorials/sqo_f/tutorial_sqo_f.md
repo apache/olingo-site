@@ -128,19 +128,19 @@ In real world scenarios it is common to build a statement to query a database or
 
 In this tutorial we will use just `Object` and pass the native Java values around.
 
-~~~java
+```java
 public class FilterExpressionVisitor implements ExpressionVisitor<Object> {
-~~~
+```
 
 Please create also a constructor to pass an entity to our visitor implementation.
 
-~~~java
+```java
 private Entity currentEntity;
 
 public FilterExpressionVisitor(Entity currentEntity) {
     this.currentEntity = currentEntity;
 }
-~~~
+```
 
 **1.2 Implement the interface**
 
@@ -155,18 +155,18 @@ The following methods will **not** be implemented. Add an `ODataApplicationExcep
 
 **Example**
 
-~~~java
+```java
 @Override
 public Object visitTypeLiteral(EdmType type) throws ExpressionVisitException, ODataApplicationException {
     throw new ODataApplicationException("Type literals are not implemented",
         			HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
 }
-~~~
+```
 
 **Implement method visitMember**  
 This method is been called if the current node in the AST is a property. So all we have to do is to take the current entity and return the value of the addressed property.
 
-~~~java
+```java
 public Object visitMember(UriInfoResource member) throws ExpressionVisitException, ODataApplicationException {
     // To keeps things simple, this tutorial allows only primitive properties.
     // We have faith that the java type of Edm.Int32 is Integer
@@ -191,7 +191,7 @@ public Object visitMember(UriInfoResource member) throws ExpressionVisitExceptio
           expressions", HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
     }
 }
-~~~
+```
 
 **Implement method visitLiteral**
 
@@ -207,7 +207,7 @@ As you can see in this little example, it can be difficult to guess the right ty
 In real world scenarios, there is something called “numeric promotion”, which converts numbers to the next higher type. [OData Version 4.0 Part 2: URL Conventions Plus Errata 02](http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part2-url-conventions/odata-v4.0-errata02-os-part2-url-conventions-complete.html#_Toc406398161)
 
 
-~~~java
+```java
 @Override
 public Object visitLiteral(Literal literal) throws ExpressionVisitException, ODataApplicationException {
     // To keep this tutorial simple, our filter expression visitor supports only Edm.Int32 and Edm.String
@@ -233,7 +233,7 @@ public Object visitLiteral(Literal literal) throws ExpressionVisitException, ODa
         }
     }
 }
-~~~
+```
 
 **Implement the operators**
 
@@ -247,7 +247,7 @@ The idea behind the implementation is always the same.
 
 OData supports two different unary operators. First there is the binary negation (*not*) and second the arithmetic minus (*-*).
 
-~~~java
+```java
 public Object visitUnaryOperator(UnaryOperatorKind operator, Object operand)
       throws ExpressionVisitException, ODataApplicationException {
     // OData allows two different unary operators. We have to take care, that the type of the
@@ -265,11 +265,11 @@ public Object visitUnaryOperator(UnaryOperatorKind operator, Object operand)
     throw new ODataApplicationException("Invalid type for unary operator",
         HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
 }
-~~~
+```
 
 Next are the binary operations.  Have a look at the source code comments for a detailed explanation.´
 
-~~~java
+```java
 @Override
 public Object visitBinaryOperator(BinaryOperatorKind operator, Object left, Object right)     
             throws ExpressionVisitException, ODataApplicationException {
@@ -391,7 +391,7 @@ private Object evaluateArithmeticOperation(BinaryOperatorKind operator, Object l
      		operands", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
     }
 }
-~~~
+```
 
 The last method we have to implement is `visitMethodCall`. The principle is always the same, check the types and calculate the return value. As a developer you can be sure, that the number of parameters fits to the MethodKind but the types have to be checked by yourself. E.g. *contains* takes two Strings and return *Edm.Boolean* but
 
@@ -399,7 +399,7 @@ The last method we have to implement is `visitMethodCall`. The principle is alwa
 
 would not lead to an error. It is up to you to throw an exception.
 
-~~~java
+```java
 @Override
 public Object visitMethodCall(MethodKind methodCall, List<Object> parameters)
 	    throws ExpressionVisitException, ODataApplicationException {
@@ -421,7 +421,7 @@ public Object visitMethodCall(MethodKind methodCall, List<Object> parameters)
           HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
     }
 }
-~~~
+```
 
 **2. EntityCollectionProcessor changes**
 
@@ -429,10 +429,10 @@ The following section describes the simple approach to enable the EntityCollecti
 
 Just like in the previous tutorials, the data is first fetched from the backend, then the system query option is applied.
 
-~~~java
+```java
 EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
 List<Entity> entityList = entityCollection.getEntities();
-~~~
+```
 
 We will proceed according to these 4 steps:
 
@@ -452,7 +452,7 @@ We will proceed according to these 4 steps:
 
 **2.3 Loop over all entities in the collection and calculate the result of the expression for a given entity**
 
-~~~java
+```java
     try {
       List<Entity> entityList = entityCollection.getEntities();
       Iterator<Entity> entityIterator = entityList.iterator();
@@ -469,11 +469,11 @@ We will proceed according to these 4 steps:
         // Evaluating the expression
         Object visitorResult = filterExpression.accept(expressionVisitor);
         …
-~~~
+```
 
 **2.4 Modify the collection**   
 
-~~~java  
+```java  
          // The result of the filter expression must be of type Edm.Boolean
          if(visitorResult instanceof Boolean) {
             if(!Boolean.TRUE.equals(visitorResult)) {
@@ -489,7 +489,7 @@ We will proceed according to these 4 steps:
        throw new ODataApplicationException("Exception in filter evaluation",
                      HttpStatusCode.INTERNAL_SERVER_ERROR.getStatusCode(), Locale.ENGLISH);
     }
-~~~
+```
 
 ### 3. Run the implemented service
 

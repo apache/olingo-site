@@ -30,7 +30,7 @@ Afterwards do a Deploy and run: it should be working. At this state you can perf
 
 In this tutorial we will implement a media entity set. The idea is to store advertisements and a related image. The metadata document have to be extended by the following elements:
 
-~~~xml
+```xml
     <EntityType Name="Advertisement" HasStream="true">
         <Key>
             <PropertyRef Name="ID"/>
@@ -43,7 +43,7 @@ In this tutorial we will implement a media entity set. The idea is to store adve
     <EntityContainer Name="Container">
         <EntitySet Name="Advertisements" EntityType="OData.Demo.Advertisement"/>
     </EntityContainer>
-~~~
+```
 
 As you can see, the XML tag `EntityType` has a property `HasStream`, which tells us that this entity has an associated media stream. Such an Entity consists of common properties like *ID* and *Name* and the media stream.
 
@@ -59,7 +59,7 @@ If you have read the previous tutorials, you should be familiar with the definit
 
 We start with method `DemoEdmProvider.getEntityType`
 
-~~~java
+```java
     public CsdlEntityType getEntityType(FullQualifiedName entityTypeName) {
         CsdlEntityType entityType = null;
 
@@ -89,11 +89,11 @@ We start with method `DemoEdmProvider.getEntityType`
 
         return entityType;
     }
-~~~
+```
 
 Further we  have to create a new entity set. Add the following snipped to `DemoEdmProvider.getEntitySet`
 
-~~~java
+```java
     @Override
     public CsdlEntitySet getEntitySet(FullQualifiedName entityContainer, String entitySetName) {
         CsdlEntitySet entitySet = null;
@@ -112,11 +112,11 @@ Further we  have to create a new entity set. Add the following snipped to `DemoE
 
         return entitySet;
     }
-~~~
+```
 
 And finally announce the entity type and entity set:
 
-~~~java
+```java
     @Override
     public List<CsdlSchema> getSchemas() {
         // ...
@@ -130,7 +130,7 @@ And finally announce the entity type and entity set:
         // ...
         entitySets.add(getEntitySet(CONTAINER, ES_ADVERTISEMENTS_NAME));
     }
-~~~
+```
 
 ### Enable the data store to handle media entities
 
@@ -139,28 +139,28 @@ All methods have to be implemented in class `myservice.mynamespace.data.Storage`
 
 To read the content to a media entity, we simple return the value of the property *$value*.
 
-~~~java
+```java
     private static final String MEDIA_PROPERTY_NAME = "$value";
     private List<Entity> advertisements;
 
     public byte[] readMedia(final Entity entity) {
         return (byte[]) entity.getProperty(MEDIA_PROPERTY_NAME).asPrimitive();
     }
-~~~
+```
 
 If we update the content of a media entity, we must also set the the Content Type of the content.
 
-~~~java
+```java
     public void updateMedia(final Entity entity, final String mediaContentType, final byte[] data) {
         entity.getProperties().remove(entity.getProperty(MEDIA_PROPERTY_NAME));
         entity.addProperty(new Property(null, MEDIA_PROPERTY_NAME, ValueType.PRIMITIVE, data));
         entity.setMediaContentType(mediaContentType);
     }
-~~~
+```
 
 If a client creates a new media entity, the body of the requet contains the content of the media entity instead the regular properties! So the other regular properties defaults to `null`. The Content Type of the  media content must also be set.
 
-~~~java
+```java
     public Entity createMediaEntity(final EdmEntityType edmEntityType, final String mediaContentType, final byte[] data) {
         Entity entity = null;
 
@@ -178,11 +178,11 @@ If a client creates a new media entity, the body of the requet contains the cont
 
         return entity;
     }
-~~~
+```
 
 Add an initial set of data to our data store:
 
-~~~java
+```java
     private void initAdvertisementSampleData() {
         Entity entity = new Entity();
         entity.addProperty(new Property(null, "ID", ValueType.PRIMITIVE, UUID.fromString("f89dee73-af9f-4cd4-b330-db93c25ff3c7")));
@@ -201,22 +201,22 @@ Add an initial set of data to our data store:
         entity.setMediaContentType(ContentType.parse("text/plain").toContentTypeString());
         advertisements.add(entity);
     }
-~~~
+```
 
 Call `initAdvertisementSampleData()` in the constructor.
 
-~~~java
+```java
     public Storage() {
         // ...
         advertisements = new ArrayList<Entity>();
         // ...
         initAdvertisementSampleData();
     }
-~~~
+```
 
 Enable the regular entity set for CRUD opertations:
 
-~~~java
+```java
     public EntityCollection readEntitySetData(EdmEntitySet edmEntitySet) throws ODataApplicationException {
 
         if (edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)) {
@@ -274,7 +274,7 @@ Enable the regular entity set for CRUD opertations:
             deleteEntity(edmEntityType, keyParams, advertisements);
         }
     }
-~~~
+```
 
 ### Implement the interface `MediaEntityProcessor`
 
@@ -282,7 +282,7 @@ As you can see the [`MediaEntityProcessor`(Javadoc)](http://olingo.apache.org/ja
 
 The easiest part is to delete an media entity. The method `deleteMediaEntity` is delegated to the method `deleteEntity(...)`.
 
-~~~java
+```java
     @Override
     public void deleteMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo)
             throws ODataApplicationException, ODataLibraryException {
@@ -302,11 +302,11 @@ The easiest part is to delete an media entity. The method `deleteMediaEntity` is
 
         deleteEntity(request, response, uriInfo);
     }
-~~~
+```
 
 Next the creation of media entites is implemented. First we fetch the addressed entity set and convert the body of the request to a byte array. Remember the whole body of the request contains the content of the media entity.
 
-~~~java
+```java
     @Override
     public void createMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
             ContentType requestFormat, ContentType responseFormat)
@@ -315,11 +315,11 @@ Next the creation of media entites is implemented. First we fetch the addressed 
         final EdmEntitySet edmEntitySet = Util.getEdmEntitySet(uriInfo);
         final byte[] mediaContent = odata.createFixedFormatDeserializer().binary(request.getBody());
         ///...
-~~~
+```
 
 After that we call the data store to create the new media entity. The [OData Specification](http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398337) tells us, that we have to set the location header to the edit URL of the entity. Since we do not support Prefer Headers we have to return the entity itself.
 
-~~~java
+```java
         final Entity entity = storage.createMediaEntity(edmEntitySet.getEntityType(),
         requestFormat.toContentTypeString(),mediaContent);
 
@@ -336,11 +336,11 @@ After that we call the data store to create the new media entity. The [OData Spe
         response.setHeader(HttpHeader.LOCATION, location);
         response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 To keep things simple, our scenario do not support navigation to media entities. Because of this, the implementation to read a media entity is quite simple. First analayse the URI and fetch the entity. Than take the content of our specical property, serialize them and return the serialized content. The serializer converts the byte array to an `InputStream`.
 
-~~~java
+```java
     @Override
     public void readMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
             throws ODataApplicationException, ODataLibraryException {
@@ -369,11 +369,11 @@ To keep things simple, our scenario do not support navigation to media entities.
                 HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
         }
     }
-~~~
+```
 
 Updating a media entity in our scenario is quite similar to read an entity. The first step is to analyse the URI, than fetch the entity from data store. Afer that we call the `updateMediaEntity` method. In our case we do not return any content. If we would return content, we must return the recently uploaded content of the media entity ([OData Version 4.0 Part 1: Protocol](http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398338)).
 
-~~~java
+```java
     @Override
     public void updateMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
             ContentType requestFormat, ContentType responseFormat)
@@ -399,7 +399,7 @@ Updating a media entity in our scenario is quite similar to read an entity. The 
                 HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
         }
     }
-~~~
+```
 
 ## Run the implemented service
 
@@ -421,14 +421,14 @@ Content-Type: image/svg+xml
 
 
 
-~~~xml
+```xml
     <?xml version="1.0" encoding="UTF-8"?>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
             <g stroke="darkmagenta" stroke-width="16" fill="crimson">
                 <circle cx="50" cy="50" r="42"/>
             </g>
     	</svg>
-~~~
+```
 
  * Update the content of a media entity
  **PUT**  [http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(f89dee73-af9f-4cd4-b330-db93c25ff3c7)/$value](http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-4cd4-b330-db93c25ff3c7)/$value)
@@ -444,12 +444,12 @@ Content-Type: text/plain
 Content-Type: application/json
 
 
-~~~json
+```json
     {
         "Name": "New Name",
         "AirDate": "2020-06-05T23:00"
     }
-~~~
+```
 
 
  * Delete a media entity

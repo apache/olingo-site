@@ -164,11 +164,11 @@ It is provided as `EntityCollection` which we can ask for the list of contained 
 The size of this genuine list is the relevant information for our `$count`.
 Furthermore, we create a new instance of an `EntityCollection` object, which will carry the modified list of entities after applying all the query options.
 
-~~~java
+```java
     EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
     List<Entity> entityList = entityCollection.getEntities();
     EntityCollection returnEntityCollection = new EntityCollection();
-~~~
+```
 
 Then we proceed with the 4 steps as described above:
 
@@ -179,7 +179,7 @@ Then we proceed with the 4 steps as described above:
 
 And this is the sample code:
 
-~~~java
+```java
     CountOption countOption = uriInfo.getCountOption();
     if (countOption != null) {
         boolean isCount = countOption.getValue();
@@ -187,7 +187,7 @@ And this is the sample code:
             returnEntityCollection.setCount(entityList.size());
         }
     }
-~~~
+```
 
 **Note:**
 We don’t need to check if the value of the `$count` is incorrect (e.g. `$count=xxx`), as this is handled by the _Olingo OData V4_ library.
@@ -197,23 +197,23 @@ As we know, if `$count=true` is specified, the structure of the response payload
 So we have to inform the serializer.that `$count` has to be considered.
 So we have to modify the line of code, where the `EntityCollectionSerializerOptions` is created:
 
-~~~java
+```java
     EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
                                              .contextURL(contextUrl)
                                              .id(id)
                                              .count(countOption)
                                              .build();
-~~~
+```
 
 Furthermore, we have to change the following line, because the `EntityCollection` to be returned is now different;
 
 
-~~~java
+```java
     SerializerResult serializerResult = serializer.entityCollection(serviceMetadata,
                                         edmEntityType,
                                         returnEntityCollection,
                                         opts);
-~~~
+```
 
 ## 3.2. Implement `$skip`
 
@@ -237,7 +237,7 @@ We ask the `SkipOption` object for the value that has been specified by the user
 Since the user might give invalid numbers, we have to check that and throw an exception with HTTP status as “Bad Request”.
 Then we can do the actual job, which is adapting the backend-data according to the specified `$skip`.
 
-~~~java
+```java
     SkipOption skipOption = uriInfo.getSkipOption();
     if (skipOption != null) {
         int skipNumber = skipOption.getValue();
@@ -252,16 +252,16 @@ Then we can do the actual job, which is adapting the backend-data according to t
             throw new ODataApplicationException("Invalid value for $skip", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ROOT);
         }
     }
-~~~
+```
 
 After applying the query option, we have the desired set of entities in the variable `entityList`.
 Now we have to populate the `EntityCollection` instance, that we created in the section above, with these entities, before we can pass it to the serializer:
 
-~~~java
+```java
     for(Entity entity : entityList){
         returnEntityCollection.getEntities().add(entity);
     }
-~~~
+```
 
 ## 3.3. Implement $top
 
@@ -272,7 +272,7 @@ With the query option `$top`, the user of an OData service can specify the maxim
 
 Again we follow the 4 mentioned steps, the code is very similar, only the logic for reducing the entityList is different:
 
-~~~java
+```java
     TopOption topOption = uriInfo.getTopOption();
     if (topOption != null) {
         int topNumber = topOption.getValue();
@@ -284,11 +284,11 @@ Again we follow the 4 mentioned steps, the code is very similar, only the logic 
             throw new ODataApplicationException("Invalid value for $top", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ROOT);
         }
     }
-~~~
+```
 
 So now we can finally have a look at the full implementation of the `readEntityCollection()` method, containing all the three query options:
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
                                     throws ODataApplicationException, SerializerException {
 
@@ -369,7 +369,7 @@ So now we can finally have a look at the full implementation of the `readEntityC
         response.setStatusCode(HttpStatusCode.OK.getStatusCode());
         response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 ---
 

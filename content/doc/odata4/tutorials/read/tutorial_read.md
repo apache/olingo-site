@@ -43,7 +43,7 @@ At the end of this tutorial, you will have written an OData service and you will
 
 And the browser will display the following collection of data:
 
-~~~json
+```json
     {
       "@odata.context": "$metadata#Products",
       "value": [
@@ -64,7 +64,7 @@ And the browser will display the following collection of data:
         }
       ]
     }
-~~~
+```
 
 **Table of Contents**
 
@@ -155,7 +155,7 @@ Furthermore, the *pom.xml* file tells Maven which output we want to have as resu
 
 In our example, the pom.xml file looks as follows:
 
-~~~xml
+```xml
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
       <modelVersion>4.6.0</modelVersion>
@@ -217,7 +217,7 @@ In our example, the pom.xml file looks as follows:
 	</dependency>
       </dependencies>
     </project>
-~~~
+```
 
 **Check Java build path**
 
@@ -351,7 +351,7 @@ Let’s have a closer look at our methods in detail.
 
 First, we need to declare some constants, to be used in the code below:
 
-~~~java
+```java
     // Service Namespace
     public static final String NAMESPACE = "OData.Demo";
 
@@ -365,7 +365,7 @@ First, we need to declare some constants, to be used in the code below:
 
     // Entity Set Names
     public static final String ES_PRODUCTS_NAME = "Products";
-~~~
+```
 
 
 **_getEntityType()_**
@@ -381,7 +381,7 @@ The properties: name and type and additional info, e.g. “ID” of type “edm.
 Which of the properties is the “key” property: a reference to the “ID” property.
 
 
-~~~java
+```java
     public CsdlEntityType getEntityType(FullQualifiedName entityTypeName) {
 
       // this method is called for one of the EntityTypes that are configured in the Schema
@@ -407,7 +407,7 @@ Which of the properties is the “key” property: a reference to the “ID” p
 
       return null;
     }
-~~~
+```
 
 **_getEntitySet()_**
 
@@ -420,7 +420,7 @@ In our example, we will invoke the following URL, which we expect to provide us 
 When declaring an `EntitySet`, we need to define the type of entries which are contained in the list, such as an `CsdlEntityType`.
 In our example, we set our previously created `CsdlEntityType`, which is referred by a _FullQualifiedName_.
 
-~~~java
+```java
     public CsdlEntitySet getEntitySet(FullQualifiedName entityContainer, String entitySetName) {
 
       if(entityContainer.equals(CONTAINER)){
@@ -435,7 +435,7 @@ In our example, we set our previously created `CsdlEntityType`, which is referre
 
       return null;
     }
-~~~
+```
 
 
 **_getEntityContainer()_**
@@ -444,7 +444,7 @@ In order to provide data, our OData service needs an _EntityContainer_ that carr
 In our example, we have only one _EntitySet_, so we create one _EntityContainer_ and set our _EntitySet_.
 
 
-~~~java
+```java
     public CsdlEntityContainer getEntityContainer() {
 
       // create EntitySets
@@ -458,7 +458,7 @@ In our example, we have only one _EntitySet_, so we create one _EntityContainer_
 
       return entityContainer;
     }
-~~~
+```
 
 **_getSchemas()_**
 
@@ -470,7 +470,7 @@ The schema is configured with a _Namespace_, which serves to uniquely identify a
 Then our elements are added to the Schema.
 
 
-~~~java
+```java
     public List<CsdlSchema> getSchemas() {
 
       // create Schema
@@ -491,12 +491,12 @@ Then our elements are added to the Schema.
 
       return schemas;
     }
-~~~
+```
 
 **_getEntityContainerInfo()_**
 
 
-~~~java
+```java
     public CsdlEntityContainerInfo getEntityContainerInfo(FullQualifiedName entityContainerName) {
 
         // This method is invoked when displaying the Service Document at e.g. http://localhost:8080/DemoService/DemoService.svc
@@ -508,7 +508,7 @@ Then our elements are added to the Schema.
 
         return null;
     }
-~~~
+```
 
 **Summary:**
 We have created a class that declares the metadata of our OData service.
@@ -520,7 +520,7 @@ In our example invokation of the URL: <http://localhost:8080/DemoService/DemoSer
 
 Give us the result below:
 
-~~~xml
+```xml
     <?xml version='1.0' encoding='UTF-8'?>
     <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
       <edmx:DataServices>
@@ -539,13 +539,13 @@ Give us the result below:
         </Schema>
       </edmx:DataServices>
     </edmx:Edmx>
-~~~
+```
 
 The Service Document can be invoked to view the Entity Sets, like in our example at the URL: <http://localhost:8080/DemoService/DemoService.svc/>
 
 Which give us the Service Document as result:
 
-~~~json
+```json
     {
       "@odata.context" : "$metadata",
       "value" : [
@@ -554,7 +554,7 @@ Which give us the Service Document as result:
         "url" : "Products"
       } ]
     }
-~~~
+```
 
 > Note:
 > After implementing the _EdmProvider_, we can, as an intermediate step, build/deploy the service and invoke the 2 static pages:   Service Document and Metadata Document.
@@ -629,19 +629,19 @@ According to the Javadoc, this object is the “Root object for serving factory 
 We will need it later, so we store it as member variable.
 
 
-~~~java
+```java
     public void init(OData odata, ServiceMetadata serviceMetadata) {
       this.odata = odata;
       this.serviceMetadata = serviceMetadata;
     }
-~~~
+```
 
 Don’t forget to declare the member variables
 
-~~~java
+```java
     private OData odata;
     private ServiceMetadata serviceMetadata;
-~~~
+```
 
 **_readEntityCollection()_**
 
@@ -714,7 +714,7 @@ The steps for implementating the method `readEntityCollection(...)` are:
 
 **Sample:**
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
         throws ODataApplicationException, SerializerException {
 
@@ -744,7 +744,7 @@ The steps for implementating the method `readEntityCollection(...)` are:
       response.setStatusCode(HttpStatusCode.OK.getStatusCode());
       response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 **_getData()_**
 
@@ -756,7 +756,7 @@ If a client requests the response in [ATOM format](http://docs.oasis-open.org/od
 The method *createId* allows us to create an id in a convenient way.
 
 
-~~~java
+```java
     private EntityCollection getData(EdmEntitySet edmEntitySet){
 
        EntityCollection productsCollection = new EntityCollection();
@@ -792,11 +792,11 @@ The method *createId* allows us to create an id in a convenient way.
 
        return productsCollection;
     }
-~~~
+```
 
 **_createId()_**   
 
-~~~java
+```java
     private URI createId(String entitySetName, Object id) {
         try {
             return new URI(entitySetName + "(" + String.valueOf(id) + ")");
@@ -804,7 +804,7 @@ The method *createId* allows us to create an id in a convenient way.
             throw new ODataRuntimeException("Unable to create id for entity: " + entitySetName, e);
         }
     }
-~~~
+```
 
 ## 4.3. Web Application
 
@@ -835,7 +835,7 @@ Furthermore, the `ODataHttpHandler` needs to carry the knowledge about the `Csdl
 This is where our two implemented classes come together, the metadata declaration and the data provisioning.
 
 
-~~~java
+```java
     public class DemoServlet extends HttpServlet {
 
       private static final long serialVersionUID = 1L;
@@ -857,7 +857,7 @@ This is where our two implemented classes come together, the metadata declaratio
         }
       }
     }
-~~~
+```
 
 ### 4.3.2. Edit the web.xml
 
@@ -867,7 +867,7 @@ Furthermore, we need to specify the _url-pattern_ for the servlet, such that our
 Open the _src/main/webapp/WEB-INF/web.xml_ file and paste the following content into it:
 
 
-~~~xml
+```xml
     <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://java.sun.com/xml/ns/javaee"
         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -885,7 +885,7 @@ Open the _src/main/webapp/WEB-INF/web.xml_ file and paste the following content 
       <url-pattern>/DemoService.svc/*</url-pattern>
     </servlet-mapping>
     </web-app>
-~~~
+```
 
 That’s it. Now we can build and run the web application.
 
@@ -929,7 +929,7 @@ Try the following URLs:
 The expected result is the Service Document which displays our _EntityContainerInfo_:
 
 
-~~~json
+```json
     {
       "@odata.context" : "$metadata",
       "value" : [
@@ -938,7 +938,7 @@ The expected result is the Service Document which displays our _EntityContainerI
         "url" : "Products"
       } ]
     }
-~~~
+```
 
 **Metadata Document**
 
@@ -947,7 +947,7 @@ The expected result is the Service Document which displays our _EntityContainerI
 The expected result is the Metadata Document that displays our _Schema_, _EntityType_, _EntityContainer_ and _EntitySet_.
 
 
-~~~xml
+```xml
     <?xml version='1.0' encoding='UTF-8'?>
     <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
       <edmx:DataServices>
@@ -966,7 +966,7 @@ The expected result is the Metadata Document that displays our _Schema_, _Entity
         </Schema>
       </edmx:DataServices>
     </edmx:Edmx>
-~~~
+```
 
 **Query / EntitySet**
 
@@ -975,7 +975,7 @@ The expected result is the Metadata Document that displays our _Schema_, _Entity
 The expected result is the hardcoded list of product entries, which we have coded in our processor implementation:
 
 
-~~~json
+```json
     {
       "@odata.context":"$metadata#Products","
       value":[
@@ -995,7 +995,7 @@ The expected result is the hardcoded list of product entries, which we have code
           "Description":"17 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"
       }]
     }
-~~~
+```
 
 
 ---

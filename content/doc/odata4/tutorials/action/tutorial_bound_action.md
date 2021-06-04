@@ -58,14 +58,14 @@ For example there can be a bound action createOrders which is bound to the Custo
 
 Such an action can be expressed in the metadata document as follows
 
-~~~xml
+```xml
     <Action Name="CreateOrder" isBound=”true”>
      <Parameter Name="Customers" Type="SampleEntities.Customer" Nullable="false"/>
      <Parameter Name="quantity" Type="Edm.Int16" Nullable="false"/>
      <Parameter Name="discountCode" Type="Edm.String" Nullable="false"/>
      <ReturnType Type="Collection(SampleEntities.Orders)"/>
     </Action>
-~~~
+```
 
 To call such a bound action the client issues a POST request to a URL identifying the action. In this simple case such a call could look like this:
 
@@ -79,13 +79,13 @@ Similarly there can be a bound function GetOrders which is bound to the Customer
 
 Such a function can be expressed in the metadata document as follows
 
-~~~xml
+```xml
     <Function Name="GetOrders" isBound=”true”>
      <Parameter Name="Customers" Type="SampleEntities.Customer" Nullable="false"/>
      <Parameter Name="discountCode" Type="Edm.String" Nullable="false"/>
      <ReturnType Type="Collection(SampleEntities.Orders)"/>
     </Function>
-~~~
+```
 
 To call such a bound function the client issues a GET request to a URL identifying the function. In this simple case such a call could look like this:
 
@@ -109,26 +109,26 @@ This action takes bound parameter “*ParamCategory*” and an additional parame
 
 After finishing the implementation the definition of the action should be like this:
 
-~~~xml
+```xml
     <Action Name="DiscountProducts" IsBound="true">
       <Parameter Name="ParamCategory" Type="Collection(OData.Demo.Category)"/>
       <Parameter Name="Amount" Type="Edm.Int32"/>
       <ReturnType Type="Collection(OData.Demo.Product)"/>
     </Action>
-~~~
+```
 
 **Bound Action that returns an entity: DiscountProduct**
 
 This action takes bound parameter “*ParamCategory*” and an additional parameter “*Amount*”. The actions updates the price of a specific products related to a category by applying the discount amount.
 After finishing the implementation the definition of the action should be like this:
 
-~~~xml
+```xml
     <Action Name="DiscountProduct" IsBound="true">
        <Parameter Name="ParamCategory" Type=”OData.Demo.Category"/>
        <Parameter Name="Amount" Type="Edm.Int32"/>
        <ReturnType Type=" OData.Demo.Product"/>
     </Action>
-~~~
+```
 
 While actions are called by using HTTP Method POST is nessesary to introduce new processor interfaces for actions. So there exists a bunch of interfaces, for each return type strictly one.
 
@@ -138,26 +138,26 @@ This function takes bound parameter “*ParamCategory*” and an additional para
 
 After finishing the implementation the definition of the action should be like this:
 
-~~~xml
+```xml
     <Function Name="GetDiscountedProducts" IsBound="true">
       <Parameter Name="ParamCategory" Type="Collection(OData.Demo.Category)"/>
       <Parameter Name="Amount" Type="Edm.Int32"/>
       <ReturnType Type="Collection(OData.Demo.Product)"/>
     </Function>
-~~~
+```
 
 **Bound Function that returns an entity: GetDiscountedProduct**
 
 This function takes bound parameter “*ParamCategory*” and an additional parameter “*Amount*”. The function lists one specific product related to a category which is eligible for the discount amount.
 After finishing the implementation the definition of the action should be like this:
 
-~~~xml
+```xml
     <Function Name="GetDiscountedProduct" IsBound="true">
        <Parameter Name="ParamCategory" Type=”OData.Demo.Category"/>
        <Parameter Name="Amount" Type="Edm.Int32"/>
        <ReturnType Type=" OData.Demo.Product"/>
     </Function>
-~~~
+```
 
 **Steps**    
 
@@ -169,7 +169,7 @@ After finishing the implementation the definition of the action should be like t
 
 Create the following constants in the DemoEdmProvider. These constants are used to address the actions.
 
-~~~java
+```java
     //Bound Action
     public static final String ACTION_PROVIDE_DISCOUNT = "DiscountProducts";
     public static final FullQualifiedName ACTION_PROVIDE_DISCOUNT_FQN = new FullQualifiedName(NAMESPACE, ACTION_PROVIDE_DISCOUNT);
@@ -189,7 +189,7 @@ Create the following constants in the DemoEdmProvider. These constants are used 
     
     //Binding Parameter
     public static final String PARAMETER_CATEGORY = "ParamCategory";
-~~~
+```
 
 The way to announce the operations is very similar to announcing EntityTypes. We have to override some methods. Those methods provide the definition of the Edm elements. We need methods for:
 
@@ -198,7 +198,7 @@ The way to announce the operations is very similar to announcing EntityTypes. We
 
 The code is simple and straight forward. We need to create a list of parameters of which the first parameter should be the binding parameter, then create a return type. At the end all parts are fit together and get returned as new CsdlAction Object.
 
-~~~java
+```java
         @Override
         public List<CsdlAction> getActions(final FullQualifiedName actionName) {
        // It is allowed to overload actions, so we have to provide a list of Actions for each action name
@@ -252,11 +252,11 @@ The code is simple and straight forward. We need to create a list of parameters 
         
         return null;
       }
-~~~
+```
 
 Similarly, for functions we need to create a list of parameters of which the first parameter should be the binding parameter, then create a return type. At the end all parts are fit together and get returned as new CsdlFunction Object.
 
-~~~java
+```java
         @Override
         public List<CsdlFunction> getFunctions(final FullQualifiedName functionName) {
        // It is allowed to overload functions, so we have to provide a list of Functions for each function name
@@ -310,11 +310,11 @@ Similarly, for functions we need to create a list of parameters of which the fir
         
         return null;
       }
-~~~
+```
 
 Finally we have to announce these operations to the schema. Add the following lines to the method getSchemas():
 
-~~~java
+```java
     // add actions
     List<CsdlAction> actions = new ArrayList<CsdlAction>();
     actions.addAll(getActions(ACTION_PROVIDE_DISCOUNT_FQN));
@@ -326,14 +326,14 @@ Finally we have to announce these operations to the schema. Add the following li
     functions.addAll(getFunctions(FUNCTION_PROVIDE_DISCOUNT_FQN));
     functions.addAll(getFunctions(FUNCTION_PROVIDE_DISCOUNT_FOR_PRODUCT_FQN));
     schema.setFunctions(functions);
-~~~
+```
 
 ### Extend the data store
 
 We need two methods in the data store to read the action DiscountProducts and DiscountProduct. The first method returns a collection of entites and second method returns a single entity.
 
 
-~~~java
+```java
         public EntityCollection processBoundActionEntityCollection(EdmAction action, Map<String, Parameter> parameters) {
         EntityCollection collection = new EntityCollection();
         if ("DiscountProducts".equals(action.getName())) {
@@ -364,11 +364,11 @@ We need two methods in the data store to read the action DiscountProducts and Di
         }
         return null;
       }
-~~~
+```
 
 In the second method, we are returning a custom object DemoEntityActionResult. This holds the entity and the status as to whether the entity is created or just returned. This information is used to set the response status.
 
-~~~java
+```java
       public class DemoEntityActionResult {
       private Entity entity;
       private boolean created = false;
@@ -391,11 +391,11 @@ In the second method, we are returning a custom object DemoEntityActionResult. T
         return this;
       }
     }
-~~~    
+```    
 
 We also create methods for GetDiscountedProducts and GetDiscountedProduct functions. 
 
-~~~java
+```java
         public EntityCollection getBoundFunctionEntityCollection(EdmFunction function, Integer amount) {
         EntityCollection collection = new EntityCollection();
         if ("GetDiscountedProducts".equals(function.getName())) {
@@ -419,7 +419,7 @@ We also create methods for GetDiscountedProducts and GetDiscountedProduct functi
         }
         return null;
       }
-~~~
+```
 
 ### Extend the entity collection and the entity processor to handle functions
 
@@ -427,7 +427,7 @@ We start with the entity collection processor DemoEntityCollectionProcessor. To 
 
 The recent implementation of the readEntityCollection() has been moved to readEntityCollectionInternal()
 
-~~~java
+```java
 public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat) throws ODataApplicationException, SerializerException {
 
   final UriResource firstResourceSegment = uriInfo.getUriResourceParts().get(0);
@@ -442,11 +442,11 @@ public void readEntityCollection(ODataRequest request, ODataResponse response, U
     Locale.ENGLISH);
   }
 }
-~~~
+```
 
 Like by reading entity collections, the first step is to analyze the URI and then fetch the data (of the function).
 
-~~~java
+```java
      private void readEntityCollectionInternal(final ODataRequest request, final ODataResponse response,
      final UriInfo uriInfo, final ContentType responseFormat) throws ODataApplicationException, SerializerException {
 
@@ -512,12 +512,12 @@ Like by reading entity collections, the first step is to analyze the URI and the
      response.setStatusCode(HttpStatusCode.OK.getStatusCode());
      response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 
 Next we will implement the processor to read a single entity. The implementation is quite similar to the implementation of the collection processor.
 
-~~~java
+```java
     public void readEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
       throws ODataApplicationException, SerializerException {
 
@@ -598,13 +598,13 @@ Next we will implement the processor to read a single entity. The implementation
     response.setStatusCode(HttpStatusCode.OK.getStatusCode());
     response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 ### Implement an action processor
 
 Create a new class `DemoActionProcessor` make them implement the interface interface 'ActionEntityCollectionProcessor' and 'ActionEntityProcessor'.
 
-~~~java
+```java
       public class DemoActionProcessor implements ActionEntityCollectionProcessor, ActionEntityProcessor {
     
       private OData odata;
@@ -620,7 +620,7 @@ Create a new class `DemoActionProcessor` make them implement the interface inter
         this.odata = odata;
         this.serviceMetadata = serviceMetadata;
       }
-~~~
+```
 
 The first overriden method returns a collection of entities.
 
@@ -630,7 +630,7 @@ Then deserialize the action parameters.
 
 Execute the action and set the response code.
 
-~~~java
+```java
 
         @Override
       public void processActionEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo,
@@ -707,7 +707,7 @@ Execute the action and set the response code.
             && ContentType.VALUE_ODATA_METADATA_NONE.equalsIgnoreCase(
                 contentType.getParameter(ContentType.PARAMETER_ODATA_METADATA));
       }
-~~~
+```
 
 The second method to be overriden returns a single entity.
 
@@ -717,7 +717,7 @@ Then deserialize the action parameters.
 
 Execute the action and set the response code.
 
-~~~java
+```java
 
         @Override
       public void processActionEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
@@ -796,7 +796,7 @@ Execute the action and set the response code.
           }
         }    
       }
-~~~
+```
 
 ## Run the implemented service
 

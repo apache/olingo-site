@@ -169,11 +169,11 @@ An example with all parameters mentioned above is the method `createEntity()`
 in the interface `EntityProcessor`:
 
 
-~~~java
+```java
 void createEntity(ODataRequest request, ODataResponse response,
     UriInfo uriInfo, ContentType requestFormat, ContentType responseFormat)
     throws ODataApplicationException, ODataLibraryException;
-~~~
+```
 
 ### Content Negotiation ###
 

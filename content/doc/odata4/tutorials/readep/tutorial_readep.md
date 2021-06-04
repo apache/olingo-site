@@ -71,7 +71,7 @@ Within this package, create a new class *Storage.java* to simulate the data laye
 Here’s the full implementation of this class:
 
 
-~~~java
+```java
     package myservice.mynamespace.data;
 
     import java.util.ArrayList;
@@ -194,7 +194,7 @@ Here’s the full implementation of this class:
             }
         }
     }
-~~~
+```
 
 The *Public Façade* contains the methods that are called from outside.  
 They are data-layer-agnostic; their parameters are objects from the OData world.  
@@ -212,7 +212,7 @@ Open the class `myservice.mynamespace.web.DemoServlet`
 
 Change the code such that it looks as follows:
 
-~~~java
+```java
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	try {
     		HttpSession session = req.getSession(true);
@@ -229,7 +229,7 @@ Change the code such that it looks as follows:
     		handler.register(new DemoEntityCollectionProcessor(storage));
       } /* more code */
     }
-~~~
+```
 
 
 Note that we pass the instance of the `Storage` object to the constructor of our existing `DemoEntityCollectionProcessor`.
@@ -245,7 +245,7 @@ In the `DemoEntityCollectionProcessor` class that we created in the first tutori
 
 We have to create a Constructor that takes the `Storage` instance and stores it as a member variable:
 
-~~~java
+```java
     public class DemoEntityCollectionProcessor implements EntityCollectionProcessor {
 
     	private OData odata;
@@ -256,7 +256,7 @@ We have to create a Constructor that takes the `Storage` instance and stores it 
     		this.storage = storage;
     	}
     }
-~~~
+```
 
 ### 2.3.2. Delete the getData() method
 
@@ -268,13 +268,13 @@ So we can delete this `getData()` method.
 After deleting the `getData()` method, we get a compile error in the line where this method is used.
 We replace this method invocation with a call to our `Storage` object:
 
-~~~java
+```java
     EntitySet entitySet = storage.readEntitySetData(edmEntitySet);
-~~~
+```
 
 The new code looks as follows:
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response,
                                     UriInfo uriInfo, ContentType responseFormat)
                                     throws ODataApplicationException, SerializerException {
@@ -288,7 +288,7 @@ The new code looks as follows:
     	// 2nd: fetch the data from backend for this requested EntitySetName and deliver as EntitySet
     	EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
     }
-~~~
+```
 
 ## 2.4. Create utility class
 
@@ -298,7 +298,7 @@ Within this package, create a class `Util.java`
 
 Copy the following code into this class:
 
-~~~java
+```java
     package myservice.mynamespace.util;
 
     import java.util.List;
@@ -399,7 +399,7 @@ Copy the following code into this class:
     		return true;
     	}
     }
-~~~
+```
 
 These helper methods are going to be used within the implementation of the Processor implementations.
 
@@ -455,7 +455,7 @@ Create the class `DemoEntityProcessor` in package `myservice.mynamespace.service
 First we need to implement the `init()` method, in order to store the `OData` object.
 Second, as described in the preparation-section, we need to create a constructor that takes and stores our `Storage` instance
 
-~~~java
+```java
     public class DemoEntityProcessor implements EntityProcessor {
 
     	private OData odata;
@@ -471,7 +471,7 @@ Second, as described in the preparation-section, we need to create a constructor
     		this.serviceMetadata = serviceMetadata;
     	}
     }
-~~~
+```
 
 **readEntity(...)**
 
@@ -483,14 +483,14 @@ When going through the implementation, let’s keep in mind that the user invoke
 
 and he receives the following response in the browser:
 
-~~~json
+```json
     {
       @odata.context: "$metadata#Products",
       ID: 3,
       Name: "Ergo Screen",
       Description: "19 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"
     }
-~~~
+```
 
 **Steps**  
 The steps to be followed in the implementation of the `readEntity(...)` method are the same that we followed in the previous tutorial, when we implemented the `readEntityCollection(...)` method:
@@ -499,9 +499,9 @@ The steps to be followed in the implementation of the `readEntity(...)` method a
     Check the UriInfo instance for information about which *EntityCollection* has been requested.  
     Note that in the code, we directly access the first segment of the URI and cast it to `UriResourceEntitySet`
 
-    ~~~java
+    ```java
         UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
-    ~~~
+    ```
     
     This is only possible, because in our current sample scenario we only support simple URIs. In a real production environment OData service, which supports navigation and other OData V4 features, the code would be more complex.
 
@@ -513,9 +513,9 @@ The steps to be followed in the implementation of the `readEntity(...)` method a
     In other models, the key could also be composed by multiple properties. In such a case, all key-properties are mentioned in the URI.
     That’s why the *KeyPredicate* information is provided as a list:
 
-    ~~~java
+    ```java
         List<UriParameter> keyPredicates = uriResourceEntitySet.getKeyPredicates();
-    ~~~
+    ```
 
     Now our task is to loop over all product entities that we have in our backend and to find that one that matches all keys. Which means that we have to loop over all key params.
     In our sample code, we have moved this logic to the *Util* class that has a *findEntity()* method, which loops over all existing product entities, and a *entityMatchesAllKeys()* method that checks if the given entity is the right one.
@@ -523,11 +523,11 @@ The steps to be followed in the implementation of the `readEntity(...)` method a
   3. **Transform the data**  
     After fetching the Entity object from the backend, we have to convert it to an `InputStream`, using the proper `ODataSerializer` method:
 
-    ~~~java
+    ```java
         ODataSerializer serializer = odata.createSerializer(responseFormat);
         SerializerResult serializerResult = serializer.entity(serviceMetadata, entityType, entity, options);
         InputStream entityStream = serializerResult.getContent();
-    ~~~
+    ```
 
     **Note:**
     The `ODataSerializer` object has to be configured with a `ContextURL` (in case that it is requested) and with `EntitySerializerOptions`. In our sample we keep the code simple, since we know that we don’t support advanced operations.
@@ -539,7 +539,7 @@ The steps to be followed in the implementation of the `readEntity(...)` method a
 The following snippet shows the implementation of the `readEntity(...)` method.
 
 
-~~~java
+```java
     public void readEntity(ODataRequest request, ODataResponse response,
                             UriInfo uriInfo, ContentType responseFormat)
     		                throws ODataApplicationException, SerializerException {
@@ -570,7 +570,7 @@ The following snippet shows the implementation of the `readEntity(...)` method.
     	response.setStatusCode(HttpStatusCode.OK.getStatusCode());
     	response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 
 
@@ -579,7 +579,7 @@ The following snippet shows the implementation of the `readEntity(...)` method.
 As we’ve learned in our first tutorial, the Processor implementations have to be registered on the `ODataHttpHandler` instance in the servlet class.
 Open the `DemoServlet` class and add the line that registers the `DemoEntityProcessor` instance:
 
-~~~java
+```java
     // create odata handler and configure it with EdmProvider and Processor
     OData odata = OData.newInstance();
     ServiceMetadata edm = odata.createServiceMetadata(new DemoEdmProvider(),
@@ -587,7 +587,7 @@ Open the `DemoServlet` class and add the line that registers the `DemoEntityProc
     ODataHttpHandler handler = odata.createHandler(edm);
     handler.register(new DemoEntityCollectionProcessor(storage));
     handler.register(new DemoEntityProcessor(storage));
-~~~
+```
 
 
 ## 3.3. Run the service
@@ -599,14 +599,14 @@ After building and deploying the project, we can invoke e.g. the following URL:
 
 and get the expected result:
 
-~~~json
+```json
     {
       @odata.context: "$metadata#Products",
       ID: 3,
       Name: "Ergo Screen",
       Description: "19 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"
     }
-~~~
+```
 
 ---
 
@@ -626,12 +626,12 @@ When a user invokes this URL, he doesn’t want to receive the full payload of t
 
 Example result:
 
-~~~json
+```json
     {
        @odata.context: "$metadata#Products/Description",
        value: "Notebook Basic, 1.7GHz - 15 XGA - 1024MB DDR2 SDRAM - 40GB"
     }
-~~~
+```
 
 
 **Advantages:**  
@@ -668,7 +668,7 @@ Create the class `DemoPrimitiveProcessor` in package `myservice.mynamespace.serv
 
 We have to create a Constructor that takes the `Storage` instance and stores it as a member variable:
 
-~~~java
+```java
     public class DemoPrimitiveProcessor implements PrimitiveProcessor {
 
         private OData odata;
@@ -683,7 +683,7 @@ We have to create a Constructor that takes the `Storage` instance and stores it 
             this.odata = odata;
             this.serviceMetadata = serviceMetadata;
         }
-~~~
+```
 
 **readPrimitive**
 
@@ -704,7 +704,7 @@ Again, we have the following 4 steps to follow:
     When reading a property, we have to consider that the value of the property can be empty.  
     If this is the case, when configuring the response object, we don’t provide response body and header.
 
-    ~~~java
+    ```java
         public void readPrimitive(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
                                   throws ODataApplicationException, SerializerException {
 
@@ -761,13 +761,13 @@ Again, we have the following 4 steps to follow:
                        response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
                    }
       }
-    ~~~
+    ```
 
 ## 4.2. Adapt the DemoServlet class
 
 The DemoServlet has to register a third processor:
 
-~~~java
+```java
     // create odata handler and configure it with EdmProvider and Processor
     OData odata = OData.newInstance();
     ServiceMetadata edm = odata.createServiceMetadata(new DemoEdmProvider(),
@@ -776,7 +776,7 @@ The DemoServlet has to register a third processor:
     handler.register(new DemoEntityCollectionProcessor(storage));
     handler.register(new DemoEntityProcessor(storage));
     handler.register(new DemoPrimitiveProcessor(storage));
-~~~
+```
 
 ## 4.3. Run the service
 
@@ -787,12 +787,12 @@ After building and deploying the project, we can invoke e.g. the following URL
 
 and get the expected result:
 
-~~~json
+```json
     {
       @odata.context: "$metadata#Products/Description",
       value: "19 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"
     }
-~~~
+```
 
 Of course, all other properties can be accessed in the same way:  
 

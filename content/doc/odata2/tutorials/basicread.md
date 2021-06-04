@@ -24,7 +24,7 @@ As a shortcut you can download the [Olingo Tutorial 'Basic-Read' Project](apache
 
 ##### Sample Code      
  
-~~~xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -49,7 +49,7 @@ As a shortcut you can download the [Olingo Tutorial 'Basic-Read' Project](apache
         <url-pattern>/MyODataSample.svc/*</url-pattern>
     </servlet-mapping>
 </web-app>
-~~~
+```
 
   - Start the command line tool, go to folder *$ODATA_PROJECT_HOME\org.apache.olingo.odata2.sample.cars* and enter
 `mvn clean install` to build your projects 
@@ -65,7 +65,7 @@ As a shortcut you can download the [Olingo Tutorial 'Basic-Read' Project](apache
 
 
 
-~~~java
+```java
 package org.apache.olingo.odata2.sample.service;
     
 import org.apache.olingo.odata2.api.ODataService;
@@ -86,7 +86,7 @@ public class MyServiceFactory extends ODataServiceFactory {
     return createODataSingleProcessorService(edmProvider, singleProcessor);
   }
 }
-~~~
+```
 
 - In order to make your coding able to compile you have to create Java classes for 
  `MyEdmProvider` which extends `org.apache.olingo.odata2.api.edm.provider.EdmProvider` and 
@@ -104,7 +104,7 @@ In this paragraph you will implement the `MyEdmProvider` class by overriding all
 
 ##### Sample Code
 
-~~~java 
+```java 
   static final String ENTITY_SET_NAME_MANUFACTURERS = "Manufacturers";
   static final String ENTITY_SET_NAME_CARS = "Cars";
   static final String ENTITY_NAME_MANUFACTURER = "Manufacturer";
@@ -125,13 +125,13 @@ In this paragraph you will implement the `MyEdmProvider` class by overriding all
   private static final String ENTITY_CONTAINER = "ODataCarsEntityContainer";
 
   private static final String ASSOCIATION_SET = "Cars_Manufacturers";
-~~~
+```
 
 - Implement `MyEdmProvider.getSchemas`. This method is used to retrieve the complete structural information in order to build the metadata document and the service document. The implementation makes use of other getter methods of this class for simplicity reasons. If a very performant way of building the whole structural information was required, other implementation strategies could be used. 
 
 ##### Sample Code
 
-~~~java
+```java
 public List<Schema> getSchemas() throws ODataException {
   List<Schema> schemas = new ArrayList<Schema>();
     
@@ -171,13 +171,13 @@ public List<Schema> getSchemas() throws ODataException {
 
   return schemas;
 }
-~~~
+```
 
 - `MyEdmProvider.getEntityType(FullQualifiedName edmFQName)` returns an Entity Type according to the full qualified name specified. The Entity Type holds all information about its structure like simple properties, complex properties, navigation properties and the definition of its key property (or properties). 
 
 ##### Sample Code
 
-~~~java
+```java
 @Override
 public EntityType getEntityType(FullQualifiedName edmFQName) throws ODataException {
   if (NAMESPACE.equals(edmFQName.getNamespace())) {
@@ -245,14 +245,14 @@ public EntityType getEntityType(FullQualifiedName edmFQName) throws ODataExcepti
 
   return null;
 }
-~~~
+```
 
 - `MyEdmProvider.getComplexType(FullQualifiedName edmFQName)` 
 
 ##### Sample Code
 
 
-~~~java
+```java
 public ComplexType getComplexType(FullQualifiedName edmFQName) throws ODataException {
   if (NAMESPACE.equals(edmFQName.getNamespace())) {
     if (COMPLEX_TYPE.getName().equals(edmFQName.getName())) {
@@ -268,7 +268,7 @@ public ComplexType getComplexType(FullQualifiedName edmFQName) throws ODataExcep
   return null;
 
 }
-~~~  
+```  
 
   
 
@@ -278,7 +278,7 @@ public ComplexType getComplexType(FullQualifiedName edmFQName) throws ODataExcep
 ##### Sample Code
 
 
-~~~java
+```java
 public Association getAssociation(FullQualifiedName edmFQName) throws ODataException {
   if (NAMESPACE.equals(edmFQName.getNamespace())) {
     if (ASSOCIATION_CAR_MANUFACTURER.getName().equals(edmFQName.getName())) {
@@ -289,13 +289,13 @@ public Association getAssociation(FullQualifiedName edmFQName) throws ODataExcep
   }
   return null;
 }
-~~~
+```
 
 - `MyEdmProvider.getEntityContainerInfo(String name)` 
   
 ##### Sample Code
 
-~~~java
+```java
 public EntityContainerInfo getEntityContainerInfo(String name) throws ODataException {
   if (name == null || "ODataCarsEntityContainer".equals(name)) {
     return new EntityContainerInfo().setName("ODataCarsEntityContainer").setDefaultEntityContainer(true);
@@ -303,13 +303,13 @@ public EntityContainerInfo getEntityContainerInfo(String name) throws ODataExcep
 
   return null;
 }
-~~~
+```
 
 - `MyEdmProvider.getEntitySet(String entityContainer, String name)`
 
 ##### Sample Code
 
-~~~java
+```java
 public EntitySet getEntitySet(String entityContainer, String name) throws ODataException {
   if (ENTITY_CONTAINER.equals(entityContainer)) {
     if (ENTITY_SET_NAME_CARS.equals(name)) {
@@ -320,14 +320,14 @@ public EntitySet getEntitySet(String entityContainer, String name) throws ODataE
   }
   return null;
 }
-~~~
+```
 
 - `MyEdmProvider.getAssociationSet(String entityContainer, FullQualifiedName association, String sourceEntitySetName, String sourceEntitySetRole)`
 
 ##### Sample Code
 
  
-~~~java
+```java
 public AssociationSet getAssociationSet(String entityContainer, FullQualifiedName association, String sourceEntitySetName, String sourceEntitySetRole) throws ODataException {
   if (ENTITY_CONTAINER.equals(entityContainer)) {
     if (ASSOCIATION_CAR_MANUFACTURER.equals(association)) {
@@ -339,7 +339,7 @@ public AssociationSet getAssociationSet(String entityContainer, FullQualifiedNam
   }
   return null;
 }
-~~~
+```
 
 #### Conclusion
 
@@ -356,7 +356,7 @@ You already created the `MyODataSingleProcessor` class which we now extend with 
 
 ##### Sample Code
  
-~~~java
+```java
 package org.apache.olingo.odata2.sample.service;
 
 import static org.apache.olingo.odata2.sample.service.MyEdmProvider.ENTITY_SET_NAME_CARS;
@@ -367,14 +367,14 @@ import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
 public class MyODataSingleProcessor extends ODataSingleProcessor {
   private DataStore dataStore = new DataStore();
 }
-~~~
+```
 
 - As next steps we will implement the read access to the Car and Manufacturer entries and the read access to the Cars and Manufacturers feed. As we need some basis for sample data we create a very simple DataStore which contains the data as well as access methods to serve the required data: 
 
 ##### Sample Code
 
 
-~~~java
+```java
 package org.apache.olingo.odata2.sample.service;
     
 import java.util.ArrayList;
@@ -525,7 +525,7 @@ public class DataStore {
     return null;
   }
 }
-~~~
+```
 
 
 
@@ -535,7 +535,7 @@ public class DataStore {
 
 ##### Sample Code
  
-~~~java
+```java
   public ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) throws ODataException {
     
     if (uriInfo.getNavigationSegments().size() == 0) {
@@ -612,17 +612,17 @@ public class DataStore {
 
     throw new ODataNotImplementedException();
   }
-~~~
+```
 
 And add the small method to get the key value of a `KeyPredicate`:
 
-~~~java
+```java
   private int getKeyValue(KeyPredicate key) throws ODataException {
     EdmProperty property = key.getProperty();
     EdmSimpleType type = (EdmSimpleType) property.getType();
     return type.valueOfString(key.getLiteral(), EdmLiteralKind.DEFAULT, property.getFacets(), Integer.class);
   }
-~~~
+```
 
 After the implementation of the `MyODataSingleProcessor` the web application can be tested.
 

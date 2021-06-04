@@ -57,7 +57,7 @@ Before we start with the actual processor implementation the data store has to b
 
 Add the following methods to the class `myservice.mynamespace.data.Storage`. When a new transaction has been begun the data of the service is copied and stored in an instance variable. If `rollbackTransaction` has been called the current data is replaced with the previous copied one.
 
-~~~java
+```java
     private List<Entity> productListBeforeTransaction;
     
     public void beginTransaction() {
@@ -98,7 +98,7 @@ Add the following methods to the class `myservice.mynamespace.data.Storage`. Whe
 
         return clonedEntities;
     }
-~~~
+```
 
 ## Implement the interface `BatchProcessor`
 
@@ -106,7 +106,7 @@ Create a new class `myservice.mynamespace.service.DemoBatchProcessor`. The class
 
 Create a constructor and pass the data store to the processor.
 
-~~~java
+```java
     public class DemoBatchProcessor implements BatchProcessor {
 
         private OData odata;
@@ -121,24 +121,24 @@ Create a constructor and pass the data store to the processor.
             this.odata = odata;
         }
         ...
-~~~
+```
 
 ### Implement batch handling
 
 Batch requests will be dispatched to the method `processBatch`. First, the boundary have to be extract from the Content-Type of the POST request.
 
-~~~java
+```java
         @Override
         public void processBatch(final BatchFacade facade, final ODataRequest request, final ODataResponse response)
             throws ODataApplicationException, ODataLibraryException {
 
             // 1. Extract the boundary
             final String boundary = facade.extractBoundaryFromContentType(request.getHeader(HttpHeader.CONTENT_TYPE));
-~~~
+```
 
 After that we are able to parse the multipart mixed body. The parser needs to know what the base URI and the service resolution paths are. The result of the parser is a list of BatchRequestParts. Each of these parts represents either a single request or a Change Set (Collection of one or more requests).
 
-~~~java
+```java
         // 2. Prepare the batch options
         final BatchOptions options = BatchOptions.with().rawBaseUri(request.getRawBaseUri())
                                                         .rawServiceResolutionUri(request.getRawServiceResolutionUri())
@@ -147,21 +147,21 @@ After that we are able to parse the multipart mixed body. The parser needs to kn
         // 3. Deserialize the batch request
         final List<BatchRequestPart> requestParts = odata.createFixedFormatDeserializer()
                                                          .parseBatchRequest(request.getBody(), boundary, options);
-~~~
+```
 
 Now the requests have to be executed by our service. If you like, you can do it by our own or simply call the method `handleBatchRequest`. This method dispatches individual requests directly to the responsible processor. If a Change Set is passed to `handleBatchRequest` the implementation dispatches the request to the method `processChangeSet` of our `DemoBatchProcessor`.
 
-~~~java
+```java
         // 4. Execute the batch request parts
         final List<ODataResponsePart> responseParts = new ArrayList<ODataResponsePart>();
         for (final BatchRequestPart part : requestParts) {
             responseParts.add(facade.handleBatchRequest(part));
         }
-~~~
+```
 
 The last steps are to serialize the responses and setup the response of the batch request.
 
-~~~java
+```java
         // 5. Create a new boundary for the response
         final String responseBoundary = "batch_" + UUID.randomUUID().toString();
 
@@ -173,7 +173,7 @@ The last steps are to serialize the responses and setup the response of the batc
         response.setContent(responseContent);
         response.setStatusCode(HttpStatusCode.ACCEPTED.getStatusCode());
     }
-~~~
+```
 
 ### Implement Change Set handling
 
@@ -181,7 +181,7 @@ As mentioned above Change Sets are dispatched to the method `processChangeSet`.
 In this tutorial the implementation is quite simple. First we begin a new transaction. After that we try to execute all requests of the Change Set. If one of the requests fail all changes have to be rolled back.
 The comments in the source code give a detailed explanation about the steps done in this method.
 
-~~~java
+```java
     @Override
     public ODataResponsePart processChangeSet(final BatchFacade facade, final List<ODataRequest> requests)
         throws ODataApplicationException, ODataLibraryException {
@@ -253,7 +253,7 @@ The comments in the source code give a detailed explanation about the steps done
             throw e;
         }
     }
-~~~
+```
 
 # 4. Run the implemented service
 

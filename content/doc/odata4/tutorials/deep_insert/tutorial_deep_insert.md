@@ -88,7 +88,7 @@ So let us begin with the implementation. In the previous tutorials the entity ob
 
 The implementation should look like the following:
 
-~~~java
+```java
     private Entity createEntity(EdmEntitySet edmEntitySet, EdmEntityType edmEntityType, Entity entity, 
         List<Entity> entityList, final String rawServiceUri) throws ODataApplicationException {
 
@@ -114,7 +114,7 @@ The implementation should look like the following:
         entityList.add(newEntity);
         return newEntity;
     }
-~~~
+```
 
 The implementation is split in two steps:
 
@@ -127,7 +127,7 @@ To handle entity bindings we need two helper methods.
 
 The first method takes an entity-Id and returns the addressed entity. The OData objects provides a helper object to parse entity-ids. (See [UriHelper](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/server/api/uri/UriHelper.html)). After parsing the id we have to check if the addressed entity set fits to the entity set the navigation property points to. After that the data is read by calling `readEntityData`.
 
-~~~java
+```java
     private Entity readEntityByBindingLink(final String entityId, final EdmEntitySet edmEntitySet, 
         final String rawServiceUri) throws ODataApplicationException {
 
@@ -147,11 +147,11 @@ The first method takes an entity-Id and returns the addressed entity. The OData 
 
         return readEntityData(entitySetResource.getEntitySet(), entitySetResource.getKeyPredicates());
     }
-~~~
+```
 
 The second method helps us to link entities together. If the navigation property has partner navigation property the link is set in both directions.
 
-~~~java
+```java
     private void createLink(final EdmNavigationProperty navigationProperty, final Entity srcEntity,
         final Entity destEntity) {
 
@@ -162,11 +162,11 @@ The second method helps us to link entities together. If the navigation property
             setLink(partnerNavigationProperty, destEntity, srcEntity);
         }
     }
-~~~
+```
 
 If the client has used the `odata.bind` property annotation, we can get the bindings by calling `getNavigationBindings()`. The implementation loops over all bindings and links the addressed entity to the new created one.
  
-~~~java
+```java
     // 2.1.) Apply binding links
     for(final Link link : entity.getNavigationBindings()) {
         final EdmNavigationProperty edmNavigationProperty = edmEntityType.getNavigationProperty(link.getTitle());
@@ -182,13 +182,13 @@ If the client has used the `odata.bind` property annotation, we can get the bind
             createLink(edmNavigationProperty, newEntity, relatedEntity);
         }
     }
-~~~
+```
 
 ## Handle related entities
 
 The creation of related entities is similar. First the implementation loops over all navigation properties with related entites in the payload. The simplest way to create releated entities is to call the method `createEntityData`. So the the implementation is called recursively and can handle deep inserts with arbitrary depth.
 
-~~~java
+```java
     // 2.2.) Create nested entities
     for(final Link link : entity.getNavigationLinks()) {
         final EdmNavigationProperty edmNavigationProperty = edmEntityType.getNavigationProperty(link.getTitle());
@@ -204,7 +204,7 @@ The creation of related entities is similar. First the implementation loops over
             createLink(edmNavigationProperty, newEntity, newNestedEntity);
         }
 	}
-~~~
+```
 
 # 4. Run the implemented service
 

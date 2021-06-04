@@ -105,10 +105,10 @@ NOTICE, LICENSE and DISCLAIMER must be present in all bundles and must be up-to-
 Remote resources are provided by the ASF and the Maven `remote-resources-plugin` is
 configured in the parent pom of the project.
 
-~~~xml
+```xml
 <resourceBundle>org.apache:apache-jar-resource-bundle:1.4</resourceBundle>
 <resourceBundle>org.apache:apache-disclaimer-resource-bundle:1.1</resourceBundle>
-~~~
+```
 
 The Maven module `odata-dist` (in project sub-folder `dist`) is responsible to package convenience distribution zip files
 using the assembly plugin. The distributions are created with a release build `mvn clean install -Papache-release -Dgpg.passphrase="yourPassphraseHere"`
@@ -179,7 +179,7 @@ Of course the Release Manager can also use this checklist to make sure all artif
 If the release candidate gets approved, we can proceed to release publishing:
 
   - Release candidate maven artifacts are promoted in the Apache Maven Repository and
-made available [here](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo~~~~).
+made available [here](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo```~).
   - Publish final release Version to [Apache Repository](https://repository.apache.org/)
     - First publish via `mvn deploy -Papache-release` into the *Staging Area*
     - From *Staging Area* close and release the staged Artifacts to finish publishing

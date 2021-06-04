@@ -84,7 +84,7 @@ The following section describes how to enable the `EntityProcessor` class and th
 Because we start from scratch with the empty `readEntity()` method, we have to write a bit preparation code before we start with the implementation of the `$select`.  
 The following lines are a copy of the Tutorial Part 2 and are necessary to fetch the data for a single entity.
 
-~~~java
+```java
     // 1. retrieve the Entity Type
     List<UriResource> resourcePaths = uriInfo.getUriResourceParts();
     UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
@@ -92,7 +92,7 @@ The following lines are a copy of the Tutorial Part 2 and are necessary to fetch
     // 2. retrieve the data from backend
     List<UriParameter> keyPredicates = uriResourceEntitySet.getKeyPredicates();
     Entity entity = storage.readEntityData(edmEntitySet, keyPredicates);
-~~~
+```
 
 
 The Olingo library parses the `$select` option from the request and provides support in the serializer to serialize only the selected properties.  
@@ -103,15 +103,15 @@ In this tutorial we use the simple implementation to show the concept for `$sele
 
   * We have to get the SelectOption from the UriInfo:
 
-~~~java
+```java
         // 3rd: apply system query options
         SelectOption selectOption = uriInfo.getSelectOption();
-~~~
+```
 
   * We have to take care about the context URL, which is different in case that `$select` is used.
   Again, the Olingo library provides some support, which we use to build the select list that has to be passed to the ContextURL builder:
 
-~~~java
+```java
         // we need the property names of the $select, in order to build the context URL
         String selectList = odata.createUriHelper().buildContextURLSelectList(edmEntityType,
                                                                               null, selectOption);
@@ -119,22 +119,22 @@ In this tutorial we use the simple implementation to show the concept for `$sele
                                           .entitySet(edmEntitySet)
                                           .selectList(selectList)
                                           .build();
-~~~
+```
 
   * Furthermore, the serializer has to know about the usage of `$select`.
   Therefore, the serializer options instance is initialized with the selectOption object that we’ve obtained above. If this object is not null, then the serializer will take care to consider the `$select` statement
 
-~~~java
+```java
         EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
                                                                                   .contextURL(contextUrl)
                                                                                   .select(selectOption)
                                                                                   .build();
-~~~
+```
 
 
 **The full implementation of the `readEntityCollection()` method:**
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response,
                         UriInfo uriInfo, ContentType responseFormat)
                           throws ODataApplicationException, SerializerException {
@@ -182,7 +182,7 @@ In this tutorial we use the simple implementation to show the concept for `$sele
       response.setStatusCode(HttpStatusCode.OK.getStatusCode());
       response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 
 
@@ -250,9 +250,9 @@ Let's have a detailed look.
 
 We need the retrieve the ExpandOption from the UriInfo:  
 
-~~~java
+```java
     ExpandOption expandOption = uriInfo.getExpandOption();
-~~~
+```
 
 As usual, if this object is `null`, then the user hasn’t used the `$expand` in his request, and we don’t need to do anything.
 
@@ -269,9 +269,9 @@ In the present tutorial, we’re keeping the implementation as simple as possibl
 So we’re relying on the fact that our example service only contains one navigation property per entity type.
 Therefore, we can directly access the first `ExpandItem`.  
 
-~~~java
+```java
     ExpandItem expandItem = expandOption.getExpandItems().get(0);
-~~~
+```
 
 **Note:**  
 Most OData services will have more entity types and more navigation possibilities. In such services, it might be desired to invoke `$expand` with more than one navigation property, like for example: <http://localhost:8080/DemoService/DemoService.svc/Products?$expand=Category,Supplier,Sales>  
@@ -283,7 +283,7 @@ Now that we have the `ExpandItem`, the next step is to extract the navigation pr
 For the case of a request with `$expand=*` (to expand all navigation items which is checked via `expandItem.isStar()`), all known `EdmNavigationPropertyBinding`s from the expanded `EdmEntityType` have to be checked.
 For our (reduced) sample service we know that only one navigation exists, hence the implementation is:
 
-~~~java
+```java
     if(expandItem.isStar()) {
       List<EdmNavigationPropertyBinding> bindings = edmEntitySet.getNavigationPropertyBindings();
       // we know that there are navigation bindings
@@ -299,14 +299,14 @@ For our (reduced) sample service we know that only one navigation exists, hence 
       }
     } else {
     ...
-~~~
+```
 
 For the case of a request with defined name of navigation property to expand (e.g. `$expand=Category`), we have to ask the ExpandItem for its list if resource segments.  
 The reason why an ExpandItem can be formed by multiple segments is that a navigation property can be in a `ComplexType`, such that it would be required to address it by a path.  
 
 In our simple example, we don’t need to specify a path, therefore we can safely write  
 
-~~~java
+```java
     ...
     } else {
       // can be 'Category' or 'Products', no path supported
@@ -316,7 +316,7 @@ In our simple example, we don’t need to specify a path, therefore we can safel
         edmNavigationProperty = ((UriResourceNavigation) uriResource).getProperty();
       }
     }
-~~~
+```
 
 This `uriResource` corresponds to the navigation property that we want to extract.  
 We expect that the `uriResource` is of type `UriResourceNavigation`, such that we can cast.  
@@ -324,12 +324,12 @@ The `UriResourceNavigation` can then be asked for the `NavigationProperty` which
 
 Finally after one of above cases we have the necessary `EdmNavigationProperty` from which we need the `EdmEntityType` and the `name` of the navigation property to build the resopnse data.
 
-~~~java
+```java
     if(edmNavigationProperty != null) {
       EdmEntityType expandEdmEntityType = edmNavigationProperty.getType();
       String navPropName = edmNavigationProperty.getName();
       ...
-~~~
+```
 
 ##### Step 3: Build the response data
 
@@ -337,18 +337,18 @@ Lets follow our example.
 As we have said, we have to merge the data of two entities.  
 The first one, the product, is already fetched, as we’ve done that earlier in the code:  
 
-~~~java
+```java
     Entity entity = storage.readEntityData(edmEntitySet, keyPredicates);
-~~~
+```
 
 This entity corresponds to the product.
 
 Now we’re ready to fetch the category, as we’ve already retrieved the `EdmEntityType` from the expand expression.  
 We can invoke a helper method that we created in Tutorial Part 4 (Navigation), a helper method that is located in our database-mock and that returns the category entity corresponding to a given product entity:  
 
-~~~java
+```java
     Entity expandEntity = storage.getRelatedEntity(entity, expandEdmEntityType);
-~~~
+```
 
 In our example, this `expandEntity` contains the data of the related category.  
 
@@ -357,12 +357,12 @@ This is done via a `Link` object that contains the inline entity object.
 And the link is added to the source entity.  
 The relevant code is:  
 
-~~~java
+```java
     Link link = new Link();
     link.setTitle(navPropName);
     link.setInlineEntity(expandEntity);
     entity.getNavigationLinks().add(link);
-~~~
+```
 
 **Note:**  
 It is important to set the correct navigation property name, otherwise the linking doesn’t work and the inline data cannot be displayed.
@@ -372,7 +372,7 @@ It is important to set the correct navigation property name, otherwise the linki
 Now that the response data has been built, we need to tell the serializer to consider the expand, otherwise the data will not be displayed.  
 Also, the `expandOption` has to be considered while building the `ContextUrl`.  
 
-~~~java
+```java
     String selectList = odata.createUriHelper().buildContextURLSelectList(
                                                 edmEntityType, expandOption, selectOption);
     ContextURL contextUrl = ContextURL.with()
@@ -389,7 +389,7 @@ Also, the `expandOption` has to be considered while building the `ContextUrl`.
                                                           .expand(expandOption)
                                                           .id(id)
                                                           .build();
-~~~
+```
 
 **Note:**  
 The complete `readEntity(...)` method can be found in the *Appendix* at the end of the site or together with the `readEntityCollection(...)` method in the [sample project zip](http://www.apache.org/dyn/closer.cgi/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip) ([md5](https://dist.apache.org/repos/dist/release/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip.md5), [sha512](https://dist.apache.org/repos/dist/release/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip.sha512), [pgp](https://dist.apache.org/repos/dist/release/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip.asc)).
@@ -507,7 +507,7 @@ In this tutorial we have learned the basics of the `$select` and `$expand` *syst
 
 **readEntity(...)**
 
-~~~java
+```java
     public void readEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
             throws ODataApplicationException, SerializerException {
 
@@ -616,4 +616,4 @@ In this tutorial we have learned the basics of the `$select` and `$expand` *syst
       response.setStatusCode(HttpStatusCode.OK.getStatusCode());
       response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```

@@ -59,7 +59,7 @@ With this the service would not change how the data is accessed but would (easil
 
 In the existing [read collection tutorial][re_co_tu] following new method is necessary to create an `EntityIterator` to wrap an `EntityCollection`:
 
-~~~java
+```java
     private EntityIterator wrapAsIterator(final EntityCollection collection) {
       final Iterator<Entity> it = collection.iterator();
       return new EntityIterator() {
@@ -74,14 +74,14 @@ In the existing [read collection tutorial][re_co_tu] following new method is nec
         }
       };
     }
-~~~
+```
 
 The (as anonymous inner class) created `EntityIterator` only iterates over the already loaded entities (of the `EntityCollection`).
 
 To use this `EntityIterator` in the `readEntityCollection(..)` method the `EntityIterator` must be passed to the `ODataSerializer` via the `entityCollectionStreamed(...)` method and the `ODataContent` object of the resulting `SerializerStreamResult` must be set at the `ODataResponse` via the `setODataContent(...)` method.
 What sound like a lot to do is just the below code snippet:
 
-~~~java
+```java
       ...
       EntityIterator iterator = wrapAsIterator(entityCollection);
       SerializerStreamResult serializerResult = serializer.entityCollectionStreamed(serviceMetadata,
@@ -91,11 +91,11 @@ What sound like a lot to do is just the below code snippet:
       response.setODataContent(serializerResult.getODataContent());
       ...
     }
-~~~
+```
 
 Which replaces following original code snippet:
 
-~~~java
+```java
       ...
       SerializerResult serializerResult = serializer.entityCollection(serviceMetadata,
           edmEntityType, entityCollection, opts);
@@ -104,7 +104,7 @@ Which replaces following original code snippet:
       response.setContent(serializedContent);
       ...
     }
-~~~
+```
 
 
 ## DataProvider based approach
@@ -117,7 +117,7 @@ Practically such an approach requires more database roundtrips but also a smalle
 In the existing [read collection tutorial][re_co_tu] the `Storage` class is used a data provider (acting like a database).
 For enablement of the *streaming support* following new method is introduced which create an `EntityIterator` to allow the iterable passed access to the stored entities:
 
-~~~java
+```java
     public EntityIterator readEntitySetDataStreamed(EdmEntitySet edmEntitySet)throws ODataApplicationException {
       // actually, this is only required if we have more than one Entity Sets
       if(edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)){
@@ -137,7 +137,7 @@ For enablement of the *streaming support* following new method is introduced whi
 
       return null;
     }
-~~~
+```
 
 As described above in the existing implementation the use of the `EntityCollection` has to be replaced with the `EntityIterator`, which means that this line:
 `EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);`
@@ -146,17 +146,17 @@ has to be replaced by that line:
 
 And the
 
-~~~java
+```java
     SerializerResult serializerResult = serializer.entityCollection(
       serviceMetadata, edmEntityType, entityCollection, opts);
-~~~
+```
 
 has to be replaced by
 
-~~~java
+```java
     SerializerStreamResult serializerResult = serializer.entityCollectionStreamed(
       serviceMetadata, edmEntityType, iterator, opts);
-~~~
+```
 
 And at the `ODataResponse` now instead of:
 `response.setContent(serializerResult.getContent());`
@@ -165,7 +165,7 @@ the result is set as `ODataContent`:
 
 As result the whole `readEntityCollection(...)` method now look like following:
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat) throws ODataApplicationException, SerializerException {
 
       // 1st retrieve the requested EntitySet from the uriInfo (representation of the parsed URI)
@@ -195,7 +195,7 @@ As result the whole `readEntityCollection(...)` method now look like following:
       response.setStatusCode(HttpStatusCode.OK.getStatusCode());
       response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 After this changes the data access (encapsulated in the `EntityIterator`) and serialization is now done directly when the data is processed by the web framework layer (e.g. JEE servlet layer) and not within the call hierarchy of the `readEntityCollection(...)` method.
 
@@ -211,7 +211,7 @@ And for Olingo exists the `ODataContentWriteErrorCallback` which is described in
 Because the simplistic data provider in the tutorial the `EntityIterator` is also very simplistic.
 However it is also realistic to have an `EntityIterator` which e.g. access a database result set which is `next():Entity` call (see below code snippet to get the idea).
 
-~~~java
+```java
     public class MyEntityIterator extends EntityIterator {
       ResultSet set; //...
 
@@ -233,7 +233,7 @@ However it is also realistic to have an `EntityIterator` which e.g. access a dat
         // read data from result set and return as entity object
       }
     }
-~~~
+```
 
 ## Exception/Error Handling
 The *counterpart* of the *streaming support* is that when an error/exception occurs during the serialization of the data the service implementation is not in charge anymore to catch the exception and do an error handling.
@@ -250,7 +250,7 @@ Based on the requirements of the OData specification that *the service MUST gene
 
 A basic `ODataContentWriteErrorCallback` implementation could look like this code snippet:
 
-~~~java
+```java
     private ODataContentWriteErrorCallback errorCallback = new ODataContentWriteErrorCallback() {
       public void handleError(ODataContentWriteErrorContext context, WritableByteChannel channel) {
         String message = "An error occurred with message: ";
@@ -264,23 +264,23 @@ A basic `ODataContentWriteErrorCallback` implementation could look like this cod
         }
       }
     };
-~~~
+```
 
 And could be set in the [read collection tutorial][re_co_tu] at the `EntityCollectionSerializerOptions` via the `.writeContentErrorCallback(errorCallback)` method.
 
-~~~java
+```java
     EntityCollectionSerializerOptions opts =
         EntityCollectionSerializerOptions.with().id(id)
             .writeContentErrorCallback(errorCallback)
             .contextURL(contextUrl).build();
-~~~
+```
 
 # Run sample service
 After building and deploying your service to your server, you can try a requests to the entity set via: [http://localhost:8080/DemoService/DemoService.svc/Products?$format=json](http://localhost:8080/DemoService/DemoService.svc/Products?$format=json)
 
 The response is exactly the same response as in the none streaming request. So unfortunaly here is no difference beside of the technical fact that the response is serialized at the very end of the request chain and directly written into the response output stream (`javax.servlet.ServletOutputStream`)
 
-~~~json
+```json
     {
       "@odata.context": "$metadata#Products",
       "value": [
@@ -301,7 +301,7 @@ The response is exactly the same response as in the none streaming request. So u
         }
       ]
     }
-~~~
+```
 
 # Links
 

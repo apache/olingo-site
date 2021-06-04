@@ -50,24 +50,24 @@ For example there could be a function that calculates the VAT. The result depend
 
 Such a function can be expressed in the metadata document as follows
 
-~~~xml
+```xml
     <Function Name="CalculateVAT">
          <Parameter Name="NetPrice" Type="Edm.Decimal" Nullable="false"/>
          <Parameter Name="Country" Type="Edm.String" Nullable="false"/>
 
         <ReturnType Type="Edm.Decimal"/>
     </Function>
-~~~
+```
 
 To make this function statically callable we have to define a Function Import.
 
-~~~xml
+```xml
     <EntityContainer Name="Container">
          <FunctionImport Name="StaticCalculateVAT"
                          Function="CalculateVAT"
                          IncludeInServiceDocument="true"/>
     </EntityContainer>
-~~~
+```
 
 To call such a Function Import the client issues a GET requests to a URL identifying the function import. The parameters are passed by using the so called inline parameter syntax. In this simple case such a call could look like this:
 
@@ -77,7 +77,7 @@ The definition talks about composing of functions. By default every function is 
 
 The definition of Actions / Action Imports in metadata document is similar to functions.
 
-~~~xml
+```xml
     <Action Name="Reset">
         <Parameter Name="Amount" Type="Edm.Int32"/>
     </Action>
@@ -85,7 +85,7 @@ The definition of Actions / Action Imports in metadata document is similar to fu
     <EntityContainer Name="Container">
         <ActionImport Name="StaticReset" Action="Reset"/>
     </EntityContainer>
-~~~
+```
 
 As you can see, this function does not return any value and takes one parameter “*Amount*” To call this action import, you have to issue an POST request to
 
@@ -93,11 +93,11 @@ As you can see, this function does not return any value and takes one parameter 
 
 The parameters are passed within the body of the request. In this case such a body could look like the following (JSON - Syntax):
 
-~~~json
+```json
     {
       "Amount": 2
     }
-~~~
+```
 
 As you read in the definition, actions can have side effects (modifying the data) but cannot be composed like functions.
 
@@ -118,12 +118,12 @@ This function takes a mandatory parameter “*Amount*”. The function returns a
 
 After finishing the implementation the definition of the function should look like this:
 
-~~~xml
+```xml
     <Function Name="CountCategories">
           <Parameter Name="Amount" Type="Edm.Int32" Nullable="false"/>
           <ReturnType Type="Collection(OData.Demo.Category)"/>
     </Function>
-~~~
+```
 
 As described in the previous tutorials, the type of the response determines which processor interface will be called by the Olingo library. It is **important to know, that functions are dispatched to the traditional processor interfaces**.
 That means there are no special "FunctionProcessors". In our case, the function returns a collection of Categories. So we have to extend the `DemoEntityCollectionProcessor`. As you will see it is possible to address a single entity by its  key. So we have to extend the `DemoEntityProcessor` as well to handle requests which responds a single entity.
@@ -133,11 +133,11 @@ This action takes an optional parameter “*Amount*”. The actions resets the w
 
 After finishing the implementation the definition of the action should be like this:
 
-~~~xml
+```xml
     <Action Name="Reset" IsBound="false">
       <Parameter Name="Amount" Type="Edm.Int32"/>
     </Action>
-~~~
+```
 
 While actions are called by using HTTP Method POST is nessesary to introduce new processor interfaces for actions. So there exists a bunch of interfaces, for each return type strictly one.
 
@@ -152,7 +152,7 @@ While actions are called by using HTTP Method POST is nessesary to introduce new
 
 Create the following constants in the DemoEdmProvider. These constants are used to address the operations.
 
-~~~java
+```java
     // Action
     public static final String ACTION_RESET = "Reset";
     public static final FullQualifiedName ACTION_RESET_FQN = new FullQualifiedName(NAMESPACE, ACTION_RESET);
@@ -163,7 +163,7 @@ Create the following constants in the DemoEdmProvider. These constants are used 
 
     // Function/Action Parameters
     public static final String PARAMETER_AMOUNT = "Amount";
-~~~
+```
 
 The way to announce the operations is very similar to announcing EntityTypes. We have to override some methods. Those methods provide the definition of the Edm elements. We need methods for:
 
@@ -174,7 +174,7 @@ The way to announce the operations is very similar to announcing EntityTypes. We
 
 The code is simple and straight forward. First, we check which function we have to return. Then, a list of parameters and the return type are created. At the end all parts are fit together and get returned as new `CsdlFunction` Object.
 
-~~~java
+```java
     @Override
     public List<CsdlFunction> getFunctions(final FullQualifiedName functionName) {
       if (functionName.equals(FUNCTION_COUNT_CATEGORIES_FQN)) {
@@ -204,11 +204,11 @@ The code is simple and straight forward. First, we check which function we have 
 
       return null;
     }
-~~~
+```
 
 We have created the function itself. To express that function can be called statically we have to override the method `getFunctionImport()`.
 
-~~~java
+```java
     @Override
     public CsdlFunctionImport getFunctionImport(FullQualifiedName entityContainer, String functionImportName) {
       if(entityContainer.equals(CONTAINER)) {
@@ -223,11 +223,11 @@ We have created the function itself. To express that function can be called stat
 
       return null;
     }
-~~~
+```
 
 To define the actions and the action imports the `getActions()` and `getActionImport()` methods have to be overriden and the necessary code is quite similar to the functions sample above:
 
-~~~java
+```java
     @Override
     public List<CsdlAction> getActions(final FullQualifiedName actionName) {
       if(actionName.equals(ACTION_RESET_FQN)) {
@@ -265,12 +265,12 @@ To define the actions and the action imports the `getActions()` and `getActionIm
 
       return null;
     }
-~~~
+```
 
 Finally we have to announce these operations to the schema and the entity container.
 Add the following lines to the method `getSchemas()`:
 
-~~~java
+```java
     // add actions
     List<CsdlAction> actions = new ArrayList<CsdlAction>();
     actions.addAll(getActions(ACTION_RESET_FQN));
@@ -280,11 +280,11 @@ Add the following lines to the method `getSchemas()`:
     List<CsdlFunction> functions = new ArrayList<CsdlFunction>();
     functions.addAll(getFunctions(FUNCTION_COUNT_CATEGORIES_FQN));
     schema.setFunctions(functions);
-~~~
+```
 
 Also add the following lines to the method `getEntityContainer()`
 
-~~~java
+```java
     // Create function imports
     List<CsdlFunctionImport> functionImports = new ArrayList<CsdlFunctionImport>();
     functionImports.add(getFunctionImport(CONTAINER, FUNCTION_COUNT_CATEGORIES));
@@ -295,7 +295,7 @@ Also add the following lines to the method `getEntityContainer()`
 
     entityContainer.setFunctionImports(functionImports);
     entityContainer.setActionImports(actionImports);
-~~~
+```
 
 ### Extend the data store
 
@@ -303,7 +303,7 @@ We need two methods in the data store to read the function import `CountCategori
 
 The first method returns a collection of entites and the second returns a single entity of this collection.
 
-~~~java
+```java
     public EntityCollection readFunctionImportCollection(final UriResourceFunction uriResourceFunction, final ServiceMetadata serviceMetadata) throws ODataApplicationException {
 
       if(DemoEdmProvider.FUNCTION_COUNT_CATEGORIES.equals(uriResourceFunction.getFunctionImport().getName())) {
@@ -348,11 +348,11 @@ The first method returns a collection of entites and the second returns a single
 
       return Util.findEntity(edmEntityType, entityCollection, uriResourceFunction.getKeyPredicates());
     }
-~~~
+```
 
 We also create two methods to reset the data of our service.
 
-~~~java
+```java
     public void resetDataSet(final int amount) {
       // Replace the old lists with empty ones
       productList = new ArrayList<Entity>();
@@ -375,7 +375,7 @@ We also create two methods to reset the data of our service.
     public void resetDataSet() {
       resetDataSet(Integer.MAX_VALUE);
     }
-~~~
+```
 
 ### Extend the entity collection and the entity processor to handle function imports
 
@@ -385,7 +385,7 @@ A cleverer implementation can handle both cases in one method to avoid duplicate
 
 The recent implementation of the `readEntityCollection()` has been moved to `readEntityCollectionInternal()`
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat) throws ODataApplicationException, SerializerException {
 
       final UriResource firstResourceSegment = uriInfo.getUriResourceParts().get(0);
@@ -400,11 +400,11 @@ The recent implementation of the `readEntityCollection()` has been moved to `rea
         Locale.ENGLISH);
       }
     }
-~~~
+```
 
 Like by reading *entity collections*, the first step is to analyze the URI and then fetch the data (of the function import).
 
-~~~java
+```java
     private void readFunctionImportCollection(final ODataRequest request, final ODataResponse response,
       final UriInfo uriInfo, final ContentType responseFormat) throws ODataApplicationException, SerializerException {
 
@@ -419,11 +419,11 @@ Like by reading *entity collections*, the first step is to analyze the URI and t
 
       final UriResourceFunction uriResourceFunction = (UriResourceFunction) firstSegment;
       final EntityCollection entityCol = storage.readFunctionImportCollection(uriResourceFunction, serviceMetadata);
-~~~
+```
 
 Then the result has to be serialized. The only difference to entity sets is the way how the `EdmEntityType` is determined.
 
-~~~java
+```java
       // 2nd step: Serialize the response entity
       final EdmEntityType edmEntityType = (EdmEntityType) uriResourceFunction.getFunction().getReturnType().getType();
       final ContextURL contextURL = ContextURL.with().asCollection().type(edmEntityType).build();
@@ -436,11 +436,11 @@ Then the result has to be serialized. The only difference to entity sets is the 
       response.setStatusCode(HttpStatusCode.OK.getStatusCode());
       response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 Next we will implement the processor to read a *single entity*. The implementation is quite similar to the implementation of the collection processor.
 
-~~~java
+```java
     public void readEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
       throws ODataApplicationException, SerializerException {
 
@@ -491,13 +491,13 @@ Next we will implement the processor to read a *single entity*. The implementati
       response.setStatusCode(HttpStatusCode.OK.getStatusCode());
       response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 ### Implement an action processor
 
 Create a new class `DemoActionProcessor` make them implement the interface `ActionVoidProcessor`.
 
-~~~java
+```java
     public class DemoActionProcessor implements ActionVoidProcessor {
 
       private OData odata;
@@ -511,22 +511,22 @@ Create a new class `DemoActionProcessor` make them implement the interface `Acti
       public void init(final OData odata, final ServiceMetadata serviceMetadata)   {
         this.odata = odata;
       }
-~~~
+```
 
 First analyze the uri.
 
-~~~java
+```java
     public void processActionVoid(ODataRequest request, ODataResponse response, UriInfo uriInfo,
         ContentType requestFormat) throws ODataApplicationException, ODataLibraryException {
 
       // 1st Get the action from the resource path
       final EdmAction edmAction = ((UriResourceAction) uriInfo.asUriInfoResource().getUriResourceParts()
                                             .get(0)).getAction();
-~~~
+```
 
 Then deserialize the *action parameters*.
 
-~~~java
+```java
       // 2nd Deserialize the parameter
       // In our case there is only one action. So we can be sure that parameter "Amount" has been provided by the client
       if (requestFormat == null) {
@@ -538,11 +538,11 @@ Then deserialize the *action parameters*.
       final Map<String, Parameter> actionParameter = deserializer.actionParameters(request.getBody(), edmAction)
                                      .getActionParameters();
       final Parameter parameterAmount = actionParameter.get(DemoEdmProvider.PARAMETER_AMOUNT);
-~~~
+```
 
 Execute the action and set the response code.
 
-~~~java
+```java
       // The parameter amount is nullable
       if(parameterAmount.isNull()) {
         storage.resetDataSet();
@@ -553,7 +553,7 @@ Execute the action and set the response code.
 
       response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
     }
-~~~
+```
 
 ## Run the implemented service
 

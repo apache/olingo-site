@@ -37,7 +37,7 @@ In addition we need the dependency to all necessary _Apache Olingo artifacts_ an
 
 The resulting `pom.xml` then looks like:
 
-~~~xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -111,7 +111,7 @@ The resulting `pom.xml` then looks like:
     </dependency>
   </dependencies>
 </project>
-~~~
+```
 
 ##### Create Sample (Entity) Model
 
@@ -123,7 +123,7 @@ The _Car_ consists of an `Id`, `Model`, `ProductionYear`, `Price` and a relation
 **Create Java Beans for Entities**
 For each of both entities first a java bean (_POJO_) is created in the package `org.apache.olingo.sample.annotation.model` (which results in a created folder `src/main/java/org/apache/olingo/sample/annotation/model/`) which looks like:
 
-~~~java
+```java
 package org.apache.olingo.sample.annotation.model;
 
 /** required Imports */
@@ -136,11 +136,11 @@ public class Manufacturer {
   
   /** optional getter and setter */
 }
-~~~
+```
 
 and:
 
-~~~java
+```java
 package org.apache.olingo.sample.annotation.model;
     
 /** required Imports */
@@ -154,24 +154,24 @@ public class Car {
   
   /** optional getter and setter */
 }
-~~~
+```
 
 **Annotated created Java Beans**
 Now those beans have to be annotated with the annotations of the _Annotation Processor Extension_.
 
 Both beans needs at first the `@EdmEntityType` and `@EdmEntitySet` annotation to define that they represent an OData Entity. These annotation must be added at the bean class which as example for the _Manufacturer_ then look like:
 
-~~~java
+```java
 @EdmEntityType
 @EdmEntitySet
 public class Manufacturer { /** more code */ }
-~~~
+```
 
 Then all simple properties of the Entity must be annotated with `@EdmProperty`, the _Key_ for the Entity additional must be annotated with `@EdmKey` which is in this sample the `Id` field of the entities.
 
 For the _Manufacturer_ it then look like:
 
-~~~java
+```java
 @EdmEntityType
 @EdmEntitySet
 public class Manufacturer {
@@ -185,13 +185,13 @@ public class Manufacturer {
 
  /** more code */ 
 }
-~~~
+```
 
 A relation to another Entity must be annotated with `@EdmNavigationProperty`. In this sample this are the bi-directional relation between a _Manufacturer_ and its _Cars_.  
 
 For the _Manufacturer_ the added annotation look like:
 
-~~~java
+```java
 @EdmEntityType
 @EdmEntitySet
 public class Manufacturer {
@@ -202,11 +202,11 @@ public class Manufacturer {
     
   /** more code */ 
 }
-~~~
+```
 
 The complete resulting Entities (POJOs) then look like:
 
-~~~java
+```java
 package org.apache.olingo.sample.annotation.model;
     
 import java.util.*;
@@ -227,11 +227,11 @@ public class Manufacturer {
    
   /** optional getter and setter */
 }
-~~~
+```
 
 and
 
-~~~java
+```java
 package org.apache.olingo.sample.annotation.model;
     
 import org.apache.olingo.odata2.api.annotation.edm.*;
@@ -253,7 +253,7 @@ public class Car {
     
   /** optional getter and setter */
 }
-~~~
+```
 
 The next step is to create the `ODataService`.
 
@@ -261,7 +261,7 @@ The next step is to create the `ODataService`.
 The `ODataService` is created via an `ODataServiceFactory` implementation.
 For the sample a `AnnotationSampleServiceFactory` in the package `org.apache.olingo.sample.annotation.processor` (which results in a created folder `src/main/java/org/apache/olingo/sample/annotation/processor/`) is created which  extends the `ODataServiceFactory`. The resulting code look like:
 
-~~~java
+```java
 package org.apache.olingo.sample.annotation.processor;
 
 /** required Imports */
@@ -272,7 +272,7 @@ public class AnnotationSampleServiceFactory extends ODataServiceFactory {
     return null;
   }
 }
-~~~
+```
 
 In the `createService(...)` method now the `ODataService` needs to be created.
 The _Annotation Processor Extension_ provides therefore the method `createAnnotationService(...)` within the `AnnotationServiceFactory` which can be used. This method require as parameter the _Package_ which contains the _Model_ in form of annotated POJOs (as created in the section _Create the Model_).  
@@ -281,7 +281,7 @@ For a persistence between several request it is necessary to hold the created `O
 
 As result the implementation look like:
 
-~~~java
+```java
 package org.apache.olingo.sample.annotation.processor;
 
 import org.apache.olingo.odata2.api.*;
@@ -314,7 +314,7 @@ public class AnnotationSampleServiceFactory extends ODataServiceFactory {
     return AnnotationInstances.ANNOTATION_ODATA_SERVICE;
   }
 }
-~~~
+```
 
 Now the model as well as the service creation is done.
 The next step is to provide the necessary resources to run the application within an application server. 
@@ -326,7 +326,7 @@ For this sample `Apache CXF` is used (see `<servlet-class>org.apache.cxf.jaxrs.s
 
 Therefore the `web.xml` is created in the `src/main/webapp/WEB-INF` folder with following content:
 
-~~~xml
+```xml
     <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -351,7 +351,7 @@ Therefore the `web.xml` is created in the `src/main/webapp/WEB-INF` folder with 
 		    <url-pattern>/AnnotationSample.svc/*</url-pattern>
 	    </servlet-mapping>
     </web-app>
-~~~
+```
 
 ##### Deploy and Run
 Build the project with maven via `mvm clean package` and copy the resulting `WAR-File` from the projects `target` folder in the `deploy` folder of the web application server (e.g. a [Tomcat](http://tomcat.apache.org/)).

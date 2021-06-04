@@ -39,7 +39,7 @@ In our sample we create a class `MyCallback` which implements `org.apache.olingo
 
 ##### Sample Code
 
-~~~java
+```java
 @Override
 public WriteEntryCallbackResult retrieveEntryResult(WriteEntryCallbackContext context) throws ODataApplicationException {
 WriteEntryCallbackResult result = new WriteEntryCallbackResult();
@@ -65,7 +65,7 @@ WriteEntryCallbackResult result = new WriteEntryCallbackResult();
     
   return result;
 }
-~~~
+```
 
 Within this method we first check if the source entity and navigation property are correct for our case (via the method `isNavigationFromTo(...):boolean)`, then we create the `EntityProviderWriteProperties` with the new (current) `ExpandSelectTreeNode`, receive the data from our `DataStore` and put all into the result which then will be further processed by the `EntityProvider`.
 
@@ -76,7 +76,7 @@ It is possible to create an additional callback class but for convenience we exp
 
 ##### Sample Code
 
-~~~java
+```java
 @Override
 public WriteFeedCallbackResult retrieveFeedResult(WriteFeedCallbackContext context) throws ODataApplicationException {
 WriteFeedCallbackResult result = new WriteFeedCallbackResult();
@@ -101,7 +101,7 @@ WriteFeedCallbackResult result = new WriteFeedCallbackResult();
   }
   return result;
 }
-~~~
+```
 
 Within this method we first check if the source entity and navigation property are correct for our case (via the method `isNavigationFromTo(...):boolean)`, then we create the `EntityProviderWriteProperties` with the new (current) `ExpandSelectTreeNode`, receive the data from our `DataStore` and put all into the result which then will be further processed by the `EntityProvider`.
 
@@ -111,7 +111,7 @@ To improve code readability the `isNavigationFromTo(...):boolean` method was als
 
 #### Sample Code
 
-~~~java
+```java
 private boolean isNavigationFromTo(WriteCallbackContext context, String entitySetName, String navigationPropertyName) throws EdmException {
   if(entitySetName == null || navigationPropertyName == null) {
   return false;
@@ -120,34 +120,34 @@ private boolean isNavigationFromTo(WriteCallbackContext context, String entitySe
   EdmNavigationProperty navigationProperty = context.getNavigationProperty();
   return entitySetName.equals(sourceEntitySet.getName()) && navigationPropertyName.equals(navigationProperty.getName());
 }
-~~~
+```
 
 ### Extend ODataSingleProcessor.readEntity(...)
 The necessary callbacks (`MyCallback` class) now has to be registered during the corresponding `readEntity(...)` call. Therefore we first create a map with the property name as key and the according callback as value. Additional we need to create the `ExpandSelectTreeNode` based on current element position. Both then have to be set in the `EntityProviderWritePropertiesBuilder`. 
 
 The following code show the few lines we need for extending the read of a car with its expanded manufacturer.
 
-~~~java
+```java
 // create and register callback
 Map<String, ODataCallback> callbacks = new HashMap<String, ODataCallback>();
 callbacks.put(ENTITY_NAME_MANUFACTURER, new MyCallback(dataStore, serviceRoot));
 ExpandSelectTreeNode expandSelectTreeNode = UriParser.createExpandSelectTree(uriInfo.getSelect(), uriInfo.getExpand());
 propertiesBuilder.expandSelectTree(expandSelectTreeNode).callbacks(callbacks);
-~~~
+```
 
 The following code show the few lines we need for extending the read of a manufacturer with its expanded cars.
 
-~~~java
+```java
 // create and register callback
 Map<String, ODataCallback> callbacks = new HashMap<String, ODataCallback>();
 callbacks.put(ENTITY_SET_NAME_CARS, new MyCallback(dataStore, serviceRoot));
 ExpandSelectTreeNode expandSelectTreeNode = UriParser.createExpandSelectTree(uriInfo.getSelect(), uriInfo.getExpand());
 propertiesBuilder.expandSelectTree(expandSelectTreeNode).callbacks(callbacks);
-~~~
+```
 
 The complete `readEntity(...)` method should now look like:
 
-~~~java
+```java
 public ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) throws ODataException {
     
   if (uriInfo.getNavigationSegments().size() == 0) {
@@ -204,7 +204,7 @@ public ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) th
 
   throw new ODataNotImplementedException();
 }
-~~~
+```
 
 Now we can test out `$expand` extension in the web application.
 

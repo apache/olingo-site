@@ -35,7 +35,7 @@ The debug feature can be enabled by the following callback implementation:
 
 In your service factory (`ODataServiceFactory`) implement the following method to register the callback:
 
-~~~java
+```java
 	public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
 	  T callback
 
@@ -47,7 +47,7 @@ In your service factory (`ODataServiceFactory`) implement the following method t
 
 	  return callback;
 	}
-~~~
+```
 
 If this is in place then the url query option odata-debug=json will return detailed error information in json format for each request.
 
@@ -59,7 +59,7 @@ Request url: http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?
 
 Response:
 
-~~~json
+```json
 	{
 	  "body": "<?xml version='1.0' encoding='utf-8'?><service xml:base=\"http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/\" xmlns=\"http://www.w3.org/2007/app\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><workspace><atom:title>Default</atom:title><collection href=\"Employees\"><atom:title>Employees</atom:title></collection><collection href=\"Teams\"><atom:title>Teams</atom:title></collection><collection href=\"Rooms\"><atom:title>Rooms</atom:title></collection><collection href=\"Managers\"><atom:title>Managers</atom:title></collection><collection href=\"Buildings\"><atom:title>Buildings</atom:title></collection><collection href=\"Container2.Photos\"><atom:title>Photos</atom:title></collection></workspace></service>",
 	  "request": {
@@ -110,7 +110,7 @@ Response:
 	      ]
 	    }]
 	}
-~~~
+```
 
 ** HTML Debug View**
 
@@ -126,15 +126,15 @@ in a callback method.
 
 Add to the already existing `getCallback` method before the line with `else` a condition check whether the given `ODataCallback` is a `DebugWrapperCallback`.
 
-~~~java
+```java
 	} else if (callbackInterface.isAssignableFrom(ODataDebugResponseWrapperCallback.class)) {
 	  callback = (T) new DebugWrapperCallback();
 	}
-~~~
+```
 
 which then results in following method
 
-~~~java
+```java
 	public <T extends ODataCallback> T getCallback(final Class<T> callbackInterface) {
 	  T callback
 
@@ -148,11 +148,11 @@ which then results in following method
 
 	  return callback;
 	}
-~~~
+```
 
 and implement the callback class
 
-~~~java
+```java
 	private final class DebugWrapperCallback implements ODataDebugResponseWrapperCallback {
 	  @Override
 	  public ODataResponse handle(final ODataContext context, final ODataRequest request, final ODataResponse response,
@@ -164,7 +164,7 @@ and implement the callback class
 	    }
 	  }
 	}
-~~~
+```
 
 where `DebugResponseWrapper` is a class you have to implement which does
 the real work.

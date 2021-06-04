@@ -20,7 +20,7 @@ You can now explore the service.
 
 ### Get the war file via the maven repository
 
-To get the war file via the maven repository you can simple look [here](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo~odata-server-sample~~~) and download the war file. 
+To get the war file via the maven repository you can simple look [here](https://repository.apache.org/index.html#nexus-search;gav~org.apache.olingo~odata-server-sample```) and download the war file. 
 
 ### Build the war file on your own
 

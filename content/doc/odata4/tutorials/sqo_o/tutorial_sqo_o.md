@@ -114,10 +114,10 @@ The following section describes the simple approach to enable the *EntityCollect
 
 Just like in the previous tutorials, the data is first fetched from the backend, then the system query option is applied.
 
-~~~java
+```java
     EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
     List<Entity> entityList = entityCollection.getEntities();
-~~~
+```
 
 We will proceed according to these 4 steps:
 
@@ -128,17 +128,17 @@ We will proceed according to these 4 steps:
 
 **1. Get the OrderByOption from the UriInfo:**
 
-~~~java
+```java
     OrderByOption orderByOption = uriInfo.getOrderByOption();
     if (orderByOption != null) {
-~~~
+```
 
 **2. Get the value of the OrderByOption:**
 
-~~~java
+```java
     List<OrderByItem> orderItemList = orderByOption.getOrders();
     final OrderByItem orderByItem = orderItemList.get(0);
-~~~
+```
 
 The instance of an OrderByOption can be asked for the list of its *OrderByItems*.
 Why a list?
@@ -156,7 +156,7 @@ From the backend we got a list of entities that are products. We want to apply a
 In our example, the property name that is provided in the URI can be “Name”, “Description” or “ID”
 So we have to retrieve the property name from the URI.
 
-~~~java
+```java
     Expression expression = orderByItem.getExpression();
     if(expression instanceof Member){
     	UriInfoResource resourcePath = ((Member)expression).getResourcePath();
@@ -164,23 +164,23 @@ So we have to retrieve the property name from the URI.
     	if (uriResource instanceof UriResourcePrimitiveProperty) {
            EdmProperty edmProperty = ((UriResourcePrimitiveProperty)uriResource).getProperty();
     	   final String sortPropertyName = edmProperty.getName();
-~~~
+```
 
 **4. Modify the EntityCollection**
 
 The remaining work is to do the sorting.
 We have a list of entities that has to be sorted, therefore we create a java.util.Comparator for Entity:
 
-~~~java
+```java
     Collections.sort(entityList, new Comparator<Entity>() {
-~~~
+```
 
 In the compare method, we extract the required property from the entity.
 The required property is the one that we retrieved from the URI.
 In our sample, the properties can be of type String or Integer, therefore we have to distinguish these 2 cases.
 The actual work of comparing can then be delegated to the String and Integer classes.
 
-~~~java
+```java
     if(sortPropertyName.equals("ID")){
     	Integer integer1 = (Integer) entity1.getProperty(sortPropertyName).getValue();
     	Integer integer2 = (Integer) entity2.getProperty(sortPropertyName).getValue();
@@ -190,20 +190,20 @@ The actual work of comparing can then be delegated to the String and Integer cla
     	String propertyValue2 = (String) entity2.getProperty(sortPropertyName).getValue();
     	compareResult = propertyValue1.compareTo(propertyValue2);
     }
-~~~
+```
 
 After the sorting is done, we still have to consider, if the required order is ascending or descending.
 So we have to retrieve that information from the OrderByItem and then we can simply reverse the current order accordingly:
 
-~~~java
+```java
     if(orderByItem.isDescending()){
     	return - compareResult; // just convert the result to negative value to change the order
     }
-~~~
+```
 
 The full implementation of the readEntityCollection() method:
 
-~~~java
+```java
     public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
          throws ODataApplicationException, SerializerException {
 
@@ -278,7 +278,7 @@ The full implementation of the readEntityCollection() method:
     	response.setStatusCode(HttpStatusCode.OK.getStatusCode());
     	response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
     }
-~~~
+```
 
 **4. Run the implemented service**
 
