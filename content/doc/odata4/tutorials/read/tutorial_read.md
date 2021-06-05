@@ -71,17 +71,17 @@ And the browser will display the following collection of data:
   1. Prerequisites
   2. Preparation
   3. Create Project
-      * Create Project
-      * Edit `pom.xml` file
-      * Check build path
-      * Build the project
+     * Create Project
+     * Edit `pom.xml` file
+     * Check build path
+     * Build the project
   4. Implementation - Read scenario to request the EntitySet “Products”
-    1. Declare the metadata
-    2. Provide the data
-    3. Web application implementation
+     1. Declare the metadata
+     2. Provide the data
+     3. Web application implementation
   5. Run the service
-      * Run with Eclipse
-      * The Service URLs
+     * Run with Eclipse
+     * The Service URLs
   6. Summary
 
 ---

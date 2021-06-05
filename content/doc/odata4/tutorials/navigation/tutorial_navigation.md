@@ -62,10 +62,10 @@ All three cases are covered by the present tutorial.
   1. Prerequisites
   2. Preparation
   3. Implementating the navigation
-    1. Declare the Metadata
-    2. Implement the to-many navigation
-    3. Implement the to-one navigation
-    4. Implement the to-many navigation with key access
+     1. Declare the Metadata
+     2. Implement the to-many navigation
+     3. Implement the to-one navigation
+     4. Implement the to-many navigation with key access
   4. Run the implemented service
   5. Summary
   6. Links
@@ -394,9 +394,9 @@ Now let’s focus on the second case, the navigation.
 
 Our tasks are:
   1. depending on the chosen key of the first segment, we have to compute which and how many entities exactly have to be returned. With other words, find the right data in the backend
-  e.g. for the category “monitors”, we have to find the right products that are monitors
+     e.g. for the category “monitors”, we have to find the right products that are monitors
   2. find out, which entity set has to be returned (can be products, categories, etc)
-  This `EdmEntitySet` is required in order to properly build the context URL
+     This `EdmEntitySet` is required in order to properly build the context URL
 
 The following sections explain how to do that.
 

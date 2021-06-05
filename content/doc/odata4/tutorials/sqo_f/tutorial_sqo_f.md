@@ -20,7 +20,7 @@ This tutorial can be found in subdirectory *\samples\tutorials\p8_queryoptions-f
 
   1. Preparation
   2. Implementation
-    1. Implement `$filter`
+     1. Implement `$filter`
   3. Run the implemented service
   4. Summary
   5. Links

@@ -18,13 +18,13 @@ Again, in the present tutorial, we will focus only on the relevant implementatio
 
 **Table of Contents**
 
-  1.	Prerequisites
-  2.	Preparation
-  3.	Implementation
-    1. Implement `$orderby`
-  4.	Run the implemented service
-  5.	Summary
-  6.	Links
+  1. Prerequisites
+  2. Preparation
+  3. Implementation
+     1. Implement `$orderby`
+  4. Run the implemented service
+  5. Summary
+  6. Links
 
 __
 

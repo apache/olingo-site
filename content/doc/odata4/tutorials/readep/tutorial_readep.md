@@ -30,18 +30,18 @@ The sample code shouldn't be reused for advanced scenarios.
 
   1. Prerequisites
   2. Preparation
-    1. Create data class
-    2. Adapt the servlet class
-    3. Modify the DemoEntityCollectionProcessor
-    4. Create utility class
+     1. Create data class
+     2. Adapt the servlet class
+     3. Modify the DemoEntityCollectionProcessor
+     4. Create utility class
   3. Implementation of Read Single Entity
-    1. Implement the EntityProcessor interface
-    2. Adapt the DemoServlet class
-    3. Run the service
+     1. Implement the EntityProcessor interface
+     2. Adapt the DemoServlet class
+     3. Run the service
   4. Implementation of Read Single Property
-    1. Implement the PrimitiveProcessor interface
-    2. Adapt the DemoServlet class
-    3. Run the service
+     1. Implement the PrimitiveProcessor interface
+     2. Adapt the DemoServlet class
+     3. Run the service
   5. Summary
   6. Links
   7. Appendix: PrimitiveValueProcessor
@@ -496,44 +496,44 @@ and he receives the following response in the browser:
 The steps to be followed in the implementation of the `readEntity(...)` method are the same that we followed in the previous tutorial, when we implemented the `readEntityCollection(...)` method:
 
   1. **Which data is requested?**  
-    Check the UriInfo instance for information about which *EntityCollection* has been requested.  
-    Note that in the code, we directly access the first segment of the URI and cast it to `UriResourceEntitySet`
-
-    ```java
+     Check the UriInfo instance for information about which *EntityCollection* has been requested.  
+     Note that in the code, we directly access the first segment of the URI and cast it to `UriResourceEntitySet`
+     
+     ```java
         UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
-    ```
-    
-    This is only possible, because in our current sample scenario we only support simple URIs. In a real production environment OData service, which supports navigation and other OData V4 features, the code would be more complex.
+     ```
+     
+     This is only possible, because in our current sample scenario we only support simple URIs. In a real production environment OData service, which supports navigation and other OData V4 features, the code would be more complex.
 
   2. **Fetch the data from backend**  
-    In the backend, which in our sample is represented by the `Storage` class, we have a list with products.
-    From this list we have to pick that one that is requested by the user.
-    The information, which one is requested, is contained in the so-called *KeyPredicates*.
-    In our OData model, we have only one property that is marked as “key”, it is the property with name *ID*
-    In other models, the key could also be composed by multiple properties. In such a case, all key-properties are mentioned in the URI.
-    That’s why the *KeyPredicate* information is provided as a list:
-
-    ```java
+     In the backend, which in our sample is represented by the `Storage` class, we have a list with products.
+     From this list we have to pick that one that is requested by the user.
+     The information, which one is requested, is contained in the so-called *KeyPredicates*.
+     In our OData model, we have only one property that is marked as “key”, it is the property with name *ID*
+     In other models, the key could also be composed by multiple properties. In such a case, all key-properties are mentioned in the URI.
+     That’s why the *KeyPredicate* information is provided as a list:
+     
+     ```java
         List<UriParameter> keyPredicates = uriResourceEntitySet.getKeyPredicates();
-    ```
-
-    Now our task is to loop over all product entities that we have in our backend and to find that one that matches all keys. Which means that we have to loop over all key params.
-    In our sample code, we have moved this logic to the *Util* class that has a *findEntity()* method, which loops over all existing product entities, and a *entityMatchesAllKeys()* method that checks if the given entity is the right one.
+     ```
+     
+     Now our task is to loop over all product entities that we have in our backend and to find that one that matches all keys. Which means that we have to loop over all key params.
+     In our sample code, we have moved this logic to the *Util* class that has a *findEntity()* method, which loops over all existing product entities, and a *entityMatchesAllKeys()* method that checks if the given entity is the right one.
 
   3. **Transform the data**  
-    After fetching the Entity object from the backend, we have to convert it to an `InputStream`, using the proper `ODataSerializer` method:
-
-    ```java
+     After fetching the Entity object from the backend, we have to convert it to an `InputStream`, using the proper `ODataSerializer` method:
+     
+     ```java
         ODataSerializer serializer = odata.createSerializer(responseFormat);
         SerializerResult serializerResult = serializer.entity(serviceMetadata, entityType, entity, options);
         InputStream entityStream = serializerResult.getContent();
-    ```
-
-    **Note:**
-    The `ODataSerializer` object has to be configured with a `ContextURL` (in case that it is requested) and with `EntitySerializerOptions`. In our sample we keep the code simple, since we know that we don’t support advanced operations.
+     ```
+     
+     **Note:**
+     The `ODataSerializer` object has to be configured with a `ContextURL` (in case that it is requested) and with `EntitySerializerOptions`. In our sample we keep the code simple, since we know that we don’t support advanced operations.
 
   4. **Configure the response**  
-    As usual, we have to set the body, the content type and the HTTP status code, as required by the specification.
+     As usual, we have to set the body, the content type and the HTTP status code, as required by the specification.
 
 
 The following snippet shows the implementation of the `readEntity(...)` method.
@@ -690,21 +690,21 @@ We have to create a Constructor that takes the `Storage` instance and stores it 
 Again, we have the following 4 steps to follow:
 
   1. Which data is requested?  
-    From the `UriInfo` object, we not only have to retrieve the information about the `EntitySet` that is requested, but as well the desired property.
+     From the `UriInfo` object, we not only have to retrieve the information about the `EntitySet` that is requested, but as well the desired property.
 
   2. Fetch the data from backend  
-    Based on this information, we can retrieve the backend-data for the entity, just like we did in the `readEntity()` method, described above.
-    The property value can then be extracted from it.
+     Based on this information, we can retrieve the backend-data for the entity, just like we did in the `readEntity()` method, described above.
+     The property value can then be extracted from it.
 
   3. Transform the data  
-    The third step is to serialize the backend data into an `InputStream` object.  
-    For the current use case, the `ODataSerializer` instance offers a method called `primitive(...)`
+     The third step is to serialize the backend data into an `InputStream` object.  
+     For the current use case, the `ODataSerializer` instance offers a method called `primitive(...)`
 
   4. Configure the response  
-    When reading a property, we have to consider that the value of the property can be empty.  
-    If this is the case, when configuring the response object, we don’t provide response body and header.
-
-    ```java
+     When reading a property, we have to consider that the value of the property can be empty.  
+     If this is the case, when configuring the response object, we don’t provide response body and header.
+     
+     ```java
         public void readPrimitive(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
                                   throws ODataApplicationException, SerializerException {
 
@@ -761,7 +761,7 @@ Again, we have the following 4 steps to follow:
                        response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
                    }
       }
-    ```
+     ```
 
 ## 4.2. Adapt the DemoServlet class
 
