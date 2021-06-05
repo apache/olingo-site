@@ -8,8 +8,6 @@ Title:     Eclipse
 
 With the Maven project files can be generated with:
 
-```
-mvn eclipse:clean eclipse:eclipse
-```
+`mvn eclipse:clean eclipse:eclipse`
 
 As result each Maven module will get a consistent `.project`, `.classpath` and `.settings` file with which each module can be imported as existing project to Eclipse. 

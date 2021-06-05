@@ -150,7 +150,7 @@ OData JPA Processor Library is enhanced to:
 
 3. Create a Java class by implementing the interface *org.apache.olingo.odata2.jpa.processor.api.model* to register the annotated Java methods.
 
-```java
+   ```java
     public class SalesOrderProcessingExtension implements JPAEdmExtension {
       @Override
       public void extendJPAEdmSchema(final JPAEdmSchemaView arg0 {
@@ -162,15 +162,15 @@ OData JPA Processor Library is enhanced to:
         view.registerOperations(SalesOrderHeaderProcessor.class, null);
       }
     }
-```
+   ```
 
 *Note*: Use the method *extendWithOperation* to register the list of classes and the methods within the class that needs to be exposed as Function Imports. If the second parameter is passed null, then the OData JPA Processor Library would consider all the annotated methods within the class for Function Import. However, you could also restrict the list of methods that needs to be transformed into function imports within a Java class by passing an array of Java method names as the second parameter.
 
 4. Register the class created in step 3 with *ODataJPAContext* as shown below. The registration can be done during the initialization of *ODataJPAContext* in OData JPA Service Factory along with initializing persistence unit name, entity manager factory instance and optional mapping model.
 
-```java
+   ```java
     oDataJPAContext.setJPAEdmExtension((JPAEdmExtension) new SalesOrderProcessingExtension());
-```
+   ```
 
 *Note*: You must register the class because the OData JPA Processor Library should be informed about the list of Java methods that it needs to process in a project. If we do not register, then OData JPA Processor Library should scan all the classes and the methods in the Java project looking for EDM annotations. In order to avoid such overload, it is mandatory to specify the list of Java methods that shall be transformed into function imports in a class.
 

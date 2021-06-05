@@ -47,7 +47,7 @@ Title:     Documentation
 
 ### Javadoc
 
-* [Javadoc for OData 2.0 Library](/javadoc/odata2)
+* [Javadoc for OData 2.0 Library](/javadoc/odata2/)
 
 ### Olingo Project Setup (Contributors)
 
@@ -57,6 +57,6 @@ Title:     Documentation
 
 
 
-  [1]: http://olingo.apache.org/doc/odata2/tutorials/DeltaQuerySupport.html
-  [2]: http://olingo.apache.org/doc/odata2/tutorials/HandlingClobAndBlob.html
-  [3]: http://olingo.apache.org/doc/odata2/tutorials/CustomODataJPAProcessor.html
+  [1]: /doc/odata2/tutorials/DeltaQuerySupport.html
+  [2]: /doc/odata2/tutorials/HandlingClobAndBlob.html
+  [3]: /doc/odata2/tutorials/CustomODataJPAProcessor.html

@@ -53,7 +53,7 @@ If this is in place then the url query option odata-debug=json will return detai
 
 ##### Query for Debug Information
 
-** JSON Debug View**
+**JSON Debug View**
 
 Request url: http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=json
 
@@ -112,7 +112,7 @@ Response:
 	}
 ```
 
-** HTML Debug View**
+**HTML Debug View**
 
 Request url: http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=html
 to get a self-contained HTML document with all information that is in the JSON
