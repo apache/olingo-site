@@ -293,7 +293,7 @@ def generate_id(content):
     permalinks = set()
     
     # step 1 - fixup html that cmark marks unsafe - move to later?
-    fixup_content(content)
+    # fixup_content(content)
 
     # step 2 - prepare for genid processes
     # parse html content into BeautifulSoup4
