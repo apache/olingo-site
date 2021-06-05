@@ -7,10 +7,7 @@ This library "odatajs-4.0.0.min.js" supports only the OData V4 protocol.
 
 For using the OData protocols V1-V3 please refer to the [datajs library](http://datajs.codeplex.com/)
 
-The odatajs library can be included in any html page with the script tag (for example)
-```
-<script type="text/javascript" src="./sources/odatajs-4.0.0.min.js"></script>
-```
+The odatajs library can be included in any html page with the script tag (for example) `&lt;script type="text/javascript" src="./sources/odatajs-4.0.0.min.js"&gt;&lt;/script&gt;`
 and its features can be used through the `odatajs` namespace (or `window.odatajs`). The odatajs library can be used together with the datajs library which uses the `window.OData` namespace.
 
 For API documentation please see [ODatajs API documentation](/doc/javascript/apidoc/index.html)

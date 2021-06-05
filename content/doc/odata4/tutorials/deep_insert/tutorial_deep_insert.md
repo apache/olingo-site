@@ -65,7 +65,7 @@ As a shortcut you should checkout the prepared tutorial project in the [git repo
 
 Afterwards do a Deploy and run: it should be working. At this state you can perform CRUD operations and do navigations between products and categories.
 
-# 2. Implementation
+# 3. Implementation
 
 Before we start with the implementation, please have a look at the class `myservice.mynamespace.data.Storage`. In difference to the [navigation tutorial](/doc/odata4/tutorials/navigation/tutorial_navigation.html) the relations between two entities can not be hard coded because we would like to create and change relations between entities dynamically. In the constructor of the data storage the creation of the sample data is called. After that the method `linkProductsAndCategories`is called. This methods sets a few links between the just created entities. **The linked entites are stored as navigation links**
 

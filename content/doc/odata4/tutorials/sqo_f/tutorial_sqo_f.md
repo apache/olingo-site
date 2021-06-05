@@ -99,15 +99,15 @@ Key
 
 So the following actions have to be done (The values of the properties are fictitious):
 
-Action                                                        | Result - Type | Result              | Method
---------------------------------------------------------------|---------------|---------------------|------
-1. Get the value of the property “Price”                      | Edm.Double    | 500.00              | visitMember
-2. Determine the Type and value of the literal 2000.00        | Edm.Double    | 2000.00             | visitLiteral
-3. Calculate – 500.00 **lt** 2000                             | Edm.Boolean   | true                | visitBinaryOperator
-4. Get the value of the Property “Description”                | Edm.String    | "Notebook basic..." | visitMember
-5. Determine the type and value of the literal ‘Notebook’     | Edm.String    | “Notebook”          | visitLiteral
-6. Calculate – **contains**(“Notebook Basic…”, “Notebook”)    | Edm.Boolean   | true                | visitMethodCall
-7. Calculate – true **and** true                              | Edm.Boolean   | true                | visitBinaryOperator
+| Action                                                        | Result - Type | Result              | Method
+|---------------------------------------------------------------|---------------|---------------------|------
+| 1. Get the value of the property “Price”                      | Edm.Double    | 500.00              | visitMember
+| 2. Determine the Type and value of the literal 2000.00        | Edm.Double    | 2000.00             | visitLiteral
+| 3. Calculate – 500.00 **lt** 2000                             | Edm.Boolean   | true                | visitBinaryOperator
+| 4. Get the value of the Property “Description”                | Edm.String    | "Notebook basic..." | visitMember
+| 5. Determine the type and value of the literal ‘Notebook’     | Edm.String    | “Notebook”          | visitLiteral
+| 6. Calculate – **contains**(“Notebook Basic…”, “Notebook”)    | Edm.Boolean   | true                | visitMethodCall
+| 7. Calculate – true **and** true                              | Edm.Boolean   | true                | visitBinaryOperator
 
 Olingo uses the vistor pattern to traverse the AST. Each of these actions is mapped to one method of the ExpressionVistor interface. You can see the name of the methods in last column of table 1. As service developers we have to implement this methods but we do not have to take care about calling them. The libaray will call the proper method and we have only to calculate the result.
 

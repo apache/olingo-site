@@ -102,16 +102,16 @@ The drawback of this implementation is, that the full payload is fetched from th
 In this tutorial we use the simple implementation to show the concept for `$select` so that there are only a few steps that have to be done by us.  
 
   * We have to get the SelectOption from the UriInfo:
-
-```java
+    
+    ```java
         // 3rd: apply system query options
         SelectOption selectOption = uriInfo.getSelectOption();
-```
+    ```
 
   * We have to take care about the context URL, which is different in case that `$select` is used.
-  Again, the Olingo library provides some support, which we use to build the select list that has to be passed to the ContextURL builder:
-
-```java
+    Again, the Olingo library provides some support, which we use to build the select list that has to be passed to the ContextURL builder:
+    
+    ```java
         // we need the property names of the $select, in order to build the context URL
         String selectList = odata.createUriHelper().buildContextURLSelectList(edmEntityType,
                                                                               null, selectOption);
@@ -119,17 +119,17 @@ In this tutorial we use the simple implementation to show the concept for `$sele
                                           .entitySet(edmEntitySet)
                                           .selectList(selectList)
                                           .build();
-```
+    ```
 
   * Furthermore, the serializer has to know about the usage of `$select`.
-  Therefore, the serializer options instance is initialized with the selectOption object that we’ve obtained above. If this object is not null, then the serializer will take care to consider the `$select` statement
-
-```java
+    Therefore, the serializer options instance is initialized with the selectOption object that we’ve obtained above. If this object is not null, then the serializer will take care to consider the `$select` statement
+    
+    ```java
         EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
                                                                                   .contextURL(contextUrl)
                                                                                   .select(selectOption)
                                                                                   .build();
-```
+    ```
 
 
 **The full implementation of the `readEntityCollection()` method:**
