@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-build-an-odata-service-with-olingo-v4">How to build an OData Service with Olingo V4<a class="headerlink" href="#how-to-build-an-odata-service-with-olingo-v4" title="Permalink">&para;</a></h1>
+<h1 id="part-3-write-operations">Part 3: Write operations<a class="headerlink" href="#part-3-write-operations" title="Permalink">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink">&para;</a></h2>
+<p>This tutorial guides you through the steps required to write an OData Service based on the Olingo OData 4.0 Library for Java (based on current release which can be got via the <a href="/doc/odata4/download.html">Download-Page</a>).</p>
+<p>In the first two tutorials (<a href="/doc/odata4/tutorials/read/tutorial_read.html">Read Collection</a> and <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity</a>), we&rsquo;ve learned how to build a simple OData service that supports read operations for collection, single entity and property.</p>
+<p>In the present tutorial, will cover the write operations, which means creating an entity, modifying an existing entity and deleting an existing entity.</p>
+<p><strong>Note</strong>
+The final source code can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.
+This tutorial can be found in subdirectory <em>\samples\tutorials\p3_write</em></p>
+<p><strong>Disclaimer</strong>
+Again, in the present tutorial, will focus only on the relevant implementation, in order to keep the code small and simple.
+The sample code shouldn't be reused for advanced scenarios.</p>
+<p><strong>Table of Contents</strong></p>
+<ol>
+<li>Prerequisites</li>
+<li>Preparation</li>
+<li>Implementation of Read Single Entity
+<ol>
+<li>Implement the <code>createEntity(...)</code> method</li>
+<li>Implement the <code>updateEntity(...)</code> method</li>
+<li>Implement the <code>deleteEntity(...)</code> method</li>
+</ol>
+</li>
+<li>Run the implemented service
+<ol>
+<li>Example for <strong>CREATE</strong></li>
+<li>Example for <strong>UPDATE (PUT)</strong></li>
+<li>Example for <strong>UPDATE (PATCH)</strong></li>
+<li>Example for <strong>DELETE</strong></li>
+</ol>
+</li>
+<li>Summary</li>
+<li>Links</li>
+</ol>
+<hr/>
+<h1 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permalink">&para;</a></h1>
+<p>Same prerequisites as in <a href="/doc/odata4/tutorials/read/tutorial_read.html">Tutorial Part 1: Read Entity Collection</a> and <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Tutorial Part 2: Read Entity</a> as well as basic knowledge about the concepts presented in both tutorials.</p>
+<hr/>
+<h1 id="2-preparation">2. Preparation<a class="headerlink" href="#2-preparation" title="Permalink">&para;</a></h1>
+<p>Follow <a href="/doc/odata4/tutorials/read/tutorial_read.html">Tutorial Part 1: Read Entity Collection</a> and <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Tutorial Part 2: Read Entity</a> or as shortcut import the project attached to <em>Tutorial Part 2</em> into your Eclipse workspace.</p>
+<p>Afterwards do a <em>Deploy and run</em>: it should be working.</p>
+<hr/>
+<h1 id="3-implementation">3. Implementation<a class="headerlink" href="#3-implementation" title="Permalink">&para;</a></h1>
+<p>In our sample scenario, we want to create a product, to be added to the list of available products that we maintain in our database-mock.
+This product that we want to create will have a name and a description that the user of our service will specify in his HTTP request.
+The Olingo library takes this user request, serializes the request body and invokes the corresponding method of our processor class.</p>
+<p>In the previous tutorial 2, we&rsquo;ve already implemented the <code>EntityProcessor</code> interface and registered our class in the servlet, but we have not written the implementation for the callback methods that are responsible for the write operations.
+This is what we are going to do in the below sections.</p>
+<h2 id="31-implement-the-createentity-method">3.1. Implement the createEntity(...) method<a class="headerlink" href="#31-implement-the-createentity-method" title="Permalink">&para;</a></h2>
+<p>Open the class <code>myservice.mynamespace.service.DemoEntityProcessor</code>
+Go to the method <code>createEntity(...)</code>
+The method body should be empty, otherwise delete any content.</p>
+<p><strong>Now, how to implement the method?</strong>
+Basically, we have to do the same that we did in the <code>readEntity(...)</code> method, but the other way &lsquo;round.
+In the <code>createEntity(...)</code> method, we have to retrieve the payload from the request and then write it to our mock-database.
+Furthermore, we have to return the created entity in the response payload.</p>
+<p>Again, we can divide our work into 4 steps:</p>
+<ol>
+<li>Analyze the URI</li>
+<li>Handle data in backend</li>
+<li>Serialize</li>
+<li>Configure the response</li>
+</ol>
+<p><strong>In detail</strong></p>
+<p>We have to keep in mind that -for creation - the URL that is executed in our example is the following:</p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/Products
+</code></pre>
+<p>It is executed as POST request and contains a request body which looks as follows:</p>
+<pre><code class="language-json">    {
+      "ID":4,
+      "Name":"Gamer Mouse",
+      "Description":"optical mouse - gamer edition"
+    }
+</code></pre>
+<p><strong>Steps</strong></p>
+<ol>
+<li>In the implementation, we have to first retrieve the <code>EntityCollection</code> and <code>EntityType</code> metadata from the <code>UriInfo</code> object.</li>
+<li>The next step is to create the data in our backend.
+For this purpose, we have to retrieve the data from the HTTP request payload.
+We get the payload from the <code>ODataRequest</code> instance as <code>InputStream</code>, which can then be deserialized.
+Our <code>Storage</code> class is responsible for creating the new product in the backend.
+And for returning the newly created instance.
+The reason is that our OData service has to return the newly created entity in the response body.</li>
+<li>From now on the procedure is the same like in the <code>readEntity(...)</code> method</li>
+<li>The only difference is the status code, that has to be set to <strong>201 - created</strong> in case of success</li>
+</ol>
+<p>Please find below the sample code for the <em>createEntity()</em> method</p>
+<pre><code class="language-java">public void createEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
+     ContentType requestFormat, ContentType responseFormat)
+    throws ODataApplicationException, DeserializerException, SerializerException {
+
+  // 1. Retrieve the entity type from the URI
+  EdmEntitySet edmEntitySet = Util.getEdmEntitySet(uriInfo);
+  EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+
+  // 2. create the data in backend
+  // 2.1. retrieve the payload from the POST request for the entity to create and deserialize it
+  InputStream requestInputStream = request.getBody();
+  ODataDeserializer deserializer = this.odata.createDeserializer(requestFormat);
+  DeserializerResult result = deserializer.entity(requestInputStream, edmEntityType);
+  Entity requestEntity = result.getEntity();
+  // 2.2 do the creation in backend, which returns the newly created entity
+  Entity createdEntity = storage.createEntityData(edmEntitySet, requestEntity);
+
+  // 3. serialize the response (we have to return the created entity)
+  ContextURL contextUrl = ContextURL.with().entitySet(edmEntitySet).build();
+  // expand and select currently not supported
+  EntitySerializerOptions options = EntitySerializerOptions.with().contextURL(contextUrl).build();
+
+  ODataSerializer serializer = this.odata.createSerializer(responseFormat);
+  SerializerResult serializedResponse = serializer.entity(serviceMetadata, edmEntityType, createdEntity, options);
+
+  //4. configure the response object
+  response.setContent(serializedResponse.getContent());
+  response.setStatusCode(HttpStatusCode.CREATED.getStatusCode());
+  response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
+}
+</code></pre>
+<h2 id="32-implement-the-updateentity-method">3.2. Implement the updateEntity(...) method<a class="headerlink" href="#32-implement-the-updateentity-method" title="Permalink">&para;</a></h2>
+<p>Example URL</p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/Products(3)
+</code></pre>
+<p>Example request body:</p>
+<pre><code class="language-json">    {
+      "ID":3,
+      "Name":"Ergo Screen updated Name",
+      "Description":"updated description"
+    }
+</code></pre>
+<p>The <code>updateEntity(...)</code> method is similar.
+Again, we have to retrieve the payload from the HTTP request and use it for modifying the data in backend.
+The difference is that case of update operation, the OData service is not expected to return any response payload. So we can skip the serialize-step and simply set the HTTP status code to <strong>204 &ndash; no content</strong></p>
+<pre><code class="language-java">public void updateEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
+  ContentType requestFormat, ContentType responseFormat)
+    throws ODataApplicationException, DeserializerException, SerializerException {
+
+  // 1. Retrieve the entity set which belongs to the requested entity
+  List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+  // Note: only in our example we can assume that the first segment is the EntitySet
+  UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
+  EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+  EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+
+  // 2. update the data in backend
+  // 2.1. retrieve the payload from the PUT request for the entity to be updated
+  InputStream requestInputStream = request.getBody();
+  ODataDeserializer deserializer = this.odata.createDeserializer(requestFormat);
+  DeserializerResult result = deserializer.entity(requestInputStream, edmEntityType);
+  Entity requestEntity = result.getEntity();
+  // 2.2 do the modification in backend
+  List&lt;UriParameter&gt; keyPredicates = uriResourceEntitySet.getKeyPredicates();
+  // Note that this updateEntity()-method is invoked for both PUT or PATCH operations
+  HttpMethod httpMethod = request.getMethod();
+  storage.updateEntityData(edmEntitySet, keyPredicates, requestEntity, httpMethod);
+
+  //3. configure the response object
+  response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
+}
+</code></pre>
+<p>In case of update, we have to consider the following:
+The update of an entity can be realized in 2 ways: either a <strong>PATCH</strong> or a <strong>PUT</strong> request.
+(See the online specification in section <a href="http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part1-protocol.html">11.4.3 Update an Entity</a> for more details.
+For both HTTP methods, our <code>updateEntity(...)</code> will be invoked.
+But we have to treat the data-modification differently.
+Therefore, we have to first retrieve the used HTTP method and in the backend-logic, we have to distinguish between <strong>PATCH</strong> and <strong>PUT</strong>.
+The difference becomes relevant only in case if the user doesn&rsquo;t send all the properties in the request body.</p>
+<p>Example: if we modify the above example request body to look as follows:</p>
+<pre><code class="language-json">    {
+      "Description":"updated description"
+    }
+</code></pre>
+<p>Note that in this case, only one of three properties is sent in the request body.</p>
+<ul>
+<li>If the HTTP method is <strong>PATCH</strong>:
+The value of the <em>Description</em> property is updated in the backend.
+The values of the other properties remain untouched.</li>
+<li>If the HTTP method is <strong>PUT</strong>:
+The value of the <em>Description</em> property is updated in the backend.
+The value of the other properties is set to null (exception: key properties can never be null).</li>
+</ul>
+<p>So let&rsquo;s have a look at our sample implementation in the <code>Storage</code> class (see below for full sample code and also see the attached zip file containing the whole sample project)</p>
+<pre><code class="language-Java">private void updateProduct(EdmEntityType edmEntityType, List&lt;UriParameter&gt; keyParams, Entity entity, HttpMethod httpMethod)
+                            throws ODataApplicationException{
+
+  Entity productEntity = getProduct(edmEntityType, keyParams);
+  if(productEntity == null){
+    throw new ODataApplicationException("Entity not found",
+                        HttpStatusCode.NOT_FOUND.getStatusCode(), Locale.ENGLISH);
+  }
+
+  // loop over all properties and replace the values with the values of the given payload
+  // Note: ignoring ComplexType, as we don't have it in our odata model
+  List&lt;Property&gt; existingProperties = productEntity.getProperties();
+  for(Property existingProp : existingProperties){
+    String propName = existingProp.getName();
+
+    // ignore the key properties, they aren't updateable
+    if(isKey(edmEntityType, propName)){
+      continue;
+    }
+
+    Property updateProperty = entity.getProperty(propName);
+    // the request payload might not consider ALL properties, so it can be null
+    if(updateProperty == null){
+      // if a property has NOT been added to the request payload
+      // depending on the HttpMethod, our behavior is different
+      if(httpMethod.equals(HttpMethod.PATCH)){
+        // in case of PATCH, the existing property is not touched
+        continue; // do nothing
+      }else if(httpMethod.equals(HttpMethod.PUT)){
+        // in case of PUT, the existing property is set to null
+        existingProp.setValue(existingProp.getValueType(), null);
+        continue;
+      }
+    }
+
+    // change the value of the properties
+    existingProp.setValue(existingProp.getValueType(), updateProperty.getValue());
+  }
+}
+</code></pre>
+<h2 id="33-implement-the-deleteentity-method">3.3. Implement the deleteEntity(...) method<a class="headerlink" href="#33-implement-the-deleteentity-method" title="Permalink">&para;</a></h2>
+<p>In case of <strong>DELETE</strong> operation, the URL is the same like for the <strong>GET</strong> operation, but the request body is empty.</p>
+<p>Example URL:</p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/Products(3)
+</code></pre>
+<p>The implementation is rather simple:</p>
+<ul>
+<li>
+<p>As usual, determine the entity set.</p>
+</li>
+<li>
+<p>Delete the data in backend.</p>
+</li>
+<li>
+<p>Configure the response object with the proper status code <strong>204 &ndash; no content</strong>.</p>
+<pre><code class="language-java">public void deleteEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo)
+                        throws ODataApplicationException {
+
+  // 1. Retrieve the entity set which belongs to the requested entity
+  List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+  // Note: only in our example we can assume that the first segment is the EntitySet
+  UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
+  EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+
+  // 2. delete the data in backend
+  List&lt;UriParameter&gt; keyPredicates = uriResourceEntitySet.getKeyPredicates();
+  storage.deleteEntityData(edmEntitySet, keyPredicates);
+
+  //3. configure the response object
+  response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
+}
+</code></pre>
+</li>
+</ul>
+<h1 id="4-run-the-service">4. Run the service<a class="headerlink" href="#4-run-the-service" title="Permalink">&para;</a></h1>
+<p>After building and deploying the project, we can invoke our OData service.</p>
+<p>In order to test the write operations of our OData service, we need a tool that is able to execute the following required HTTP requests:</p>
+<ul>
+<li><strong>POST</strong></li>
+<li><strong>PUT</strong></li>
+<li><strong>PATCH</strong></li>
+<li><strong>DELETE</strong></li>
+</ul>
+<p>This is usually done with any REST client tool that can be installed into the browser of your choice.</p>
+<p>Some <em>REST</em> clients which are available as browser extension for:</p>
+<ul>
+<li>Firefox: &ldquo;RESTClient, a debugger for RESTful web services&rdquo;</li>
+<li>Chrome: &ldquo;Advanced REST client&rdquo;</li>
+</ul>
+<p>The following sections provide examples for executing the requests:</p>
+<h3 id="41-example-for-create">4.1. Example for <strong>CREATE</strong>:<a class="headerlink" href="#41-example-for-create" title="Permalink">&para;</a></h3>
+<ul>
+<li>
+<p>URL: <a href="http://localhost:8080/DemoService/DemoService.svc/Products">http://localhost:8080/DemoService/DemoService.svc/Products</a></p>
+</li>
+<li>
+<p>HTTP verb: <strong>POST</strong></p>
+</li>
+<li>
+<p>Header: <code>Content-Type: application/json; odata.metadata=minimal</code></p>
+</li>
+<li>
+<p>Request body:</p>
+<pre><code class="language-json">    {
+      "ID":6,
+      "Name":"Gamer Mouse",
+      "Description":"optical mouse - gamer edition"
+    }
+</code></pre>
+</li>
+</ul>
+<p><strong>Note:</strong> The value for the ID property is arbitrary, as it will be generated by our OData service implementation</p>
+<h3 id="42-example-for-update-put">4.2. Example for UPDATE (PUT):<a class="headerlink" href="#42-example-for-update-put" title="Permalink">&para;</a></h3>
+<ul>
+<li>
+<p>URL: <a href="http://localhost:8080/DemoService/DemoService.svc/Products(3)">http://localhost:8080/DemoService/DemoService.svc/Products(3)</a></p>
+</li>
+<li>
+<p>HTTP verb: <strong>PUT</strong></p>
+</li>
+<li>
+<p>Header: <code>Content-Type: application/json; odata.metadata=minimal</code></p>
+</li>
+<li>
+<p>Request body:</p>
+<pre><code class="language-json">    {
+      "ID":3,
+      "Name":"Ergo Screen updated Name",
+      "Description":"updated description"
+    }
+</code></pre>
+</li>
+</ul>
+<h3 id="43-example-for-update-patch">4.3. Example for UPDATE (PATCH):<a class="headerlink" href="#43-example-for-update-patch" title="Permalink">&para;</a></h3>
+<ul>
+<li>
+<p>URL: <a href="http://localhost:8080/DemoService/DemoService.svc/Products(3)">http://localhost:8080/DemoService/DemoService.svc/Products(3)</a></p>
+</li>
+<li>
+<p>HTTP verb: <strong>PATCH</strong></p>
+</li>
+<li>
+<p>Header: <code>Content-Type: application/json; odata.metadata=minimal</code></p>
+</li>
+<li>
+<p>Request body:</p>
+<pre><code class="language-json">    {
+      "Description": "patched description"
+    }
+</code></pre>
+</li>
+</ul>
+<h3 id="44-example-for-delete">4.4. Example for DELETE:<a class="headerlink" href="#44-example-for-delete" title="Permalink">&para;</a></h3>
+<ul>
+<li>URL: <a href="http://localhost:8080/DemoService/DemoService.svc/Products(3)">http://localhost:8080/DemoService/DemoService.svc/Products(3)</a></li>
+<li>HTTP verb: <strong>DELETE</strong></li>
+<li>Header: Content-Type: application/json; odata.metadata=minimal</li>
+<li>Request body:  <code>&lt;empty&gt;</code></li>
+</ul>
+<hr/>
+<h1 id="5-summary">5. Summary<a class="headerlink" href="#5-summary" title="Permalink">&para;</a></h1>
+<p>In this tutorial we have learned how to implement the creation, update and deletion of an entity.
+It has been based on a simple OData model, focusing on simple sample code and sample data.</p>
+<p>In the next tutorial (Part 4: Navigation) we will learn how to implement navigation, i.e. the linking of resources.</p>
+<hr/>
+<h1 id="6-links">6. Links<a class="headerlink" href="#6-links" title="Permalink">&para;</a></h1>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permalink">&para;</a></h3>
+<ul>
+<li>Tutorial OData V4 service part 1: <a href="/doc/odata4/tutorials/read/tutorial_read.html">Read Entity Collection</a></li>
+<li>Tutorial OData V4 service part 2: <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity, Read Property</a></li>
+<li>Tutorial OData V4 service part 3: Write (Create, Update, Delete Entity</li>
+<li>Tutorial OData V4 service, part 4: <a href="/doc/odata4/tutorials/navigation/tutorial_navigation.html">Navigation</a></li>
+<li>Tutorial OData V4 service, part 5.1: <a href="/doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.html">System Query Options $top, $skip, $count (this page)</a></li>
+<li>Tutorial OData V4 service, part 5.2: <a href="/doc/odata4/tutorials/sqo_es/tutorial_sqo_es.html">System Query Options $select, $expand</a></li>
+<li>Tutorial OData V4 service, part 5.3: <a href="/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.html">System Query Options $orderby</a></li>
+<li>Tutorial OData V4 service, part 5.4: <a href="/doc/odata4/tutorials/sqo_f/tutorial_sqo_f.html">System Query Options $filter</a></li>
+<li>Tutorial ODATA V4 service, part 6: <a href="/doc/odata4/tutorials/action/tutorial_action.html">Action and Function Imports</a></li>
+<li>Tutorial ODATA V4 service, part 7: <a href="/doc/odata4/tutorials/media/tutorial_media.html">Media Entities</a></li>
+<li>Tutorial OData V4 service, part 8: <a href="/doc/odata4/tutorials/batch/tutorial_batch.html">Batch Request support</a></li>
+<li>Tutorial OData V4 service, part 9: <a href="/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.html">Handling "Deep Insert" requests</a></li>
+</ul>
+<h3 id="code-and-repository">Code and Repository<a class="headerlink" href="#code-and-repository" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="https://gitbox.apache.org/repos/asf/olingo-odata4">Git Repository</a></li>
+<li><a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a></li>
+<li><a href="http://www.apache.org/dyn/closer.lua/olingo/odata4/4.6.0/DemoService_Tutorial.zip">Demo Service source code as zip file (contains all tutorials)</a></li>
+</ul>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://odata.org/">Official OData Homepage</a></li>
+<li><a href="http://www.odata.org/documentation/">OData documentation</a></li>
+<li><a href="/javadoc/odata4/index.html">Olingo Javadoc</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

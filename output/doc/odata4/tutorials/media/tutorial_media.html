@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-build-an-odata-service-with-olingo-v4">How to build an OData Service with Olingo V4<a class="headerlink" href="#how-to-build-an-odata-service-with-olingo-v4" title="Permalink">&para;</a></h1>
+<h1 id="part-7-media-entities">Part 7: Media Entities<a class="headerlink" href="#part-7-media-entities" title="Permalink">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink">&para;</a></h2>
+<p>In the present tutorial, we will implement a media entity set.</p>
+<p><strong>Note:</strong>
+The final source code can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.
+This tutorial can be found in subdirectory /samples/tutorials/p10_media</p>
+<p><strong>Table of Contents</strong></p>
+<div id="toc"><ul><li><a class="toc-href" href="#preparation" title="Preparation">Preparation</a></li><li><a class="toc-href" href="#implementation" title="Implementation">Implementation</a><ul><li><a class="toc-href" href="#extend-the-metadata-document" title="Extend the metadata document">Extend the metadata document</a></li><li><a class="toc-href" href="#enable-the-data-store-to-handle-media-entities" title="Enable the data store to handle media entities">Enable the data store to handle media entities</a></li><li><a class="toc-href" href="#implement-the-interface-mediaentityprocessor" title="Implement the interface MediaEntityProcessor">Implement the interface MediaEntityProcessor</a></li></ul></li><li><a class="toc-href" href="#run-the-implemented-service" title="Run the implemented service">Run the implemented service</a></li><li><a class="toc-href" href="#links" title="Links">Links</a><ul><li><a class="toc-href" href="#tutorials" title="Tutorials">Tutorials</a></li><li><a class="toc-href" href="#code-and-repository" title="Code and Repository">Code and Repository</a></li><li><a class="toc-href" href="#further-reading" title="Further reading">Further reading</a></li></ul></li></ul></div>
+<h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permalink">&para;</a></h2>
+<p>You should read the previous tutorials first to have an idea how to read entities and entity collections. In addition the following code is based on the write tutorial merged with the navigation tutorial.</p>
+<p>As a shortcut you should checkout the prepared tutorial project in the git repository in folder /samples/tutorials/p9_action_preparation.</p>
+<p>Afterwards do a Deploy and run: it should be working. At this state you can perform CRUD operations and do navigations between products and categories.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permalink">&para;</a></h2>
+<p>In this tutorial we will implement a media entity set. The idea is to store advertisements and a related image. The metadata document have to be extended by the following elements:</p>
+<pre><code class="language-xml">    &lt;EntityType Name="Advertisement" HasStream="true"&gt;
+        &lt;Key&gt;
+            &lt;PropertyRef Name="ID"/&gt;
+        &lt;/Key&gt;
+        &lt;Property Name="ID" Type="Edm.Guid"/&gt;
+        &lt;Property Name="Name" Type="Edm.String"/&gt;
+        &lt;Property Name="AirDate" Type="Edm.DateTimeOffset"/&gt;
+    &lt;/EntityType&gt;
+
+    &lt;EntityContainer Name="Container"&gt;
+        &lt;EntitySet Name="Advertisements" EntityType="OData.Demo.Advertisement"/&gt;
+    &lt;/EntityContainer&gt;
+</code></pre>
+<p>As you can see, the XML tag <code>EntityType</code> has a property <code>HasStream</code>, which tells us that this entity has an associated media stream. Such an Entity consists of common properties like <em>ID</em> and <em>Name</em> and the media stream.</p>
+<p><strong>Tasks</strong></p>
+<ul>
+<li>Extend the metadata document</li>
+<li>Enable the data store to handle media entities</li>
+<li>Implement the interface <code>MediaEntityProcessor</code></li>
+</ul>
+<h3 id="extend-the-metadata-document">Extend the metadata document<a class="headerlink" href="#extend-the-metadata-document" title="Permalink">&para;</a></h3>
+<p>If you have read the previous tutorials, you should be familiar with the definition entity types. The only difference to regular (Non media enties) is, that they have a <code>hasStream</code> property. If this property is not provided it defaults to false. So add the following code to class <code>DemoEdmProvider</code>:</p>
+<p>We start with method <code>DemoEdmProvider.getEntityType</code></p>
+<pre><code class="language-java">    public CsdlEntityType getEntityType(FullQualifiedName entityTypeName) {
+        CsdlEntityType entityType = null;
+
+        if (entityTypeName.equals(ET_PRODUCT_FQN)) {
+            // Definition of entity type Product
+            // ...
+        } else if (entityTypeName.equals(ET_CATEGORY_FQN)) {
+            // Definition of entity type Category
+            // ...
+        } else if(entityTypeName.equals(ET_ADVERTISEMENT_FQN)) {
+            CsdlProperty id = new CsdlProperty().setName("ID")
+                                    .setType(EdmPrimitiveTypeKind.Guid.getFullQualifiedName());
+            CsdlProperty name = new CsdlProperty().setName("Name")
+                                    .setType(EdmPrimitiveTypeKind.String.getFullQualifiedName());
+            CsdlProperty airDate = new CsdlProperty().setName("AirDate")
+                                    .setType(EdmPrimitiveTypeKind.DateTimeOffset.getFullQualifiedName());
+
+            CsdlPropertyRef propertyRef = new CsdlPropertyRef();
+            propertyRef.setName("ID");
+
+            entityType = new CsdlEntityType();
+            entityType.setName(ET_ADVERTISEMENT_NAME);
+            entityType.setProperties(Arrays.asList(id, name, airDate));
+            entityType.setKey(Collections.singletonList(propertyRef));
+            entityType.setHasStream(true);    // &lt;- Enable the media entity stream
+        }
+
+        return entityType;
+    }
+</code></pre>
+<p>Further we  have to create a new entity set. Add the following snipped to <code>DemoEdmProvider.getEntitySet</code></p>
+<pre><code class="language-java">    @Override
+    public CsdlEntitySet getEntitySet(FullQualifiedName entityContainer, String entitySetName) {
+        CsdlEntitySet entitySet = null;
+
+        if (entityContainer.equals(CONTAINER)) {
+            if (entitySetName.equals(ES_PRODUCTS_NAME)) {
+                // Definition of entity set Products
+            } else if (entitySetName.equals(ES_CATEGORIES_NAME)) {
+                // Definition if entity set Categories
+            } else if (entitySetName.equals(ES_ADVERTISEMENTS_NAME)) {
+                entitySet = new CsdlEntitySet();
+                entitySet.setName(ES_ADVERTISEMENTS_NAME);
+                entitySet.setType(ET_ADVERTISEMENT_FQN);
+            }
+        }
+
+        return entitySet;
+    }
+</code></pre>
+<p>And finally announce the entity type and entity set:</p>
+<pre><code class="language-java">    @Override
+    public List&lt;CsdlSchema&gt; getSchemas() {
+        // ...
+        entityTypes.add(getEntityType(ET_ADVERTISEMENT_FQN));
+        // ...
+
+        return schemas;
+    }
+
+    public CsdlEntityContainer getEntityContainer() {
+        // ...
+        entitySets.add(getEntitySet(CONTAINER, ES_ADVERTISEMENTS_NAME));
+    }
+</code></pre>
+<h3 id="enable-the-data-store-to-handle-media-entities">Enable the data store to handle media entities<a class="headerlink" href="#enable-the-data-store-to-handle-media-entities" title="Permalink">&para;</a></h3>
+<p>In this tutorial, we will keep things simple. To store the value of media entities, we create a special property <em>$value</em>. Note this is not a valid OData Identifier.
+All methods have to be implemented in class <code>myservice.mynamespace.data.Storage</code></p>
+<p>To read the content to a media entity, we simple return the value of the property <em>$value</em>.</p>
+<pre><code class="language-java">    private static final String MEDIA_PROPERTY_NAME = "$value";
+    private List&lt;Entity&gt; advertisements;
+
+    public byte[] readMedia(final Entity entity) {
+        return (byte[]) entity.getProperty(MEDIA_PROPERTY_NAME).asPrimitive();
+    }
+</code></pre>
+<p>If we update the content of a media entity, we must also set the the Content Type of the content.</p>
+<pre><code class="language-java">    public void updateMedia(final Entity entity, final String mediaContentType, final byte[] data) {
+        entity.getProperties().remove(entity.getProperty(MEDIA_PROPERTY_NAME));
+        entity.addProperty(new Property(null, MEDIA_PROPERTY_NAME, ValueType.PRIMITIVE, data));
+        entity.setMediaContentType(mediaContentType);
+    }
+</code></pre>
+<p>If a client creates a new media entity, the body of the requet contains the content of the media entity instead the regular properties! So the other regular properties defaults to <code>null</code>. The Content Type of the  media content must also be set.</p>
+<pre><code class="language-java">    public Entity createMediaEntity(final EdmEntityType edmEntityType, final String mediaContentType, final byte[] data) {
+        Entity entity = null;
+
+        if(edmEntityType.getName().equals(DemoEdmProvider.ET_ADVERTISEMENT_NAME)) {
+            entity = new Entity();
+            entity.addProperty(new Property(null, "ID", ValueType.PRIMITIVE, UUID.randomUUID()));
+            entity.addProperty(new Property(null, "Name", ValueType.PRIMITIVE, null));
+            entity.addProperty(new Property(null, "AirDate", ValueType.PRIMITIVE, null));
+
+            entity.setMediaContentType(mediaContentType);
+            entity.addProperty(new Property(null, MEDIA_PROPERTY_NAME, ValueType.PRIMITIVE, data));
+
+            advertisements.add(entity);
+        }
+
+        return entity;
+    }
+</code></pre>
+<p>Add an initial set of data to our data store:</p>
+<pre><code class="language-java">    private void initAdvertisementSampleData() {
+        Entity entity = new Entity();
+        entity.addProperty(new Property(null, "ID", ValueType.PRIMITIVE, UUID.fromString("f89dee73-af9f-4cd4-b330-db93c25ff3c7")));
+        entity.addProperty(new Property(null, "Name", ValueType.PRIMITIVE, "Old School Lemonade Store, Retro Style"));
+        entity.addProperty(new Property(null, "AirDate", ValueType.PRIMITIVE, Timestamp.valueOf("2012-11-07 00:00:00")));
+        entity.addProperty(new Property(null, MEDIA_PROPERTY_NAME, ValueType.PRIMITIVE, "Super content".getBytes()));
+        entity.setMediaContentType(ContentType.parse("text/plain").toContentTypeString());
+        advertisements.add(entity);
+
+        entity = new Entity();
+        entity.addProperty(new Property(null, "ID", ValueType.PRIMITIVE,
+        UUID.fromString("db2d2186-1c29-4d1e-88ef-a127f521b9c67")));
+        entity.addProperty(new Property(null, "Name", ValueType.PRIMITIVE, "Early morning start, need coffee"));
+        entity.addProperty(new Property(null, "AirDate", ValueType.PRIMITIVE, Timestamp.valueOf("2000-02-29 00:00:00")));
+        entity.addProperty(new Property(null, MEDIA_PROPERTY_NAME, ValueType.PRIMITIVE, "Super content2".getBytes()));
+        entity.setMediaContentType(ContentType.parse("text/plain").toContentTypeString());
+        advertisements.add(entity);
+    }
+</code></pre>
+<p>Call <code>initAdvertisementSampleData()</code> in the constructor.</p>
+<pre><code class="language-java">    public Storage() {
+        // ...
+        advertisements = new ArrayList&lt;Entity&gt;();
+        // ...
+        initAdvertisementSampleData();
+    }
+</code></pre>
+<p>Enable the regular entity set for CRUD opertations:</p>
+<pre><code class="language-java">    public EntityCollection readEntitySetData(EdmEntitySet edmEntitySet) throws ODataApplicationException {
+
+        if (edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)) {
+            // ...
+        } else if(edmEntitySet.getName().equals(DemoEdmProvider.ES_ADVERTISEMENTS_NAME)) {
+            return getEntityCollection(advertisements);
+        }
+
+        return null;
+    }
+
+    public Entity readEntityData(EdmEntitySet edmEntitySet, List&lt;UriParameter&gt; keyParams)
+            throws ODataApplicationException {
+
+        EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+        if (edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)) {
+            // ...
+        } else if(edmEntitySet.getName().equals(DemoEdmProvider.ES_ADVERTISEMENTS_NAME)) {
+            return getEntity(edmEntityType, keyParams, advertisements);
+        }
+
+        return null;
+    }
+
+    public Entity createEntityData(EdmEntitySet edmEntitySet, Entity entityToCreate) {
+
+        EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+        if (edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)) {
+            // ....
+        } else if(edmEntitySet.getName().equals(DemoEdmProvider.ES_CATEGORIES_NAME)) {
+            return createEntity(edmEntityType, entityToCreate, categoryList);
+        }
+
+        return null;
+    }
+
+    public void updateEntityData(EdmEntitySet edmEntitySet, List&lt;UriParameter&gt; keyParams,
+            Entity updateEntity, HttpMethod httpMethod) throws ODataApplicationException {
+
+        EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+        if (edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)) {
+            // ...
+        } else if(edmEntitySet.getName().equals(DemoEdmProvider.ES_ADVERTISEMENTS_NAME)) {
+            updateEntity(edmEntityType, keyParams, updateEntity, httpMethod, advertisements);
+        }
+    }
+
+    public void deleteEntityData(EdmEntitySet edmEntitySet, List&lt;UriParameter&gt; keyParams)
+            throws ODataApplicationException {
+
+        EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+        if (edmEntitySet.getName().equals(DemoEdmProvider.ES_PRODUCTS_NAME)) {
+            // ...
+        } else if(edmEntitySet.getName().equals(DemoEdmProvider.ES_ADVERTISEMENTS_NAME)) {
+            deleteEntity(edmEntityType, keyParams, advertisements);
+        }
+    }
+</code></pre>
+<h3 id="implement-the-interface-mediaentityprocessor">Implement the interface <code>MediaEntityProcessor</code><a class="headerlink" href="#implement-the-interface-mediaentityprocessor" title="Permalink">&para;</a></h3>
+<p>As you can see the <a href="/javadoc/odata4/org/apache/olingo/server/api/processor/MediaEntityProcessor.html"><code>MediaEntityProcessor</code>(Javadoc)</a> extends <a href="/javadoc/odata4/org/apache/olingo/server/api/processor/EntityProcessor.html"><code>EntityProcessor</code></a>, therefore we will implement <code>MediaEntityProcessor</code> in class <code>DemoEntityProcessor</code>.</p>
+<p>The easiest part is to delete an media entity. The method <code>deleteMediaEntity</code> is delegated to the method <code>deleteEntity(...)</code>.</p>
+<pre><code class="language-java">    @Override
+    public void deleteMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo)
+            throws ODataApplicationException, ODataLibraryException {
+
+        /*
+         * In this tutorial, the content of the media entity is stored in a special property.
+         * So no additional steps to delete the content of the media entity are necessary.
+         *
+         * A real service may store the content on the file system. So we have to take care to
+         * delete external files too.
+         *
+         * DELETE request to /Advertisements(ID) will be dispatched to the deleteEntity(...) method
+         * DELETE request to /Advertisements(ID)/$value will be dispatched to the deleteMediaEntity(...) method
+         *
+         * So it is a good idea handle deletes in a central place.
+         */
+
+        deleteEntity(request, response, uriInfo);
+    }
+</code></pre>
+<p>Next the creation of media entites is implemented. First we fetch the addressed entity set and convert the body of the request to a byte array. Remember the whole body of the request contains the content of the media entity.</p>
+<pre><code class="language-java">    @Override
+    public void createMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
+            ContentType requestFormat, ContentType responseFormat)
+            throws ODataApplicationException, ODataLibraryException {
+
+        final EdmEntitySet edmEntitySet = Util.getEdmEntitySet(uriInfo);
+        final byte[] mediaContent = odata.createFixedFormatDeserializer().binary(request.getBody());
+        ///...
+</code></pre>
+<p>After that we call the data store to create the new media entity. The <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398337">OData Specification</a> tells us, that we have to set the location header to the edit URL of the entity. Since we do not support Prefer Headers we have to return the entity itself.</p>
+<pre><code class="language-java">        final Entity entity = storage.createMediaEntity(edmEntitySet.getEntityType(),
+        requestFormat.toContentTypeString(),mediaContent);
+
+        final ContextURL contextUrl = ContextURL.with().entitySet(edmEntitySet).suffix(Suffix.ENTITY).build();
+        final EntitySerializerOptions opts = EntitySerializerOptions.with().contextURL(contextUrl).build();
+        final SerializerResult serializerResult = odata.createSerializer(responseFormat)
+                            .entity(serviceMetadata, edmEntitySet.getEntityType(), entity, opts);
+
+        final String location = request.getRawBaseUri() + '/'
+                + odata.createUriHelper().buildCanonicalURL(edmEntitySet, entity);
+
+        response.setContent(serializerResult.getContent());
+        response.setStatusCode(HttpStatusCode.CREATED.getStatusCode());
+        response.setHeader(HttpHeader.LOCATION, location);
+        response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
+    }
+</code></pre>
+<p>To keep things simple, our scenario do not support navigation to media entities. Because of this, the implementation to read a media entity is quite simple. First analayse the URI and fetch the entity. Than take the content of our specical property, serialize them and return the serialized content. The serializer converts the byte array to an <code>InputStream</code>.</p>
+<pre><code class="language-java">    @Override
+    public void readMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
+            throws ODataApplicationException, ODataLibraryException {
+
+        // Since our scenario do not contain navigations from media entities. We can keep things simple and
+        // check only the first resource path of the URI.
+        final UriResource firstResoucePart = uriInfo.getUriResourceParts().get(0);
+        if(firstResoucePart instanceof UriResourceEntitySet) {
+            final EdmEntitySet edmEntitySet = Util.getEdmEntitySet(uriInfo);
+            final UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) firstResoucePart;
+
+            final Entity entity = storage.readEntityData(edmEntitySet, uriResourceEntitySet.getKeyPredicates());
+            if(entity == null) {
+                throw new ODataApplicationException("Entity not found",
+                    HttpStatusCode.NOT_FOUND.getStatusCode(), Locale.ENGLISH);
+            }
+
+            final byte[] mediaContent = storage.readMedia(entity);
+            final InputStream responseContent = odata.createFixedFormatSerializer().binary(mediaContent);
+
+            response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+            response.setContent(responseContent);
+            response.setHeader(HttpHeader.CONTENT_TYPE, entity.getMediaContentType());
+        } else {
+            throw new ODataApplicationException("Not implemented",
+                HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+        }
+    }
+</code></pre>
+<p>Updating a media entity in our scenario is quite similar to read an entity. The first step is to analyse the URI, than fetch the entity from data store. Afer that we call the <code>updateMediaEntity</code> method. In our case we do not return any content. If we would return content, we must return the recently uploaded content of the media entity (<a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398338">OData Version 4.0 Part 1: Protocol</a>).</p>
+<pre><code class="language-java">    @Override
+    public void updateMediaEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
+            ContentType requestFormat, ContentType responseFormat)
+            throws ODataApplicationException, ODataLibraryException {
+
+        final UriResource firstResoucePart = uriInfo.getUriResourceParts().get(0);
+        if (firstResoucePart instanceof UriResourceEntitySet) {
+            final EdmEntitySet edmEntitySet = Util.getEdmEntitySet(uriInfo);
+            final UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) firstResoucePart;
+
+            final Entity entity = storage.readEntityData(edmEntitySet, uriResourceEntitySet.getKeyPredicates());
+            if (entity == null) {
+                throw new ODataApplicationException("Entity not found",
+                    HttpStatusCode.NOT_FOUND.getStatusCode(), Locale.ENGLISH);
+            }
+
+            final byte[] mediaContent = odata.createFixedFormatDeserializer().binary(request.getBody());
+            storage.updateMedia(entity, requestFormat.toContentTypeString(), mediaContent);
+
+            response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
+        } else {
+            throw new ODataApplicationException("Not implemented",
+                HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+        }
+    }
+</code></pre>
+<h2 id="run-the-implemented-service">Run the implemented service<a class="headerlink" href="#run-the-implemented-service" title="Permalink">&para;</a></h2>
+<p>After building and deploying the project, we can invoke our OData service.</p>
+<ul>
+<li>
+<p>Read media entity set
+<strong>GET</strong> <a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements</a></p>
+</li>
+<li>
+<p>Read media entity
+<strong>GET</strong> <a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-4cd4-b330-db93c25ff3c7)">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(f89dee73-af9f-4cd4-b330-db93c25ff3c7)</a></p>
+</li>
+<li>
+<p>Read media entity content
+<strong>GET</strong> [http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(f89dee73-af9f-4cd4-b330-db93c25ff3c7)/$value](<a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-</a>  4cd4-b330-db93c25ff3c7)/$value)</p>
+</li>
+<li>
+<p>Create a new Media Entity
+<strong>POST</strong> [http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements</p>
+</li>
+</ul>
+<p>Content-Type: image/svg+xml</p>
+<pre><code class="language-xml">    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100"&gt;
+            &lt;g stroke="darkmagenta" stroke-width="16" fill="crimson"&gt;
+                &lt;circle cx="50" cy="50" r="42"/&gt;
+            &lt;/g&gt;
+    	&lt;/svg&gt;
+</code></pre>
+<ul>
+<li>Update the content of a media entity
+<strong>PUT</strong> <a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-4cd4-b330-db93c25ff3c7)/$value">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(f89dee73-af9f-4cd4-b330-db93c25ff3c7)/$value</a></li>
+</ul>
+<p>Content-Type: text/plain</p>
+<pre><code>Super super nice content
+</code></pre>
+<ul>
+<li>Update the properties of a media entity
+<strong>PUT</strong> <a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-4cd4-b330-db93c25ff3c7)">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(f89dee73-af9f-4cd4-b330-db93c25ff3c7)</a></li>
+</ul>
+<p>Content-Type: application/json</p>
+<pre><code class="language-json">    {
+        "Name": "New Name",
+        "AirDate": "2020-06-05T23:00"
+    }
+</code></pre>
+<ul>
+<li>
+<p>Delete a media entity
+<strong>DELETE</strong> <a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(f89dee73-af9f-4cd4-b330-db93c25ff3c7)">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(f89dee73-af9f-4cd4-b330-db93c25ff3c7)</a></p>
+</li>
+<li>
+<p>Delete a media entity
+<strong>DELETE</strong> <a href="http://localhost:8080/DemoService-Media/DemoService.svc/Advertisments(db2d2186-1c29-4d1e-88ef-127f521b9c67)/$value">http://localhost:8080/DemoService-Media/DemoService.svc/Advertisements(db2d2186-1c29-4d1e-88ef-127f521b9c67)/$value</a></p>
+</li>
+</ul>
+<h1 id="links">Links<a class="headerlink" href="#links" title="Permalink">&para;</a></h1>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permalink">&para;</a></h3>
+<p>Further topics to be covered by follow-up tutorials:</p>
+<ul>
+<li>Tutorial OData V4 service part 1: <a href="/doc/odata4/tutorials/read/tutorial_read.html">Read Entity Collection</a></li>
+<li>Tutorial OData V4 service part 2: <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity, Read Property</a></li>
+<li>Tutorial OData V4 service part 3: <a href="/doc/odata4/tutorials/write/tutorial_write.html">Write (Create, Update, Delete Entity)</a></li>
+<li>Tutorial OData V4 service, part 4: <a href="/doc/odata4/tutorials/navigation/tutorial_navigation.html">Navigation</a></li>
+<li>Tutorial OData V4 service, part 5.1: <a href="/doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.html">System Query Options $top, $skip, $count (this page)</a></li>
+<li>Tutorial OData V4 service, part 5.2: <a href="/doc/odata4/tutorials/sqo_es/tutorial_sqo_es.html">System Query Options $select, $expand</a></li>
+<li>Tutorial OData V4 service, part 5.3: <a href="/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.html">System Query Options $orderby</a></li>
+<li>Tutorial OData V4 service, part 5.4: <a href="/doc/odata4/tutorials/sqo_f/tutorial_sqo_f.html">System Query Options $filter</a></li>
+<li>Tutorial OData V4 service, part 6: <a href="/doc/odata4/tutorials/action/tutorial_action.html">Action and Function Imports</a></li>
+<li>Tutorial OData V4 service, part 7: Media Entities</li>
+<li>Tutorial OData V4 service, part 8: <a href="/doc/odata4/tutorials/batch/tutorial_batch.html">Batch Request support</a></li>
+<li>Tutorial OData V4 service, part 9: <a href="/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.html">Handling "Deep Insert" requests</a></li>
+</ul>
+<h3 id="code-and-repository">Code and Repository<a class="headerlink" href="#code-and-repository" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="https://gitbox.apache.org/repos/asf/olingo-odata4">Git Repository</a></li>
+<li><a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a></li>
+<li><a href="http://www.apache.org/dyn/closer.lua/olingo/odata4/4.0.0/DemoService_Tutorial.zip">Demo Service source code as zip file (contains all tutorials)</a></li>
+</ul>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://odata.org/">Official OData Homepage</a></li>
+<li><a href="http://www.odata.org/documentation/">OData documentation</a></li>
+<li><a href="/javadoc/odata4/index.html">Olingo Javadoc</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

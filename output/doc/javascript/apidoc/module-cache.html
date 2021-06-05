@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: cache</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Module: cache</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    cache
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="createDataCache"><span class="type-signature">&lt;static> </span>createDataCache<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        createDataCache
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line1442">line 1442</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="estimateSize"><span class="type-signature">&lt;static> </span>estimateSize<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        estimateSize (see estimateSize)
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line1439">line 1439</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="appendPage"><span class="type-signature">&lt;inner> </span>appendPage<span class="signature">(operation, page)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Appends a page's data to the operation data.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>operation</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Operation with  (i)ndex, (c)ount and (d)ata.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>page</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Page with (i)ndex, (c)ount and (d)ata.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkUndefinedGreaterThanZero"><span class="type-signature">&lt;inner> </span>checkUndefinedGreaterThanZero<span class="signature">(val, name)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks whether val is undefined or a number with value greater than zero.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Value to check.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Parameter name to use in exception.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line106">line 106</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        Throws an exception if the check fails
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkUndefinedOrNumber"><span class="type-signature">&lt;inner> </span>checkUndefinedOrNumber<span class="signature">(val, name)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks whether val is undefined or a number
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Value to check.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Parameter name to use in exception.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line124">line 124</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        Throws an exception if the check fails
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="checkZeroGreater"><span class="type-signature">&lt;inner> </span>checkZeroGreater<span class="signature">(val, name)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks whether val is a defined number with value zero or greater.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Value to check.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Parameter name to use in exception.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        Throws an exception if the check fails
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="createDataCache"><span class="type-signature">&lt;inner> </span>createDataCache<span class="signature">(options)</span><span class="type-signature"> &rarr; {<a href="DataCache.html">DataCache</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates a data cache for a collection that is efficiently loaded on-demand.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Options for the data cache, including name, source, pageSize, TODO check dokuprefetchSize, cacheSize, storage mechanism, and initial prefetch and local-data handler.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line1421">line 1421</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A new data cache instance.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="DataCache.html">DataCache</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="estimateSize"><span class="type-signature">&lt;inner> </span>estimateSize<span class="signature">(object)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Estimates the size of an object in bytes.Object trees are traversed recursively
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>object</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Object to determine the size of.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line153">line 153</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Estimated size of the object in bytes.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Number</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="intersectRanges"><span class="type-signature">&lt;inner> </span>intersectRanges<span class="signature">(x, y)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the {(i)ndex, (c)ount} range for the intersection of x and y.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Range with (i)ndex and (c)ount members.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Range with (i)ndex and (c)ount members.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The intersection (i)ndex and (c)ount; undefined if there is no intersection.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="removeFromArray"><span class="type-signature">&lt;inner> </span>removeFromArray<span class="signature">(arr, item)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Performs a linear search on the specified array and removes the first instance of 'item'.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Array to search.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Item being sought.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    true if the item was removed otherwise false
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Boolean</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="snapToPageBoundaries"><span class="type-signature">&lt;inner> </span>snapToPageBoundaries<span class="signature">(lowIndex, highIndex, pageSize)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Snaps low and high indices into page sizes and returns a range.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>lowIndex</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Low index to snap to a lower value.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>highIndex</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">High index to snap to a higher value.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>pageSize</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Page size to snap to.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="cache.js.html">cache.js</a>, <a href="cache.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A range with (i)ndex and (c)ount of elements.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-cache.html">cache</a></li><li><a href="source.html">cache/source</a></li><li><a href="module-odata.html">odata</a></li><li><a href="batch.html">odata/batch</a></li><li><a href="handler.html">odata/handler</a></li><li><a href="json.html">odata/json</a></li><li><a href="metadata.html">odata/metadata</a></li><li><a href="net.html">odata/net</a></li><li><a href="utils.html">odata/utils</a></li><li><a href="deferred.html">odatajs/deferred</a></li><li><a href="utils_.html">odatajs/utils</a></li><li><a href="xml.html">odatajs/xml</a></li><li><a href="module-store.html">store</a></li><li><a href="dom.html">store/dom</a></li><li><a href="indexeddb.html">store/indexeddb</a></li><li><a href="memory.html">store/memory</a></li></ul><h3>Classes</h3><ul><li><a href="DataCache.html">DataCache</a></li><li><a href="DataCacheOperation.html">DataCacheOperation</a></li><li><a href="DjsDeferred.html">DjsDeferred</a></li><li><a href="dom-DomStore.html">DomStore</a></li><li><a href="indexeddb-IndexedDBStore.html">IndexedDBStore</a></li><li><a href="memory-MemoryStore.html">MemoryStore</a></li><li><a href="ODataCacheSource.html">ODataCacheSource</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Thu Apr 09 2015 08:31:26 GMT+0200 (MESZ)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h3 id="redefining-metadata">Redefining Metadata<a class="headerlink" href="#redefining-metadata" title="Permalink">&para;</a></h3>
+<p>The OData services created from JPA models using OData JPA Processor Library derives the names for its elements from Java Persistence Entity elements. These derived (default) names can be redefined using JPA EDM mapping models. JPA EDM Mapping model can be used to redefine:</p>
+<ul>
+<li>Schema Namespace Name</li>
+<li>Entity Type Names</li>
+<li>Entity Set Names</li>
+<li>Property Names</li>
+<li>Navigation Property Names</li>
+<li>Complex Type Names</li>
+</ul>
+<p>The OData JPA Processor Library applies certain naming rules to derive the names for the above OData elements by default. Here are the rules:</p>
+<ol>
+<li>Schema Namespace Name is derived from Java Persistence Unit Name.</li>
+<li>Entity Type Names are derived from Java Persistence Entity Type Names.</li>
+<li>Entity Set Names are derived from EDM Entity Type Names suffixed with character "s".</li>
+<li>Property Names are derived from Java Persistence Entity Attribute Names. The initial character in the property name is converted to an upper-case character.</li>
+<li>Navigation Property Names are derived from Java Persistence attribute name representing relationships. The navigation property name is suffixed with the word "Details".</li>
+<li>Complex Type Names are derived from Java Persistence Embeddable type names.</li>
+</ol>
+<p><em>Note</em>: The names generated by applying the above rules can be overridden using JPA EDM Mapping models. JPA EDM mapping model can be maintained as an XML document according to the schema.</p>
+<h4 id="steps-to-redefine-the-metadata">Steps to Redefine the Metadata<a class="headerlink" href="#steps-to-redefine-the-metadata" title="Permalink">&para;</a></h4>
+<ol>
+<li>
+<p>Create a JPA EDM Mapping model XML according to the schema given below. In the XML, maintain the mapping only for those elements that needs to be redefined. For example, if JPA Entity Type A's name has to be redefined, then maintain an EDM name for the same.
+Link to <a href="/resources/RedefiningTheMetadataSchema">Schema</a>.</p>
+</li>
+<li>
+<p>Deploy the JPA EDM Mapping model XML file in the root directory of your web application archive (store it in the same directory as 'WEB-INF').</p>
+</li>
+<li>
+<p>Pass the XML name into <em>ODataJPAContext</em>. In the method <em>initializeODataJPAContext</em>, pass the name of the XML document as shown below:</p>
+<pre><code> oDataJPAContext.setJPAEdmNameMappingModel(&lt;mapping XML filename with XML extension&gt;);
+</code></pre>
+</li>
+<li>
+<p>Compile, deploy and run the web application in a web server. A sample JPA EDM Mapping Model is provided as an example below:</p>
+</li>
+</ol>
+<h5 id="sample-jpa-edm-mapping-model">Sample JPA EDM Mapping Model<a class="headerlink" href="#sample-jpa-edm-mapping-model" title="Permalink">&para;</a></h5>
+<pre><code>	  &lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+	- &lt;JPAEDMMappingModel xmlns="http://www.apache.org/olingo/odata2/jpa/processor/api/model/mapping"&gt;
+      - &lt;PersistenceUnit name="salesorderprocessing"&gt;
+	      &lt;EDMSchemaNamespace&gt;SalesOrderProcessing&lt;/EDMSchemaNamespace&gt; 
+		- &lt;JPAEntityTypes&gt;
+	      - &lt;JPAEntityType name="SalesOrderHeader"&gt;
+	          &lt;EDMEntityType&gt;SalesOrder&lt;/EDMEntityType&gt; 
+	          &lt;EDMEntitySet&gt;SalesOrders&lt;/EDMEntitySet&gt; 
+	        - &lt;JPAAttributes&gt;
+	            &lt;JPAAttribute name="soId"&gt;ID&lt;/JPAAttribute&gt; 
+	            &lt;JPAAttribute name="netAmount"&gt;NetAmount&lt;/JPAAttribute&gt; 
+	            &lt;JPAAttribute name="buyerAddress"&gt;BuyerAddressInfo&lt;/JPAAttribute&gt; 
+	          &lt;/JPAAttributes&gt;
+	        - &lt;JPARelationships&gt;
+	            &lt;JPARelationship name="salesOrderItem"&gt;SalesOrderLineItemDetails&lt;/JPARelationship&gt; 
+	            &lt;JPARelationship name="notes"&gt;NotesDetails&lt;/JPARelationship&gt; 
+	          &lt;/JPARelationships&gt;
+	        &lt;/JPAEntityType&gt;
+	      - &lt;JPAEntityType name="SalesOrderItem"&gt;
+	          &lt;EDMEntityType&gt;SalesOrderLineItem&lt;/EDMEntityType&gt; 
+	          &lt;EDMEntitySet&gt;SalesOrderLineItems&lt;/EDMEntitySet&gt; 
+	        - &lt;JPAAttributes&gt;
+	            &lt;JPAAttribute name="liId"&gt;ID&lt;/JPAAttribute&gt; 
+	            &lt;JPAAttribute name="soId"&gt;SalesOrderID&lt;/JPAAttribute&gt; 
+	          &lt;/JPAAttributes&gt;
+	        - &lt;JPARelationships&gt;
+	            &lt;JPARelationship name="salesOrderHeader"&gt;SalesOrderHeaderDetails&lt;/JPARelationship&gt; 
+	            &lt;JPARelationship name="materials"&gt;MaterialDetails&lt;/JPARelationship&gt; 
+	          &lt;/JPARelationships&gt;
+	        &lt;/JPAEntityType&gt;
+	      &lt;/JPAEntityTypes&gt;
+	    - &lt;JPAEmbeddableTypes&gt;
+	      - &lt;JPAEmbeddableType name="Address"&gt;
+	          &lt;EDMComplexType&gt;AddressInfo&lt;/EDMComplexType&gt; 
+	        - &lt;JPAAttributes&gt;
+	            &lt;JPAAttribute name="houseNumber"&gt;Number&lt;/JPAAttribute&gt; 
+	            &lt;JPAAttribute name="streetName"&gt;Street&lt;/JPAAttribute&gt; 
+	          &lt;/JPAAttributes&gt;
+	        &lt;/JPAEmbeddableType&gt;
+	      &lt;/JPAEmbeddableTypes&gt;
+	    &lt;/PersistenceUnit&gt;
+	  &lt;/JPAEDMMappingModel&gt;
+</code></pre>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

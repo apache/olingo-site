@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="write-scenario">Write Scenario<a class="headerlink" href="#write-scenario" title="Permalink">&para;</a></h1>
+<h3 id="how-to-guide-for-building-a-sample-odata-service-with-the-odata-library-java">How To Guide for building a Sample OData service with the OData Library (Java)<a class="headerlink" href="#how-to-guide-for-building-a-sample-odata-service-with-the-odata-library-java" title="Permalink">&para;</a></h3>
+<p>This How To Guide shows how to create, update and delete an entry via your Data Provider (<code>ODataSingleProcessor</code>).</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink">&para;</a></h3>
+<p>This tutorial is based on the <a href="/doc/odata2/tutorials/basicread.html">Read Scenario</a> - OData Library (Java) tutorial.</p>
+<h3 id="implementing-create-update-and-delete-entry-at-the-single-processor">Implementing create, update and delete entry at the single processor<a class="headerlink" href="#implementing-create-update-and-delete-entry-at-the-single-processor" title="Permalink">&para;</a></h3>
+<h5 id="create-entry">Create entry<a class="headerlink" href="#create-entry" title="Permalink">&para;</a></h5>
+<ul>
+<li>You already created the <code>MyODataSingleProcessor</code> in the basic tutorial</li>
+<li>Implement <code>MyODataSingleProcessor.createEntity(PostUriInfo uriInfo, InputStream content, String requestContentType, String contentType) throws ODataException</code> by overriding the corresponding method of the <code>ODataSingleProcessor</code></li>
+</ul>
+<p><strong>Sample Code</strong></p>
+<pre><code>@Override
+public ODataResponse createEntity(PostUriInfo uriInfo, InputStream content, 
+String requestContentType, String contentType) throws ODataException {
+  //No support for creating and linking a new entry
+  if (uriInfo.getNavigationSegments().size() &gt; 0) {
+  throw new ODataNotImplementedException();
+  }
+
+  //No support for media resources
+  if (uriInfo.getStartEntitySet().getEntityType().hasStream()) {
+  throw new ODataNotImplementedException();
+  }
+
+  EntityProviderReadProperties properties = EntityProviderReadProperties.init().mergeSemantic(false).build();
+
+  ODataEntry entry = EntityProvider.readEntry(requestContentType, uriInfo.getStartEntitySet(), content, properties);
+  //if something goes wrong in deserialization this is managed via the ExceptionMapper
+  //no need for an application to do exception handling here an convert the exceptions in HTTP exceptions
+
+  Map&lt;String, Object&gt; data = entry.getProperties();
+  //now one can use the data to create the entry in the backend ...
+  //retrieve the key value after creation, if the key is generated by the server
+
+  //update the data accordingly
+  data.put("Id", Integer.valueOf(887788675));
+
+  //serialize the entry, Location header is set by OData Library
+  return EntityProvider.writeEntry(contentType, uriInfo.getStartEntitySet(), entry.getProperties(), EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
+}
+</code></pre>
+<h5 id="update-entry">Update entry<a class="headerlink" href="#update-entry" title="Permalink">&para;</a></h5>
+<ul>
+<li>You already created the <code>MyODataSingleProcessor</code> in the basic tutorial</li>
+<li>Implement <code>MyODataSingleProcessor.updateEntity(PutMergePatchUriInfo uriInfo, InputStream content, String requestContentType, boolean merge, String contentType) throws ODataException</code> by overriding the corresponding method of the <code>ODataSingleProcessor</code></li>
+</ul>
+<p><strong>Sample Code</strong></p>
+<pre><code>@Override
+public ODataResponse updateEntity(PutMergePatchUriInfo uriInfo, InputStream content, String requestContentType, boolean merge, String contentType) throws ODataException {
+EntityProviderReadProperties properties = EntityProviderReadProperties.init().mergeSemantic(false).build();
+
+  ODataEntry entry = EntityProvider.readEntry(requestContentType, uriInfo.getTargetEntitySet(), content, properties);
+  //if something goes wrong in deserialization this is managed via the ExceptionMapper,
+  //no need for an application to do exception handling here an convert the exceptions in HTTP exceptions
+
+  Map&lt;String, Object&gt; data = entry.getProperties();
+
+  if ("Cars".equals(uriInfo.getTargetEntitySet().getName())) {
+  int key = getKeyValue(uriInfo.getKeyPredicates().get(0));
+
+    //if there is no entry with this key available, one should return "404 Not Found"
+    //return ODataResponse.status(HttpStatusCodes.NOT_FOUND).build();
+
+    //now one can use the data to create the entry in the backend ...
+    String model = (String) data.get("Model");
+    //...
+  } else if ("Manufacturers".equals(uriInfo.getTargetEntitySet().getName())) {
+  int key = getKeyValue(uriInfo.getKeyPredicates().get(0));
+  //now one can use the data to create the entry in the backend ...
+  }
+
+  //we can return Status Code 204 No Content because the URI Parsing already guarantees that
+  //a) only valid URIs are dispatched (also checked against the metadata)
+  //b) 404 Not Found is already returned above, when the entry does not exist 
+return ODataResponse.status(HttpStatusCodes.NO_CONTENT).build();
+}
+</code></pre>
+<h5 id="delete-entry">Delete entry<a class="headerlink" href="#delete-entry" title="Permalink">&para;</a></h5>
+<ul>
+<li>You already created the <code>MyODataSingleProcessor</code> in the basic tutorial</li>
+<li>Implement <code>MyODataSingleProcessor.deleteEntity(DeleteUriInfo uriInfo, String contentType) throws ODataException</code> by overriding the corresponding method of the <code>ODataSingleProcessor</code></li>
+</ul>
+<p><strong>Sample Code</strong></p>
+<pre><code>@Override
+public ODataResponse deleteEntity(DeleteUriInfo uriInfo, String contentType) throws ODataException {
+  if ("Cars".equals(uriInfo.getTargetEntitySet().getName())) {
+  int key = getKeyValue(uriInfo.getKeyPredicates().get(0));
+
+    //if there is no entry with this key available, one should return "404 Not Found"
+    //return ODataResponse.status(HttpStatusCodes.NOT_FOUND).build();
+
+    //now one can delete the entry with this particular key in the backend...
+
+  } else if ("Manufacturers".equals(uriInfo.getTargetEntitySet().getName())) {
+  int key = getKeyValue(uriInfo.getKeyPredicates().get(0));
+  //now one can delete the entry with this particular key in the backend...
+  }
+
+  //we can return Status Code 204 No Content because the URI Parsing already guarantees that
+  //a) only valid URIs are dispatched (also checked against the metadata)
+  //b) 404 Not Found is already returned above, when the entry does not exist 
+  return ODataResponse.status(HttpStatusCodes.NO_CONTENT).build();
+}
+</code></pre>
+<h3 id="test-your-service">Test your Service<a class="headerlink" href="#test-your-service" title="Permalink">&para;</a></h3>
+<p>After the implementation of the MyODataSingleProcessor the web application can be tested.</p>
+<ul>
+<li>Build your project <code>mvn clean install</code></li>
+<li>In Eclipse, run the Web Application via Run As -&gt; Run on Server</li>
+<li>Create a new Car</li>
+<li>Update an existing Car</li>
+<li>Delete a Car</li>
+<li>Create a new Manufacturer (this is a Media Link Entry), we expect the response 501 Not Implemented</li>
+<li>Update a Manufacturer (this is a Media Link Entry)</li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

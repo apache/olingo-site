@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h2 id="creating-a-web-application-project-for-transforming-jpa-models-into-odata-services">Creating a Web Application Project for Transforming JPA Models into OData Services<a class="headerlink" href="#creating-a-web-application-project-for-transforming-jpa-models-into-odata-services" title="Permalink">&para;</a></h2>
+<p>In this section, information on how to create a web application (Maven) for transforming JPA Models into OData Services using OData JPA Processor Library is provided.
+The table gives the list of Maven dependencies you need to include in the POM.xml of your application.</p>
+<p><em>Note</em>: The following dependencies are applicable for an application using EclipseLink as the JPA Provider and HSQLDB as the database. However, you are free to use any JPA provider (like Hibernate, OpenJPA and so on) and database of your choice.</p>
+<table class="table">
+<thead>
+<tr>
+<th>Group ID</th>
+<th>Artifact ID</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>javax.servlet</td>
+<td>servlet-api</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>org.apache.cxf</td>
+<td>cxf-rt-frontend-jaxrs</td>
+<td>2.7.5</td>
+</tr>
+<tr>
+<td>org.slf4j</td>
+<td>slf4j-log4j12</td>
+<td>1.7.1</td>
+</tr>
+<tr>
+<td>junit</td>
+<td>junit</td>
+<td>3.8.1</td>
+</tr>
+<tr>
+<td>org.apache.olingo</td>
+<td>olingo.odata2.api</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>org.apache.olingo</td>
+<td>olingo.odata2.jpa.processor.api</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>org.apache.olingo</td>
+<td>olingo.odata2.jpa.processor.core</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>org.apache.olingo</td>
+<td>olingo.odata2.jpa.processor.ref</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>org.apache.olingo</td>
+<td>olingo.odata2.core</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>org.eclipse.persistence</td>
+<td>eclipselink</td>
+<td>2.3.1</td>
+</tr>
+<tr>
+<td>org.eclipse.persistence</td>
+<td>javax.persistence</td>
+<td>2.0.5</td>
+</tr>
+<tr>
+<td>org.hsqldb</td>
+<td>hsqldb</td>
+<td>2.2.8</td>
+</tr></tbody></table>
+<p>Here is a <a href="../../../resources/Sample_JPA_Model.xml">Sample JPA Model</a></p>
+<h5 id="create-a-dynamic-web-application-project-from-scratch">Create a Dynamic Web Application Project from Scratch:<a class="headerlink" href="#create-a-dynamic-web-application-project-from-scratch" title="Permalink">&para;</a></h5>
+<ol>
+<li>
+<p>In the command prompt, enter the maven command given here (change the DgroupId and DartifactId as per your requirement)</p>
+<pre><code> mvn archetype:generate -DgroupId=com.sample.jpa -DartifactId=salesorderprocessing.app -DarchetypeArtifactId=maven-archetype-webapp
+</code></pre>
+<p>Maven generates the file system structure for a web application project including a basic POM.xml. This step is completed by creating a Java source folder.</p>
+</li>
+<li>
+<p>Create a folder by name 'java' in the path 'src/main/'.</p>
+</li>
+</ol>
+<h5 id="tailor-pomxml">Tailor POM.xml<a class="headerlink" href="#tailor-pomxml" title="Permalink">&para;</a></h5>
+<p>POM.xml should be modified for adding dependencies like OData Library (Java) and OData JPA Processor Library. Add a dependency to the project that contains JPA models. Open POM.xml and replace the existing content with the following:</p>
+<pre><code>	  &lt;?xml version="1.0" ?&gt; 
+	  &lt;project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+	    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; 
+	    &lt;parent&gt;
+	      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt; 
+	      &lt;artifactId&gt;olingo-odata2-parent&lt;/artifactId&gt; 
+	      &lt;version&gt;1.0.0&lt;/version&gt; 
+	      &lt;relativePath&gt;..&lt;/relativePath&gt; 
+	     &lt;/parent&gt;
+	     &lt;artifactId&gt;olingo.odata2.jpa.processor.ref.web&lt;/artifactId&gt; 
+	     &lt;packaging&gt;war&lt;/packaging&gt; 
+	     &lt;name&gt;${project.groupId}-${project.artifactId}&lt;/name&gt; 
+	    &lt;dependencies&gt;
+         &lt;dependency&gt;
+           &lt;!-- required because of auto detection of web facet 2.5 --&gt;
+           &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+           &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+           &lt;version&gt;2.5&lt;/version&gt;
+           &lt;scope&gt;provided&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;
+           &lt;artifactId&gt;cxf-rt-frontend-jaxrs&lt;/artifactId&gt;
+           &lt;version&gt;2.7.5&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+           &lt;artifactId&gt;olingo-odata2-core&lt;/artifactId&gt;
+           &lt;version&gt;${project.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+           &lt;artifactId&gt;olingo-odata2-api&lt;/artifactId&gt;
+           &lt;version&gt;${project.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+           &lt;artifactId&gt;olingo-odata2-jpa-processor-api&lt;/artifactId&gt;
+           &lt;version&gt;${project.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+           &lt;artifactId&gt;olingo-odata2-jpa-processor-core&lt;/artifactId&gt;
+           &lt;version&gt;${project.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+           &lt;artifactId&gt;olingo-odata2-jpa-processor-ref&lt;/artifactId&gt;
+           &lt;version&gt;${project.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+           &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+           &lt;version&gt;1.7.1&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;junit&lt;/groupId&gt;
+           &lt;artifactId&gt;junit&lt;/artifactId&gt;
+           &lt;version&gt;3.8.1&lt;/version&gt;
+           &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.eclipse.persistence&lt;/groupId&gt;
+           &lt;artifactId&gt;eclipselink&lt;/artifactId&gt;
+           &lt;version&gt;2.3.1&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.eclipse.persistence&lt;/groupId&gt;
+           &lt;artifactId&gt;javax.persistence&lt;/artifactId&gt;
+           &lt;version&gt;2.0.5&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+           &lt;groupId&gt;org.hsqldb&lt;/groupId&gt;
+           &lt;artifactId&gt;hsqldb&lt;/artifactId&gt;
+           &lt;version&gt;2.2.8&lt;/version&gt;
+         &lt;/dependency&gt;
+       &lt;/dependencies&gt;
+       &lt;build&gt;
+         &lt;finalName&gt;olingo.odata2.jpa.processor.ref.web&lt;/finalName&gt; 
+       &lt;/build&gt;
+     &lt;/project&gt;
+</code></pre>
+<h5 id="implement-an-odata-service">Implement an OData Service<a class="headerlink" href="#implement-an-odata-service" title="Permalink">&para;</a></h5>
+<p>The project is now ready to expose OData services. Service Factory provides a means for initializing Entity Data Model (EDM) Provider and OData JPA Processors. Following are the steps for implementing a Service Factory:</p>
+<ol>
+<li>
+<p>Add a new Java class by extending ODataJPAServiceFactory.</p>
+</li>
+<li>
+<p>Declare persistence unit name as class variable. For example, private static final String PUNIT_NAME = "persistenceUnitName";
+<em>Note</em>: The PUNIT_NAME  refers to the persistence unit name maintained in the persistence.xml of JPA project.</p>
+</li>
+<li>
+<p>Implement the abstract method <code>initializeODataJPAContext</code>. Here is the code snippet:</p>
+<pre><code> ODataJPAContext oDataJPAContext = getODataJPAContext();
+ oDataJPAContext.setEntityManagerFactory(JPAEntityManagerFactory.getEntityManagerFactory(PUNIT_NAME));
+ oDataJPAContext.setPersistenceUnitName(PUNIT_NAME);
+</code></pre>
+</li>
+</ol>
+<h5 id="configure-the-web-application">Configure the Web Application<a class="headerlink" href="#configure-the-web-application" title="Permalink">&para;</a></h5>
+<ol>
+<li>
+<p>Configure the web application as shown below by adding the following servlet configuration to web.xml. The Service factory which was implemented is configured in the web.xml of the ODataApplication as one of the init parameters.</p>
+</li>
+<li>
+<p>Replace in the following XML with the class name you created in the previous step:</p>
+<pre><code> - &lt;servlet&gt;
+     &lt;servlet-name&gt;JPARefScenarioServlet&lt;/servlet-name&gt; 
+     &lt;servlet-class&gt;org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet&lt;/servlet-class&gt; 
+   - &lt;init-param&gt;
+        &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt; 
+        &lt;param-value&gt;org.apache.olingo.odata2.core.rest.app.ODataApplication&lt;/param-value&gt; 
+     &lt;/init-param&gt;
+   - &lt;init-param&gt;
+        &lt;param-name&gt;org.apache.olingo.odata2.service.factory&lt;/param-name&gt; 
+        &lt;param-value&gt;org.apache.olingo.odata2.jpa.processor.ref.web.JPAReferenceServiceFactory&lt;/param-value&gt; 
+     &lt;/init-param&gt;
+     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt; 
+   &lt;/servlet&gt;
+ - &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;JPARefScenarioServlet&lt;/servlet-name&gt; 
+     &lt;url-pattern&gt;/SalesOrderProcessing.svc/*&lt;/url-pattern&gt; 
+   &lt;/servlet-mapping&gt;
+</code></pre>
+</li>
+</ol>
+<p>After the implementation, test the web application using <a href="http://localhost:8080/olingo.odata2.jpa.processor.ref.web/SalesOrderProcessing.svc">http://localhost:8080/olingo.odata2.jpa.processor.ref.web/SalesOrderProcessing.svc</a></p>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

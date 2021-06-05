@@ -1,0 +1,674 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="client-scenario">Client Scenario<a class="headerlink" href="#client-scenario" title="Permalink">&para;</a></h1>
+<hr/>
+<h2 id="how-to-guide-for-building-a-sample-odata-client-with-the-odata-40-library-for-java">How To Guide for building a Sample OData Client with the OData 4.0 Library (for Java)<a class="headerlink" href="#how-to-guide-for-building-a-sample-odata-client-with-the-odata-40-library-for-java" title="Permalink">&para;</a></h2>
+<p>This Tutorial shows how to use the Apache Olingo Library for CRUD operations on an existing OData Service.
+Therefore it contains the Explaining the Client section which explains how to implement the CRUD operations based on sample code.
+For creating a simple odata service refer the section Basic Tutorial: Create an OData V4 Service with Olingo in Olingo V4 tutorial</p>
+<h3 id="client-quickstart-guide">Client Quickstart Guide<a class="headerlink" href="#client-quickstart-guide" title="Permalink">&para;</a></h3>
+<p>With this Quickstart guide the runnable sample client and an sample service is created within a few minutes. Therefore it just requires an installed Java 6 Runtime, Maven 3 and an internet connection.
+It also requires an odata service. This sample uses the Cars service which can be found under samples/server under olingo <a href="https://gitbox.apache.org/repos/asf?p=olingo-odata4.git">git repository</a>. Build the project and deploy the war on a server. Follow the <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a> to import the sample server project.</p>
+<ol>
+<li>Create a sample maven project and name it OlingoSampleApp.</li>
+<li>Create a new package org.apache.olingo.samples.client under this
+project.</li>
+<li>Create a class OlingoSampleApp.java under package
+org.apache.olingo.samples.client.</li>
+<li>Copy the entire <a href="#sample">sample client code</a> into this class.</li>
+<li>Copy <a href="#pom">this sample pom into</a> into this projects pom.xml file.</li>
+<li>Run OlingoSampleApp against sample Service</li>
+<li>In order to fetch all the dependencies in the pom.xml file run
+eclipse:eclipse command on the sample client project</li>
+</ol>
+<h3 id="explaining-the-client">Explaining the Client<a class="headerlink" href="#explaining-the-client" title="Permalink">&para;</a></h3>
+<h3 id="create-odata-client">Create OData Client<a class="headerlink" href="#create-odata-client" title="Permalink">&para;</a></h3>
+<pre><code>public static final ODataClient client = ODataClientFactory.getClient();
+odataClient.getConfiguration().setDefaultPubFormat(ContentType.APPLICATION_JSON);
+</code></pre>
+<h3 id="read-edm">Read EDM<a class="headerlink" href="#read-edm" title="Permalink">&para;</a></h3>
+<p>For an OData Service the Entity Data Model (EDM) defines all metadata information about the provided data of the service. This includes all entities with their type, properties and relations, which entities are provided as entity sets and additional functions and operations provided by the OData Service. The EDM also have to be provided by the OData Service via a unique URI (e.g. <a href="http://localhost:8080/cars.svc/$metadata">http://localhost:8080/cars.svc/$metadata</a>) in the EDMX format.
+This fact is important because the Apache Olingo library requires the metadata for serialization and de-serialization of the data of an entity (e.g. the validation of the data is done against the EDM provided metadata). Hence the first step in this sample is to read the whole EDM of an OData Service.</p>
+<h3 id="code-sample-read-edm-metadata">Code sample: Read EDM ($metadata)<a class="headerlink" href="#code-sample-read-edm-metadata" title="Permalink">&para;</a></h3>
+<pre><code>final Edm edm = getClient().getRetrieveRequestFactory().getMetadataRequest(serviceUrl).execute().getBody();
+return edm;
+</code></pre>
+<p>If annotations defined in external vocabulary file has to be loaded then the below code has to be used</p>
+<pre><code>List&lt;InputStream&gt; streams = new ArrayList&lt;InputStream&gt;();
+//If file is locally available    
+streams.add(getClass().getResourceAsStream("annotations.xml"));
+XMLMetadata xmlMetadata = getClient().getRetrieveRequestFactory().getXMLMetadataRequest(serviceUrl).execute().getBody();
+//If the reference uri's have to be loaded 
+String vocabUrl = metadata.getReferences().get(0).getUri().toString();
+URI uri = new URI(vocabUrl);
+ODataRawRequest request = getClient().getRetrieveRequestFactory().getRawRequest(uri);
+ODataRawResponse response = request.execute();
+streams.add(response.getRawResponse());
+final Edm edm = getClient().getReader().readMetadata(xmlMetadata, streams);
+return edm;
+</code></pre>
+<p>Here the serviceUrl is the root Url of the odata service.
+For read and de-serialize of the EDM this is all what have to be done and the resulting EDM instance than can be used for necessary serialization and de-serialization in combination of CRUD operations supported by Apache Olingo library.</p>
+<h3 id="read-entity">Read Entity<a class="headerlink" href="#read-entity" title="Permalink">&para;</a></h3>
+<p>For reading entities this sample provides two methods. First is read of a complete collection / Entity Set and second is read of a single Entity. In general, for both first create the request and execute the request.</p>
+<h3 id="read-entitycollection">Read entityCollection<a class="headerlink" href="#read-entitycollection" title="Permalink">&para;</a></h3>
+<pre><code>ODataEntitySetRequest&lt;ClientEntitySet&gt; request = getClient().getRetrieveRequestFactory()
+        .getEntitySetRequest(getClient().newURIBuilder(serviceUrl)
+        .appendEntitySetSegment(&ldquo;Manufacturers&rdquo;).build());
+final ODataRetrieveResponse&lt;ClientEntitySet&gt; response = request.execute();
+final ClientEntitySet entitySet = response.getBody();
+</code></pre>
+<p>For read of a complete collection the request URI is a EntitySet. Via the execute method the request is done against the created uri and the responding content is returned as HttpResponse. This HttpResponse then will be de-serialized by the library into an ClientEntitySet object which contains all entities, each entities navigation links provided by the OData Service.</p>
+<h3 id="read-entity_1">Read Entity<a class="headerlink" href="#read-entity_1" title="Permalink">&para;</a></h3>
+<pre><code>ODataEntityRequest&lt;ClientEntity&gt; request = getClient().getRetrieveRequestFactory()
+        .getEntityRequest(getClient().newURIBuilder(serviceUrl)
+        .appendEntitySetSegment(&ldquo;Manufacturers&rdquo;).appendKeySegment(1).build());
+final ODataRetrieveResponse&lt;ClientEntity&gt; response = request.execute();
+final ClientEntity entity = response.getBody();
+</code></pre>
+<p>For read of a single ODataEntry the request URI is an Entity for which a key value is required for creation of the uri. Via the execute method the request is done against the created uri and the responding content is returned as HttpResponse. This HttpResponse then will be de-serialized by the library into an ClientEntity object which contains all properties of an entity, along with navigation links provided by the OData Service.</p>
+<h3 id="read-entity-property">Read Entity Property<a class="headerlink" href="#read-entity-property" title="Permalink">&para;</a></h3>
+<pre><code>ODataPropertyRequest&lt;ClientProperty&gt; request = getClient().getRetrieveRequestFactory()
+        .getPropertyRequest(odataClient.newURIBuilder(serviceUrl)
+        .appendEntitySetSegment(&ldquo;Manufacturers&rdquo;).appendKeySegment(1)
+        .appendPropertySegment(&ldquo;Name&rdquo;).build());
+final ODataRetrieveResponse&lt;ClientProperty&gt; response = request.execute();
+final ClientProperty property = response.getBody();
+//If property is a primitive type and if value has to be fetched
+final ClientProperty property = property.get("Name");
+final ClientPrimitiveValue clientValue = property.getPrimitiveValue();
+//If the property is a Complex Type and if value has to be fetched
+// Here Address is a complex property
+final ClientComplexValue complexValue = prop.getComplexValue();
+final ClientValue propertyComp = complexValue.get("Street").getValue();
+</code></pre>
+<h3 id="create-entity">Create Entity<a class="headerlink" href="#create-entity" title="Permalink">&para;</a></h3>
+<p>To create an entity a HTTP POST on the corresponding entity set URI with the whole entity data as POST Body in a supported format (e.g. atom-xml, json) has to be done. With Apache Olingo the required POST Body can be created (serialized) with the methods available on ClientObjectFactory. This method creates a ClientEntity which contains the content (i.e. the required POST Body) which then can be send to the server. If the entry was created successfully an HTTP Status: 201 created will be returned as well as the complete entry.
+For simplicity in the code sample below the prepare and execute of the POST and the read of the response is separated (see Part 1: Post and Part 2: Read).</p>
+<h3 id="code-sample-create-single-entry">Code sample: Create single Entry<a class="headerlink" href="#code-sample-create-single-entry" title="Permalink">&para;</a></h3>
+<h3 id="part-1-post-entry">Part 1: POST entry<a class="headerlink" href="#part-1-post-entry" title="Permalink">&para;</a></h3>
+<pre><code>ClientEntity newEntity = getClient().getObjectFactory().newEntity(&ldquo;Manufacturers&rdquo;);
+newEntity.getProperties().add(getClient().getObjectFactory().newPrimitiveProperty(&ldquo;Name&rdquo;,
+        getFactory().newPrimitiveValueBuilder().buildString(&ldquo;MyCarManufacturer&rdquo;)));
+newEntity.addLink(getClient().getObjectFactory().newEntityNavigationLink(&ldquo;Cars&rdquo;,
+        client.newURIBuilder(serviceUrl)
+            .appendEntitySetSegment(&ldquo;Cars&rdquo;)
+            .appendKeySegment(1)
+            .build()));
+</code></pre>
+<p>With the ODataClientFactory it is possible to create a new entity along with its properties, its values and also links.</p>
+<h3 id="part-2-read-response">Part 2: Read response<a class="headerlink" href="#part-2-read-response" title="Permalink">&para;</a></h3>
+<pre><code>final ODataEntityCreateRequest&lt;ClientEntity&gt; createRequest = getClient().getCUDRequestFactory().getEntityCreateRequest(
+        getClient().newURIBuilder(serviceUrl).appendEntitySetSegment(&ldquo;Manufacturers&rdquo;).build(),
+        newEntity);
+final ODataEntityCreateResponse&lt;ClientEntity&gt; createResponse = createRequest.execute();
+final ClientEntity createdEntity = createResponse.getBody();
+</code></pre>
+<p>This executes the create request and the response will return the ClientEntity that was created.</p>
+<h3 id="put-entry">PUT entry<a class="headerlink" href="#put-entry" title="Permalink">&para;</a></h3>
+<pre><code>final URI uri = odataClient.newURIBuilder(serviceUrl)
+        .appendEntitySetSegment(&ldquo;Manufacturers&rdquo;).appendKeySegment(1).build();
+
+final ClientEntity entity = getClient().getObjectFactory().newEntity(new FullQualifiedName(&ldquo;OData.Demo.Manufacturer&rdquo;));
+entity.getProperties().add(getClient().getObjectFactory().newPrimitiveProperty(&ldquo;Name&rdquo;,
+        getClient().getObjectFactory().newPrimitiveValueBuilder().buildString(&ldquo;MyCarManufacturer&rdquo;)));
+
+final ODataEntityUpdateRequest&lt;ClientEntity&gt; requestUpdate = odataClient.getCUDRequestFactory().getEntityUpdateRequest(uri,  UpdateType.PATCH, entity);    
+final ODataEntityUpdateResponse&lt;ClientEntity&gt; responseUpdate = requestUpdate.execute();
+</code></pre>
+<p>With the ODataClientFactory create the entity that has to be updated along with its properties and its values. Then execute the update request and the response will be the ClientEntity with no content.
+If the entry was updated successfully an HTTP Status: 204 No content will be returned.</p>
+<h3 id="code-sample-delete-single-entry">Code sample: Delete single Entry<a class="headerlink" href="#code-sample-delete-single-entry" title="Permalink">&para;</a></h3>
+<h3 id="delete">Delete<a class="headerlink" href="#delete" title="Permalink">&para;</a></h3>
+<p>For deletion of an entry just a DELETE request is necessary on the URI of the entity. Hence the Apache Olingo is not necessary to serialize or de-serialize anything for this use case.</p>
+<pre><code>final URI uri = getClient().newURIBuilder(serviceUrl).appendEntitySetSegment(&ldquo;Manufacturers&rdquo;).appendKeySegment(1).build();
+final ODataDeleteRequest request = getClient().getCUDRequestFactory().getDeleteRequest(uri);
+final ODataDeleteResponse response = request.execute();
+</code></pre>
+<p>So the code for delete of an entry the  DELETE request URI is an Entity for which a key value is required for creation of the absolut uri. Via execute() method the request is done against the uri and the responding http status code is returned, which is, if the entry was deleted successfully, an HTTP Status: 204 No content.</p>
+<p><a name="pom"></a></p>
+<h3 id="sample-pomxml-file">Sample pom.xml file<a class="headerlink" href="#sample-pomxml-file" title="Permalink">&para;</a></h3>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+--&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;artifactId&gt;odata-client-sample&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;name&gt;${project.artifactId}&lt;/name&gt;
+
+  &lt;parent&gt;
+    &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+    &lt;artifactId&gt;odata-samples&lt;/artifactId&gt;
+    &lt;version&gt;4.5.0-sap-05-SNAPSHOT&lt;/version&gt;
+    &lt;relativePath&gt;..&lt;/relativePath&gt;
+  &lt;/parent&gt;
+
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-deploy-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;skip&gt;true&lt;/skip&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+
+      &lt;!-- Disable checkstyle for sample --&gt;
+      &lt;plugin&gt;
+        &lt;artifactId&gt;maven-checkstyle-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;skip&gt;true&lt;/skip&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;odata-client-core&lt;/artifactId&gt;
+      &lt;version&gt;${project.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;commons-logging&lt;/groupId&gt;
+      &lt;artifactId&gt;commons-logging&lt;/artifactId&gt;
+      &lt;version&gt;${commons.logging.version}&lt;/version&gt;
+      &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+      &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+      &lt;version&gt;${sl4j.version}&lt;/version&gt;
+      &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;id&gt;client&lt;/id&gt;
+      &lt;build&gt;
+        &lt;defaultGoal&gt;test&lt;/defaultGoal&gt;
+        &lt;plugins&gt;
+          &lt;plugin&gt;
+            &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+            &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+            &lt;executions&gt;
+              &lt;execution&gt;
+                &lt;phase&gt;test&lt;/phase&gt;
+                &lt;goals&gt;
+                  &lt;goal&gt;java&lt;/goal&gt;
+                &lt;/goals&gt;
+                &lt;configuration&gt;
+                  &lt;mainClass&gt;org.apache.olingo.samples.client.OlingoSampleApp&lt;/mainClass&gt;
+                &lt;/configuration&gt;
+              &lt;/execution&gt;
+            &lt;/executions&gt;
+          &lt;/plugin&gt;
+        &lt;/plugins&gt;
+      &lt;/build&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+&lt;/project&gt;
+</code></pre>
+<p><a name="sample"></a></p>
+<h3 id="olingosampleappjava">OlingoSampleApp.java<a class="headerlink" href="#olingosampleappjava" title="Permalink">&para;</a></h3>
+<pre><code>/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements. See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership. The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ ******************************************************************************/
+package org.apache.olingo.samples.client;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.apache.olingo.client.api.ODataClient;
+import org.apache.olingo.client.api.communication.request.cud.ODataDeleteRequest;
+import org.apache.olingo.client.api.communication.request.cud.ODataEntityCreateRequest;
+import org.apache.olingo.client.api.communication.request.cud.ODataEntityUpdateRequest;
+import org.apache.olingo.client.api.communication.request.cud.UpdateType;
+import org.apache.olingo.client.api.communication.request.retrieve.EdmMetadataRequest;
+import org.apache.olingo.client.api.communication.request.retrieve.ODataEntityRequest;
+import org.apache.olingo.client.api.communication.request.retrieve.ODataEntitySetIteratorRequest;
+import org.apache.olingo.client.api.communication.response.ODataDeleteResponse;
+import org.apache.olingo.client.api.communication.response.ODataEntityCreateResponse;
+import org.apache.olingo.client.api.communication.response.ODataEntityUpdateResponse;
+import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
+import org.apache.olingo.client.api.domain.ClientCollectionValue;
+import org.apache.olingo.client.api.domain.ClientComplexValue;
+import org.apache.olingo.client.api.domain.ClientEntity;
+import org.apache.olingo.client.api.domain.ClientEntitySet;
+import org.apache.olingo.client.api.domain.ClientEntitySetIterator;
+import org.apache.olingo.client.api.domain.ClientEnumValue;
+import org.apache.olingo.client.api.domain.ClientProperty;
+import org.apache.olingo.client.api.domain.ClientValue;
+import org.apache.olingo.client.api.serialization.ODataDeserializerException;
+import org.apache.olingo.client.core.ODataClientFactory;
+import org.apache.olingo.commons.api.edm.Edm;
+import org.apache.olingo.commons.api.edm.EdmComplexType;
+import org.apache.olingo.commons.api.edm.EdmEntityType;
+import org.apache.olingo.commons.api.edm.EdmProperty;
+import org.apache.olingo.commons.api.edm.EdmSchema;
+import org.apache.olingo.commons.api.edm.FullQualifiedName;
+import org.apache.olingo.commons.api.format.ContentType;
+
+
+/**
+ *
+ */
+public class OlingoSampleApp {
+  private ODataClient client;
+  
+  public OlingoSampleApp() {
+    client = ODataClientFactory.getClient();
+  }
+
+  public static void main(String[] params) throws Exception {
+    OlingoSampleApp app = new OlingoSampleApp();
+    app.perform("http://localhost:8080/cars.svc");
+  }
+
+  void perform(String serviceUrl) throws Exception {
+
+    print("\n----- Read Edm ------------------------------");
+    Edm edm = readEdm(serviceUrl);
+    List&lt;FullQualifiedName&gt; ctFqns = new ArrayList&lt;FullQualifiedName&gt;();
+    List&lt;FullQualifiedName&gt; etFqns = new ArrayList&lt;FullQualifiedName&gt;();
+    for (EdmSchema schema : edm.getSchemas()) {
+      for (EdmComplexType complexType : schema.getComplexTypes()) {
+        ctFqns.add(complexType.getFullQualifiedName());
+      }
+      for (EdmEntityType entityType : schema.getEntityTypes()) {
+        etFqns.add(entityType.getFullQualifiedName());
+      }
+    }
+    print("Found ComplexTypes", ctFqns);
+    print("Found EntityTypes", etFqns);
+
+    print("\n----- Inspect each property and its type of the first entity: " + etFqns.get(0) + "----");
+    EdmEntityType etype = edm.getEntityType(etFqns.get(0));
+    for (String propertyName : etype.getPropertyNames()) {
+      EdmProperty property = etype.getStructuralProperty(propertyName);
+      FullQualifiedName typeName = property.getType().getFullQualifiedName();
+      print("property '" + propertyName + "' " + typeName);
+    }
+    
+    print("\n----- Read Entities ------------------------------");
+    ClientEntitySetIterator&lt;ClientEntitySet, ClientEntity&gt; iterator = 
+      readEntities(edm, serviceUrl, "Manufacturers");
+
+    while (iterator.hasNext()) {
+      ClientEntity ce = iterator.next();
+      print("Entry:\n" + prettyPrint(ce.getProperties(), 0));
+    }
+
+    print("\n----- Read Entry ------------------------------");
+    ClientEntity entry = readEntityWithKey(edm, serviceUrl, "Manufacturers", 1);
+    print("Single Entry:\n" + prettyPrint(entry.getProperties(), 0));
+
+    //
+    print("\n----- Read Entity with $expand  ------------------------------");
+    entry = readEntityWithKeyExpand(edm, serviceUrl, "Manufacturers", 1, "Cars");
+    print("Single Entry with expanded Cars relation:\n" + prettyPrint(entry.getProperties(), 0));
+
+    //
+    print("\n----- Read Entities with $filter  ------------------------------");
+    iterator = readEntitiesWithFilter(edm, serviceUrl, "Manufacturers", "Name eq 'Horse Powered Racing'");
+    while (iterator.hasNext()) {
+      ClientEntity ce = iterator.next();
+      print("Entry:\n" + prettyPrint(ce.getProperties(), 0));
+    }
+
+    // skip everything as odata4 sample/server only supporting retrieval
+    print("\n----- Create Entry ------------------------------");
+    ClientEntity ce = loadEntity("/mymanufacturer.json");
+    entry = createEntity(edm, serviceUrl, "Manufacturers", ce);
+
+    print("\n----- Update Entry ------------------------------");
+    ce = loadEntity("/mymanufacturer2.json");
+    int sc = updateEntity(edm, serviceUrl, "Manufacturers", 123, ce);
+    print("Updated successfully: " + sc);
+    entry = readEntityWithKey(edm, serviceUrl, "Manufacturers", 123);
+    print("Updated Entry successfully: " + prettyPrint(entry.getProperties(), 0));
+
+
+    print("\n----- Delete Entry ------------------------------");
+    sc = deleteEntity(serviceUrl, "Manufacturers", 123);
+    print("Deletion of Entry was successfully: " + sc);
+
+    try {
+      print("\n----- Verify Delete Entry ------------------------------");
+      readEntityWithKey(edm, serviceUrl, "Manufacturers", 123);
+    } catch(Exception e) {
+      print(e.getMessage());
+    }
+  }
+
+  private static void print(String content) {
+    System.out.println(content);
+  }
+
+  private static void print(String content, List&lt;?&gt; list) {
+    System.out.println(content);
+    for (Object o : list) {
+        System.out.println("    " + o);
+    }
+      System.out.println();
+  }
+
+  private static String prettyPrint(Map&lt;String, Object&gt; properties, int level) {
+    StringBuilder b = new StringBuilder();
+    Set&lt;Entry&lt;String, Object&gt;&gt; entries = properties.entrySet();
+
+    for (Entry&lt;String, Object&gt; entry : entries) {
+      intend(b, level);
+      b.append(entry.getKey()).append(": ");
+      Object value = entry.getValue();
+      if(value instanceof Map) {
+        value = prettyPrint((Map&lt;String, Object&gt;) value, level+1);
+      } else if(value instanceof Calendar) {
+        Calendar cal = (Calendar) value;
+        value = SimpleDateFormat.getInstance().format(cal.getTime());
+      }
+      b.append(value).append("\n");
+    }
+    // remove last line break
+    b.deleteCharAt(b.length()-1);
+    return b.toString();
+  }
+  
+  private static String prettyPrint(Collection&lt;ClientProperty&gt; properties, int level) {
+    StringBuilder b = new StringBuilder();
+
+    for (ClientProperty entry : properties) {
+      intend(b, level);
+      ClientValue value = entry.getValue();
+      if (value.isCollection()) {
+        ClientCollectionValue cclvalue = value.asCollection();
+        b.append(prettyPrint(cclvalue.asJavaCollection(), level + 1));
+      } else if (value.isComplex()) {
+        ClientComplexValue cpxvalue = value.asComplex();
+        b.append(prettyPrint(cpxvalue.asJavaMap(), level + 1));
+      } else if (value.isEnum()) {
+        ClientEnumValue cnmvalue = value.asEnum();
+        b.append(entry.getName()).append(": ");
+        b.append(cnmvalue.getValue()).append("\n");
+      } else if (value.isPrimitive()) {
+        b.append(entry.getName()).append(": ");
+        b.append(entry.getValue()).append("\n");
+      }
+    }
+    return b.toString();
+  }
+
+  private static void intend(StringBuilder builder, int intendLevel) {
+    for (int i = 0; i &lt; intendLevel; i++) {
+      builder.append("  ");
+    }
+  }
+
+  public Edm readEdm(String serviceUrl) throws IOException {
+    EdmMetadataRequest request = client.getRetrieveRequestFactory().getMetadataRequest(serviceUrl);
+    ODataRetrieveResponse&lt;Edm&gt; response = request.execute();
+    return response.getBody();
+  }
+
+  public ClientEntitySetIterator&lt;ClientEntitySet, ClientEntity&gt; readEntities(Edm edm, String serviceUri,
+    String entitySetName) {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetName).build();
+    return readEntities(edm, absoluteUri);
+  }
+
+  public ClientEntitySetIterator&lt;ClientEntitySet, ClientEntity&gt; readEntitiesWithFilter(Edm edm, String serviceUri,
+    String entitySetName, String filterName) {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetName).filter(filterName).build();
+    return readEntities(edm, absoluteUri);
+  }
+
+  private ClientEntitySetIterator&lt;ClientEntitySet, ClientEntity&gt; readEntities(Edm edm, URI absoluteUri) {
+    System.out.println("URI = " + absoluteUri);
+    ODataEntitySetIteratorRequest&lt;ClientEntitySet, ClientEntity&gt; request = 
+      client.getRetrieveRequestFactory().getEntitySetIteratorRequest(absoluteUri);
+    request.setAccept("application/json");
+    ODataRetrieveResponse&lt;ClientEntitySetIterator&lt;ClientEntitySet, ClientEntity&gt;&gt; response = request.execute(); 
+      
+    return response.getBody();
+  }
+
+  public ClientEntity readEntityWithKey(Edm edm, String serviceUri, String entitySetName, Object keyValue) {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetName)
+      .appendKeySegment(keyValue).build();
+    return readEntity(edm, absoluteUri);
+  }
+
+  public ClientEntity readEntityWithKeyExpand(Edm edm, String serviceUri, String entitySetName, Object keyValue,
+    String expandRelationName) {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetName).appendKeySegment(keyValue)
+      .expand(expandRelationName).build();
+    return readEntity(edm, absoluteUri);
+  }
+
+  private ClientEntity readEntity(Edm edm, URI absoluteUri) {
+    ODataEntityRequest&lt;ClientEntity&gt; request = client.getRetrieveRequestFactory().getEntityRequest(absoluteUri);
+    request.setAccept("application/json;odata.metadata=full");
+    ODataRetrieveResponse&lt;ClientEntity&gt; response = request.execute(); 
+      
+    return response.getBody();
+  }
+  
+  private ClientEntity loadEntity(String path) throws ODataDeserializerException {
+    InputStream input = getClass().getResourceAsStream(path);
+    return client.getBinder().getODataEntity(client.getDeserializer(ContentType.APPLICATION_JSON).toEntity(input));
+  }
+
+  public ClientEntity createEntity(Edm edm, String serviceUri, String entitySetName, ClientEntity ce) {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entitySetName).build();
+    return createEntity(edm, absoluteUri, ce);
+  }
+
+  private ClientEntity createEntity(Edm edm, URI absoluteUri, ClientEntity ce) {
+    ODataEntityCreateRequest&lt;ClientEntity&gt; request = client.getCUDRequestFactory()
+      .getEntityCreateRequest(absoluteUri, ce);
+    request.setAccept("application/json");
+    ODataEntityCreateResponse&lt;ClientEntity&gt; response = request.execute(); 
+      
+    return response.getBody();
+  }
+
+  public int updateEntity(Edm edm, String serviceUri, String entityName, Object keyValue, ClientEntity ce) {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entityName)
+      .appendKeySegment(keyValue).build();
+    ODataEntityUpdateRequest&lt;ClientEntity&gt; request = 
+      client.getCUDRequestFactory().getEntityUpdateRequest(absoluteUri, UpdateType.PATCH, ce);
+    request.setAccept("application/json;odata.metadata=minimal");
+    ODataEntityUpdateResponse&lt;ClientEntity&gt; response = request.execute();
+    return response.getStatusCode();
+  }
+
+  public int deleteEntity(String serviceUri, String entityName, Object keyValue) throws IOException {
+    URI absoluteUri = client.newURIBuilder(serviceUri).appendEntitySetSegment(entityName)
+      .appendKeySegment(keyValue).build();
+    ODataDeleteRequest request = client.getCUDRequestFactory().getDeleteRequest(absoluteUri);
+    request.setAccept("application/json;odata.metadata=minimal");
+    ODataDeleteResponse response = request.execute();
+    return response.getStatusCode();
+  }
+}
+</code></pre>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="extending-the-edm-generated-from-the-jpa-models">Extending the EDM Generated from the JPA Models<a class="headerlink" href="#extending-the-edm-generated-from-the-jpa-models" title="Permalink">&para;</a></h1>
+<p>The Entity Data Model (EDM) generated from the JPA models can be extended with new Entity Types, Complex Types and also the existing EDM elements can be modified by implementing the interface method <code>org.apache.olingo.odata2.jpa.processor.api.model.JPAEdmExtension.extendJPAEdmSchema</code>.</p>
+<p>Link to the code - <a href="https://gitbox.apache.org/repos/asf?p=olingo-odata2.git;a=blob;f=odata2-jpa-processor/jpa-web/src/main/java/org/apache/olingo/odata2/jpa/processor/ref/extension/SalesOrderProcessingExtension.java;h=3dacd7e727528cb79cb3d4a878ac53d0a4b25277;hb=ecdc476">Support EDM Extension</a></p>
+<h4 id="how-to-add-a-complex-type-to-an-edm">How to Add a Complex Type to an EDM<a class="headerlink" href="#how-to-add-a-complex-type-to-an-edm" title="Permalink">&para;</a></h4>
+<p>Consider a scenario where we have a Plain Old Java Object (POJO) in the OrderValue Java class and let us try to transform this POJO into a Complex Type in the EDM.</p>
+<h6>POJO in OrderValue Java Class</h6>
+<pre><code>    public class OrderValue
+	{
+
+	private double amount;
+	private String currency;
+
+	public double getAmount()
+
+	{ return amount; }
+	public void setAmount(double amount)
+
+	{ this.amount = amount; }
+	public String getCurrency()
+
+	{ return currency; }
+	public void setCurrency(String currency)
+
+	{ this.currency = currency; }
+
+	}
+</code></pre>
+<p>Here is an example where the <code>SalesOrderProcessingExtension</code> implements the <code>JPAEdmExtension</code>.</p>
+<h5 id="sample-code">Sample Code<a class="headerlink" href="#sample-code" title="Permalink">&para;</a></h5>
+<pre><code>            @Override
+	public void extendJPAEdmSchema(final JPAEdmSchemaView view) {
+	  Schema edmSchema = view.getEdmSchema();
+	  edmSchema.getComplexTypes().add(getComplexType());
+	}
+
+	private ComplexType getComplexType() {
+	  ComplexType complexType = new ComplexType();
+
+	  List&lt;Property&gt; properties = new ArrayList&lt;Property&gt;();
+	  SimpleProperty property = new SimpleProperty();
+
+	  property.setName("Amount");
+	  property.setType(EdmSimpleTypeKind.Double);
+	  properties.add(property);
+
+	  property = new SimpleProperty();
+	  property.setName("Currency");
+	  property.setType(EdmSimpleTypeKind.String);
+	  properties.add(property);
+
+	  complexType.setName("OrderValue");
+	  complexType.setProperties(properties);
+
+	  return complexType;
+
+	}
+</code></pre>
+<p>You need to set your <code>JPAEDMExtension</code> type in the <code>initializeODataJPAContext</code> of <code>JPAReferenceServiceFactory</code>.</p>
+<p>The Complex Type added to the EDM can be used as Function Imports Return Type. See <a href="/doc/odata2/tutorials/jpafunctionimport.html">Adding Function Imports to OData Services</a> for more information.</p>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="creating-a-web-application-with-the-annotation-processor-extension">Creating a Web Application with the Annotation Processor Extension<a class="headerlink" href="#creating-a-web-application-with-the-annotation-processor-extension" title="Permalink">&para;</a></h1>
+<h3 id="shortcut-creation-via-archetype">Shortcut: Creation via Archetype<a class="headerlink" href="#shortcut-creation-via-archetype" title="Permalink">&para;</a></h3>
+<p>As a shortcut it is possible to create a sample project which use the Annotation Processor Extension via a Maven Archetype.
+Therefore Maven must be called as shown below:</p>
+<pre><code>mvn archetype:generate \
+  -DinteractiveMode=false \
+  -Dversion=1.0.0-SNAPSHOT \
+  -DgroupId=com.sample \
+  -DartifactId=my-car-service \
+  -DarchetypeGroupId=org.apache.olingo \
+  -DarchetypeArtifactId=olingo-odata2-sample-cars-annotation-archetype \
+  -DarchetypeVersion=2.0.0
+</code></pre>
+<p>In the generated sample project you now can simply run Maven with the default goal (run <code>mvn</code> in the shell) which compiles the sources and starts an Jetty web server at <code>http://localhost:8080</code>.</p>
+<p>For more detailed documentation about Archetypes in Olingo take a look into the <a href="/doc/odata2/sample-setup">sample setup</a> section.</p>
+<h3 id="creation-from-scratch">Creation from Scratch<a class="headerlink" href="#creation-from-scratch" title="Permalink">&para;</a></h3>
+<p>A project which use the Annotation Processor Extension consists mainly of the model beans, the <code>ODataServiceFactory</code> implementation and the web resources (e.g. <code>web.xml</code>).
+In addition we use Maven so that it is necessary to create a <code>pom.xml</code> for project build information and dependency resolution.</p>
+<h5 id="create-maven-project-structure">Create Maven Project structure<a class="headerlink" href="#create-maven-project-structure" title="Permalink">&para;</a></h5>
+<p>To start a folder is created (e.g. <em>annotation-from-scratch</em>) which contains the Maven project.
+Within this the default Maven project structure is used, which looks like:</p>
+<pre><code>./src/main/java 
+./src/main/resources 
+./src/main/webapp 
+</code></pre>
+<h5 id="create-maven-pomxml">Create  Maven pom.xml<a class="headerlink" href="#create-maven-pomxml" title="Permalink">&para;</a></h5>
+<p>After creation of the project structure the default <code>pom.xml</code> for building of an <code>WAR-File</code> have to be created.
+In addition we need the dependency to all necessary <em>Apache Olingo artifacts</em> and to the used <code>JAX-RS</code> implementation which in this sample is <code>Apache CXF</code>.</p>
+<p>The resulting <code>pom.xml</code> then looks like:</p>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    
+  &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+  &lt;artifactId&gt;cars-annotations-sample&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;${project.artifactId}&lt;/name&gt;
+    
+  &lt;packaging&gt;war&lt;/packaging&gt;
+    
+  &lt;properties&gt;
+    &lt;!-- Dependency Versions --&gt;
+    &lt;version.cxf&gt;2.7.6&lt;/version.cxf&gt;
+    &lt;version.servlet-api&gt;2.5&lt;/version.servlet-api&gt;
+    &lt;version.jaxrs-api&gt;2.0-m10&lt;/version.jaxrs-api&gt;
+    &lt;version.olingo&gt;2.0.0&lt;/version.olingo&gt;
+  &lt;/properties&gt;
+    
+  &lt;build&gt;
+    &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;
+    &lt;defaultGoal&gt;clean package&lt;/defaultGoal&gt;
+  &lt;/build&gt;
+
+  &lt;dependencies&gt;
+    &lt;!-- Apache Olingo Library dependencies --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;olingo-odata2-api&lt;/artifactId&gt;
+      &lt;version&gt;${version.olingo}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;artifactId&gt;olingo-odata2-api-annotation&lt;/artifactId&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;type&gt;jar&lt;/type&gt;
+      &lt;version&gt;${version.olingo}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;olingo-odata2-core&lt;/artifactId&gt;
+      &lt;version&gt;${version.olingo}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- Apache Olingo Annotation Processor Extension dependencies --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;olingo-odata2-annotation-processor-api&lt;/artifactId&gt;
+      &lt;version&gt;${version.olingo}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;olingo-odata2-annotation-processor-core&lt;/artifactId&gt;
+      &lt;version&gt;${version.olingo}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- Servlet/REST dependencies --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+      &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+      &lt;version&gt;${version.servlet-api}&lt;/version&gt;
+      &lt;scope&gt;provided&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;javax.ws.rs&lt;/groupId&gt;
+      &lt;artifactId&gt;javax.ws.rs-api&lt;/artifactId&gt;
+      &lt;version&gt;${version.jaxrs-api}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;
+      &lt;artifactId&gt;cxf-rt-frontend-jaxrs&lt;/artifactId&gt;
+      &lt;version&gt;${version.cxf}&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h5 id="create-sample-entity-model">Create Sample (Entity) Model<a class="headerlink" href="#create-sample-entity-model" title="Permalink">&para;</a></h5>
+<p>For this sample a simple model with the two entities <em>Manufacturer</em> and <em>Car</em> is created.</p>
+<p>The <em>Manufacturer</em> consists of an <code>Id</code>, <code>Name</code>, <code>Founded</code> and a relation to a list of its <code>Cars</code>.<br/>
+The <em>Car</em> consists of an <code>Id</code>, <code>Model</code>, <code>ProductionYear</code>, <code>Price</code> and a relation to its <code>Manufacturer</code>.</p>
+<p><strong>Create Java Beans for Entities</strong>
+For each of both entities first a java bean (<em>POJO</em>) is created in the package <code>org.apache.olingo.sample.annotation.model</code> (which results in a created folder <code>src/main/java/org/apache/olingo/sample/annotation/model/</code>) which looks like:</p>
+<pre><code class="language-java">package org.apache.olingo.sample.annotation.model;
+
+/** required Imports */
+
+public class Manufacturer {
+  private String id;
+  private String name;
+  private Calendar founded;
+  private List&lt;Car&gt; cars = new ArrayList&lt;Car&gt;();
+  
+  /** optional getter and setter */
+}
+</code></pre>
+<p>and:</p>
+<pre><code class="language-java">package org.apache.olingo.sample.annotation.model;
+    
+/** required Imports */
+    
+public class Car {
+  private String id;
+  private String model;
+  private Double price;
+  private Integer productionYear;
+  private Manufacturer manufacturer;
+  
+  /** optional getter and setter */
+}
+</code></pre>
+<p><strong>Annotated created Java Beans</strong>
+Now those beans have to be annotated with the annotations of the <em>Annotation Processor Extension</em>.</p>
+<p>Both beans needs at first the <code>@EdmEntityType</code> and <code>@EdmEntitySet</code> annotation to define that they represent an OData Entity. These annotation must be added at the bean class which as example for the <em>Manufacturer</em> then look like:</p>
+<pre><code class="language-java">@EdmEntityType
+@EdmEntitySet
+public class Manufacturer { /** more code */ }
+</code></pre>
+<p>Then all simple properties of the Entity must be annotated with <code>@EdmProperty</code>, the <em>Key</em> for the Entity additional must be annotated with <code>@EdmKey</code> which is in this sample the <code>Id</code> field of the entities.</p>
+<p>For the <em>Manufacturer</em> it then look like:</p>
+<pre><code class="language-java">@EdmEntityType
+@EdmEntitySet
+public class Manufacturer {
+  @EdmKey
+  @EdmProperty
+  private String id;
+  @EdmProperty
+  private String name;
+  @EdmProperty
+  private Calendar founded;
+
+ /** more code */ 
+}
+</code></pre>
+<p>A relation to another Entity must be annotated with <code>@EdmNavigationProperty</code>. In this sample this are the bi-directional relation between a <em>Manufacturer</em> and its <em>Cars</em>.</p>
+<p>For the <em>Manufacturer</em> the added annotation look like:</p>
+<pre><code class="language-java">@EdmEntityType
+@EdmEntitySet
+public class Manufacturer {
+  /** more code */ 
+
+  @EdmNavigationProperty
+  private List&lt;Car&gt; cars = new ArrayList&lt;Car&gt;();
+    
+  /** more code */ 
+}
+</code></pre>
+<p>The complete resulting Entities (POJOs) then look like:</p>
+<pre><code class="language-java">package org.apache.olingo.sample.annotation.model;
+    
+import java.util.*;
+import org.apache.olingo.odata2.api.annotation.edm.*;
+    
+@EdmEntityType
+@EdmEntitySet
+public class Manufacturer {
+  @EdmKey
+  @EdmProperty
+  private String id;
+  @EdmProperty
+  private String name;
+  @EdmProperty
+  private Calendar founded;
+  @EdmNavigationProperty
+  private List&lt;Car&gt; cars = new ArrayList&lt;Car&gt;();
+   
+  /** optional getter and setter */
+}
+</code></pre>
+<p>and</p>
+<pre><code class="language-java">package org.apache.olingo.sample.annotation.model;
+    
+import org.apache.olingo.odata2.api.annotation.edm.*;
+    
+@EdmEntityType
+@EdmEntitySet
+public class Car {
+  @EdmKey
+  @EdmProperty
+  private String id;
+  @EdmProperty
+  private String model;
+  @EdmProperty
+  private Double price;
+  @EdmProperty
+  private Integer productionYear;
+  @EdmNavigationProperty
+  private Manufacturer manufacturer;
+    
+  /** optional getter and setter */
+}
+</code></pre>
+<p>The next step is to create the <code>ODataService</code>.</p>
+<h5 id="create-odataservice">Create ODataService<a class="headerlink" href="#create-odataservice" title="Permalink">&para;</a></h5>
+<p>The <code>ODataService</code> is created via an <code>ODataServiceFactory</code> implementation.
+For the sample a <code>AnnotationSampleServiceFactory</code> in the package <code>org.apache.olingo.sample.annotation.processor</code> (which results in a created folder <code>src/main/java/org/apache/olingo/sample/annotation/processor/</code>) is created which  extends the <code>ODataServiceFactory</code>. The resulting code look like:</p>
+<pre><code class="language-java">package org.apache.olingo.sample.annotation.processor;
+
+/** required Imports */
+
+public class AnnotationSampleServiceFactory extends ODataServiceFactory {
+  @Override
+  public ODataService createService(final ODataContext context) throws ODataException {
+    return null;
+  }
+}
+</code></pre>
+<p>In the <code>createService(...)</code> method now the <code>ODataService</code> needs to be created.
+The <em>Annotation Processor Extension</em> provides therefore the method <code>createAnnotationService(...)</code> within the <code>AnnotationServiceFactory</code> which can be used. This method require as parameter the <em>Package</em> which contains the <em>Model</em> in form of annotated POJOs (as created in the section <em>Create the Model</em>).</p>
+<p>For a persistence between several request it is necessary to hold the created <code>ODataService</code> in an static instance. In the sample the <a href="http://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom">Initialization on demand holder idiom</a> is used.</p>
+<p>As result the implementation look like:</p>
+<pre><code class="language-java">package org.apache.olingo.sample.annotation.processor;
+
+import org.apache.olingo.odata2.api.*;
+import org.apache.olingo.odata2.api.exception.*;
+import org.apache.olingo.odata2.api.processor.ODataContext;
+import org.apache.olingo.odata2.annotation.processor.api.AnnotationServiceFactory;
+
+public class AnnotationSampleServiceFactory extends ODataServiceFactory {
+
+  /**
+   * Instance holder for all annotation relevant instances which should be used as singleton
+   * instances within the ODataApplication (ODataService)
+   */
+  private static class AnnotationInstances {
+    final static String MODEL_PACKAGE = "org.apache.olingo.sample.annotation.model";
+    final static ODataService ANNOTATION_ODATA_SERVICE;
+        
+    static {
+      try {
+        ANNOTATION_ODATA_SERVICE = AnnotationServiceFactory.createAnnotationService(MODEL_PACKAGE);
+      } catch (ODataApplicationException ex) {
+        throw new RuntimeException("Exception during sample data generation.", ex);
+      } catch (ODataException ex) {
+        throw new RuntimeException("Exception during data source initialization generation.", ex);
+      }
+    }
+  }
+
+  public ODataService createService(final ODataContext context) throws ODataException {
+    return AnnotationInstances.ANNOTATION_ODATA_SERVICE;
+  }
+}
+</code></pre>
+<p>Now the model as well as the service creation is done.
+The next step is to provide the necessary resources to run the application within an application server.</p>
+<h5 id="create-web-application-resources">Create Web Application resources<a class="headerlink" href="#create-web-application-resources" title="Permalink">&para;</a></h5>
+<p>To deploy and run the application on an application server it is necessary to provide a <code>web.xml</code> which defines the <code>JAX-RS</code> entry point which then calls the sample application.</p>
+<p>For this sample <code>Apache CXF</code> is used (see <code>&lt;servlet-class&gt;org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet&lt;/servlet-class&gt;</code>) which need as parameter the <code>javax.ws.rs.Application</code> and the <code>org.apache.olingo.odata2.service.factory</code>.</p>
+<p>Therefore the <code>web.xml</code> is created in the <code>src/main/webapp/WEB-INF</code> folder with following content:</p>
+<pre><code class="language-xml">    &lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        	id="WebApp_ID" version="2.5"&gt;
+	    &lt;display-name&gt;org.apache.olingo.sample.annotation&lt;/display-name&gt;
+        	&lt;servlet&gt;
+		        &lt;servlet-name&gt;ServiceServlet&lt;/servlet-name&gt;
+	        	&lt;servlet-class&gt;org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet&lt;/servlet-class&gt;
+        		&lt;init-param&gt;
+			      &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt;
+		              &lt;param-value&gt;org.apache.olingo.odata2.core.rest.app.ODataApplication&lt;/param-value&gt;
+	        	&lt;/init-param&gt;
+        		&lt;init-param&gt;
+		            &lt;param-name&gt;org.apache.olingo.odata2.service.factory&lt;/param-name&gt;
+	    		    &lt;param-value&gt;org.apache.olingo.sample.annotation.processor.AnnotationSampleServiceFactory&lt;/param-value&gt;
+        		&lt;/init-param&gt;
+		    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+	    &lt;/servlet&gt;
+    
+	    &lt;servlet-mapping&gt;
+    		    &lt;servlet-name&gt;ServiceServlet&lt;/servlet-name&gt;
+		    &lt;url-pattern&gt;/AnnotationSample.svc/*&lt;/url-pattern&gt;
+	    &lt;/servlet-mapping&gt;
+    &lt;/web-app&gt;
+</code></pre>
+<h5 id="deploy-and-run">Deploy and Run<a class="headerlink" href="#deploy-and-run" title="Permalink">&para;</a></h5>
+<p>Build the project with maven via <code>mvm clean package</code> and copy the resulting <code>WAR-File</code> from the projects <code>target</code> folder in the <code>deploy</code> folder of the web application server (e.g. a <a href="http://tomcat.apache.org/">Tomcat</a>).
+As example for a default Tomcat 7.x installation <code>cp $PROJECT_HOME/target/cars-annotations-sample.war $TOMCAT_HOME/webapps</code>.</p>
+<p>After starting the web application server it is possible to request...</p>
+<ul>
+<li>...the <em>Service Document</em> via the URL: <a href="http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/">http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/</a></li>
+<li>...the <em>Metadata</em> via the URL: <a href="http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/$metadata">http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/$metadata</a></li>
+<li>...the <em>Cars</em> EntitySet via the URL: <a href="http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/CarSet">http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/CarSet</a></li>
+<li>...the <em>Manufacturer</em> EntitySet via the URL: <a href="http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/ManufacturerSet">http://localhost:8080/cars-annotations-sample/AnnotationSample.svc/ManufacturerSet</a></li>
+</ul>
+<p>Also it is possible to create <em>Car</em> and <em>Manufacturer</em> Entities via <code>HTTP POST</code> requests.</p>
+<h3 id="more-detailed-look">More detailed look<a class="headerlink" href="#more-detailed-look" title="Permalink">&para;</a></h3>
+<p>A more detailed look into the Annotation Processor Extension can be found in the <a href="https://wiki.apache.org/Olingo/Documentation/AnnotationProcessor">wiki</a>.</p>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-build-an-odata-service-with-olingo-v4">How to build an OData Service with Olingo V4<a class="headerlink" href="#how-to-build-an-odata-service-with-olingo-v4" title="Permalink">&para;</a></h1>
+<h1 id="part-51-system-query-options-top-skip-count">Part 5.1: System Query Options <code>$top</code>, <code>$skip</code>, <code>$count</code><a class="headerlink" href="#part-51-system-query-options-top-skip-count" title="Permalink">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink">&para;</a></h2>
+<p>In the present tutorial, we&rsquo;ll learn how to implement <strong>system query options</strong>.
+Query options are used to refine the result of a query.
+The <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part2-url-conventions/odata-v4.0-errata02-os-part2-url-conventions-complete.html#_Toc406398093">OData V4 specification document</a> gives the following definition:</p>
+<blockquote>
+<p>&ldquo;System query options are query string parameters that control the amount and order of the data returned for the resource identified by the URL. The names of all system query options are prefixed with a dollar ($) character.&rdquo;</p>
+</blockquote>
+<p>Query options are not part of the resource path, they&rsquo;re appended to the URL after the <code>?</code>.
+As an example the URL <a href="http://localhost:8080/my/page?example=true">http://localhost:8080/my/page?example=true</a> has <em>example</em> as <em>query option</em> with the value <em>true</em>.</p>
+<p>As an example for a system query option in Odata:
+When querying the list of products, the order of the returned entries is defaulted by the OData service.
+However, the user can change the order of the list by specifying the query option <code>$orderby</code>.</p>
+<p>Examples for system query options that are commonly used:</p>
+<ul>
+<li><code>$top</code></li>
+<li><code>$skip</code></li>
+<li><code>$count</code></li>
+<li><code>$select</code></li>
+<li><code>$orderby</code></li>
+<li><code>$filter</code></li>
+<li><code>$expand</code></li>
+</ul>
+<p>The present tutorial focuses on the first three query options: <code>$top</code>, <code>$skip</code> and <code>$count</code></p>
+<p><strong>Examples</strong></p>
+<p>The following example calls are based on our sample service and illustrate the usage of these 3 query options.</p>
+<p>First, just to remember, the &ldquo;normal&rdquo; query of the product without query options:
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products">http://localhost:8080/DemoService/DemoService.svc/Products</a></p>
+<p><img alt="AllProductsNoQueryOption" src="responseFull.jpg" title="The full list of Products"/></p>
+<p>The following URL provides only the first 2 entries and ignores all the rest:
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$top=2">http://localhost:8080/DemoService/DemoService.svc/Products?$top=2</a></p>
+<p><img alt="ProductsWith$top" src="responseTop2.jpg" title="The first 2 entries of the list of Products"/></p>
+<p>The following request returns the products starting with the 3rd and ignores the first 2 entries:
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$skip=2">http://localhost:8080/DemoService/DemoService.svc/Products?$skip=2</a></p>
+<p><img alt="ProductsWith$skip" src="responseSkip2.jpg" title="Skipping the first 2 entries of the list of Products"/></p>
+<p>The following request returns the total number of products and includes it in the payload:
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$count=true">http://localhost:8080/DemoService/DemoService.svc/Products?$count=true</a></p>
+<p><img alt="ProductsWith$count" src="responseCount.jpg" title="The full list of Products with the count added in the payload"/></p>
+<p><strong>Note:</strong>
+TThe final source code can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.
+This tutorial can be found in subdirectory <em>\samples\tutorials\p5_queryoptions-tcs</em></p>
+<p><strong>Disclaimer:</strong>
+Again, in the present tutorial, we&rsquo;ll focus only on the relevant implementation, in order to keep the code small and simple. The sample code shouldn&rsquo;t be reused for advanced scenarios.</p>
+<p><strong>Table of Contents</strong></p>
+<ol>
+<li>Prerequisites</li>
+<li>Preparation</li>
+<li>Implementating system query options
+<ol>
+<li>Implement <code>$count</code></li>
+<li>Implement <code>$skip</code></li>
+<li>Implement <code>$top</code></li>
+</ol>
+</li>
+<li>Run the implemented service</li>
+<li>Summary</li>
+<li>Links</li>
+</ol>
+<hr/>
+<h1 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permalink">&para;</a></h1>
+<p>Same prerequisites as in <a href="/doc/odata4/tutorials/read/tutorial_read.html">Tutorial Part 1: Read Entity Collection</a>
+and <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Tutorial Part 2: Read Entity</a> as well as basic knowledge about the concepts presented in both tutorials.</p>
+<hr/>
+<h1 id="2-preparation">2. Preparation<a class="headerlink" href="#2-preparation" title="Permalink">&para;</a></h1>
+<p>Follow <a href="/doc/odata4/tutorials/read/tutorial_read.html">Tutorial Part 1: Read Entity Collection</a>
+and <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Tutorial Part 2: Read Entity</a> or as shortcut import the project attached to Tutorial Part 2 into your Eclipse workspace.</p>
+<p>Afterwards do a <em>Deploy and run</em>: it should be working.</p>
+<hr/>
+<h1 id="3-implementing-system-query-options">3. Implementing system query options<a class="headerlink" href="#3-implementing-system-query-options" title="Permalink">&para;</a></h1>
+<p>The system query options we&rsquo;re focusing on are applied to the entity collection only (for example, it doesn&rsquo;t make sense to apply a <code>$top</code> to a READ request of a single entity)</p>
+<p>Therefore our implementation for all three query options is done in the class
+<code>myservice.mynamespace.service.DemoEntityCollectionProcessor</code></p>
+<p>The general sequence of the implementation remains unchanged:</p>
+<ol>
+<li>Analyze the URI</li>
+<li>Fetch data from backend</li>
+<li>Serialize</li>
+<li>Configure the response</li>
+</ol>
+<p>The only difference is that we apply the query options after getting the data from the backend (our database-mock).
+So the procedure will be:</p>
+<ol>
+<li>Analyze the URI</li>
+<li>Fetch data from backend</li>
+<li>Apply all system query options</li>
+<li>Serialize</li>
+<li>Configure the response</li>
+</ol>
+<p>The following sections describe how such system query options are implemented.
+The procedure will be similar in all 3 cases:</p>
+<ol>
+<li>Get the query option from the UriInfo. If null is returned then nothing has to be done.</li>
+<li>Get the value from the query option</li>
+<li>Analyze the value</li>
+<li>Modify the EntityCollection</li>
+</ol>
+<h2 id="31-implement-count">3.1. Implement <code>$count</code><a class="headerlink" href="#31-implement-count" title="Permalink">&para;</a></h2>
+<p><strong>Background</strong>
+The <code>$count</code> allows users to request a count of the matching resources.
+The number will be included with the resources in the response (see screenshot above).</p>
+<p>The user specifies the <code>$count</code> as follows:
+<code>$count=true</code>
+<code>$count=false</code></p>
+<p>If the value of <code>$count</code> is set to <em>false</em>, then no number is returned, the same like if <code>$count</code> is not specified at all. However, this case has to be considered in our code as well.</p>
+<p>Note:
+For those who are used to OData V2:
+In V2, the query option <code>$inlinecount</code> has now been replaced in V4 by <code>$count=true</code>.
+In V2, the <code>/$count</code> that was part of the resource path, has now been removed in V4.</p>
+<p>There&rsquo;s one more important detail that we have to consider before writing the code:
+<code>$count</code> always returns the original number of entities, without considering <em>$top</em> and <code>$skip</code>.
+This is specified by the <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398308">OData V4 specification</a>:</p>
+<blockquote>
+<p>&ldquo;The <code>$count</code> system query option ignores any $top, <code>$skip</code>, or <code>$expand</code> query options, and returns the total count of results across all pages including only those results matching any specified <code>$filter</code> and $search.&rdquo;</p>
+</blockquote>
+<p>Therefore, in our sample code, the <code>$count</code> will be the first to be implemented, to make sure that the data provided by the backend is not modified at the moment when we "count" it.</p>
+<p><strong>Implementation</strong>
+As in the previous tutorials, the data is fetched from the backend.
+It is provided as <code>EntityCollection</code> which we can ask for the list of contained <code>Entity</code> instances.
+The size of this genuine list is the relevant information for our <code>$count</code>.
+Furthermore, we create a new instance of an <code>EntityCollection</code> object, which will carry the modified list of entities after applying all the query options.</p>
+<pre><code class="language-java">    EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
+    List&lt;Entity&gt; entityList = entityCollection.getEntities();
+    EntityCollection returnEntityCollection = new EntityCollection();
+</code></pre>
+<p>Then we proceed with the 4 steps as described above:</p>
+<ol>
+<li>Get the query option from the <code>UriInfo</code>. If null is returned then nothing has to be done.</li>
+<li>Get the value from the query option</li>
+<li>Analyze the value</li>
+<li>Modify the <code>EntityCollection</code></li>
+</ol>
+<p>And this is the sample code:</p>
+<pre><code class="language-java">    CountOption countOption = uriInfo.getCountOption();
+    if (countOption != null) {
+        boolean isCount = countOption.getValue();
+        if(isCount){
+            returnEntityCollection.setCount(entityList.size());
+        }
+    }
+</code></pre>
+<p><strong>Note:</strong>
+We don&rsquo;t need to check if the value of the <code>$count</code> is incorrect (e.g. <code>$count=xxx</code>), as this is handled by the <em>Olingo OData V4</em> library.</p>
+<p>One additional step has to be considered:
+As we know, if <code>$count=true</code> is specified, the structure of the response payload is different.
+So we have to inform the serializer.that <code>$count</code> has to be considered.
+So we have to modify the line of code, where the <code>EntityCollectionSerializerOptions</code> is created:</p>
+<pre><code class="language-java">    EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
+                                             .contextURL(contextUrl)
+                                             .id(id)
+                                             .count(countOption)
+                                             .build();
+</code></pre>
+<p>Furthermore, we have to change the following line, because the <code>EntityCollection</code> to be returned is now different;</p>
+<pre><code class="language-java">    SerializerResult serializerResult = serializer.entityCollection(serviceMetadata,
+                                        edmEntityType,
+                                        returnEntityCollection,
+                                        opts);
+</code></pre>
+<h2 id="32-implement-skip">3.2. Implement <code>$skip</code><a class="headerlink" href="#32-implement-skip" title="Permalink">&para;</a></h2>
+<p><strong>Background</strong>
+With the query option <code>$skip</code>, the user of an OData service can specify the number of entries that should be ignored at the beginning of a collection.
+So if a user specifies <code>$skip=n</code> then our OData service has to return the list of entries starting at position n+1</p>
+<p>One important rule that we have to consider is described by the <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398306">OData V4 specification</a>:</p>
+<blockquote>
+<p>&ldquo;Where <code>$top</code> and <code>$skip</code> are used together, <code>$skip</code> MUST be applied before $top, regardless of the order in which they appear in the request.&rdquo;</p>
+</blockquote>
+<p>This means for us that we add the code for <code>$skip</code> before the code for <code>$top</code>.</p>
+<p><strong>Implementation</strong></p>
+<p>Again we follow the 4 mentioned steps.
+We get the <code>SkipOption</code> object from the <code>UriInfo</code>.
+If the <code>SkipOption</code> is null, then it hasn&rsquo;t been specified by the user.
+Since it is not mandatory to specify any query option, we can ignore the case of <code>SkipOption</code> being null.
+We ask the <code>SkipOption</code> object for the value that has been specified by the user.
+Since the user might give invalid numbers, we have to check that and throw an exception with HTTP status as &ldquo;Bad Request&rdquo;.
+Then we can do the actual job, which is adapting the backend-data according to the specified <code>$skip</code>.</p>
+<pre><code class="language-java">    SkipOption skipOption = uriInfo.getSkipOption();
+    if (skipOption != null) {
+        int skipNumber = skipOption.getValue();
+        if (skipNumber &gt;= 0) {
+            if(skipNumber &lt;= entityList.size()) {
+                entityList = entityList.subList(skipNumber, entityList.size());
+            } else {
+                // The client skipped all entities
+                entityList.clear();
+            }
+        } else {
+            throw new ODataApplicationException("Invalid value for $skip", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ROOT);
+        }
+    }
+</code></pre>
+<p>After applying the query option, we have the desired set of entities in the variable <code>entityList</code>.
+Now we have to populate the <code>EntityCollection</code> instance, that we created in the section above, with these entities, before we can pass it to the serializer:</p>
+<pre><code class="language-java">    for(Entity entity : entityList){
+        returnEntityCollection.getEntities().add(entity);
+    }
+</code></pre>
+<h2 id="33-implement-top">3.3. Implement $top<a class="headerlink" href="#33-implement-top" title="Permalink">&para;</a></h2>
+<p><strong>Background</strong>
+With the query option <code>$top</code>, the user of an OData service can specify the maximum number of entries that should be returned, starting from the beginning.</p>
+<p><strong>Implementation</strong></p>
+<p>Again we follow the 4 mentioned steps, the code is very similar, only the logic for reducing the entityList is different:</p>
+<pre><code class="language-java">    TopOption topOption = uriInfo.getTopOption();
+    if (topOption != null) {
+        int topNumber = topOption.getValue();
+        if (topNumber &gt;= 0) {
+            if(topNumber &lt;= entityList.size()) {
+                entityList = entityList.subList(0, topNumber);
+            }  // else the client has requested more entities than available =&gt; return what we have
+        } else {
+            throw new ODataApplicationException("Invalid value for $top", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ROOT);
+        }
+    }
+</code></pre>
+<p>So now we can finally have a look at the full implementation of the <code>readEntityCollection()</code> method, containing all the three query options:</p>
+<pre><code class="language-java">    public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
+                                    throws ODataApplicationException, SerializerException {
+
+        // 1st retrieve the requested EntitySet from the uriInfo
+        List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+        UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
+        EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+
+        // 2nd: fetch the data from backend for this requested EntitySetName
+        EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
+
+        // 3rd: apply System Query Options
+        // modify the result set according to the query options, specified by the end user
+        List&lt;Entity&gt; entityList = entityCollection.getEntities();
+        EntityCollection returnEntityCollection = new EntityCollection();
+
+        // handle $count: return the original number of entities, ignore $top and $skip
+        CountOption countOption = uriInfo.getCountOption();
+        if (countOption != null) {
+            boolean isCount = countOption.getValue();
+            if(isCount){
+                returnEntityCollection.setCount(entityList.size());
+            }
+        }
+
+        // handle $skip
+        SkipOption skipOption = uriInfo.getSkipOption();
+        if (skipOption != null) {
+            int skipNumber = skipOption.getValue();
+            if (skipNumber &gt;= 0) {
+                if(skipNumber &lt;= entityList.size()) {
+                    entityList = entityList.subList(skipNumber, entityList.size());
+                } else {
+                    // The client skipped all entities
+                    entityList.clear();
+                }
+            } else {
+                throw new ODataApplicationException("Invalid value for $skip", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ROOT);
+            }
+        }
+
+        // handle $top
+        TopOption topOption = uriInfo.getTopOption();
+        if (topOption != null) {
+            int topNumber = topOption.getValue();
+            if (topNumber &gt;= 0) {
+                if(topNumber &lt;= entityList.size()) {
+                    entityList = entityList.subList(0, topNumber);
+                }  // else the client has requested more entities than available =&gt; return what we have
+            } else {
+                throw new ODataApplicationException("Invalid value for $top", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ROOT);
+            }
+        }
+
+        // after applying the query options, create EntityCollection based on the reduced list
+        for(Entity entity : entityList){
+            returnEntityCollection.getEntities().add(entity);
+        }
+
+        // 4th: create a serializer based on the requested format (json)
+        ODataSerializer serializer = odata.createSerializer(responseFormat);
+
+        // and serialize the content: transform from the EntitySet object to InputStream
+        EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+        ContextURL contextUrl = ContextURL.with().entitySet(edmEntitySet).build();
+
+        final String id = request.getRawBaseUri() + "/" + edmEntitySet.getName();
+        EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
+                                                                .contextURL(contextUrl)
+                                                                .id(id)
+                                                                .count(countOption)
+                                                                .build();
+        SerializerResult serializerResult = serializer.entityCollection(serviceMetadata, edmEntityType,
+                                                                        returnEntityCollection, opts);
+
+        // 5th: configure the response object: set the body, headers and status code
+        response.setContent(serializedContent);
+        response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+        response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
+    }
+</code></pre>
+<hr/>
+<h1 id="4-run-the-implemented-service">4. Run the implemented service<a class="headerlink" href="#4-run-the-implemented-service" title="Permalink">&para;</a></h1>
+<p>After building and deploying your service to your server, you can try the following URLs:</p>
+<ul>
+<li>
+<p>The full collection, no query option
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products">http://localhost:8080/DemoService/DemoService.svc/Products</a></p>
+</li>
+<li>
+<p>First 2 products only
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$top=2">http://localhost:8080/DemoService/DemoService.svc/Products?$top=2</a></p>
+</li>
+<li>
+<p>Exclude the first 2 products
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$skip=2">http://localhost:8080/DemoService/DemoService.svc/Products?$skip=2</a></p>
+</li>
+<li>
+<p>Add the full number of all products to the response payload
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$count=true">http://localhost:8080/DemoService/DemoService.svc/Products?$count=true</a></p>
+</li>
+<li>
+<p>Combine <code>$top</code> and <code>$skip</code>
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$skip=1&amp;$top=1">http://localhost:8080/DemoService/DemoService.svc/Products?$skip=1&amp;$top=1</a>
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$top=1&amp;$skip=1">http://localhost:8080/DemoService/DemoService.svc/Products?$top=1&amp;$skip=1</a>
+Regardless of the order, the result should be the same</p>
+</li>
+<li>
+<p>Combine all 3 query options
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$skip=1&amp;$top=1&amp;$count=true">http://localhost:8080/DemoService/DemoService.svc/Products?$skip=1&amp;$top=1&amp;$count=true</a></p>
+</li>
+</ul>
+<hr/>
+<h1 id="5-summary">5. Summary<a class="headerlink" href="#5-summary" title="Permalink">&para;</a></h1>
+<p>In this tutorial we have learned how enhance our OData service to support system query options.
+In a first step, we&rsquo;ve covered <code>$top</code>, <code>$skip</code> and <code>$count</code>.
+More system query options will be treated in the subsequent tutorials.</p>
+<hr/>
+<h1 id="6-links">6. Links<a class="headerlink" href="#6-links" title="Permalink">&para;</a></h1>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permalink">&para;</a></h3>
+<ul>
+<li>Tutorial OData V4 service part 1: <a href="/doc/odata4/tutorials/read/tutorial_read.html">Read Entity Collection</a></li>
+<li>Tutorial OData V4 service part 2: <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity, Read Property</a></li>
+<li>Tutorial OData V4 service part 3: <a href="/doc/odata4/tutorials/write/tutorial_write.html">Write (Create, Update, Delete Entity)</a></li>
+<li>Tutorial OData V4 service, part 4: <a href="/doc/odata4/tutorials/navigation/tutorial_navigation.html">Navigation</a></li>
+<li>Tutorial OData V4 service, part 5.1: System Query Options $top, $skip, $count (this page)</li>
+<li>Tutorial OData V4 service, part 5.2: <a href="/doc/odata4/tutorials/sqo_es/tutorial_sqo_es.html">System Query Options $select, $expand</a></li>
+<li>Tutorial OData V4 service, part 5.3: <a href="/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.html">System Query Options $orderby</a></li>
+<li>Tutorial OData V4 service, part 5.4: <a href="/doc/odata4/tutorials/sqo_f/tutorial_sqo_f.html">System Query Options $filter</a></li>
+<li>Tutorial ODATA V4 service, part 6: <a href="/doc/odata4/tutorials/action/tutorial_action.html">Action and Function Imports</a></li>
+<li>Tutorial ODATA V4 service, part 7: <a href="/doc/odata4/tutorials/media/tutorial_media.html">Media Entities</a></li>
+<li>Tutorial OData V4 service, part 8: <a href="/doc/odata4/tutorials/batch/tutorial_batch.html">Batch Request support</a></li>
+<li>Tutorial OData V4 service, part 9: <a href="/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.html">Handling "Deep Insert" requests</a></li>
+</ul>
+<h3 id="code-and-repository">Code and Repository<a class="headerlink" href="#code-and-repository" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="https://gitbox.apache.org/repos/asf/olingo-odata4">Git Repository</a></li>
+<li><a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a></li>
+<li><a href="http://www.apache.org/dyn/closer.lua/olingo/odata4/4.0.0/DemoService_Tutorial.zip">Demo Service source code as zip file (contains all tutorials)</a></li>
+</ul>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://odata.org/">Official OData Homepage</a></li>
+<li><a href="http://www.odata.org/documentation/">OData documentation</a></li>
+<li><a href="/javadoc/odata4/index.html">Olingo Javadoc</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

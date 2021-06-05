@@ -1,0 +1,652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-build-an-odata-service-with-olingo-v4">How to build an OData Service with Olingo V4<a class="headerlink" href="#how-to-build-an-odata-service-with-olingo-v4" title="Permalink">&para;</a></h1>
+<h1 id="part-54-system-query-options-filter">Part 5.4: System Query Options: <code>$filter</code><a class="headerlink" href="#part-54-system-query-options-filter" title="Permalink">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink">&para;</a></h2>
+<p>In the present tutorial, we&rsquo;ll continue implementing OData system query options, this time focusing on <code>$filter</code></p>
+<p><strong>Note:</strong>
+The final source code can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.<br/>
+This tutorial can be found in subdirectory <em>\samples\tutorials\p8_queryoptions-f</em></p>
+<p><strong>Table of Contents</strong></p>
+<ol>
+<li>Preparation</li>
+<li>Implementation
+<ol>
+<li>Implement <code>$filter</code></li>
+</ol>
+</li>
+<li>Run the implemented service</li>
+<li>Summary</li>
+<li>Links</li>
+</ol>
+<h1 id="1-preparation">1. Preparation<a class="headerlink" href="#1-preparation" title="Permalink">&para;</a></h1>
+<p>Follow <a href="doc/odata4/tutorials/read/tutorial_read.html">Tutorial Part 1: Read Entity Collection</a> and <a href="doc/odata4/tutorials/readep/tutorial_readep.html">Tutorial Part 2: Read Entity</a> or as shortcut import <em>Part 2: Read Entity, Read Property</em> into your Eclipse workspace.</p>
+<p>Afterwards do a <em>Deploy and run</em>: it should be working.</p>
+<h1 id="2-implementation">2. Implementation<a class="headerlink" href="#2-implementation" title="Permalink">&para;</a></h1>
+<p>The system query options we&rsquo;re focusing on are applied to the entity collection only, therefore our
+implementation for the <code>$filter</code> query options is done in the class
+<code>myservice.mynamespace.service.DemoEntityCollectionProcessor</code></p>
+<p>The general sequence is again:</p>
+<ol>
+<li>Analyze the URI</li>
+<li>Fetch data from backend</li>
+<li>Apply the system query option</li>
+<li>Serialize</li>
+<li>Configure the response</li>
+</ol>
+<h3 id="21-implement-filter">2.1 Implement <code>$filter</code><a class="headerlink" href="#21-implement-filter" title="Permalink">&para;</a></h3>
+<h4 id="background">Background<a class="headerlink" href="#background" title="Permalink">&para;</a></h4>
+<p>When requesting a list of entities from a service, the default behaviour is to return all entities on the list. The consumer of an OData service might want to be able to receive a subset by specifying certain criteria which each of the returned entities have to fulfill.<br/>
+For example, a common use case would be to request all products with a specified minimum and maximum price.
+OData supports this requirement with the system query option <code>$filter</code></p>
+<p>It is specified as follows:</p>
+<pre><code>$filter=&lt;BooleanExpression&gt;
+</code></pre>
+<p>See here for more details:<br/>
+<a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398301">OData Version 4.0 Part 1: Protocol Plus Errata 02</a></p>
+<p><a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part2-url-conventions/odata-v4.0-errata02-os-part2-url-conventions-complete.html#_Toc406398094">OData Version 4.0 Part 2: URL Conventions Plus Errata 02</a></p>
+<p>The expression given by the <code>$filter</code> query option has to return a Boolean value when applied to a certain entity on the entity list. If the value returned for a given entity is <em>&ldquo;true&rdquo;</em>, the service has to return the entity. Otherwise the service has to discard the entity.</p>
+<p><strong>Example</strong></p>
+<p>First, just to remember how the full payload looks like, the &ldquo;normal&rdquo; query of the product:</p>
+<p><a href="http://localhost:8080/DemoService/DemoService.svc/Products">http://localhost:8080/DemoService/DemoService.svc/Products</a></p>
+<p><img alt="AllProductsWithoutFilter" src="no_filter.png" title="All products without filter"/></p>
+<p>Now have a look to the following Uri:<br/>
+[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID eq 1 or contains(Description,'1280')]([http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID eq 1 or contains(Description,'1280'))</p>
+<p>The <code>$filter</code> system query option has been applied to the Products Entity Collection. The client requests all products which fulfills the following condition: ID equals to one or the Description should contain the string &lsquo;1280&rsquo;</p>
+<p><img alt="ProductsWithFilter" src="filter_applied.png" title="Products with applied $filter"/></p>
+<p><strong>Visitor pattern</strong></p>
+<p>First things first, the Uri parser creates an <em>abstract syntax tree</em> (AST).  An abstract syntax tree describes the expression in a hierarchical way. (see figure 1) For example to calculate the root node, all nodes below have to be calculated first. The idea is to traverse the tree in pre order (depth-first).</p>
+<p>Consider the following Uri</p>
+<pre><code>&ldquo;/Products?$format=(Price lt 2000) and contains(Description,&rsquo;Notebook&rsquo;)&rdquo;.
+</code></pre>
+<p>As you can see, the intention is to request all Products, which costs less than 2000 monetary units and contains the word &lsquo;Notebook&rsquo; in their description. The expression is split up in two parts by the binary operator &ldquo;and&rdquo;.  To calculate the result of the &ldquo;and&rdquo; node, the left and also the right child have to be calculated first. The left child itself is another binary operation. So to calculate &ldquo;less than&rdquo; the type and value of the property &ldquo;Price&rdquo; has to be determined. And so on...</p>
+<p><img alt="AbstractSyntaxTree" src="ast.png" title="Abstract syntax tree of the filter expression &ldquo;Price lt 2000 and contains(Description,&rsquo;Notebook&rsquo;)"/></p>
+<p>Key<br/>
+<img alt="AbstractSyntaxTree" src="keyAST.png" title="Key abstract syntax tree"/></p>
+<p>So the following actions have to be done (The values of the properties are fictitious):</p>
+<table class="table">
+<thead>
+<tr>
+<th>Action</th>
+<th>Result - Type</th>
+<th>Result</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Get the value of the property &ldquo;Price&rdquo;</td>
+<td>Edm.Double</td>
+<td>500.00</td>
+<td>visitMember</td>
+</tr>
+<tr>
+<td>2. Determine the Type and value of the literal 2000.00</td>
+<td>Edm.Double</td>
+<td>2000.00</td>
+<td>visitLiteral</td>
+</tr>
+<tr>
+<td>3. Calculate &ndash; 500.00 <strong>lt</strong> 2000</td>
+<td>Edm.Boolean</td>
+<td>true</td>
+<td>visitBinaryOperator</td>
+</tr>
+<tr>
+<td>4. Get the value of the Property &ldquo;Description&rdquo;</td>
+<td>Edm.String</td>
+<td>"Notebook basic..."</td>
+<td>visitMember</td>
+</tr>
+<tr>
+<td>5. Determine the type and value of the literal &lsquo;Notebook&rsquo;</td>
+<td>Edm.String</td>
+<td>&ldquo;Notebook&rdquo;</td>
+<td>visitLiteral</td>
+</tr>
+<tr>
+<td>6. Calculate &ndash; <strong>contains</strong>(&ldquo;Notebook Basic&hellip;&rdquo;, &ldquo;Notebook&rdquo;)</td>
+<td>Edm.Boolean</td>
+<td>true</td>
+<td>visitMethodCall</td>
+</tr>
+<tr>
+<td>7. Calculate &ndash; true <strong>and</strong> true</td>
+<td>Edm.Boolean</td>
+<td>true</td>
+<td>visitBinaryOperator</td>
+</tr></tbody></table>
+<p>Olingo uses the vistor pattern to traverse the AST. Each of these actions is mapped to one method of the ExpressionVistor interface. You can see the name of the methods in last column of table 1. As service developers we have to implement this methods but we do not have to take care about calling them. The libaray will call the proper method and we have only to calculate the result.</p>
+<h4 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permalink">&para;</a></h4>
+<p>First we will create the <em>Filter Expression Visitor</em> and after that, we will integrate the just created Visitor in <code>EntityCollectionProcessor</code>.</p>
+<p><strong>1.1 Create our FilterExpressionVisitor</strong></p>
+<p>Create a new class <code>FilterExpressionVisitor</code> in package <code>myservice.mynamespace.service</code> and<br/>
+implement the Interface <code>org.apache.olingo.server.api.uri.queryoption.expression.ExpressionVisitor</code>.</p>
+<p>As you mentioned the interface needs a generic parameter.
+This generic type is used as (return) parameter for the visitXXX methods (e.g. <code>visitLiteral</code> ). It is up to your implementation to
+choose a proper type for your use case. The main task is to keep track of the type and also the return value of a node in the abstract syntax tree.
+In real world scenarios it is common to build a statement to query a database or backend instead modifying the preloaded data.</p>
+<p>In this tutorial we will use just <code>Object</code> and pass the native Java values around.</p>
+<pre><code class="language-java">public class FilterExpressionVisitor implements ExpressionVisitor&lt;Object&gt; {
+</code></pre>
+<p>Please create also a constructor to pass an entity to our visitor implementation.</p>
+<pre><code class="language-java">private Entity currentEntity;
+
+public FilterExpressionVisitor(Entity currentEntity) {
+    this.currentEntity = currentEntity;
+}
+</code></pre>
+<p><strong>1.2 Implement the interface</strong></p>
+<p>In this basic tutorial we will implement only a subset of the Expression Visitor.
+The following methods will <strong>not</strong> be implemented. Add an <code>ODataApplicationException</code> to their bodies:</p>
+<ul>
+<li><code>public Object visitTypeLiteral(EdmType type)</code></li>
+<li><code>public Object visitAlias(String aliasName)</code></li>
+<li><code>public Object visitEnum(EdmEnumType type, List&lt;String&gt; enumValues)</code></li>
+<li><code>public Object visitLambdaExpression(String lambdaFunction, String lambdaVariable, Expression expression)</code></li>
+<li><code>public Object visitLambdaReference(String variableName)</code></li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="language-java">@Override
+public Object visitTypeLiteral(EdmType type) throws ExpressionVisitException, ODataApplicationException {
+    throw new ODataApplicationException("Type literals are not implemented",
+        			HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+}
+</code></pre>
+<p><strong>Implement method visitMember</strong><br/>
+This method is been called if the current node in the AST is a property. So all we have to do is to take the current entity and return the value of the addressed property.</p>
+<pre><code class="language-java">public Object visitMember(UriInfoResource member) throws ExpressionVisitException, ODataApplicationException {
+    // To keeps things simple, this tutorial allows only primitive properties.
+    // We have faith that the java type of Edm.Int32 is Integer
+    final List&lt;UriResource&gt; uriResourceParts = member.getUriResourceParts();
+
+    // Make sure that the resource path of the property contains only a single segment and a
+    // primitive property has been addressed. We can be sure, that the property exists because  
+    // the UriParser checks if the property has been defined in service metadata document.
+
+    if(uriResourceParts.size() == 1 &amp;&amp; uriResourceParts.get(0) instanceof UriResourcePrimitiveProperty) {
+      UriResourcePrimitiveProperty uriResourceProperty = (UriResourcePrimitiveProperty) uriResourceParts.get(0);
+      return currentEntity.getProperty(uriResourceProperty.getProperty().getName()).getValue();
+    } else {
+      // The OData specification allows in addition complex properties and navigation    
+      // properties with a target cardinality 0..1 or 1.
+      // This means any combination can occur e.g. Supplier/Address/City
+      //  -&gt; Navigation properties  Supplier
+      //  -&gt; Complex Property       Address
+      //  -&gt; Primitive Property     City
+      // For such cases the resource path returns a list of UriResourceParts
+      throw new ODataApplicationException("Only primitive properties are implemented in filter
+          expressions", HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+    }
+}
+</code></pre>
+<p><strong>Implement method visitLiteral</strong></p>
+<p>The next method takes a String and has to return the type and also the value of literal.</p>
+<p><strong>Example</strong></p>
+<ul>
+<li>"<code>&lsquo;1&rsquo;</code>" is a string with the value "<code>1</code>"</li>
+<li>"<code>1</code>"   could be an Edm.Byte, Edm.SByte, Edm.Int16, Edm.Int32, Edm.Int64, Edm.Single, Edm.Double, Edm.Decimal with value 1</li>
+</ul>
+<p>As you can see in this little example, it can be difficult to guess the right type. In this tutorial we will focus on Edm.Int32.</p>
+<p>In real world scenarios, there is something called &ldquo;numeric promotion&rdquo;, which converts numbers to the next higher type. <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part2-url-conventions/odata-v4.0-errata02-os-part2-url-conventions-complete.html#_Toc406398161">OData Version 4.0 Part 2: URL Conventions Plus Errata 02</a></p>
+<pre><code class="language-java">@Override
+public Object visitLiteral(Literal literal) throws ExpressionVisitException, ODataApplicationException {
+    // To keep this tutorial simple, our filter expression visitor supports only Edm.Int32 and Edm.String
+    // In real world scenarios it can be difficult to guess the type of an literal.
+    // We can be sure, that the literal is a valid OData literal because the URI Parser checks
+    // the lexicographical structure
+     // String literals start and end with an single quotation mark
+    String literalAsString = literal.getText();
+    if(literal.getType() instanceof EdmString) {
+        String stringLiteral = "";
+        if(literal.getText().length() &gt; 2) {
+            stringLiteral = literalAsString.substring(1, literalAsString.length() - 1);
+        }
+
+        return stringLiteral;
+    } else {
+        // Try to convert the literal into an Java Integer
+        try {
+            return Integer.parseInt(literalAsString);
+        } catch(NumberFormatException e) {
+            throw new ODataApplicationException("Only Edm.Int32 and Edm.String literals are implemented",
+                HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+        }
+    }
+}
+</code></pre>
+<p><strong>Implement the operators</strong></p>
+<p>The first two implemented methods dealt on the leaves of the AST. Now we will implement the operations, which can be performed on these values.</p>
+<p>The idea behind the implementation is always the same.</p>
+<ol>
+<li>Check if the types fit together</li>
+<li>If true =&gt; Calculate and return the result</li>
+<li>Otherwise =&gt; Throw an <code>ODataApplicationException</code> with StatusCode 400 Bad Request</li>
+</ol>
+<p>OData supports two different unary operators. First there is the binary negation (<em>not</em>) and second the arithmetic minus (<em>-</em>).</p>
+<pre><code class="language-java">public Object visitUnaryOperator(UnaryOperatorKind operator, Object operand)
+      throws ExpressionVisitException, ODataApplicationException {
+    // OData allows two different unary operators. We have to take care, that the type of the
+    // operand fits to the operand
+
+    if(operator == UnaryOperatorKind.NOT &amp;&amp; operand instanceof Boolean) {
+      // 1.) boolean negation
+      return !(Boolean) operand;
+    } else if(operator == UnaryOperatorKind.MINUS &amp;&amp; operand instanceof Integer){
+      // 2.) arithmetic minus
+      return -(Integer) operand;
+    }
+
+    // Operation not processed, throw an exception
+    throw new ODataApplicationException("Invalid type for unary operator",
+        HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+}
+</code></pre>
+<p>Next are the binary operations.  Have a look at the source code comments for a detailed explanation.&acute;</p>
+<pre><code class="language-java">@Override
+public Object visitBinaryOperator(BinaryOperatorKind operator, Object left, Object right)     
+            throws ExpressionVisitException, ODataApplicationException {
+
+    // Binary Operators are split up in three different kinds. Up to the kind of the
+    // operator it can be applied to different types
+    //   - Arithmetic operations like add, minus, modulo, etc. are allowed on numeric
+    //     types like Edm.Int32
+    //   - Logical operations are allowed on numeric types and also Edm.String
+    //   - Boolean operations like and, or are allowed on Edm.Boolean
+    // A detailed explanation can be found in OData Version 4.0 Part 2: URL Conventions
+
+    if (operator == BinaryOperatorKind.ADD
+        || operator == BinaryOperatorKind.MOD
+        || operator == BinaryOperatorKind.MUL
+        || operator == BinaryOperatorKind.DIV
+        || operator == BinaryOperatorKind.SUB) {
+      return evaluateArithmeticOperation(operator, left, right);
+    } else if (operator == BinaryOperatorKind.EQ
+        || operator == BinaryOperatorKind.NE
+        || operator == BinaryOperatorKind.GE
+        || operator == BinaryOperatorKind.GT
+        || operator == BinaryOperatorKind.LE
+        || operator == BinaryOperatorKind.LT) {
+      return evaluateComparisonOperation(operator, left, right);
+    } else if (operator == BinaryOperatorKind.AND
+        || operator == BinaryOperatorKind.OR) {
+      return evaluateBooleanOperation(operator, left, right);
+    } else {
+      throw new ODataApplicationException("Binary operation " + operator.name() + " is not
+           implemented", HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+    }
+}
+
+private Object evaluateBooleanOperation(BinaryOperatorKind operator, Object left, Object right)
+ 	    throws ODataApplicationException {
+
+    // First check that both operands are of type Boolean
+    if(left instanceof Boolean &amp;&amp; right instanceof Boolean) {
+       Boolean valueLeft = (Boolean) left;
+       Boolean valueRight = (Boolean) right;
+
+       // Than calculate the result value
+       if(operator == BinaryOperatorKind.AND) {
+           return valueLeft &amp;&amp; valueRight;
+       } else {
+           // OR
+           return valueLeft || valueRight;
+       }
+   } else {
+       throw new ODataApplicationException("Boolean operations needs two numeric operands",
+                 HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+   }
+}
+
+private Object evaluateComparisonOperation(BinaryOperatorKind operator, Object left, Object right) throws ODataApplicationException {
+
+    // All types in our tutorial supports all logical operations, but we have to make sure that   
+    // the types are equal
+    if(left.getClass().equals(right.getClass())) {
+      // Luckily all used types String, Boolean and also Integer support the interface
+      // Comparable
+      int result;
+      if(left instanceof Integer) {
+        result = ((Comparable&lt;Integer&gt;) (Integer) left).compareTo((Integer) right);
+      } else if(left instanceof String) {
+        result = ((Comparable&lt;String&gt;) (String) left).compareTo((String) right);
+      } else if(left instanceof Boolean) {
+        result = ((Comparable&lt;Boolean&gt;) (Boolean) left).compareTo((Boolean) right);
+      } else {
+        throw new ODataApplicationException("Class " + left.getClass().getCanonicalName() + " not expected",
+            HttpStatusCode.INTERNAL_SERVER_ERROR.getStatusCode(), Locale.ENGLISH);
+      }
+
+      if (operator == BinaryOperatorKind.EQ) {
+        return result == 0;
+      } else if (operator == BinaryOperatorKind.NE) {
+        return result != 0;
+      } else if (operator == BinaryOperatorKind.GE) {
+        return result &gt;= 0;
+      } else if (operator == BinaryOperatorKind.GT) {
+        return result &gt; 0;
+      } else if (operator == BinaryOperatorKind.LE) {
+        return result &lt;= 0;
+      } else {
+        // BinaryOperatorKind.LT
+        return result &lt; 0;
+      }
+
+    } else {
+      throw new ODataApplicationException("Comparison needs two equal types",
+          HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+    }
+}
+
+private Object evaluateArithmeticOperation(BinaryOperatorKind operator, Object left,
+      	Object right) throws ODataApplicationException {
+
+    // First check if the type of both operands is numerical
+    if(left instanceof Integer &amp;&amp; right instanceof Integer) {
+        Integer valueLeft = (Integer) left;
+        Integer valueRight = (Integer) right;
+
+        // Than calculate the result value
+        if(operator == BinaryOperatorKind.ADD) {
+          return valueLeft + valueRight;
+        } else if(operator == BinaryOperatorKind.SUB) {
+          return valueLeft - valueRight;
+        } else if(operator == BinaryOperatorKind.MUL) {
+          return valueLeft * valueRight;
+        } else if(operator == BinaryOperatorKind.DIV) {
+          return valueLeft / valueRight;
+        } else {
+          // BinaryOperatorKind,MOD
+          return valueLeft % valueRight;
+        }
+    } else {
+        throw new ODataApplicationException("Arithmetic operations needs two numeric
+     		operands", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+    }
+}
+</code></pre>
+<p>The last method we have to implement is <code>visitMethodCall</code>. The principle is always the same, check the types and calculate the return value. As a developer you can be sure, that the number of parameters fits to the MethodKind but the types have to be checked by yourself. E.g. <em>contains</em> takes two Strings and return <em>Edm.Boolean</em> but</p>
+<pre><code>   $filter=contains(123,123)
+</code></pre>
+<p>would not lead to an error. It is up to you to throw an exception.</p>
+<pre><code class="language-java">@Override
+public Object visitMethodCall(MethodKind methodCall, List&lt;Object&gt; parameters)
+	    throws ExpressionVisitException, ODataApplicationException {
+
+    // To keep this tutorial small and simple, we implement only one method call
+    // contains(String, String) -&gt; Boolean
+    if(methodCall == MethodKind.CONTAINS) {
+      if(parameters.get(0) instanceof String &amp;&amp; parameters.get(1) instanceof String) {
+        String valueParam1 = (String) parameters.get(0);
+        String valueParam2 = (String) parameters.get(1);
+
+        return valueParam1.contains(valueParam2);
+      } else {
+        throw new ODataApplicationException("Contains needs two parametes of type Edm.String",
+            HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+      }
+    } else {
+      throw new ODataApplicationException("Method call " + methodCall + " not implemented",
+          HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+    }
+}
+</code></pre>
+<p><strong>2. EntityCollectionProcessor changes</strong></p>
+<p>The following section describes the simple approach to enable the EntityCollectionProcessor class and the readEntityCollection() method for <code>$filter</code>.</p>
+<p>Just like in the previous tutorials, the data is first fetched from the backend, then the system query option is applied.</p>
+<pre><code class="language-java">EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
+List&lt;Entity&gt; entityList = entityCollection.getEntities();
+</code></pre>
+<p>We will proceed according to these 4 steps:</p>
+<ol>
+<li>Get the query option from the UriInfo. If null is returned then nothing has to be done.</li>
+<li>Get the expression from the query option</li>
+<li>Instantiate our Expression Visitor and evaluate the result for each entity in the collection</li>
+<li>Modify the EntityCollection based on the result of the expression</li>
+</ol>
+<p><strong>2.1 Get the FilterOption from the uriInfo</strong></p>
+<pre><code>FilterOption filterOption = uriInfo.getFilterOption();
+if(filterOption != null) {
+</code></pre>
+<p><strong>2.2 Get the expression from the query option</strong></p>
+<pre><code>Expression filterExpression = filterOption.getExpression();
+</code></pre>
+<p><strong>2.3 Loop over all entities in the collection and calculate the result of the expression for a given entity</strong></p>
+<pre><code class="language-java">    try {
+      List&lt;Entity&gt; entityList = entityCollection.getEntities();
+      Iterator&lt;Entity&gt; entityIterator = entityList.iterator();
+
+      // Evaluate the expression for each entity
+      // If the expression is evaluated to "true", keep the entity otherwise remove it from
+      // the entityList
+      while (entityIterator.hasNext()) {
+        // To evaluate the the expression, create an instance of the Filter Expression
+        // Visitor and pass the current entity to the constructor
+        Entity currentEntity = entityIterator.next();
+        FilterExpressionVisitor expressionVisitor = new FilterExpressionVisitor(currentEntity);
+
+        // Evaluating the expression
+        Object visitorResult = filterExpression.accept(expressionVisitor);
+        &hellip;
+</code></pre>
+<p><strong>2.4 Modify the collection</strong></p>
+<pre><code class="language-java">         // The result of the filter expression must be of type Edm.Boolean
+         if(visitorResult instanceof Boolean) {
+            if(!Boolean.TRUE.equals(visitorResult)) {
+              // The expression evaluated to false (or null), so we have to remove the
+              // currentEntity from entityList
+    	      entityIterator.remove();
+            }
+         } else {
+             throw new ODataApplicationException("A filter expression must evaulate to type Edm.Boolean", HttpStatusCode.BAD_REQUEST.getStatusCode(), Locale.ENGLISH);
+         }
+      } // End while
+    } catch (ExpressionVisitException e) {
+       throw new ODataApplicationException("Exception in filter evaluation",
+                     HttpStatusCode.INTERNAL_SERVER_ERROR.getStatusCode(), Locale.ENGLISH);
+    }
+</code></pre>
+<h3 id="3-run-the-implemented-service">3. Run the implemented service<a class="headerlink" href="#3-run-the-implemented-service" title="Permalink">&para;</a></h3>
+<p>After building and deploying your service to your server, you can try the following URLs:</p>
+<p><strong>Comparison operators</strong></p>
+<ul>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID eq 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> eq 1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID ne 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> ne 1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID gt 2](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> gt 2)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID ge 2](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> ge 2)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID le 2](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> le 2)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID lt 2](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> lt 2)</li>
+</ul>
+<p><strong>Unary operators</strong></p>
+<ul>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=-ID eq -1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=-ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=-ID</a> eq -1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=not(ID eq 1)](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=not(ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=not(ID</a> eq 1))</li>
+</ul>
+<p><strong>Method calls and strong binding unary not</strong></p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')</a></li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=not contains(Name,'Ergo')](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=not">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=not</a> contains(Name,'Ergo'))</li>
+</ul>
+<p><strong>Arithmetic operators</strong></p>
+<ul>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID add 1 eq 2](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> add 1 eq 2)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID sub 1 eq 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> sub 1 eq 1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID div 2 eq 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> div 2 eq 1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID mul 2 eq 6](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> mul 2 eq 6)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID mod 2 eq 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID</a> mod 2 eq 1)</li>
+</ul>
+<p><strong>String literal</strong></p>
+<ul>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=Name eq '1UMTS PDA'](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=Name">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=Name</a> eq '1UMTS PDA')</li>
+</ul>
+<p><strong>Boolean operators</strong></p>
+<ul>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo') or ID eq 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')</a> or ID eq 1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo') and ID eq 1](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')</a> and ID eq 1)</li>
+<li>[http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo') and ID eq 3](<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')">http://localhost:8080/DemoService/DemoService.svc/Products?$filter=contains(Name,'Ergo')</a> and ID eq 3)</li>
+</ul>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permalink">&para;</a></h2>
+<p>In this tutorial we have learned how to implement a simple service with <code>$filter</code> system query option. The very same Expression Visitor can be used to support advanced $orderby query options. The main difference is that, the Expression Visitor used by $orderby returns a (may be calculated) value of a primitive property instead a Boolean value.</p>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permalink">&para;</a></h2>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permalink">&para;</a></h3>
+<ul>
+<li>Tutorial OData V4 service part 1: <a href="/doc/odata4/tutorials/read/tutorial_read.html">Read Entity Collection</a></li>
+<li>Tutorial OData V4 service part 2: <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity, Read Property</a></li>
+<li>Tutorial OData V4 service part 3: <a href="/doc/odata4/tutorials/write/tutorial_write.html">Write (Create, Update, Delete Entity)</a></li>
+<li>Tutorial OData V4 service, part 4: <a href="/doc/odata4/tutorials/navigation/tutorial_navigation.html">Navigation</a></li>
+<li>Tutorial OData V4 service, part 5.1: <a href="/doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.html">System Query Options $top, $skip, $count (this page)</a></li>
+<li>Tutorial OData V4 service, part 5.2: <a href="/doc/odata4/tutorials/sqo_es/tutorial_sqo_es.html">System Query Options $select, $expand</a></li>
+<li>Tutorial OData V4 service, part 5.3: <a href="/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.html">System Query Options $orderby</a></li>
+<li>Tutorial OData V4 service, part 5.4: System Query Options $filter (this page)</li>
+<li>Tutorial ODATA V4 service, part 6: <a href="/doc/odata4/tutorials/action/tutorial_action.html">Action and Function Imports</a></li>
+<li>Tutorial ODATA V4 service, part 7: <a href="/doc/odata4/tutorials/media/tutorial_media.html">Media Entities</a></li>
+<li>Tutorial OData V4 service, part 8: <a href="/doc/odata4/tutorials/batch/tutorial_batch.html">Batch Request support</a></li>
+<li>Tutorial OData V4 service, part 9: <a href="/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.html">Handling "Deep Insert" requests</a></li>
+</ul>
+<h3 id="code-and-repository">Code and Repository<a class="headerlink" href="#code-and-repository" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="https://gitbox.apache.org/repos/asf/olingo-odata4">Git Repository</a></li>
+<li><a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a></li>
+<li><a href="http://www.apache.org/dyn/closer.lua/olingo/odata4/4.0.0/DemoService_Tutorial.zip">Demo Service source code as zip file (contains all tutorials)</a></li>
+</ul>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://odata.org/">Official OData Homepage</a></li>
+<li><a href="http://www.odata.org/documentation/">OData documentation</a></li>
+<li><a href="/javadoc/odata4/index.html">Olingo Javadoc</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

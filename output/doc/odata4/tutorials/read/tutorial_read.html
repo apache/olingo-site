@@ -1,0 +1,955 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-build-an-odata-service-with-olingo-v4">How to build an OData Service with Olingo V4<a class="headerlink" href="#how-to-build-an-odata-service-with-olingo-v4" title="Permalink">&para;</a></h1>
+<h2 id="part-1-read-scenario">Part 1: Read scenario<a class="headerlink" href="#part-1-read-scenario" title="Permalink">&para;</a></h2>
+<p>This tutorial guides you through the steps required to write an OData Service based on the Olingo OData 4.0 Library for Java (based on current olingo version which can be got via the <a href="../../download.html">Download-Page</a>).</p>
+<p>The final source code can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.
+This tutorial can be found in subdirectory <em>\samples\tutorials\p1_read</em></p>
+<p>We will create a Web Application and deploy it on a local Tomcat server.
+Afterwards, the OData service can be invoked from a browser and it will provide the data according to the OData V4 specification.
+This tutorial is kept as simple as possible, in order to fully concentrate on the implementation of the service.
+For example, only READ scenario is covered in this tutorial, whereas creation, modification and deletion will be covered in the subsequent tutorial.</p>
+<p><strong>Scenario</strong></p>
+<p>The OData service that we are create will implement the following model:</p>
+<p><img alt="datamodel" src="model1.png" title="The OData model"/></p>
+<p>The service will display a list of products and a few properties that describe each product.
+This data model will be enhanced in the subsequent tutorials in order to display categories and to support navigation from a product to its category.</p>
+<p><strong>Goal</strong></p>
+<p>We will be dealing with 3 java classes and the web.xml descriptor file.
+Furthermore, for building with Maven, we will edit the <code>pom.xml</code> file.</p>
+<p>This is how our working directory in Eclipse will look:</p>
+<p><img alt="projectLayout" src="EclipseProjectTree.png" title="The project layout"/></p>
+<p>At the end of this tutorial, you will have written an OData service and you will be able to invoke the following URL in a browser:</p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/Products
+</code></pre>
+<p>And the browser will display the following collection of data:</p>
+<pre><code class="language-json">    {
+      "@odata.context": "$metadata#Products",
+      "value": [
+        {
+          "ID": 1,
+          "Name": "Notebook Basic 15",
+          "Description": "Notebook Basic, 1.7GHz - 15 XGA - 1024MB DDR2 SDRAM - 40GB"
+        },
+        {
+          "ID": 2,
+          "Name": "1UMTS PDA",
+          "Description": "Ultrafast 3G UMTS/HSDPA Pocket PC, supports GSM network"
+        },
+        {
+          "ID": 3,
+          "Name": "Ergo Screen",
+          "Description": "17 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"
+        }
+      ]
+    }
+</code></pre>
+<p><strong>Table of Contents</strong></p>
+<ol>
+<li>Prerequisites</li>
+<li>Preparation</li>
+<li>Create Project
+<ul>
+<li>Create Project</li>
+<li>Edit <code>pom.xml</code> file</li>
+<li>Check build path</li>
+<li>Build the project</li>
+</ul>
+</li>
+<li>Implementation - Read scenario to request the EntitySet &ldquo;Products&rdquo;
+<ol>
+<li>Declare the metadata</li>
+<li>Provide the data</li>
+<li>Web application implementation</li>
+</ol>
+</li>
+<li>Run the service
+<ul>
+<li>Run with Eclipse</li>
+<li>The Service URLs</li>
+</ul>
+</li>
+<li>Summary</li>
+</ol>
+<hr/>
+<h1 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permalink">&para;</a></h1>
+<p>In order to follow this tutorial, you should have</p>
+<ul>
+<li>Basic knowledge about OData and OData V4</li>
+<li>Knowledge of the Java programming language</li>
+<li>Optional: knowledge about developing web applications</li>
+<li>Optional: knowledge about building with Maven</li>
+</ul>
+<hr/>
+<h1 id="2-preparation">2. Preparation<a class="headerlink" href="#2-preparation" title="Permalink">&para;</a></h1>
+<p>Before starting off with the creation of our OData service, we need to prepare the following:</p>
+<ol>
+<li>Installed JDK 1.6 (or higher version)</li>
+<li>An IDE for writing the Java code</li>
+<li>A builder to build the .war file, which will be deployed on server</li>
+<li>A web server to run our web application / OData service</li>
+</ol>
+<p>I recommend using Eclipse for all 3 needs, as it is the easiest approach.
+This means, you should install the pre-packaged Eclipse distribution called &ldquo;Eclipse IDE for Java EE developers&rdquo; which can be found here: <a href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a></p>
+<p><img alt="eclipseDownload" src="eclipseDownload.png" title="The Eclipse EE download"/></p>
+<p>This Eclipse package contains an embedded server and also an integrated Maven builder.</p>
+<hr/>
+<h1 id="3-create-project">3. Create Project<a class="headerlink" href="#3-create-project" title="Permalink">&para;</a></h1>
+<p>The recommended procedure to create a project is to use Maven, because it offers an archetype for generating the project skeleton.
+Furthermore, using Maven is convenient for managing the build dependencies.
+The description within this section is based on an Eclipse installation that contains the Maven integration.</p>
+<p><strong>Create Project using the maven archetype &ldquo;webapp&rdquo;</strong></p>
+<p>Within Eclipse, open the Maven Project wizard via
+<em>File -&gt; New -&gt; Other -&gt; Maven -&gt; Maven Project</em></p>
+<p>On the second wizard page, choose  the archetype: maven-archetype-webapp</p>
+<p><img alt="mavenArchetype" src="mavenArchetype.png" title="The Maven Archetype"/></p>
+<p>On the next page, enter the following information:</p>
+<ul>
+<li>Groupd Id: <em>my.group.id</em></li>
+<li>Artifact Id: <em>DemoService</em></li>
+<li>Version: <em>4.6.0</em></li>
+<li>Package: <em>myservice.mynamespace.service</em></li>
+</ul>
+<blockquote>
+<p>Note:
+If you&rsquo;re using this wizard for the first time, it might take some time, as maven needs to download the archetype itself to your local maven-repo.</p>
+</blockquote>
+<p>After finishing the wizard, the next step is to edit the <em>pom.xml</em> file.</p>
+<p><strong>Edit pom file</strong></p>
+<p>In our project, we will be using several libraries, e.g. the Olingo libraries.
+In the pom.xml file, we specify the dependencies and Maven will download them to our local maven repository.
+Furthermore, the <em>pom.xml</em> file tells Maven which output we want to have as result of our build. In our case, this is a war file.</p>
+<p>In our example, the pom.xml file looks as follows:</p>
+<pre><code class="language-xml">    &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+      &lt;modelVersion&gt;4.6.0&lt;/modelVersion&gt;
+      &lt;groupId&gt;my.group.id&lt;/groupId&gt;
+      &lt;artifactId&gt;DemoService&lt;/artifactId&gt;
+      &lt;packaging&gt;war&lt;/packaging&gt;
+      &lt;version&gt;4.6.0&lt;/version&gt;
+
+      &lt;name&gt;DemoService Maven Webapp&lt;/name&gt;
+
+      &lt;properties&gt;
+        &lt;javax.version&gt;2.5&lt;/javax.version&gt;
+        &lt;odata.version&gt;4.6.0&lt;/odata.version&gt;
+        &lt;slf4j.version&gt;1.7.7&lt;/slf4j.version&gt;
+      &lt;/properties&gt;
+
+      &lt;dependencies&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+          &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+          &lt;version&gt;${javax.version}&lt;/version&gt;
+          &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+          &lt;artifactId&gt;odata-server-api&lt;/artifactId&gt;
+          &lt;version&gt;${odata.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+          &lt;artifactId&gt;odata-server-core&lt;/artifactId&gt;
+          &lt;version&gt;${odata.version}&lt;/version&gt;
+          &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+          &lt;artifactId&gt;odata-commons-api&lt;/artifactId&gt;
+          &lt;version&gt;${odata.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+          &lt;artifactId&gt;odata-commons-core&lt;/artifactId&gt;
+          &lt;version&gt;${odata.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+          &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+          &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+          &lt;version&gt;${slf4j.version}&lt;/version&gt;
+          &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+	  &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+	  &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+	  &lt;version&gt;1.7.11&lt;/version&gt;
+	  &lt;scope&gt;compile&lt;/scope&gt;
+	&lt;/dependency&gt;
+      &lt;/dependencies&gt;
+    &lt;/project&gt;
+</code></pre>
+<p><strong>Check Java build path</strong></p>
+<p>In order to check the Build path settings, open the context menu on the project and choose
+<em>Build Path -&gt; Configure Build Path&hellip;</em></p>
+<p><img alt="ConfigureBuildPathAction" src="ConfigureBuildPathAction.png" title="Open the Configure BuildPath action"/></p>
+<p>Select the <em>Source</em> tab.
+You might see that the source folder <em>src/main/java</em> is configured, but displays an error marker.</p>
+<p><img alt="ConfigureBuildPathErr" src="ConfigureBuildPathErr.png" title="Configure BuildPath has errors"/></p>
+<p>The reason is that it is missing on file system.
+So the solution is to create the required folder in Eclipse.</p>
+<p><img alt="createFolder" src="createFolder.png" title="Create new java folder"/></p>
+<p>Afterwards, open the Build Path dialog again.
+The second error might be about missing test source folder.
+Since we don&rsquo;t need it for our tutorial, we remove it from the build path.</p>
+<p><img alt="ConfigureBuildPathOK" src="ConfigureBuildPathOK.png" title="Configure Build Path is OK now"/></p>
+<p><strong>Build the project</strong></p>
+<p>Although the project doesn&rsquo;t contain any source files yet, let&rsquo;s perform our first Maven build, in order to check for any problems.</p>
+<p>From the context menu on the project node, chose <em>Run As -&gt; maven build</em>
+If you have never executed the build before, Maven asks you to specify at least one goal.
+Enter the usual goals &ldquo;clean install&rdquo; and press &ldquo;Run&rdquo;</p>
+<p><img alt="mavenBuild" src="mavenBuild.png" title="The Maven build dialog"/></p>
+<p>The log output is provided in the Eclipse Console view.
+You should check it for the output &ldquo;Build Success&rdquo;</p>
+<blockquote>
+<p>Note:
+If maven provides an error marker right from the beginning,it would help to update your Project:
+From context menu on project node, choose Maven -&gt; update Project -&gt; <your project=""></your></p>
+</blockquote>
+<hr/>
+<h1 id="4-implementation">4. Implementation<a class="headerlink" href="#4-implementation" title="Permalink">&para;</a></h1>
+<p>The implementation of an OData service based on Olingo server library can be grouped in the following steps:</p>
+<ul>
+<li>Declaring the metadata of the service</li>
+<li>Handle service requests</li>
+</ul>
+<p>Since our example service has to run on a web server, we have to create some code which calls our service in a web application:</p>
+<ul>
+<li>Web application implementation</li>
+</ul>
+<p>The following section will guide you through every step in detail.</p>
+<h2 id="41-declare-the-metadata">4.1. Declare the metadata<a class="headerlink" href="#41-declare-the-metadata" title="Permalink">&para;</a></h2>
+<h3 id="411-background">4.1.1. Background<a class="headerlink" href="#411-background" title="Permalink">&para;</a></h3>
+<p>According to the OData specification, an OData service has to declare its structure in the so-called <em>Metadata Document</em>.
+This document defines the contract, such that the user of the service knows which requests can be executed, the structure of the result and how the service can be navigated.</p>
+<p>The Metadata Document can be invoked via the following URI:</p>
+<pre><code>:::html
+&lt;serviceroot&gt;/$metadata
+</code></pre>
+<p>Furthermore, OData specifies the usage of the so-called Service Document
+Here, the user can see which Entity Collections are offered by an OData service.</p>
+<p>The service document can be invoked via the following URI:</p>
+<pre><code>&lt;serviceroot&gt;/
+</code></pre>
+<p>The information that is given by these 2 URIs, has to be implemented in the service code.
+Olingo provides an API for it and we will use it in the implementation of our <em>CsdlEdmProvider</em>.</p>
+<h3 id="412-create-class">4.1.2. Create class<a class="headerlink" href="#412-create-class" title="Permalink">&para;</a></h3>
+<p>Create package <em>myservice.mynamespace.service</em>
+Create class <em>DemoEdmProvider</em> and specify the superclass <em>org.apache.olingo.commons.api.edm.provider.CsdlAbstractEdmProvider</em></p>
+<p>Note: <strong>edm</strong> is the abbreviation for <strong>Entity Data Model</strong>.
+Accordingly, we understand that the <em>CsdlEdmProvider</em> is supposed to provide static descriptive information.</p>
+<p>The Entity Model of the service can be defined in the EDM Provider. The EDM model basically defines the available EntityTypes and the relation between the entities. An EntityType consists of primitive, complex or navigation properties. The model can be invoked with the Metadata Document request.</p>
+<p>As we can see, the Olingo server API provides one package that contains interfaces for the description of the metadata:</p>
+<p><img alt="edmPackage" src="edmPackage.png" title="The edm package"/></p>
+<p>Some of these interfaces are going to be used in the following sections.
+<strong>Note:</strong> Take a look into the <a href="/javadoc/odata4/index.html">Javadoc</a></p>
+<h3 id="413-implement-the-required-methods">4.1.3. Implement the required methods<a class="headerlink" href="#413-implement-the-required-methods" title="Permalink">&para;</a></h3>
+<p>The base class <em>CsdlAbstractEdmProvider</em> provides methods for declaring the metadata of all OData elements.</p>
+<p>For example:</p>
+<ul>
+<li>The entries that are displayed in the Service Document are provided by the method
+<em>getEntityContainerInfo()</em></li>
+<li>The structure of EntityTypes is declared in the method <em>getEntityType()</em></li>
+</ul>
+<p>In our simple example, we implement the minimum amount of methods, required to run a meaningful OData service.
+These are:</p>
+<ul>
+<li><strong><em>getEntityType()</em></strong>
+Here we declare the EntityType &ldquo;Product&rdquo; and a few of its properties</li>
+<li><strong><em>getEntitySet()</em></strong>
+Here we state that the list of products can be called via the EntitySet &ldquo;Products&rdquo;</li>
+<li><strong><em>getEntityContainer()</em></strong>
+Here we provide a Container element that is necessary to host the EntitySet.</li>
+<li><strong><em>getSchemas()</em></strong>
+The Schema is the root element to carry the elements.</li>
+<li><strong><em>getEntityContainerInfo()</em></strong>
+Information about the EntityContainer to be displayed in the Service Document</li>
+</ul>
+<p>In Eclipse, in order to select the methods to override, right click into the Java editor and from the context menu choose <em>Source -&gt; Override/Implement Methods&hellip;</em>
+Select the mentioned methods and press OK.</p>
+<p><img alt="overrideMethods" src="overrideMethods.png" title="The dialog for overriding superclass methods in Eclipse"/></p>
+<p>Let&rsquo;s have a closer look at our methods in detail.</p>
+<p>First, we need to declare some constants, to be used in the code below:</p>
+<pre><code class="language-java">    // Service Namespace
+    public static final String NAMESPACE = "OData.Demo";
+
+    // EDM Container
+    public static final String CONTAINER_NAME = "Container";
+    public static final FullQualifiedName CONTAINER = new FullQualifiedName(NAMESPACE, CONTAINER_NAME);
+
+    // Entity Types Names
+    public static final String ET_PRODUCT_NAME = "Product";
+    public static final FullQualifiedName ET_PRODUCT_FQN = new FullQualifiedName(NAMESPACE, ET_PRODUCT_NAME);
+
+    // Entity Set Names
+    public static final String ES_PRODUCTS_NAME = "Products";
+</code></pre>
+<p><strong><em>getEntityType()</em></strong></p>
+<p>In our example service, we want to provide a list of products to users who call the OData service.
+The user of our service, for example an app-developer, may ask: What does such a "product" entry look like? How is it structured? Which information about a product is provided? For example, the name of it and which data types can be expected from these properties?
+Such information is provided by a <code>CsdlEdmProvider</code> (and for convenience we extend the <code>CsdlAbstractEdmProvider</code>).</p>
+<p>In our example service, for modelling the <code>CsdlEntityType</code>, we have to provide the following metadata:</p>
+<p>The name of the EntityType: &ldquo;Product&rdquo;
+The properties: name and type and additional info, e.g. &ldquo;ID&rdquo; of type &ldquo;edm.int32&rdquo;
+Which of the properties is the &ldquo;key&rdquo; property: a reference to the &ldquo;ID&rdquo; property.</p>
+<pre><code class="language-java">    public CsdlEntityType getEntityType(FullQualifiedName entityTypeName) {
+
+      // this method is called for one of the EntityTypes that are configured in the Schema
+      if(entityTypeName.equals(ET_PRODUCT_FQN)){
+
+        //create EntityType properties
+        CsdlProperty id = new CsdlProperty().setName("ID").setType(EdmPrimitiveTypeKind.Int32.getFullQualifiedName());
+        CsdlProperty name = new CsdlProperty().setName("Name").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName());
+        CsdlProperty  description = new CsdlProperty().setName("Description").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName());
+
+        // create CsdlPropertyRef for Key element
+        CsdlPropertyRef propertyRef = new CsdlPropertyRef();
+        propertyRef.setName("ID");
+
+        // configure EntityType
+        CsdlEntityType entityType = new CsdlEntityType();
+        entityType.setName(ET_PRODUCT_NAME);
+        entityType.setProperties(Arrays.asList(id, name , description));
+        entityType.setKey(Collections.singletonList(propertyRef));
+
+        return entityType;
+      }
+
+      return null;
+    }
+</code></pre>
+<p><strong><em>getEntitySet()</em></strong></p>
+<p>The procedure for declaring the <em>Entity Sets</em> is similar.
+An <em>EntitySet</em> is a crucial resource, when an OData service is used to request data.
+In our example, we will invoke the following URL, which we expect to provide us a list of products:</p>
+<pre><code>http://localhost:8080/DemoService/DemoServlet.svc/Products
+</code></pre>
+<p>When declaring an <code>EntitySet</code>, we need to define the type of entries which are contained in the list, such as an <code>CsdlEntityType</code>.
+In our example, we set our previously created <code>CsdlEntityType</code>, which is referred by a <em>FullQualifiedName</em>.</p>
+<pre><code class="language-java">    public CsdlEntitySet getEntitySet(FullQualifiedName entityContainer, String entitySetName) {
+
+      if(entityContainer.equals(CONTAINER)){
+        if(entitySetName.equals(ES_PRODUCTS_NAME)){
+          CsdlEntitySet entitySet = new CsdlEntitySet();
+          entitySet.setName(ES_PRODUCTS_NAME);
+          entitySet.setType(ET_PRODUCT_FQN);
+
+          return entitySet;
+        }
+      }
+
+      return null;
+    }
+</code></pre>
+<p><strong><em>getEntityContainer()</em></strong></p>
+<p>In order to provide data, our OData service needs an <em>EntityContainer</em> that carries the <em>EntitySets</em>.
+In our example, we have only one <em>EntitySet</em>, so we create one <em>EntityContainer</em> and set our <em>EntitySet</em>.</p>
+<pre><code class="language-java">    public CsdlEntityContainer getEntityContainer() {
+
+      // create EntitySets
+      List&lt;CsdlEntitySet&gt; entitySets = new ArrayList&lt;CsdlEntitySet&gt;();
+      entitySets.add(getEntitySet(CONTAINER, ES_PRODUCTS_NAME));
+
+      // create EntityContainer
+      CsdlEntityContainer entityContainer = new CsdlEntityContainer();
+      entityContainer.setName(CONTAINER_NAME);
+      entityContainer.setEntitySets(entitySets);
+
+      return entityContainer;
+    }
+</code></pre>
+<p><strong><em>getSchemas()</em></strong></p>
+<p>Up to this point, we have declared the type of our data (<code>CsdlEntityType</code>) and our list (<code>CsdlEntitySet</code>), and we have put it into a container (<code>CsdlEntityContainer</code>).
+Now we are required to put all these elements into a <code>CsdlSchema</code>.
+While the model of an OData service can have several schemas, in most cases there will probably be only one schema.
+So, in our example, we create a list of schemas, where we add one new <code>CsdlSchema</code> object.
+The schema is configured with a <em>Namespace</em>, which serves to uniquely identify all elements.
+Then our elements are added to the Schema.</p>
+<pre><code class="language-java">    public List&lt;CsdlSchema&gt; getSchemas() {
+
+      // create Schema
+      CsdlSchema schema = new CsdlSchema();
+      schema.setNamespace(NAMESPACE);
+
+      // add EntityTypes
+      List&lt;CsdlEntityType&gt; entityTypes = new ArrayList&lt;CsdlEntityType&gt;();
+      entityTypes.add(getEntityType(ET_PRODUCT_FQN));
+      schema.setEntityTypes(entityTypes);
+
+      // add EntityContainer
+      schema.setEntityContainer(getEntityContainer());
+
+      // finally
+      List&lt;CsdlSchema&gt; schemas = new ArrayList&lt;CsdlSchema&gt;();
+      schemas.add(schema);
+
+      return schemas;
+    }
+</code></pre>
+<p><strong><em>getEntityContainerInfo()</em></strong></p>
+<pre><code class="language-java">    public CsdlEntityContainerInfo getEntityContainerInfo(FullQualifiedName entityContainerName) {
+
+        // This method is invoked when displaying the Service Document at e.g. http://localhost:8080/DemoService/DemoService.svc
+        if (entityContainerName == null || entityContainerName.equals(CONTAINER)) {
+            CsdlEntityContainerInfo entityContainerInfo = new CsdlEntityContainerInfo();
+            entityContainerInfo.setContainerName(CONTAINER);
+            return entityContainerInfo;
+        }
+
+        return null;
+    }
+</code></pre>
+<p><strong>Summary:</strong>
+We have created a class that declares the metadata of our OData service.
+We have declared the main elements of an OData service: <em>EntityType</em>, <em>EntitySet</em>, <em>EntityContainer</em> and <em>Schema</em> (with the corresponding Olingo classes <code>CsdlEntityType</code>, <code>CsdlEntitySet</code>, <code>CsdlEntityContainer</code> and <code>CsdlSchema</code>).</p>
+<p>At runtime of an OData service, such metadata can be viewed by invoking the Metadata Document.</p>
+<p>In our example invokation of the URL: <a href="http://localhost:8080/DemoService/DemoService.svc/$metadata">http://localhost:8080/DemoService/DemoService.svc/$metadata</a></p>
+<p>Give us the result below:</p>
+<pre><code class="language-xml">    &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+    &lt;edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"&gt;
+      &lt;edmx:DataServices&gt;
+        &lt;Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="OData.Demo"&gt;
+          &lt;EntityType Name="Product"&gt;
+            &lt;Key&gt;
+              &lt;PropertyRef Name="ID"/&gt;
+            &lt;/Key&gt;
+            &lt;Property Name="ID" Type="Edm.Int32"/&gt;
+            &lt;Property Name="Name" Type="Edm.String"/&gt;
+            &lt;Property Name="Description" Type="Edm.String"/&gt;
+          &lt;/EntityType&gt;
+          &lt;EntityContainer Name="Container"&gt;
+            &lt;EntitySet Name="Products" EntityType="OData.Demo.Product"/&gt;
+          &lt;/EntityContainer&gt;
+        &lt;/Schema&gt;
+      &lt;/edmx:DataServices&gt;
+    &lt;/edmx:Edmx&gt;
+</code></pre>
+<p>The Service Document can be invoked to view the Entity Sets, like in our example at the URL: <a href="http://localhost:8080/DemoService/DemoService.svc/">http://localhost:8080/DemoService/DemoService.svc/</a></p>
+<p>Which give us the Service Document as result:</p>
+<pre><code class="language-json">    {
+      "@odata.context" : "$metadata",
+      "value" : [
+      {
+        "name" : "Products",
+        "url" : "Products"
+      } ]
+    }
+</code></pre>
+<blockquote>
+<p>Note:
+After implementing the <em>EdmProvider</em>, we can, as an intermediate step, build/deploy the service and invoke the 2 static pages:   Service Document and Metadata Document.
+If desired, you can proceed with implementing the required steps for web application as described in
+4.3. and run the application as described in chapter 5.</p>
+</blockquote>
+<h2 id="42-provide-the-data">4.2. Provide the data<a class="headerlink" href="#42-provide-the-data" title="Permalink">&para;</a></h2>
+<p>After implementing the <em>EdmProvider</em>, the next step is the main task of an OData service: provide data.
+In our example, we imagine that our OData service is invoked by a user who wants to see which products are offered by a web shop.
+He invokes a URL and gets a list of products.
+Providing the list of products is the task that we are going to implement in this chapter.</p>
+<p>The work that we have to do in this chapter can be divided into 4 tasks:</p>
+<ol>
+<li>Check the URI
+We need to identify the requested resource and have to consider Query Options (if available)</li>
+<li>Provide the data
+Based on the URI info, we have to obtain the data from our data store (can be e.g. a database)</li>
+<li>Serialize the data
+The data has to be transformed into the required format</li>
+<li>Configure the response
+Since we are implementing a &ldquo;processor&rdquo;, the last step is to provide the response object</li>
+</ol>
+<p>These 4 steps will be considered in the implementation of the <code>readEntityCollection()</code> method.</p>
+<h3 id="421-background">4.2.1. Background<a class="headerlink" href="#421-background" title="Permalink">&para;</a></h3>
+<p>In terms of <em>Olingo</em>, while processing a service request, a Processor instance is invoked that is supposed to understand the (user HTTP-) request and deliver the desired data.
+<em>Olingo</em> provides API for processing different kind of service requests:
+Such a service request can ask for a list of entities, or for one entity, or one property.</p>
+<p>Example:
+In our example, we have stated in our Metadata Document that we will provide a list of &ldquo;products&rdquo; whenever the <em>EntitySet</em> with name &ldquo;Products&rdquo; is invoked.
+This means that the user of our OData service will append the <em>EntitySet</em> name to the root URL of the service and then invoke the full URL.
+This is <a href="http://localhost:8080/DemoService/DemoServlet1.svc/Products">http://localhost:8080/DemoService/DemoServlet1.svc/Products</a>
+So, whenever this URL is fired, Olingo will invoke the <code>EntityCollectionProcessor</code> implementation of our OData service.
+Then our <code>EntityCollectionProcessor</code> implementation is expected to provide a list of products.</p>
+<p>As we have already mentioned, the Metadata Document is the contract for providing data.
+This means that when it comes to provide the actual data, we have to do it according to the specified metadata.
+For example, the property names have to match, also the types of the properties, and, if specified, the length of the strings, etc</p>
+<h3 id="422-create-class">4.2.2. Create class<a class="headerlink" href="#422-create-class" title="Permalink">&para;</a></h3>
+<p>Within our package <code>myservice.mynamespace.service</code>, we create a Java class <code>DemoEntityCollectionProcessor</code>  that implements the interface <code>org.apache.olingo.server.api.processor.EntityCollectionProcessor</code>.</p>
+<p><img alt="createJavaClass" src="createJavaClass.png" title="The Eclipse dialog for creating a Java class"/></p>
+<h3 id="423-implement-the-required-methods">4.2.3. Implement the required methods<a class="headerlink" href="#423-implement-the-required-methods" title="Permalink">&para;</a></h3>
+<p>After creation of the Java class, we can see that there are 2 methods to be implemented:</p>
+<ul>
+<li><em>init()</em>
+This method is invoked by the <em>Olingo</em> library, allowing us to store the context object</li>
+<li><em>readEntityCollection()</em>
+Here we have to fetch the required data and pass it back to the <em>Olingo</em> library</li>
+</ul>
+<p>Let&rsquo;s have a closer look</p>
+<p><strong><em>init()</em></strong></p>
+<p>This method is common to all processor interfaces.
+The <em>Olingo</em> framework initializes the processor with an instance of the <em>OData</em> object.
+According to the Javadoc, this object is the &ldquo;Root object for serving factory tasks&hellip;&rdquo;
+We will need it later, so we store it as member variable.</p>
+<pre><code class="language-java">    public void init(OData odata, ServiceMetadata serviceMetadata) {
+      this.odata = odata;
+      this.serviceMetadata = serviceMetadata;
+    }
+</code></pre>
+<p>Don&rsquo;t forget to declare the member variables</p>
+<pre><code class="language-java">    private OData odata;
+    private ServiceMetadata serviceMetadata;
+</code></pre>
+<p><strong><em>readEntityCollection()</em></strong></p>
+<p>The <code>EntityCollectionProcessor</code> exposes only one method: <code>readEntityCollection(...)</code></p>
+<p>Here we have to understand that this <code>readEntityCollection(...)</code>-method is invoked, when the OData service is called with an HTTP GET operation for an entity collection.</p>
+<p>The <code>readEntityCollection(...)</code> method is used to &ldquo;read&rdquo; the data in the backend (this can be e.g. a database) and to deliver it to the user who calls the OData service.</p>
+<p>The method signature:</p>
+<p>The &ldquo;request&rdquo; parameter contains raw HTTP information. It is typically used for creation scenario, where a request body is sent along with the request.</p>
+<p>With the second parameter, the &ldquo;response&rdquo; object is passed to our method in order to carry the response data. So here we have to set the response body, along with status code and content-type header.</p>
+<p>The third parameter, the &ldquo;uriInfo&rdquo;, contains information about the relevant part of the URL. This means, the segments starting after the service name.</p>
+<p><strong>Example:</strong>
+If the user calls the following URL:
+<code>http://localhost:8080/DemoService/DemoService.svc/Products</code>
+The <code>readEntityCollection(...)</code> method is invoked and the <em>uriInfo</em> object contains one segment: &ldquo;Products&rdquo;</p>
+<p>If the user calls the following URL:
+<code>http://localhost:8080/DemoService/DemoService.svc/Products?$filter=ID eq 1</code>
+Then the <code>readEntityCollection(...)</code> method is invoked and the <em>uriInfo</em> contains the information about the entity set and furthermore the system query option $filter and its value.</p>
+<p>The last parameter, the &ldquo;responseFormat&rdquo;, contains information about the content type that is requested by the user.
+This means that the user has the choice to receive the data either in XML or in JSON.</p>
+<p><strong>Example:</strong>
+If the user calls the following URL:
+<code>http://localhost:8080/DemoService/DemoService.svc/Products?$format=application/json;odata.metadata=minimal</code></p>
+<p>then the content type is:
+<code>application/json;odata.metadata=minimal</code>
+which means that the payload is formatted in JSON (like it is shown in the introduction section of this tutorial)</p>
+<p><strong>Note:</strong>
+The content type can as well be specified via the following request header
+Accept: application/json;odata.metadata=minimal
+In this case as well, our readEntityCollection() method will be called with the parameter responseFormat containing the content type &gt; information.</p>
+<p><strong>Note:</strong>
+If the user doesn&rsquo;t specify any content type, then the default is JSON.</p>
+<p>Why is this parameter needed?
+Because the <code>readEntityCollection(...)</code> method is supposed to deliver the data in the format that is requested by the user. We will use this parameter when creating a serializer based on it.</p>
+<p>The steps for implementating the method <code>readEntityCollection(...)</code> are:</p>
+<ol>
+<li>
+<p>Which data is requested?
+Usually, an OData service provides different <em>EntitySets</em>, so first it is required to identify which <em>EntitySet</em> has been requested. This information can be retrieved from the <em>uriInfo</em> object.</p>
+</li>
+<li>
+<p>Fetch the data
+As a developer of the OData service, you have to know how and where the data is stored. In many cases, this would be a database. At this point, you would connect to your database and fetch the requested data with an appropriate SQL statement. The data that is fetched from the data storage has to be put into an <em>EntityCollection</em> object.
+The package <code>org.apache.olingo.commons.api.data</code> provides interfaces that describe the actual data, not the metadata.</p>
+<p><img alt="datapackage" src="datapackage.png" title="The package containing the interfaces for handling runtime data"/></p>
+</li>
+<li>
+<p>Transform the data
+<em>Olingo</em> expects us to provide the data as low-level <em>InputStream</em> object. However, <em>Olingo</em> supports us in doing so, by providing us with a proper "serializer".
+So what we have to do is create the serializer based on the requested content type, configure it and call it.</p>
+</li>
+<li>
+<p>Configure the response
+The response object has been passed to us in the method signature. We use it to set the serialized data (the <code>InputStream</code> object).
+Furthermore, we have to set the HTTP status code, which means that we have the opportunity to do proper error handling.
+And finally we have to set the content type.</p>
+</li>
+</ol>
+<p><strong>Sample:</strong></p>
+<pre><code class="language-java">    public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
+        throws ODataApplicationException, SerializerException {
+
+      // 1st we have retrieve the requested EntitySet from the uriInfo object (representation of the parsed service URI)
+      List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+      UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0); // in our example, the first segment is the EntitySet
+      EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+
+      // 2nd: fetch the data from backend for this requested EntitySetName
+      // it has to be delivered as EntitySet object
+      EntityCollection entitySet = getData(edmEntitySet);
+
+      // 3rd: create a serializer based on the requested format (json)
+      ODataSerializer serializer = odata.createSerializer(responseFormat);
+
+      // 4th: Now serialize the content: transform from the EntitySet object to InputStream
+      EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+      ContextURL contextUrl = ContextURL.with().entitySet(edmEntitySet).build();
+
+      final String id = request.getRawBaseUri() + "/" + edmEntitySet.getName();
+      EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with().id(id).contextURL(contextUrl).build();
+      SerializerResult serializerResult = serializer.entityCollection(serviceMetadata, edmEntityType, entitySet, opts);
+      InputStream serializedContent = serializerResult.getContent();
+
+      // Finally: configure the response object: set the body, headers and status code
+      response.setContent(serializedContent);
+      response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+      response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
+    }
+</code></pre>
+<p><strong><em>getData()</em></strong></p>
+<p>We have not elaborated on fetching the actual data.
+In our tutorial, to keep the code as simple as possible, we use a little helper method that delivers some hardcoded entries.
+Since we are supposed to deliver the data inside an <code>EntityCollection</code> instance, we create the instance, ask it for the (initially empty) list of entities and add some new entities to it.
+We create the entities and their properties according to what we declared in our <code>DemoEdmProvider</code> class. So we have to take care to provide the correct names to the new property objects.
+If a client requests the response in <a href="http://docs.oasis-open.org/odata/odata-atom-format/v4.0/odata-atom-format-v4.0.html">ATOM format</a>, each entity have to provide it`s own entity id.
+The method <em>createId</em> allows us to create an id in a convenient way.</p>
+<pre><code class="language-java">    private EntityCollection getData(EdmEntitySet edmEntitySet){
+
+       EntityCollection productsCollection = new EntityCollection();
+       // check for which EdmEntitySet the data is requested
+       if(DemoEdmProvider.ES_PRODUCTS_NAME.equals(edmEntitySet.getName())) {
+           List&lt;Entity&gt; productList = productsCollection.getEntities();
+
+           // add some sample product entities
+           final Entity e1 = new Entity()
+              .addProperty(new Property(null, "ID", ValueType.PRIMITIVE, 1))
+              .addProperty(new Property(null, "Name", ValueType.PRIMITIVE, "Notebook Basic 15"))
+              .addProperty(new Property(null, "Description", ValueType.PRIMITIVE,
+                  "Notebook Basic, 1.7GHz - 15 XGA - 1024MB DDR2 SDRAM - 40GB"));
+          e1.setId(createId("Products", 1));
+          productList.add(e1);
+
+          final Entity e2 = new Entity()
+              .addProperty(new Property(null, "ID", ValueType.PRIMITIVE, 2))
+              .addProperty(new Property(null, "Name", ValueType.PRIMITIVE, "1UMTS PDA"))
+              .addProperty(new Property(null, "Description", ValueType.PRIMITIVE,
+                  "Ultrafast 3G UMTS/HSDPA Pocket PC, supports GSM network"));
+          e2.setId(createId("Products", 1));
+          productList.add(e2);
+
+          final Entity e3 = new Entity()
+              .addProperty(new Property(null, "ID", ValueType.PRIMITIVE, 3))
+              .addProperty(new Property(null, "Name", ValueType.PRIMITIVE, "Ergo Screen"))
+              .addProperty(new Property(null, "Description", ValueType.PRIMITIVE,
+                  "19 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"));
+          e3.setId(createId("Products", 1));
+          productList.add(e3);
+       }
+
+       return productsCollection;
+    }
+</code></pre>
+<p><strong><em>createId()</em></strong></p>
+<pre><code class="language-java">    private URI createId(String entitySetName, Object id) {
+        try {
+            return new URI(entitySetName + "(" + String.valueOf(id) + ")");
+        } catch (URISyntaxException e) {
+            throw new ODataRuntimeException("Unable to create id for entity: " + entitySetName, e);
+        }
+    }
+</code></pre>
+<h2 id="43-web-application">4.3. Web Application<a class="headerlink" href="#43-web-application" title="Permalink">&para;</a></h2>
+<p>After declaring the metadata and providing the data, our OData service implementation is done.
+The last step is to enable our OData service to be called on a web server.
+Therefore, we are wrapping our service by a web application.</p>
+<p>The web application is defined in the web.xml file, where a servlet is registered.
+The servlet is a standard <em>HttpServlet</em> which dispatches the user requests to the <em>Olingo</em> framework.</p>
+<p>Let&rsquo;s quickly do the remaining steps:</p>
+<h3 id="431-create-and-implement-the-servlet">4.3.1. Create and implement the Servlet<a class="headerlink" href="#431-create-and-implement-the-servlet" title="Permalink">&para;</a></h3>
+<p>Create a new package <em>myservice.mynamespace.web</em>.
+Create Java class with name <code>DemoServlet</code> that inherits from <code>HttpServlet</code>.</p>
+<p><img alt="createJavaServletClass" src="createJavaServletClass.png" title="Creating the servlet class"/></p>
+<p>Override the <code>service()</code> method.
+Basically, what we are doing here is to create an <code>ODataHttpHandler</code>, which is a class that is provided by <em>Olingo</em>.
+It receives the user request and if the URL conforms to the OData specification, the request is delegated to the processor implementation of the OData service.
+This means that the handler has to be configured with all processor implementations that have been created along with the OData service (in our example, only one processor).
+Furthermore, the <code>ODataHttpHandler</code> needs to carry the knowledge about the <code>CsdlEdmProvider</code>.</p>
+<p>This is where our two implemented classes come together, the metadata declaration and the data provisioning.</p>
+<pre><code class="language-java">    public class DemoServlet extends HttpServlet {
+
+      private static final long serialVersionUID = 1L;
+      private static final Logger LOG = LoggerFactory.getLogger(DemoServlet.class);
+
+      protected void service(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        try {
+          // create odata handler and configure it with CsdlEdmProvider and Processor
+          OData odata = OData.newInstance();
+          ServiceMetadata edm = odata.createServiceMetadata(new DemoEdmProvider(), new ArrayList&lt;EdmxReference&gt;());
+          ODataHttpHandler handler = odata.createHandler(edm);
+          handler.register(new DemoEntityCollectionProcessor());
+
+          // let the handler do the work
+          handler.process(req, resp);
+        } catch (RuntimeException e) {
+          LOG.error("Server Error occurred in ExampleServlet", e);
+          throw new ServletException(e);
+        }
+      }
+    }
+</code></pre>
+<h3 id="432-edit-the-webxml">4.3.2. Edit the web.xml<a class="headerlink" href="#432-edit-the-webxml" title="Permalink">&para;</a></h3>
+<p>The very last step of our tutorial is to register the Servlet in the <em>web.xml</em> file.
+Furthermore, we need to specify the <em>url-pattern</em> for the servlet, such that our OData service can be invoked.</p>
+<p>Open the <em>src/main/webapp/WEB-INF/web.xml</em> file and paste the following content into it:</p>
+<pre><code class="language-xml">    &lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        id="WebApp_ID" version="2.5"&gt;
+
+    &lt;servlet&gt;
+      &lt;servlet-name&gt;DemoServlet&lt;/servlet-name&gt;
+      &lt;servlet-class&gt; myservice.mynamespace.web.DemoServlet&lt;/servlet-class&gt;
+      &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+
+    &lt;servlet-mapping&gt;
+      &lt;servlet-name&gt;DemoServlet&lt;/servlet-name&gt;
+      &lt;url-pattern&gt;/DemoService.svc/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;/web-app&gt;
+</code></pre>
+<p>That&rsquo;s it. Now we can build and run the web application.</p>
+<hr/>
+<h1 id="5-run-the-service">5. Run the service<a class="headerlink" href="#5-run-the-service" title="Permalink">&para;</a></h1>
+<p>Running the service means build the war file and deploy it on a server.
+In our tutorial, we are using the Eclipse web integration tools, which make life easier.</p>
+<h3 id="run-with-eclipse">Run with Eclipse<a class="headerlink" href="#run-with-eclipse" title="Permalink">&para;</a></h3>
+<p>Select your project and from the context menu choose <em>Run As -&gt; Run on Server</em>
+If you don&rsquo;t have any server configured in Eclipse, you have to &ldquo;manually define a new server&rdquo; in the subsequent dialog.
+If you have installed a Tomcat server on your local file system, you can use it here.
+If not, you can use the <em>Basic -&gt; J2EE Preview</em> option, which is should be enough for our tutorial.</p>
+<p><img alt="runOnServer" src="runOnServer.png" title="The Eclipse dialog for deploying web apps to a server"/></p>
+<blockquote>
+<p>Note:
+You might have to first execute maven build and also press F5 to refresh the content of the Eclipse project</p>
+</blockquote>
+<p>After pressing "run", Eclipse starts the internal server and deploys the web application on it.
+Then the Eclipse internal Browser View is opened and the index.jsp file that has been generated into our Example project is opened.
+We ignore it. Instead, we open our OData service in our favorite browser.</p>
+<blockquote>
+<p>Note:
+If you face problems related to the server, it helps to restart your Eclipse IDE.</p>
+</blockquote>
+<h3 id="the-service-urls">The Service URLs<a class="headerlink" href="#the-service-urls" title="Permalink">&para;</a></h3>
+<p>Try the following URLs:</p>
+<p><strong>Service Document</strong></p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/
+</code></pre>
+<p>The expected result is the Service Document which displays our <em>EntityContainerInfo</em>:</p>
+<pre><code class="language-json">    {
+      "@odata.context" : "$metadata",
+      "value" : [
+      {
+        "name" : "Products",
+        "url" : "Products"
+      } ]
+    }
+</code></pre>
+<p><strong>Metadata Document</strong></p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/$metadata
+</code></pre>
+<p>The expected result is the Metadata Document that displays our <em>Schema</em>, <em>EntityType</em>, <em>EntityContainer</em> and <em>EntitySet</em>.</p>
+<pre><code class="language-xml">    &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+    &lt;edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"&gt;
+      &lt;edmx:DataServices&gt;
+        &lt;Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="OData.Demo"&gt;
+          &lt;EntityType Name="Product"&gt;
+            &lt;Key&gt;
+              &lt;PropertyRef Name="ID"/&gt;
+            &lt;/Key&gt;
+            &lt;Property Name="ID" Type="Edm.Int32"/&gt;
+            &lt;Property Name="Name" Type="Edm.String"/&gt;
+            &lt;Property Name="Description" Type="Edm.String"/&gt;
+          &lt;/EntityType&gt;
+          &lt;EntityContainer Name="Container"&gt;
+            &lt;EntitySet Name="Products" EntityType="OData.Demo.Product"/&gt;
+          &lt;/EntityContainer&gt;
+        &lt;/Schema&gt;
+      &lt;/edmx:DataServices&gt;
+    &lt;/edmx:Edmx&gt;
+</code></pre>
+<p><strong>Query / EntitySet</strong></p>
+<pre><code>http://localhost:8080/DemoService/DemoService.svc/Products
+</code></pre>
+<p>The expected result is the hardcoded list of product entries, which we have coded in our processor implementation:</p>
+<pre><code class="language-json">    {
+      "@odata.context":"$metadata#Products","
+      value":[
+        {
+          "ID":1,
+          "Name":"Notebook Basic 15",
+          "Description":"Notebook Basic, 1.7GHz - 15 XGA - 1024MB DDR2 SDRAM - 40GB"
+        },
+        {
+          "ID":2,
+          "Name":"1UMTS PDA",
+          "Description":"Ultrafast 3G UMTS/HSDPA Pocket PC, supports GSM network"
+        },
+        {
+          "ID":3,
+          "Name":"Ergo Screen",
+          "Description":"17 Optimum Resolution 1024 x 768 @ 85Hz, resolution 1280 x 960"
+      }]
+    }
+</code></pre>
+<hr/>
+<h1 id="6-summary">6. Summary<a class="headerlink" href="#6-summary" title="Permalink">&para;</a></h1>
+<p>Finally, we have created our first OData service based on the V4 version of the OData specification and using the V4 server library provided by <em>Olingo</em>.
+Our first OData service is very simple; it only allows invoking one entity collection, apart from the Service Document and the Metadata Document.</p>
+<p>The final source code result can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.</p>
+<h1 id="links">Links<a class="headerlink" href="#links" title="Permalink">&para;</a></h1>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permalink">&para;</a></h3>
+<p>Further topics to be covered by follow-up tutorials:</p>
+<ul>
+<li>Tutorial OData V4 service part 1: Read Entity Collection</li>
+<li>Tutorial OData V4 service part 2: <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity, Read Property</a></li>
+<li>Tutorial OData V4 service part 3: <a href="/doc/odata4/tutorials/write/tutorial_write.html">Write (Create, Update, Delete Entity)</a></li>
+<li>Tutorial OData V4 service, part 4: <a href="/doc/odata4/tutorials/navigation/tutorial_navigation.html">Navigation</a></li>
+<li>Tutorial OData V4 service, part 5.1: <a href="/doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.html">System Query Options $top, $skip, $count (this page)</a></li>
+<li>Tutorial OData V4 service, part 5.2: <a href="/doc/odata4/tutorials/sqo_es/tutorial_sqo_es.html">System Query Options $select, $expand</a></li>
+<li>Tutorial OData V4 service, part 5.3: <a href="/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.html">System Query Options $orderby</a></li>
+<li>Tutorial OData V4 service, part 5.4: <a href="/doc/odata4/tutorials/sqo_f/tutorial_sqo_f.html">System Query Options $filter</a></li>
+<li>Tutorial ODATA V4 service, part 6: <a href="/doc/odata4/tutorials/action/tutorial_action.html">Action and Function Imports</a></li>
+<li>Tutorial ODATA V4 service, part 7: <a href="/doc/odata4/tutorials/media/tutorial_media.html">Media Entities</a></li>
+<li>Tutorial OData V4 service, part 8: <a href="/doc/odata4/tutorials/batch/tutorial_batch.html">Batch Request support</a></li>
+<li>Tutorial OData V4 service, part 9: <a href="/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.html">Handling "Deep Insert" requests</a></li>
+</ul>
+<h3 id="code-and-repository">Code and Repository<a class="headerlink" href="#code-and-repository" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="https://gitbox.apache.org/repos/asf/olingo-odata4">Git Repository</a></li>
+<li><a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a></li>
+<li><a href="http://www.apache.org/dyn/closer.lua/olingo/odata4/4.6.0/DemoService_Tutorial.zip">Demo Service source code as zip file (contains all tutorials)</a></li>
+</ul>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://odata.org/">Official OData Homepage</a></li>
+<li><a href="http://www.odata.org/documentation/">OData documentation</a></li>
+<li><a href="/javadoc/odata4/index.html">Olingo Javadoc</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

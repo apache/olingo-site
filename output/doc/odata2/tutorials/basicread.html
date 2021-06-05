@@ -1,0 +1,718 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="read-scenario">Read Scenario<a class="headerlink" href="#read-scenario" title="Permalink">&para;</a></h1>
+<hr/>
+<h3 id="how-to-guide-for-building-a-sample-odata-service-with-the-odata-library-java">How To Guide for building a Sample OData service with the OData Library (Java)<a class="headerlink" href="#how-to-guide-for-building-a-sample-odata-service-with-the-odata-library-java" title="Permalink">&para;</a></h3>
+<p>This How To Guide prerequisites a Project Setup (Git, Maven, etc.) and then shows how to develop an OData Service and make the same available.
+It shows in addition how to implement the Model Provider to expose the Entity Data Model (EDM) and the Data Provider to expose the runtime data.
+The implementation of the Data Provider (ODataSingleProcessor) illustrates how to expose a single entry, a feed and how to follow associations.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink">&para;</a></h3>
+<p><a href="../project-setup.html">Project Setup</a> is successfully done and the project is ready to start in your <code>$ODATA_PROJECT_HOME</code>.</p>
+<h3 id="implement-your-odata-service">Implement your OData Service<a class="headerlink" href="#implement-your-odata-service" title="Permalink">&para;</a></h3>
+<h5 id="shortcut">Shortcut<a class="headerlink" href="#shortcut" title="Permalink">&para;</a></h5>
+<p>As a shortcut you can download the <a href="apache-olingo-tutorial-basic_read.zip">Olingo Tutorial 'Basic-Read' Project</a>.</p>
+<h3 id="deployment-descriptor">Deployment Descriptor<a class="headerlink" href="#deployment-descriptor" title="Permalink">&para;</a></h3>
+<h5 id="sample-code">Sample Code<a class="headerlink" href="#sample-code" title="Permalink">&para;</a></h5>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="WebApp_ID" version="2.5"&gt;
+    &lt;display-name&gt;org.apache.olingo.odata2.sample&lt;/display-name&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;MyODataSampleServlet&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt;
+            &lt;param-value&gt;org.apache.olingo.odata2.core.rest.app.ODataApplication&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;org.apache.olingo.odata2.service.factory&lt;/param-name&gt;
+            &lt;param-value&gt;org.apache.olingo.odata2.sample.service.MyServiceFactory&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;MyODataSampleServlet&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/MyODataSample.svc/*&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<ul>
+<li>
+<p>Start the command line tool, go to folder <em>$ODATA_PROJECT_HOME\org.apache.olingo.odata2.sample.cars</em> and enter
+<code>mvn clean install</code> to build your projects</p>
+</li>
+<li>
+<p>The deployment Descriptor contains two <code>&lt;init-param&gt;</code> elements which define the OData Application <code>org.apache.olingo.odata2.core.rest.app.ODataApplication</code> and your Service Factory <code>org.apache.olingo.odata2.sample.service.MyServiceFactory</code>. The OData Application is implemented in the OData Library (Core) and registers a root locator and an exception mapper. The root locator looks up your registered Service Factory to get access to the Entity Data Model Provider and the OData Processor which provides the runtime data. In addition the root locator looks up a parameter <code>org.apache.olingo.odata2.path.split</code> (not present in the deployment descriptor above) which indicates how many path segments are reserved for the OData Service via an Integer value (default is 0, which means that the OData Service name corresponds to the defined <code>url-pattern</code>).</p>
+</li>
+</ul>
+<h3 id="implement-the-odata-service-factory">Implement the OData Service Factory<a class="headerlink" href="#implement-the-odata-service-factory" title="Permalink">&para;</a></h3>
+<ul>
+<li>Create a new source folder <em>src/main/java</em> in the eclipse project</li>
+<li>Create a new package <code>org.apache.olingo.odata2.sample.service</code> in the source folder</li>
+<li>Create a class <code>MyServiceFactory</code> which extends <code>org.apache.olingo.odata2.api.ODataServiceFactory</code> in the new package and contains the following implementation</li>
+</ul>
+<h5 id="sample-code_1">Sample Code<a class="headerlink" href="#sample-code_1" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">package org.apache.olingo.odata2.sample.service;
+    
+import org.apache.olingo.odata2.api.ODataService;
+import org.apache.olingo.odata2.api.ODataServiceFactory;
+import org.apache.olingo.odata2.api.edm.provider.EdmProvider;
+import org.apache.olingo.odata2.api.exception.ODataException;
+import org.apache.olingo.odata2.api.processor.ODataContext;
+import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
+    
+public class MyServiceFactory extends ODataServiceFactory {
+
+  @Override
+  public ODataService createService(ODataContext ctx) throws ODataException {
+
+    EdmProvider edmProvider = new MyEdmProvider();
+    ODataSingleProcessor singleProcessor = new MyODataSingleProcessor();
+    
+    return createODataSingleProcessorService(edmProvider, singleProcessor);
+  }
+}
+</code></pre>
+<ul>
+<li>In order to make your coding able to compile you have to create Java classes for
+<code>MyEdmProvider</code> which extends <code>org.apache.olingo.odata2.api.edm.provider.EdmProvider</code> and
+<code>MyODataSingleProcessor</code> which extends <code>org.apache.olingo.odata2.api.processor.ODataSingleProcessor</code></li>
+<li>After these steps compile your project with <code>mvn clean install</code></li>
+</ul>
+<h3 id="implement-the-entity-data-model-provider">Implement the Entity Data Model Provider<a class="headerlink" href="#implement-the-entity-data-model-provider" title="Permalink">&para;</a></h3>
+<p>In this paragraph you will implement the <code>MyEdmProvider</code> class by overriding all methods of <code>org.apache.olingo.odata2.api.edm.provider.EdmProvider</code>.</p>
+<ul>
+<li>You will implement the following Entity Data Model.</li>
+</ul>
+<p><img alt="alt text" src="/img/ODataCarsModel.JPG"/></p>
+<ul>
+<li>As we have a static model we define constants for all top level elements of the schema (declared in the <code>MyEdmProvider</code> class).</li>
+</ul>
+<h5 id="sample-code_2">Sample Code<a class="headerlink" href="#sample-code_2" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">  static final String ENTITY_SET_NAME_MANUFACTURERS = "Manufacturers";
+  static final String ENTITY_SET_NAME_CARS = "Cars";
+  static final String ENTITY_NAME_MANUFACTURER = "Manufacturer";
+  static final String ENTITY_NAME_CAR = "Car";
+    
+  private static final String NAMESPACE = "org.apache.olingo.odata2.ODataCars";
+
+  private static final FullQualifiedName ENTITY_TYPE_1_1 = new FullQualifiedName(NAMESPACE, ENTITY_NAME_CAR);
+  private static final FullQualifiedName ENTITY_TYPE_1_2 = new FullQualifiedName(NAMESPACE, ENTITY_NAME_MANUFACTURER);
+
+  private static final FullQualifiedName COMPLEX_TYPE = new FullQualifiedName(NAMESPACE, "Address");
+
+  private static final FullQualifiedName ASSOCIATION_CAR_MANUFACTURER = new FullQualifiedName(NAMESPACE, "Car_Manufacturer_Manufacturer_Cars");
+
+  private static final String ROLE_1_1 = "Car_Manufacturer";
+  private static final String ROLE_1_2 = "Manufacturer_Cars";
+
+  private static final String ENTITY_CONTAINER = "ODataCarsEntityContainer";
+
+  private static final String ASSOCIATION_SET = "Cars_Manufacturers";
+</code></pre>
+<ul>
+<li>Implement <code>MyEdmProvider.getSchemas</code>. This method is used to retrieve the complete structural information in order to build the metadata document and the service document. The implementation makes use of other getter methods of this class for simplicity reasons. If a very performant way of building the whole structural information was required, other implementation strategies could be used.</li>
+</ul>
+<h5 id="sample-code_3">Sample Code<a class="headerlink" href="#sample-code_3" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">public List&lt;Schema&gt; getSchemas() throws ODataException {
+  List&lt;Schema&gt; schemas = new ArrayList&lt;Schema&gt;();
+    
+  Schema schema = new Schema();
+  schema.setNamespace(NAMESPACE);
+    
+  List&lt;EntityType&gt; entityTypes = new ArrayList&lt;EntityType&gt;();
+  entityTypes.add(getEntityType(ENTITY_TYPE_1_1));
+  entityTypes.add(getEntityType(ENTITY_TYPE_1_2));
+  schema.setEntityTypes(entityTypes);
+    
+  List&lt;ComplexType&gt; complexTypes = new ArrayList&lt;ComplexType&gt;();
+  complexTypes.add(getComplexType(COMPLEX_TYPE));
+  schema.setComplexTypes(complexTypes);
+    
+  List&lt;Association&gt; associations = new ArrayList&lt;Association&gt;();
+  associations.add(getAssociation(ASSOCIATION_CAR_MANUFACTURER));
+  schema.setAssociations(associations);
+    
+  List&lt;EntityContainer&gt; entityContainers = new ArrayList&lt;EntityContainer&gt;();
+  EntityContainer entityContainer = new EntityContainer();
+  entityContainer.setName(ENTITY_CONTAINER).setDefaultEntityContainer(true);
+    
+  List&lt;EntitySet&gt; entitySets = new ArrayList&lt;EntitySet&gt;();
+  entitySets.add(getEntitySet(ENTITY_CONTAINER, ENTITY_SET_NAME_CARS));
+  entitySets.add(getEntitySet(ENTITY_CONTAINER, ENTITY_SET_NAME_MANUFACTURERS));
+  entityContainer.setEntitySets(entitySets);
+    
+  List&lt;AssociationSet&gt; associationSets = new ArrayList&lt;AssociationSet&gt;();
+  associationSets.add(getAssociationSet(ENTITY_CONTAINER, ASSOCIATION_CAR_MANUFACTURER, ENTITY_SET_NAME_MANUFACTURERS, ROLE_1_2));
+  entityContainer.setAssociationSets(associationSets);
+
+  entityContainers.add(entityContainer);
+  schema.setEntityContainers(entityContainers);
+
+  schemas.add(schema);
+
+  return schemas;
+}
+</code></pre>
+<ul>
+<li><code>MyEdmProvider.getEntityType(FullQualifiedName edmFQName)</code> returns an Entity Type according to the full qualified name specified. The Entity Type holds all information about its structure like simple properties, complex properties, navigation properties and the definition of its key property (or properties).</li>
+</ul>
+<h5 id="sample-code_4">Sample Code<a class="headerlink" href="#sample-code_4" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">@Override
+public EntityType getEntityType(FullQualifiedName edmFQName) throws ODataException {
+  if (NAMESPACE.equals(edmFQName.getNamespace())) {
+
+    if (ENTITY_TYPE_1_1.getName().equals(edmFQName.getName())) {
+
+      //Properties
+      List&lt;Property&gt; properties = new ArrayList&lt;Property&gt;();
+      properties.add(new SimpleProperty().setName("Id").setType(EdmSimpleTypeKind.Int32).setFacets(new Facets().setNullable(false)));
+      properties.add(new SimpleProperty().setName("Model").setType(EdmSimpleTypeKind.String).setFacets(new Facets().setNullable(false).setMaxLength(100).setDefaultValue("Hugo"))
+          .setCustomizableFeedMappings(new CustomizableFeedMappings().setFcTargetPath(EdmTargetPath.SYNDICATION_TITLE)));
+      properties.add(new SimpleProperty().setName("ManufacturerId").setType(EdmSimpleTypeKind.Int32));
+      properties.add(new SimpleProperty().setName("Price").setType(EdmSimpleTypeKind.Decimal));
+      properties.add(new SimpleProperty().setName("Currency").setType(EdmSimpleTypeKind.String).setFacets(new Facets().setMaxLength(3)));
+      properties.add(new SimpleProperty().setName("ModelYear").setType(EdmSimpleTypeKind.String).setFacets(new Facets().setMaxLength(4)));
+      properties.add(new SimpleProperty().setName("Updated").setType(EdmSimpleTypeKind.DateTime)
+          .setFacets(new Facets().setNullable(false).setConcurrencyMode(EdmConcurrencyMode.Fixed))
+          .setCustomizableFeedMappings(new CustomizableFeedMappings().setFcTargetPath(EdmTargetPath.SYNDICATION_UPDATED)));
+      properties.add(new SimpleProperty().setName("ImagePath").setType(EdmSimpleTypeKind.String));
+
+      //Navigation Properties
+      List&lt;NavigationProperty&gt; navigationProperties = new ArrayList&lt;NavigationProperty&gt;();
+      navigationProperties.add(new NavigationProperty().setName("Manufacturer")
+          .setRelationship(ASSOCIATION_CAR_MANUFACTURER).setFromRole(ROLE_1_1).setToRole(ROLE_1_2));
+
+      //Key
+      List&lt;PropertyRef&gt; keyProperties = new ArrayList&lt;PropertyRef&gt;();
+      keyProperties.add(new PropertyRef().setName("Id"));
+      Key key = new Key().setKeys(keyProperties);
+
+      return new EntityType().setName(ENTITY_TYPE_1_1.getName())
+          .setProperties(properties)
+          .setKey(key)
+          .setNavigationProperties(navigationProperties);
+
+    } else if (ENTITY_TYPE_1_2.getName().equals(edmFQName.getName())) {
+
+      //Properties
+      List&lt;Property&gt; properties = new ArrayList&lt;Property&gt;();
+      properties.add(new SimpleProperty().setName("Id").setType(EdmSimpleTypeKind.Int32).setFacets(new Facets().setNullable(false)));
+      properties.add(new SimpleProperty().setName("Name").setType(EdmSimpleTypeKind.String).setFacets(new Facets().setNullable(false).setMaxLength(100))
+          .setCustomizableFeedMappings(new CustomizableFeedMappings().setFcTargetPath(EdmTargetPath.SYNDICATION_TITLE)));
+      properties.add(new ComplexProperty().setName("Address").setType(new FullQualifiedName(NAMESPACE, "Address")));
+      properties.add(new SimpleProperty().setName("Updated").setType(EdmSimpleTypeKind.DateTime)
+          .setFacets(new Facets().setNullable(false).setConcurrencyMode(EdmConcurrencyMode.Fixed))
+          .setCustomizableFeedMappings(new CustomizableFeedMappings().setFcTargetPath(EdmTargetPath.SYNDICATION_UPDATED)));
+
+      //Navigation Properties
+      List&lt;NavigationProperty&gt; navigationProperties = new ArrayList&lt;NavigationProperty&gt;();
+      navigationProperties.add(new NavigationProperty().setName("Cars")
+          .setRelationship(ASSOCIATION_CAR_MANUFACTURER).setFromRole(ROLE_1_2).setToRole(ROLE_1_1));
+
+      //Key
+      List&lt;PropertyRef&gt; keyProperties = new ArrayList&lt;PropertyRef&gt;();
+      keyProperties.add(new PropertyRef().setName("Id"));
+      Key key = new Key().setKeys(keyProperties);
+
+      return new EntityType().setName(ENTITY_TYPE_1_2.getName())
+          .setProperties(properties)
+          .setHasStream(true)
+          .setKey(key)
+          .setNavigationProperties(navigationProperties);
+    }
+  }
+
+  return null;
+}
+</code></pre>
+<ul>
+<li><code>MyEdmProvider.getComplexType(FullQualifiedName edmFQName)</code></li>
+</ul>
+<h5 id="sample-code_5">Sample Code<a class="headerlink" href="#sample-code_5" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">public ComplexType getComplexType(FullQualifiedName edmFQName) throws ODataException {
+  if (NAMESPACE.equals(edmFQName.getNamespace())) {
+    if (COMPLEX_TYPE.getName().equals(edmFQName.getName())) {
+      List&lt;Property&gt; properties = new ArrayList&lt;Property&gt;();
+      properties.add(new SimpleProperty().setName("Street").setType(EdmSimpleTypeKind.String));
+      properties.add(new SimpleProperty().setName("City").setType(EdmSimpleTypeKind.String));
+      properties.add(new SimpleProperty().setName("ZipCode").setType(EdmSimpleTypeKind.String));
+      properties.add(new SimpleProperty().setName("Country").setType(EdmSimpleTypeKind.String));
+      return new ComplexType().setName(COMPLEX_TYPE.getName()).setProperties(properties);
+    }
+  }
+
+  return null;
+
+}
+</code></pre>
+<ul>
+<li><code>MyEdmProvider.getAssociation(FullQualifiedName edmFQName)</code></li>
+</ul>
+<h5 id="sample-code_6">Sample Code<a class="headerlink" href="#sample-code_6" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">public Association getAssociation(FullQualifiedName edmFQName) throws ODataException {
+  if (NAMESPACE.equals(edmFQName.getNamespace())) {
+    if (ASSOCIATION_CAR_MANUFACTURER.getName().equals(edmFQName.getName())) {
+      return new Association().setName(ASSOCIATION_CAR_MANUFACTURER.getName())
+          .setEnd1(new AssociationEnd().setType(ENTITY_TYPE_1_1).setRole(ROLE_1_1).setMultiplicity(EdmMultiplicity.MANY))
+          .setEnd2(new AssociationEnd().setType(ENTITY_TYPE_1_2).setRole(ROLE_1_2).setMultiplicity(EdmMultiplicity.ONE));
+    }
+  }
+  return null;
+}
+</code></pre>
+<ul>
+<li><code>MyEdmProvider.getEntityContainerInfo(String name)</code></li>
+</ul>
+<h5 id="sample-code_7">Sample Code<a class="headerlink" href="#sample-code_7" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">public EntityContainerInfo getEntityContainerInfo(String name) throws ODataException {
+  if (name == null || "ODataCarsEntityContainer".equals(name)) {
+    return new EntityContainerInfo().setName("ODataCarsEntityContainer").setDefaultEntityContainer(true);
+  }
+
+  return null;
+}
+</code></pre>
+<ul>
+<li><code>MyEdmProvider.getEntitySet(String entityContainer, String name)</code></li>
+</ul>
+<h5 id="sample-code_8">Sample Code<a class="headerlink" href="#sample-code_8" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">public EntitySet getEntitySet(String entityContainer, String name) throws ODataException {
+  if (ENTITY_CONTAINER.equals(entityContainer)) {
+    if (ENTITY_SET_NAME_CARS.equals(name)) {
+      return new EntitySet().setName(name).setEntityType(ENTITY_TYPE_1_1);
+    } else if (ENTITY_SET_NAME_MANUFACTURERS.equals(name)) {
+      return new EntitySet().setName(name).setEntityType(ENTITY_TYPE_1_2);
+    }
+  }
+  return null;
+}
+</code></pre>
+<ul>
+<li><code>MyEdmProvider.getAssociationSet(String entityContainer, FullQualifiedName association, String sourceEntitySetName, String sourceEntitySetRole)</code></li>
+</ul>
+<h5 id="sample-code_9">Sample Code<a class="headerlink" href="#sample-code_9" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">public AssociationSet getAssociationSet(String entityContainer, FullQualifiedName association, String sourceEntitySetName, String sourceEntitySetRole) throws ODataException {
+  if (ENTITY_CONTAINER.equals(entityContainer)) {
+    if (ASSOCIATION_CAR_MANUFACTURER.equals(association)) {
+      return new AssociationSet().setName(ASSOCIATION_SET)
+          .setAssociation(ASSOCIATION_CAR_MANUFACTURER)
+          .setEnd1(new AssociationSetEnd().setRole(ROLE_1_2).setEntitySet(ENTITY_SET_NAME_MANUFACTURERS))
+          .setEnd2(new AssociationSetEnd().setRole(ROLE_1_1).setEntitySet(ENTITY_SET_NAME_CARS));
+    }
+  }
+  return null;
+}
+</code></pre>
+<h4 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permalink">&para;</a></h4>
+<p>After the implementation of the Edm Provider the web application can be executed to show the Service Document and the Metadata Document.</p>
+<ul>
+<li>Build your project <code>mvn clean install</code></li>
+<li>Deploy the Web Application to the server.</li>
+<li>Show the Service Document: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/</a></li>
+<li>Show the Metadata Document: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/$metadata">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/$metadata</a></li>
+</ul>
+<h3 id="implement-the-odata-processor-which-provides-the-runtime-data">Implement the OData Processor which provides the runtime data<a class="headerlink" href="#implement-the-odata-processor-which-provides-the-runtime-data" title="Permalink">&para;</a></h3>
+<p>You already created the <code>MyODataSingleProcessor</code> class which we now extend with some needed imports and a reference to a DataStore which contains our data (and will be implemented in the next step).</p>
+<h5 id="sample-code_10">Sample Code<a class="headerlink" href="#sample-code_10" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">package org.apache.olingo.odata2.sample.service;
+
+import static org.apache.olingo.odata2.sample.service.MyEdmProvider.ENTITY_SET_NAME_CARS;
+import static org.apache.olingo.odata2.sample.service.MyEdmProvider.ENTITY_SET_NAME_MANUFACTURERS;
+
+import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
+
+public class MyODataSingleProcessor extends ODataSingleProcessor {
+  private DataStore dataStore = new DataStore();
+}
+</code></pre>
+<ul>
+<li>As next steps we will implement the read access to the Car and Manufacturer entries and the read access to the Cars and Manufacturers feed. As we need some basis for sample data we create a very simple DataStore which contains the data as well as access methods to serve the required data:</li>
+</ul>
+<h5 id="sample-code_11">Sample Code<a class="headerlink" href="#sample-code_11" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">package org.apache.olingo.odata2.sample.service;
+    
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
+
+public class DataStore {
+
+  //Data accessors
+  public Map&lt;String, Object&gt; getCar(int id) {
+    Map&lt;String, Object&gt; data = null;
+
+    Calendar updated = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+    
+    switch (id) {
+    case 1:
+      updated.set(2012, 11, 11, 11, 11, 11);
+      data = createCar(1, "F1 W03", 1, 189189.43, "EUR", "2012", updated, "file://imagePath/w03");
+      break;
+
+    case 2:
+      updated.set(2013, 11, 11, 11, 11, 11);
+      data = createCar(2, "F1 W04", 1, 199999.99, "EUR", "2013", updated, "file://imagePath/w04");
+      break;
+
+    case 3:
+      updated.set(2012, 12, 12, 12, 12, 12);
+      data = createCar(3, "F2012", 2, 137285.33, "EUR", "2012", updated, "http://pathToImage/f2012");
+      break;
+
+    case 4:
+      updated.set(2013, 12, 12, 12, 12, 12);
+      data = createCar(4, "F2013", 2, 145285.00, "EUR", "2013", updated, "http://pathToImage/f2013");
+      break;
+
+    case 5:
+      updated.set(2011, 11, 11, 11, 11, 11);
+      data = createCar(5, "F1 W02", 1, 167189.00, "EUR", "2011", updated, "file://imagePath/wXX");
+      break;
+
+    default:
+      break;
+    }
+    
+    return data;
+  }
+      
+  private Map&lt;String, Object&gt; createCar(int carId, String model, int manufacturerId, double price, String currency, String modelYear, Calendar updated, String imagePath) {
+    Map&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();
+    
+    data.put("Id", carId);
+    data.put("Model", model);
+    data.put("ManufacturerId", manufacturerId);
+    data.put("Price", price);
+    data.put("Currency", currency);
+    data.put("ModelYear", modelYear);
+    data.put("Updated", updated);
+    data.put("ImagePath", imagePath);
+    
+    return data;
+  }
+      
+  public Map&lt;String, Object&gt; getManufacturer(int id) {
+    Map&lt;String, Object&gt; data = null;
+    Calendar date = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+    
+    switch (id) {
+    case 1:
+      Map&lt;String, Object&gt; addressStar = createAddress("Star Street 137", "Stuttgart", "70173", "Germany");
+      date.set(1954, 7, 4);
+      data = createManufacturer(1, "Star Powered Racing", addressStar, date);
+      break;
+      
+    case 2:
+      Map&lt;String, Object&gt; addressHorse = createAddress("Horse Street 1", "Maranello", "41053", "Italy");
+      date.set(1929, 11, 16);
+      data = createManufacturer(2, "Horse Powered Racing", addressHorse, date);
+      break;
+      
+    default:
+      break;
+    }
+    
+    return data;
+  }
+    
+  private Map&lt;String, Object&gt; createManufacturer(int id, String name, Map&lt;String, Object&gt; address, Calendar updated) {
+    Map&lt;String, Object&gt; data = new HashMap&lt;String, Object&gt;();
+    data.put("Id", id);
+    data.put("Name", name);
+    data.put("Address", address);
+    data.put("Updated", updated);
+    return data;
+  }
+      
+  private Map&lt;String, Object&gt; createAddress(String street, String city, String zipCode, String country) {
+    Map&lt;String, Object&gt; address = new HashMap&lt;String, Object&gt;();
+    address.put("Street", street);
+    address.put("City", city);
+    address.put("ZipCode", zipCode);
+    address.put("Country", country);
+    return address;
+  }
+    
+    
+  public List&lt;Map&lt;String, Object&gt;&gt; getCars() {
+    List&lt;Map&lt;String, Object&gt;&gt; cars = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
+    cars.add(getCar(1));
+    cars.add(getCar(2));
+    cars.add(getCar(3));
+    cars.add(getCar(4));
+    cars.add(getCar(5));
+    return cars;
+  }
+      
+  public List&lt;Map&lt;String, Object&gt;&gt; getManufacturers() {
+    List&lt;Map&lt;String, Object&gt;&gt; manufacturers = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
+    manufacturers.add(getManufacturer(1));
+    manufacturers.add(getManufacturer(2));
+    return manufacturers;
+  }
+    
+
+  public List&lt;Map&lt;String, Object&gt;&gt; getCarsFor(int manufacturerId) {
+    List&lt;Map&lt;String, Object&gt;&gt; cars = getCars();
+    List&lt;Map&lt;String, Object&gt;&gt; carsForManufacturer = new ArrayList&lt;Map&lt;String,Object&gt;&gt;();
+    
+    for (Map&lt;String,Object&gt; car: cars) {
+      if(Integer.valueOf(manufacturerId).equals(car.get("ManufacturerId"))) {
+        carsForManufacturer.add(car);
+      }
+    }
+    
+    return carsForManufacturer;
+  }
+   
+  public Map&lt;String, Object&gt; getManufacturerFor(int carId) {
+    Map&lt;String, Object&gt; car = getCar(carId);
+    if(car != null) {
+      Object manufacturerId = car.get("ManufacturerId");
+      if(manufacturerId != null) {
+        return getManufacturer((Integer) manufacturerId);
+      }
+    }
+    return null;
+  }
+}
+</code></pre>
+<ul>
+<li>Implement <code>MyODataSingleProcessor.readEntity(GetEntityUriInfo uriParserResultInfo)</code> by overriding the corresponding method of the ODataSingleProcessor</li>
+</ul>
+<h5 id="sample-code_12">Sample Code<a class="headerlink" href="#sample-code_12" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">  public ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) throws ODataException {
+    
+    if (uriInfo.getNavigationSegments().size() == 0) {
+      EdmEntitySet entitySet = uriInfo.getStartEntitySet();
+
+      if (ENTITY_SET_NAME_CARS.equals(entitySet.getName())) {
+        int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
+        Map&lt;String, Object&gt; data = dataStore.getCar(id);
+        
+        if (data != null) {
+          URI serviceRoot = getContext().getPathInfo().getServiceRoot();
+          ODataEntityProviderPropertiesBuilder propertiesBuilder = EntityProviderWriteProperties.serviceRoot(serviceRoot);
+          
+          return EntityProvider.writeEntry(contentType, entitySet, data, propertiesBuilder.build());
+        }
+      } else if (ENTITY_SET_NAME_MANUFACTURERS.equals(entitySet.getName())) {
+        int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
+        Map&lt;String, Object&gt; data = dataStore.getManufacturer(id);
+        
+        if (data != null) {
+          URI serviceRoot = getContext().getPathInfo().getServiceRoot();
+          ODataEntityProviderPropertiesBuilder propertiesBuilder = EntityProviderWriteProperties.serviceRoot(serviceRoot);
+  
+          return EntityProvider.writeEntry(contentType, entitySet, data, propertiesBuilder.build());
+        }
+      }
+
+      throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
+
+    } else if (uriInfo.getNavigationSegments().size() == 1) {
+      //navigation first level, simplified example for illustration purposes only
+      EdmEntitySet entitySet = uriInfo.getTargetEntitySet();
+      if (ENTITY_SET_NAME_MANUFACTURERS.equals(entitySet.getName())) {
+        int carKey = getKeyValue(uriInfo.getKeyPredicates().get(0));
+        return EntityProvider.writeEntry(contentType, uriInfo.getTargetEntitySet(), dataStore.getManufacturer(carKey), EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
+      }
+
+      throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
+    }
+
+    throw new ODataNotImplementedException();
+  }
+  Implement MyODataSingleProcessor.readEntitySet(GetEntitySetUriInfo uriParserResultInfo) by overriding the corresponding method of the ODataSingleProcessor 
+    public ODataResponse readEntitySet(GetEntitySetUriInfo uriInfo, String contentType) throws ODataException {
+    
+    EdmEntitySet entitySet;
+
+    if (uriInfo.getNavigationSegments().size() == 0) {
+      entitySet = uriInfo.getStartEntitySet();
+
+      if (ENTITY_SET_NAME_CARS.equals(entitySet.getName())) {
+        return EntityProvider.writeFeed(contentType, entitySet, dataStore.getCars(), EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
+      } else if (ENTITY_SET_NAME_MANUFACTURERS.equals(entitySet.getName())) {
+        return EntityProvider.writeFeed(contentType, entitySet, dataStore.getManufacturers(), EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
+      }
+
+      throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
+
+    } else if (uriInfo.getNavigationSegments().size() == 1) {
+      //navigation first level, simplified example for illustration purposes only
+      entitySet = uriInfo.getTargetEntitySet();
+
+      if (ENTITY_SET_NAME_CARS.equals(entitySet.getName())) {
+        int manufacturerKey = getKeyValue(uriInfo.getKeyPredicates().get(0));
+
+        List&lt;Map&lt;String, Object&gt;&gt; cars = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
+        cars.add(dataStore.getCar(manufacturerKey));
+
+        return EntityProvider.writeFeed(contentType, entitySet, cars, EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
+      }
+
+      throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
+    }
+
+    throw new ODataNotImplementedException();
+  }
+</code></pre>
+<p>And add the small method to get the key value of a <code>KeyPredicate</code>:</p>
+<pre><code class="language-java">  private int getKeyValue(KeyPredicate key) throws ODataException {
+    EdmProperty property = key.getProperty();
+    EdmSimpleType type = (EdmSimpleType) property.getType();
+    return type.valueOfString(key.getLiteral(), EdmLiteralKind.DEFAULT, property.getFacets(), Integer.class);
+  }
+</code></pre>
+<p>After the implementation of the <code>MyODataSingleProcessor</code> the web application can be tested.</p>
+<ul>
+<li>Build your project. Remember? <code>mvn clean install</code></li>
+<li>Deploy the web application on your local server</li>
+<li>Show the Manufacturers: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers</a></li>
+<li>Show one Manufacturer: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)</a></li>
+<li>Show the Cars: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars</a></li>
+<li>Show one Car: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)</a></li>
+<li>Show the related Manufacturer of a Car: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)/Manufacturer">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)/Manufacturer</a></li>
+<li>Show the related Cars of a Manufacturer: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)/Cars">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)/Cars</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2021, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
