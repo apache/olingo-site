@@ -217,9 +217,9 @@ Results are shown here:
   - [Publishing Maven Artifacts][8]
 
 
-  [1]: http://olingo.apache.org/documentation.html
+  [1]: /documentation.html
   [2]: https://issues.apache.org/jira/browse/OLINGO/fixforversion/12324804
-  [4]: http://olingo.apache.org/doap_Olingo.rdf
+  [4]: /doap_Olingo.rdf
   [5]: http://projects.apache.org/indexes/alpha.html#O
   [6]: http://www.apache.org/dev/release.html
   [7]: http://www.apache.org/dev/release-publishing.html

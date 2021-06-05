@@ -16,7 +16,7 @@ exposed via the OData standard can be consumed in any environment offering
 HTTP-based connectivity. In addition, there are client SDKs available for
 various platforms such as .Net, Java, PHP, JavaScript, etc.
 
-For the Java platform, the [Apache Olingo project](http://olingo.apache.org/)
+For the Java platform, the [Apache Olingo project](/)
 offers a library useful for implementing an OData service. It provides
 services such as URL parsing, input validation, (de-)serialization of
 content, request dispatching, etc., according to the OData specification.

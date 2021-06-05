@@ -278,7 +278,7 @@ Enable the regular entity set for CRUD opertations:
 
 ### Implement the interface `MediaEntityProcessor`
 
-As you can see the [`MediaEntityProcessor`(Javadoc)](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/server/api/processor/MediaEntityProcessor.html) extends [`EntityProcessor`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/server/api/processor/EntityProcessor.html), therefore we will implement `MediaEntityProcessor` in class `DemoEntityProcessor`.
+As you can see the [`MediaEntityProcessor`(Javadoc)](/javadoc/odata4/org/apache/olingo/server/api/processor/MediaEntityProcessor.html) extends [`EntityProcessor`](/javadoc/odata4/org/apache/olingo/server/api/processor/EntityProcessor.html), therefore we will implement `MediaEntityProcessor` in class `DemoEntityProcessor`.
 
 The easiest part is to delete an media entity. The method `deleteMediaEntity` is delegated to the method `deleteEntity(...)`.
 

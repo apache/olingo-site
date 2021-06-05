@@ -25,7 +25,7 @@ To get the source code of the tutorials, please perform the follwing steps:
     *\> git checkout tags/4.6.0*
 
   - Navigate to the tutorial project   
-    You can find each tutorial in a separate subdirectory. e.g. [p1_read](http://olingo.staging.apache.org/doc/odata4/tutorials/read/tutorial_read.html)
+    You can find each tutorial in a separate subdirectory. e.g. [p1_read](/doc/odata4/tutorials/read/tutorial_read.html)
 
     *\> cd samples/tutorials*
   - Build the Project and Eclipse Project	

@@ -13,7 +13,7 @@ The odatajs library can be included in any html page with the script tag (for ex
 ```
 and its features can be used through the `odatajs` namespace (or `window.odatajs`). The odatajs library can be used together with the datajs library which uses the `window.OData` namespace.
 
-For API documentation please see [ODatajs API documentation](http://olingo.apache.org/doc/javascript/apidoc/index.html)
+For API documentation please see [ODatajs API documentation](/doc/javascript/apidoc/index.html)
 
 You may also use the documentation and the samples from the [datajs library](http://datajs.codeplex.com/documentation) because the features and API are similar.
 
@@ -34,6 +34,6 @@ In order to make the build infrastructure of ODataJS cross-platform and easy acc
 * [New] Support running on browser-independent environments (e.g. Node.js)
 
 ## Contribute to Olingo OData Client for JavaScript
-If you are interested to contribute to this library please have a look into [Project setup](http://olingo.apache.org/doc/javascript/project-setup.html) and [Build instructions](http://olingo.apache.org/doc/javascript/project-build.html) where you find a manual how you can download the source code and build the odatajs library.
+If you are interested to contribute to this library please have a look into [Project setup](/doc/javascript/project-setup.html) and [Build instructions](/doc/javascript/project-build.html) where you find a manual how you can download the source code and build the odatajs library.
 
-If you intend so please also join the [Olingo developers group](http://olingo.apache.org/support.html) for discussion.
+If you intend so please also join the [Olingo developers group](/support.html) for discussion.

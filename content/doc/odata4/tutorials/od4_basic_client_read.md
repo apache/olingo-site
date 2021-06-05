@@ -9,7 +9,8 @@ Title: Client Scenario
 This Tutorial shows how to use the Apache Olingo Library for CRUD operations on an existing OData Service.
 Therefore it contains the Explaining the Client section which explains how to implement the CRUD operations based on sample code.
 For creating a simple odata service refer the section Basic Tutorial: Create an OData V4 Service with Olingo in Olingo V4 tutorial
-###Client Quickstart Guide
+
+### Client Quickstart Guide
 With this Quickstart guide the runnable sample client and an sample service is created within a few minutes. Therefore it just requires an installed Java 6 Runtime, Maven 3 and an internet connection.
 It also requires an odata service. This sample uses the Cars service which can be found under samples/server under olingo [git repository][1]. Build the project and deploy the war on a server. Follow the [Guide - To fetch the tutorial sources][2] to import the sample server project.
 
@@ -33,7 +34,7 @@ It also requires an odata service. This sample uses the Cars service which can b
 ### Read EDM
 For an OData Service the Entity Data Model (EDM) defines all metadata information about the provided data of the service. This includes all entities with their type, properties and relations, which entities are provided as entity sets and additional functions and operations provided by the OData Service. The EDM also have to be provided by the OData Service via a unique URI (e.g. http://localhost:8080/cars.svc/$metadata) in the EDMX format.
 This fact is important because the Apache Olingo library requires the metadata for serialization and de-serialization of the data of an entity (e.g. the validation of the data is done against the EDM provided metadata). Hence the first step in this sample is to read the whole EDM of an OData Service.
-###Code sample: Read EDM ($metadata)
+### Code sample: Read EDM ($metadata)
 
     final Edm edm = getClient().getRetrieveRequestFactory().getMetadataRequest(serviceUrl).execute().getBody();
     return edm;
@@ -99,6 +100,7 @@ For read of a single ODataEntry the request URI is an Entity for which a key val
 
 To create an entity a HTTP POST on the corresponding entity set URI with the whole entity data as POST Body in a supported format (e.g. atom-xml, json) has to be done. With Apache Olingo the required POST Body can be created (serialized) with the methods available on ClientObjectFactory. This method creates a ClientEntity which contains the content (i.e. the required POST Body) which then can be send to the server. If the entry was created successfully an HTTP Status: 201 created will be returned as well as the complete entry.
 For simplicity in the code sample below the prepare and execute of the POST and the read of the response is separated (see Part 1: Post and Part 2: Read).
+
 ### Code sample: Create single Entry
 ### Part 1: POST entry
 
@@ -122,7 +124,7 @@ With the ODataClientFactory it is possible to create a new entity along with its
     final ClientEntity createdEntity = createResponse.getBody();
 
 This executes the create request and the response will return the ClientEntity that was created.
-###PUT entry
+### PUT entry
 
     final URI uri = odataClient.newURIBuilder(serviceUrl)
             .appendEntitySetSegment(“Manufacturers”).appendKeySegment(1).build();
@@ -565,4 +567,4 @@ So the code for delete of an entry the  DELETE request URI is an Entity for whic
 
 
   [1]: https://gitbox.apache.org/repos/asf?p=olingo-odata4.git
-  [2]: https://olingo.apache.org/doc/odata4/tutorials/prerequisites/prerequisites.html
+  [2]: /doc/odata4/tutorials/prerequisites/prerequisites.html

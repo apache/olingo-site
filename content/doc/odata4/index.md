@@ -21,7 +21,7 @@ Title:     Documentation
 ### Olingo for Server usage
 
   * Basic Tutorial: Create an OData V4 Service with Olingo
-    * [Prerequisites for all tutorial parts](http://olingo.staging.apache.org/doc/odata4/tutorials/prerequisites/prerequisites.html)
+    * [Prerequisites for all tutorial parts](/doc/odata4/tutorials/prerequisites/prerequisites.html)
     * [Tutorial Part 1: Create a read service (with Eclipse)](/doc/odata4/tutorials/read/tutorial_read.html)
       * [Tutorial Appendix: Use Maven for running the created read service](/doc/odata4/tutorials/read/tutorial_read_mvn.html)
     * [Tutorial Part 2: Extend the read service (with Eclipse)](/doc/odata4/tutorials/readep/tutorial_readep.html)

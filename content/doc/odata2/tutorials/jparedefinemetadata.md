@@ -79,4 +79,4 @@ The OData JPA Processor Library applies certain naming rules to derive the names
 		 
 
 
-  [1]: http://olingo.apache.org/resources/RedefiningTheMetadataSchema
+  [1]: /resources/RedefiningTheMetadataSchema

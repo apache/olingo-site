@@ -30,8 +30,8 @@ __
 
 # 1. Prerequisites
 
-Same prerequisites as in [Tutorial Part 1: Read Entity Collection](http://olingo.apache.org/doc/odata4/tutorials/read/tutorial_read.html)
- and [Tutorial Part 2: Read Entity](http://olingo.apache.org/doc/odata4/tutorials/readep/tutorial_readep.html) as well as basic knowledge about the concepts presented in both tutorials.
+Same prerequisites as in [Tutorial Part 1: Read Entity Collection](/doc/odata4/tutorials/read/tutorial_read.html)
+ and [Tutorial Part 2: Read Entity](/doc/odata4/tutorials/readep/tutorial_readep.html) as well as basic knowledge about the concepts presented in both tutorials.
 
 Furthermore, Tutorial Part 5.1 should have been read.
 

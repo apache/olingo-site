@@ -208,8 +208,8 @@ Results are shown here:
   - [Publishing Maven Artifacts][7]
 
 
-  [1]: http://olingo.apache.org/documentation.html
-  [3]: http://olingo.apache.org/doap_Olingo.rdf
+  [1]: /documentation.html
+  [3]: /doap_Olingo.rdf
   [4]: http://projects.apache.org/indexes/alpha.html#O
   [5]: http://www.apache.org/dev/release.html
   [6]: http://www.apache.org/dev/release-publishing.html
