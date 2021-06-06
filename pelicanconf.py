@@ -122,6 +122,7 @@ PLUGINS = ['asfgenid', 'pelican-gfm']
 
 # Configure the asfgenid plugin
 ASF_GENID = {
+    'unsafe_tags': False,
     'metadata': False,
     'elements': False,
     'headings': True,
