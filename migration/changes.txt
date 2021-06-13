@@ -1,0 +1,2553 @@
+==== ./content/contribute.md
+==== ./content/support.md
+20d19
+< 
+==== ./content/verification.md
+18a19
+> ```sh
+20a22
+> ```
+23a26
+> ```sh
+25a29
+> ```
+28a33
+> ```sh
+30a36
+> ```
+\ No newline at end of file
+==== ./content/documentation2.md
+==== ./content/index.md
+==== ./content/documentation.md
+6c6
+< [Documentation OData 2.0 Java Library](http://olingo.apache.org/doc/odata2/index.html)
+---
+> [Documentation OData 2.0 Java Library](/doc/odata2/index.html)
+9c9
+< [Documentation OData 4.0 Java Library](http://olingo.apache.org/doc/odata4/index.html)
+---
+> [Documentation OData 4.0 Java Library](/doc/odata4/index.html)
+12c12
+< [Olingo OData Client for JavaScript](http://olingo.apache.org/doc/javascript/index.html)
+---
+> [Olingo OData Client for JavaScript](/doc/javascript/index.html)
+==== ./content/doc/odata2/dependencies.md
+8a9
+> ```xml
+20a22
+> ```
+25a28
+> ```xml
+43a47
+> ```
+==== ./content/doc/odata2/privacy.md
+==== ./content/doc/odata2/project-setup.md
+==== ./content/doc/odata2/maven.md
+==== ./content/doc/odata2/release.md
+117c117
+< ~~~xml
+---
+> ```xml
+120c120
+< ~~~
+---
+> ```
+230c230
+<   [1]: http://olingo.apache.org/documentation.html
+---
+>   [1]: /documentation.html
+232c232
+<   [4]: http://olingo.apache.org/doap_Olingo.rdf
+---
+>   [4]: /doap_Olingo.rdf
+==== ./content/doc/odata2/sample-setup.md
+49a50
+> ```xml
+65c66
+< 
+---
+> ```
+==== ./content/doc/odata2/index.md
+50c50
+< * [Javadoc for OData 2.0 Library](/javadoc/odata2)
+---
+> * [Javadoc for OData 2.0 Library](/javadoc/odata2/)
+60,62c60,62
+<   [1]: http://olingo.apache.org/doc/odata2/tutorials/DeltaQuerySupport.html
+<   [2]: http://olingo.apache.org/doc/odata2/tutorials/HandlingClobAndBlob.html
+<   [3]: http://olingo.apache.org/doc/odata2/tutorials/CustomODataJPAProcessor.html
+---
+>   [1]: /doc/odata2/tutorials/DeltaQuerySupport.html
+>   [2]: /doc/odata2/tutorials/HandlingClobAndBlob.html
+>   [3]: /doc/odata2/tutorials/CustomODataJPAProcessor.html
+==== ./content/doc/odata2/tomcat.md
+==== ./content/doc/odata2/tutorials/debug.md
+38c38
+< ~~~java
+---
+> ```java
+50c50
+< ~~~
+---
+> ```
+62c62
+< ~~~json
+---
+> ```json
+113c113
+< ~~~
+---
+> ```
+129c129
+< ~~~java
+---
+> ```java
+133c133
+< ~~~
+---
+> ```
+137c137
+< ~~~java
+---
+> ```java
+151c151
+< ~~~
+---
+> ```
+155c155
+< ~~~java
+---
+> ```java
+167c167
+< ~~~
+---
+> ```
+==== ./content/doc/odata2/tutorials/osgi.md
+19c19
+< ~~~java
+---
+> ```java
+32c32
+< ~~~
+---
+> ```
+43c43
+< ~~~java
+---
+> ```java
+53c53
+< ~~~
+---
+> ```
+59c59
+< ~~~xml
+---
+> ```xml
+69c69
+< ~~~
+---
+> ```
+==== ./content/doc/odata2/tutorials/delta.md
+==== ./content/doc/odata2/tutorials/deltaClient.md
+==== ./content/doc/odata2/tutorials/batchClientApi.md
+==== ./content/doc/odata2/tutorials/jpafunctionimport.md
+153c153
+< ~~~java
+---
+>    ```java
+165c165
+< ~~~
+---
+>    ```
+171c171
+< ~~~java
+---
+>    ```java
+173c173
+< ~~~
+---
+>    ```
+==== ./content/doc/odata2/tutorials/AnnotationProcessorExtension.md
+40c40
+< ~~~xml
+---
+> ```xml
+114c114
+< ~~~
+---
+> ```
+126c126
+< ~~~java
+---
+> ```java
+139c139
+< ~~~
+---
+> ```
+143c143
+< ~~~java
+---
+> ```java
+157c157
+< ~~~
+---
+> ```
+164c164
+< ~~~java
+---
+> ```java
+168c168
+< ~~~
+---
+> ```
+174c174
+< ~~~java
+---
+> ```java
+188c188
+< ~~~
+---
+> ```
+194c194
+< ~~~java
+---
+> ```java
+205c205
+< ~~~
+---
+> ```
+209c209
+< ~~~java
+---
+> ```java
+230c230
+< ~~~
+---
+> ```
+234c234
+< ~~~java
+---
+> ```java
+256c256
+< ~~~
+---
+> ```
+264c264
+< ~~~java
+---
+> ```java
+275c275
+< ~~~
+---
+> ```
+284c284
+< ~~~java
+---
+> ```java
+317c317
+< ~~~
+---
+> ```
+329c329
+< ~~~xml
+---
+> ```xml
+354c354
+< ~~~
+---
+> ```
+==== ./content/doc/odata2/tutorials/Olingo_Tutorial_Advanced_Service_Resolution.md
+==== ./content/doc/odata2/tutorials/HandlingClobAndBlob.md
+==== ./content/doc/odata2/tutorials/OlingoV2BasicClientSample.md
+29,38c29,30
+< ```
+<   mvn archetype:generate
+<     -DinteractiveMode=false
+<     -Dversion=1.0.0-SNAPSHOT
+<     -DgroupId=com.sample
+<     -DartifactId=my-car-service
+<     -DarchetypeGroupId=org.apache.olingo
+<     -DarchetypeArtifactId=olingo-odata2-sample-cars-annotation-archetype
+<     -DarchetypeVersion=2.0.0
+< ```
+---
+>      	`mvn archetype:generate -DinteractiveMode=false -Dversion=1.0.0-SNAPSHOT -DgroupId=com.sample -DartifactId=my-car-service -DarchetypeGroupId=org.apache.olingo
+> 	-DarchetypeArtifactId=olingo-odata2-sample-cars-annotation-archetype -DarchetypeVersion=2.0.0`
+71c63
+< ~~~java
+---
+> ```java
+76c68
+< ~~~
+---
+> ```
+99c91
+< ~~~java
+---
+> ```java
+111c103
+< ~~~
+---
+> ```
+117c109
+< ~~~java
+---
+> ```java
+132c124
+< ~~~
+---
+> ```
+150c142
+< ~~~java
+---
+> ```java
+165c157
+< ~~~
+---
+> ```
+177c169
+< ~~~java
+---
+> ```java
+187c179
+< ~~~
+---
+> ```
+197c189
+< ~~~java
+---
+> ```java
+203c195
+< ~~~
+---
+> ```
+230c222
+< ~~~java
+---
+> ```java
+247c239
+< ~~~
+---
+> ```
+264c256
+< ~~~java
+---
+> ```java
+270c262
+< ~~~
+---
+> ```
+280c272
+< ~~~java
+---
+> ```java
+286c278
+< ~~~      
+---
+> ```      
+299c291
+< ~~~java
+---
+> ```java
+340c332
+< ~~~
+---
+> ```
+346c338
+< ~~~java
+---
+> ```java
+354c346
+< ~~~
+---
+> ```
+360c352
+< ~~~java
+---
+> ```java
+403c395
+< ~~~
+---
+> ```
+409c401
+< ~~~java
+---
+> ```java
+435c427
+< ~~~
+---
+> ```
+459c451
+< ~~~java
+---
+> ```java
+522c514
+< ~~~
+---
+> ```
+528c520
+< ~~~java
+---
+> ```java
+537c529
+< ~~~
+---
+> ```
+543c535
+< ~~~java
+---
+> ```java
+579c571
+< ~~~
+---
+> ```
+636c628
+< ~~~xml
+---
+> ```xml
+720c712
+< ~~~
+---
+> ```
+728c720
+< ~~~java
+---
+> ```java
+1113c1105
+< ~~~
+\ No newline at end of file
+---
+> ```
+\ No newline at end of file
+==== ./content/doc/odata2/tutorials/DeltaQuerySupport.md
+==== ./content/doc/odata2/tutorials/Olingo_Tutorial_AdvancedReadWrite_Batch.md
+==== ./content/doc/odata2/tutorials/Olingo_Tutorial_AdvancedRead_FilterVisitor.md
+==== ./content/doc/odata2/tutorials/Olingo_Tutorial_BasicRead_EDM.md
+==== ./content/doc/odata2/tutorials/servlet.md
+==== ./content/doc/odata2/tutorials/CustomODataJPAProcessor.md
+==== ./content/doc/odata2/tutorials/read_expand.md
+42c42
+< ~~~java
+---
+> ```java
+68c68
+< ~~~
+---
+> ```
+79c79
+< ~~~java
+---
+> ```java
+104c104
+< ~~~
+---
+> ```
+114c114
+< ~~~java
+---
+> ```java
+123c123
+< ~~~
+---
+> ```
+130c130
+< ~~~java
+---
+> ```java
+136c136
+< ~~~
+---
+> ```
+140c140
+< ~~~java
+---
+> ```java
+146c146
+< ~~~
+---
+> ```
+150c150
+< ~~~java
+---
+> ```java
+207c207
+< ~~~
+---
+> ```
+==== ./content/doc/odata2/tutorials/jparedefinemetadata.md
+82c82
+<   [1]: http://olingo.apache.org/resources/RedefiningTheMetadataSchema
+\ No newline at end of file
+---
+>   [1]: /resources/RedefiningTheMetadataSchema
+\ No newline at end of file
+==== ./content/doc/odata2/tutorials/ExtendingtheEDM.md
+==== ./content/doc/odata2/tutorials/basicread.md
+27c27
+< ~~~xml
+---
+> ```xml
+52c52
+< ~~~
+---
+> ```
+68c68
+< ~~~java
+---
+> ```java
+89c89
+< ~~~
+---
+> ```
+107c107
+< ~~~java 
+---
+> ```java 
+128c128
+< ~~~
+---
+> ```
+134c134
+< ~~~java
+---
+> ```java
+174c174
+< ~~~
+---
+> ```
+180c180
+< ~~~java
+---
+> ```java
+248c248
+< ~~~
+---
+> ```
+255c255
+< ~~~java
+---
+> ```java
+271c271
+< ~~~  
+---
+> ```  
+281c281
+< ~~~java
+---
+> ```java
+292c292
+< ~~~
+---
+> ```
+298c298
+< ~~~java
+---
+> ```java
+306c306
+< ~~~
+---
+> ```
+312c312
+< ~~~java
+---
+> ```java
+323c323
+< ~~~
+---
+> ```
+330c330
+< ~~~java
+---
+> ```java
+342c342
+< ~~~
+---
+> ```
+359c359
+< ~~~java
+---
+> ```java
+370c370
+< ~~~
+---
+> ```
+377c377
+< ~~~java
+---
+> ```java
+528c528
+< ~~~
+---
+> ```
+538c538
+< ~~~java
+---
+> ```java
+615c615
+< ~~~
+---
+> ```
+619c619
+< ~~~java
+---
+> ```java
+625c625
+< ~~~
+---
+> ```
+==== ./content/doc/odata2/tutorials/CreateWebApp.md
+==== ./content/doc/odata2/tutorials/read_media-resource.md
+68c68
+< ~~~java
+---
+> ```java
+98c98
+< ~~~
+---
+> ```
+102c102
+< ~~~java
+---
+> ```java
+105c105
+< ~~~
+---
+> ```
+109c109
+< ~~~java
+---
+> ```java
+113c113
+< ~~~
+---
+> ```
+122c122
+< ~~~java
+---
+> ```java
+140c140
+< ~~~
+---
+> ```
+151c151
+< ~~~java
+---
+> ```java
+162c162
+< ~~~
+---
+> ```
+166c166
+< ~~~java
+---
+> ```java
+169c169
+< ~~~
+---
+> ```
+182c182
+< ~~~java
+---
+> ```java
+190c190
+< ~~~
+---
+> ```
+194c194
+< ~~~java
+---
+> ```java
+198c198
+< ~~~
+---
+> ```
+204c204
+< ~~~java
+---
+> ```java
+211c211
+< ~~~
+---
+> ```
+215c215
+< ~~~java
+---
+> ```java
+223c223
+< ~~~
+---
+> ```
+227c227
+< ~~~java
+---
+> ```java
+261c261
+< ~~~
+---
+> ```
+266c266
+< ~~~java
+---
+> ```java
+276c276
+< ~~~
+---
+> ```
+280c280
+< ~~~java
+---
+> ```java
+305c305
+< ~~~
+---
+> ```
+316c316
+< ~~~java
+---
+> ```java
+339c339
+< ~~~
+---
+> ```
+346c346
+< ~~~java
+---
+> ```java
+367c367
+< ~~~
+---
+> ```
+371c371
+< ~~~java
+---
+> ```java
+377c377
+< ~~~
+---
+> ```
+==== ./content/doc/odata2/tutorials/Olingo_Tutorial_BasicWrite.md
+==== ./content/doc/odata2/eclipse.md
+11,13c11
+< ```
+< mvn eclipse:clean eclipse:eclipse
+< ```
+---
+> `mvn eclipse:clean eclipse:eclipse`
+==== ./content/doc/odata2/download.md
+==== ./content/doc/javascript/project-setup.md
+==== ./content/doc/javascript/index.md
+10,13c10
+< The odatajs library can be included in any html page with the script tag (for example)
+< ```
+< <script type="text/javascript" src="./sources/odatajs-4.0.0.min.js"></script>
+< ```
+---
+> The odatajs library can be included in any html page with the script tag (for example) `<script type="text/javascript" src="./sources/odatajs-4.0.0.min.js"></script>`
+16c13
+< For API documentation please see [ODatajs API documentation](http://olingo.apache.org/doc/javascript/apidoc/index.html)
+---
+> For API documentation please see [ODatajs API documentation](/doc/javascript/apidoc/index.html)
+37c34
+< If you are interested to contribute to this library please have a look into [Project setup](http://olingo.apache.org/doc/javascript/project-setup.html) and [Build instructions](http://olingo.apache.org/doc/javascript/project-build.html) where you find a manual how you can download the source code and build the odatajs library.
+---
+> If you are interested to contribute to this library please have a look into [Project setup](/doc/javascript/project-setup.html) and [Build instructions](/doc/javascript/project-build.html) where you find a manual how you can download the source code and build the odatajs library.
+39c36
+< If you intend so please also join the [Olingo developers group](http://olingo.apache.org/support.html) for discussion.
+\ No newline at end of file
+---
+> If you intend so please also join the [Olingo developers group](/support.html) for discussion.
+\ No newline at end of file
+==== ./content/doc/javascript/project-release.md
+211,212c211,212
+<   [1]: http://olingo.apache.org/documentation.html
+<   [3]: http://olingo.apache.org/doap_Olingo.rdf
+---
+>   [1]: /documentation.html
+>   [3]: /doap_Olingo.rdf
+==== ./content/doc/javascript/project-build.md
+==== ./content/doc/javascript/download.md
+==== ./content/doc/odata4/overview.md
+19c19
+< For the Java platform, the [Apache Olingo project](http://olingo.apache.org/)
+---
+> For the Java platform, the [Apache Olingo project](/)
+172c172
+< ~~~java
+---
+> ```java
+176c176
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/dependencies.md
+==== ./content/doc/odata4/project-setup.md
+==== ./content/doc/odata4/maven.md
+==== ./content/doc/odata4/release.md
+108c108
+< ~~~xml
+---
+> ```xml
+111c111
+< ~~~
+---
+> ```
+220c220
+<   [1]: http://olingo.apache.org/documentation.html
+---
+>   [1]: /documentation.html
+222c222
+<   [4]: http://olingo.apache.org/doap_Olingo.rdf
+---
+>   [4]: /doap_Olingo.rdf
+==== ./content/doc/odata4/sample-setup.md
+==== ./content/doc/odata4/index.md
+24c24
+<     * [Prerequisites for all tutorial parts](http://olingo.staging.apache.org/doc/odata4/tutorials/prerequisites/prerequisites.html)
+---
+>     * [Prerequisites for all tutorial parts](/doc/odata4/tutorials/prerequisites/prerequisites.html)
+==== ./content/doc/odata4/tomcat.md
+==== ./content/doc/odata4/tutorials/write/tutorial_write.md
+95c95
+< ~~~json
+---
+> ```json
+101c101
+< ~~~
+---
+> ```
+117c117
+< ~~~java
+---
+> ```java
+148c148
+< ~~~
+---
+> ```
+160c160
+< ~~~json
+---
+> ```json
+166c166
+< ~~~
+---
+> ```
+172c172
+< ~~~java
+---
+> ```java
+199c199
+< ~~~
+---
+> ```
+211c211
+< ~~~json
+---
+> ```json
+215c215
+< ~~~
+---
+> ```
+229c229
+< ~~~Java
+---
+> ```Java
+269c269
+< ~~~
+---
+> ```
+285c285
+< ~~~java
+---
+>     ```java
+302c302
+< ~~~
+---
+>     ```
+332c332
+< ~~~json
+---
+>     ```json
+338c338
+< ~~~
+---
+>     ```
+350c350
+< ~~~json
+---
+>     ```json
+356c356
+< ~~~
+---
+>     ```
+366c366
+< ~~~json
+---
+>     ```json
+370c370
+< ~~~
+---
+>     ```
+==== ./content/doc/odata4/tutorials/od4_basic_batch_client.md
+==== ./content/doc/odata4/tutorials/prerequisites/prerequisites.md
+28c28
+<     You can find each tutorial in a separate subdirectory. e.g. [p1_read](http://olingo.staging.apache.org/doc/odata4/tutorials/read/tutorial_read.html)
+---
+>     You can find each tutorial in a separate subdirectory. e.g. [p1_read](/doc/odata4/tutorials/read/tutorial_read.html)
+==== ./content/doc/odata4/tutorials/sqo_f/tutorial_sqo_f.md
+102,110c102,110
+< Action                                                        | Result - Type | Result              | Method
+< --------------------------------------------------------------|---------------|---------------------|------
+< 1. Get the value of the property “Price”                      | Edm.Double    | 500.00              | visitMember
+< 2. Determine the Type and value of the literal 2000.00        | Edm.Double    | 2000.00             | visitLiteral
+< 3. Calculate – 500.00 **lt** 2000                             | Edm.Boolean   | true                | visitBinaryOperator
+< 4. Get the value of the Property “Description”                | Edm.String    | "Notebook basic..." | visitMember
+< 5. Determine the type and value of the literal ‘Notebook’     | Edm.String    | “Notebook”          | visitLiteral
+< 6. Calculate – **contains**(“Notebook Basic…”, “Notebook”)    | Edm.Boolean   | true                | visitMethodCall
+< 7. Calculate – true **and** true                              | Edm.Boolean   | true                | visitBinaryOperator
+---
+> | Action                                                        | Result - Type | Result              | Method
+> |---------------------------------------------------------------|---------------|---------------------|------
+> | 1. Get the value of the property “Price”                      | Edm.Double    | 500.00              | visitMember
+> | 2. Determine the Type and value of the literal 2000.00        | Edm.Double    | 2000.00             | visitLiteral
+> | 3. Calculate – 500.00 **lt** 2000                             | Edm.Boolean   | true                | visitBinaryOperator
+> | 4. Get the value of the Property “Description”                | Edm.String    | "Notebook basic..." | visitMember
+> | 5. Determine the type and value of the literal ‘Notebook’     | Edm.String    | “Notebook”          | visitLiteral
+> | 6. Calculate – **contains**(“Notebook Basic…”, “Notebook”)    | Edm.Boolean   | true                | visitMethodCall
+> | 7. Calculate – true **and** true                              | Edm.Boolean   | true                | visitBinaryOperator
+131c131
+< ~~~java
+---
+> ```java
+133c133
+< ~~~
+---
+> ```
+137c137
+< ~~~java
+---
+> ```java
+143c143
+< ~~~
+---
+> ```
+158c158
+< ~~~java
+---
+> ```java
+164c164
+< ~~~
+---
+> ```
+169c169
+< ~~~java
+---
+> ```java
+194c194
+< ~~~
+---
+> ```
+210c210
+< ~~~java
+---
+> ```java
+236c236
+< ~~~
+---
+> ```
+250c250
+< ~~~java
+---
+> ```java
+268c268
+< ~~~
+---
+> ```
+272c272
+< ~~~java
+---
+> ```java
+394c394
+< ~~~
+---
+> ```
+402c402
+< ~~~java
+---
+> ```java
+424c424
+< ~~~
+---
+> ```
+432c432
+< ~~~java
+---
+> ```java
+435c435
+< ~~~
+---
+> ```
+455c455
+< ~~~java
+---
+> ```java
+472c472
+< ~~~
+---
+> ```
+476c476
+< ~~~java  
+---
+> ```java  
+492c492
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.md
+33,34c33,34
+< Same prerequisites as in [Tutorial Part 1: Read Entity Collection](http://olingo.apache.org/doc/odata4/tutorials/read/tutorial_read.html)
+<  and [Tutorial Part 2: Read Entity](http://olingo.apache.org/doc/odata4/tutorials/readep/tutorial_readep.html) as well as basic knowledge about the concepts presented in both tutorials.
+---
+> Same prerequisites as in [Tutorial Part 1: Read Entity Collection](/doc/odata4/tutorials/read/tutorial_read.html)
+>  and [Tutorial Part 2: Read Entity](/doc/odata4/tutorials/readep/tutorial_readep.html) as well as basic knowledge about the concepts presented in both tutorials.
+117c117
+< ~~~java
+---
+> ```java
+120c120
+< ~~~
+---
+> ```
+131c131
+< ~~~java
+---
+> ```java
+134c134
+< ~~~
+---
+> ```
+138c138
+< ~~~java
+---
+> ```java
+141c141
+< ~~~
+---
+> ```
+159c159
+< ~~~java
+---
+> ```java
+167c167
+< ~~~
+---
+> ```
+174c174
+< ~~~java
+---
+> ```java
+176c176
+< ~~~
+---
+> ```
+183c183
+< ~~~java
+---
+> ```java
+193c193
+< ~~~
+---
+> ```
+198c198
+< ~~~java
+---
+> ```java
+202c202
+< ~~~
+---
+> ```
+206c206
+< ~~~java
+---
+> ```java
+281c281
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/sqo_es/tutorial_sqo_es.md
+87c87
+< ~~~java
+---
+> ```java
+95c95
+< ~~~
+---
+> ```
+106c106
+< ~~~java
+---
+>     ```java
+109c109
+< ~~~
+---
+>     ```
+114c114
+< ~~~java
+---
+>     ```java
+122c122
+< ~~~
+---
+>     ```
+127c127
+< ~~~java
+---
+>     ```java
+132c132
+< ~~~
+---
+>     ```
+137c137
+< ~~~java
+---
+> ```java
+185c185
+< ~~~
+---
+> ```
+253c253
+< ~~~java
+---
+> ```java
+255c255
+< ~~~
+---
+> ```
+272c272
+< ~~~java
+---
+> ```java
+274c274
+< ~~~
+---
+> ```
+286c286
+< ~~~java
+---
+> ```java
+302c302
+< ~~~
+---
+> ```
+309c309
+< ~~~java
+---
+> ```java
+319c319
+< ~~~
+---
+> ```
+327c327
+< ~~~java
+---
+> ```java
+332c332
+< ~~~
+---
+> ```
+340c340
+< ~~~java
+---
+> ```java
+342c342
+< ~~~
+---
+> ```
+349c349
+< ~~~java
+---
+> ```java
+351c351
+< ~~~
+---
+> ```
+360c360
+< ~~~java
+---
+> ```java
+365c365
+< ~~~
+---
+> ```
+375c375
+< ~~~java
+---
+> ```java
+392c392
+< ~~~
+---
+> ```
+510c510
+< ~~~java
+---
+> ```java
+619c619
+< ~~~
+\ No newline at end of file
+---
+> ```
+\ No newline at end of file
+==== ./content/doc/odata4/tutorials/read/tutorial_read_mvn.md
+==== ./content/doc/odata4/tutorials/read/tutorial_read.md
+46c46
+< ~~~json
+---
+> ```json
+67c67
+< ~~~
+---
+> ```
+158c158
+< ~~~xml
+---
+> ```xml
+220c220
+< ~~~
+---
+> ```
+354c354
+< ~~~java
+---
+> ```java
+368c368
+< ~~~
+---
+> ```
+384c384
+< ~~~java
+---
+> ```java
+410c410
+< ~~~
+---
+> ```
+423c423
+< ~~~java
+---
+> ```java
+438c438
+< ~~~
+---
+> ```
+447c447
+< ~~~java
+---
+> ```java
+461c461
+< ~~~
+---
+> ```
+473c473
+< ~~~java
+---
+> ```java
+494c494
+< ~~~
+---
+> ```
+499c499
+< ~~~java
+---
+> ```java
+511c511
+< ~~~
+---
+> ```
+523c523
+< ~~~xml
+---
+> ```xml
+542c542
+< ~~~
+---
+> ```
+548c548
+< ~~~json
+---
+> ```json
+557c557
+< ~~~
+---
+> ```
+632c632
+< ~~~java
+---
+> ```java
+637c637
+< ~~~
+---
+> ```
+641c641
+< ~~~java
+---
+> ```java
+644c644
+< ~~~
+---
+> ```
+717c717
+< ~~~java
+---
+> ```java
+747c747
+< ~~~
+---
+> ```
+759c759
+< ~~~java
+---
+> ```java
+795c795
+< ~~~
+---
+> ```
+799c799
+< ~~~java
+---
+> ```java
+807c807
+< ~~~
+---
+> ```
+838c838
+< ~~~java
+---
+> ```java
+860c860
+< ~~~
+---
+> ```
+870c870
+< ~~~xml
+---
+> ```xml
+888c888
+< ~~~
+---
+> ```
+932c932
+< ~~~json
+---
+> ```json
+941c941
+< ~~~
+---
+> ```
+950c950
+< ~~~xml
+---
+> ```xml
+969c969
+< ~~~
+---
+> ```
+978c978
+< ~~~json
+---
+> ```json
+998c998
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/navigation/tutorial_navigation.md
+117c117
+< ~~~xml
+---
+> ```xml
+126c126
+< ~~~
+---
+> ```
+159c159
+< ~~~xml
+---
+> ```xml
+169c169
+< ~~~
+---
+> ```
+173c173
+< ~~~java
+---
+> ```java
+179c179
+< ~~~
+---
+> ```
+183c183
+< ~~~java
+---
+> ```java
+186c186
+< ~~~
+---
+> ```
+190c190
+< ~~~java
+---
+> ```java
+192c192
+< ~~~
+---
+> ```
+209c209
+< ~~~xml
+---
+> ```xml
+213c213
+< ~~~
+---
+> ```
+217c217
+< ~~~java
+---
+> ```java
+224c224
+< ~~~
+---
+> ```
+250c250
+< ~~~xml
+---
+> ```xml
+259c259
+< ~~~
+---
+> ```
+263c263
+< ~~~java
+---
+> ```java
+293c293
+< ~~~
+---
+> ```
+306c306
+< ~~~xml
+---
+> ```xml
+310c310
+< ~~~
+---
+> ```
+314c314
+< ~~~java
+---
+> ```java
+321c321
+< ~~~
+---
+> ```
+363c363
+< ~~~java
+---
+> ```java
+372c372
+< ~~~
+---
+> ```
+376c376
+< ~~~java
+---
+> ```java
+379c379
+< ~~~
+---
+> ```
+384c384
+< ~~~java
+---
+> ```java
+391c391
+< ~~~
+---
+> ```
+427c427
+< ~~~java
+---
+> ```java
+430c430
+< ~~~
+---
+> ```
+442c442
+< ~~~java
+---
+> ```java
+444c444
+< ~~~
+---
+> ```
+463c463
+< ~~~java
+---
+> ```java
+468c468
+< ~~~
+---
+> ```
+473c473
+< ~~~xml
+---
+> ```xml
+478c478
+< ~~~
+---
+> ```
+483c483
+< ~~~xml
+---
+> ```xml
+487c487
+< ~~~
+---
+> ```
+499c499
+< ~~~java
+---
+> ```java
+503c503
+< ~~~
+---
+> ```
+518c518
+< ~~~java
+---
+> ```java
+579c579
+< ~~~
+---
+> ```
+589c589
+< ~~~xml
+---
+> ```xml
+595c595
+< ~~~
+---
+> ```
+605c605
+< ~~~java
+---
+> ```java
+611c611
+< ~~~
+---
+> ```
+624c624
+< ~~~java
+---
+> ```java
+627c627
+< ~~~
+---
+> ```
+635c635
+< ~~~java
+---
+> ```java
+637c637
+< ~~~
+---
+> ```
+643c643
+< ~~~java
+---
+> ```java
+647c647
+< ~~~
+---
+> ```
+651c651
+< ~~~xml
+---
+> ```xml
+653c653
+< ~~~
+---
+> ```
+685c685
+< ~~~java
+---
+> ```java
+687c687
+< ~~~
+---
+> ```
+697c697
+< ~~~java
+---
+> ```java
+704c704
+< ~~~
+---
+> ```
+712c712
+< ~~~java
+---
+> ```java
+714c714
+< ~~~
+---
+> ```
+728c728
+< ~~~java
+---
+> ```java
+732c732
+< ~~~
+---
+> ```
+751c751
+< ~~~java
+---
+> ```java
+831c831
+< ~~~
+---
+> ```
+905c905
+< ~~~java
+---
+> ```java
+935c935
+< ~~~
+---
+> ```
+939c939
+< ~~~java
+---
+> ```java
+951c951
+< ~~~
+\ No newline at end of file
+---
+> ```
+\ No newline at end of file
+==== ./content/doc/odata4/tutorials/od4_quick_start_sample.md
+==== ./content/doc/odata4/tutorials/od4_basic_client_read.md
+11a12
+> 
+101a103
+> 
+568c570
+<   [2]: https://olingo.apache.org/doc/odata4/tutorials/prerequisites/prerequisites.html
+\ No newline at end of file
+---
+>   [2]: /doc/odata4/tutorials/prerequisites/prerequisites.html
+\ No newline at end of file
+==== ./content/doc/odata4/tutorials/streaming/tutorial_streaming.md
+62c62
+< ~~~java
+---
+> ```java
+77c77
+< ~~~
+---
+> ```
+84c84
+< ~~~java
+---
+> ```java
+94c94
+< ~~~
+---
+> ```
+98c98
+< ~~~java
+---
+> ```java
+107c107
+< ~~~
+---
+> ```
+120c120
+< ~~~java
+---
+> ```java
+140c140
+< ~~~
+---
+> ```
+149c149
+< ~~~java
+---
+> ```java
+152c152
+< ~~~
+---
+> ```
+156c156
+< ~~~java
+---
+> ```java
+159c159
+< ~~~
+---
+> ```
+168c168
+< ~~~java
+---
+> ```java
+198c198
+< ~~~
+---
+> ```
+214c214
+< ~~~java
+---
+> ```java
+236c236
+< ~~~
+---
+> ```
+253c253
+< ~~~java
+---
+> ```java
+267c267
+< ~~~
+---
+> ```
+271c271
+< ~~~java
+---
+> ```java
+276c276
+< ~~~
+---
+> ```
+283c283
+< ~~~json
+---
+> ```json
+304c304
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/action/tutorial_bound_action.md
+61c61
+< ~~~xml
+---
+> ```xml
+68c68
+< ~~~
+---
+> ```
+82c82
+< ~~~xml
+---
+> ```xml
+88c88
+< ~~~
+---
+> ```
+112c112
+< ~~~xml
+---
+> ```xml
+118c118
+< ~~~
+---
+> ```
+125c125
+< ~~~xml
+---
+> ```xml
+131c131
+< ~~~
+---
+> ```
+141c141
+< ~~~xml
+---
+> ```xml
+147c147
+< ~~~
+---
+> ```
+154c154
+< ~~~xml
+---
+> ```xml
+160c160
+< ~~~
+---
+> ```
+172c172
+< ~~~java
+---
+> ```java
+192c192
+< ~~~
+---
+> ```
+201c201
+< ~~~java
+---
+> ```java
+255c255
+< ~~~
+---
+> ```
+259c259
+< ~~~java
+---
+> ```java
+313c313
+< ~~~
+---
+> ```
+317c317
+< ~~~java
+---
+> ```java
+329c329
+< ~~~
+---
+> ```
+336c336
+< ~~~java
+---
+> ```java
+367c367
+< ~~~
+---
+> ```
+371c371
+< ~~~java
+---
+> ```java
+394c394
+< ~~~    
+---
+> ```    
+398c398
+< ~~~java
+---
+> ```java
+422c422
+< ~~~
+---
+> ```
+430c430
+< ~~~java
+---
+> ```java
+445c445
+< ~~~
+---
+> ```
+449c449
+< ~~~java
+---
+> ```java
+515c515
+< ~~~
+---
+> ```
+520c520
+< ~~~java
+---
+> ```java
+601c601
+< ~~~
+---
+> ```
+607c607
+< ~~~java
+---
+> ```java
+623c623
+< ~~~
+---
+> ```
+633c633
+< ~~~java
+---
+> ```java
+710c710
+< ~~~
+---
+> ```
+720c720
+< ~~~java
+---
+> ```java
+799c799
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/action/tutorial_action.md
+53c53
+< ~~~xml
+---
+> ```xml
+60c60
+< ~~~
+---
+> ```
+64c64
+< ~~~xml
+---
+> ```xml
+70c70
+< ~~~
+---
+> ```
+80c80
+< ~~~xml
+---
+> ```xml
+88c88
+< ~~~
+---
+> ```
+96c96
+< ~~~json
+---
+> ```json
+100c100
+< ~~~
+---
+> ```
+121c121
+< ~~~xml
+---
+> ```xml
+126c126
+< ~~~
+---
+> ```
+136c136
+< ~~~xml
+---
+> ```xml
+140c140
+< ~~~
+---
+> ```
+155c155
+< ~~~java
+---
+> ```java
+166c166
+< ~~~
+---
+> ```
+177c177
+< ~~~java
+---
+> ```java
+207c207
+< ~~~
+---
+> ```
+211c211
+< ~~~java
+---
+> ```java
+226c226
+< ~~~
+---
+> ```
+230c230
+< ~~~java
+---
+> ```java
+268c268
+< ~~~
+---
+> ```
+273c273
+< ~~~java
+---
+> ```java
+283c283
+< ~~~
+---
+> ```
+287c287
+< ~~~java
+---
+> ```java
+298c298
+< ~~~
+---
+> ```
+306c306
+< ~~~java
+---
+> ```java
+351c351
+< ~~~
+---
+> ```
+355c355
+< ~~~java
+---
+> ```java
+378c378
+< ~~~
+---
+> ```
+388c388
+< ~~~java
+---
+> ```java
+403c403
+< ~~~
+---
+> ```
+407c407
+< ~~~java
+---
+> ```java
+422c422
+< ~~~
+---
+> ```
+426c426
+< ~~~java
+---
+> ```java
+439c439
+< ~~~
+---
+> ```
+443c443
+< ~~~java
+---
+> ```java
+494c494
+< ~~~
+---
+> ```
+500c500
+< ~~~java
+---
+> ```java
+514c514
+< ~~~
+---
+> ```
+518c518
+< ~~~java
+---
+> ```java
+525c525
+< ~~~
+---
+> ```
+529c529
+< ~~~java
+---
+> ```java
+541c541
+< ~~~
+---
+> ```
+545c545
+< ~~~java
+---
+> ```java
+556c556
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/readep/tutorial_readep.md
+74c74
+< ~~~java
+---
+> ```java
+197c197
+< ~~~
+---
+> ```
+215c215
+< ~~~java
+---
+> ```java
+232c232
+< ~~~
+---
+> ```
+248c248
+< ~~~java
+---
+> ```java
+259c259
+< ~~~
+---
+> ```
+271c271
+< ~~~java
+---
+> ```java
+273c273
+< ~~~
+---
+> ```
+277c277
+< ~~~java
+---
+> ```java
+291c291
+< ~~~
+---
+> ```
+301c301
+< ~~~java
+---
+> ```java
+402c402
+< ~~~
+---
+> ```
+458c458
+< ~~~java
+---
+> ```java
+474c474
+< ~~~
+---
+> ```
+486c486
+< ~~~json
+---
+> ```json
+493c493
+< ~~~
+---
+> ```
+502c502
+<     ~~~java
+---
+>      ```java
+504c504
+<     ~~~
+---
+>      ```
+516c516
+<     ~~~java
+---
+>      ```java
+518c518
+<     ~~~
+---
+>      ```
+526c526
+<     ~~~java
+---
+>      ```java
+530c530
+<     ~~~
+---
+>      ```
+542c542
+< ~~~java
+---
+> ```java
+573c573
+< ~~~
+---
+> ```
+582c582
+< ~~~java
+---
+> ```java
+590c590
+< ~~~
+---
+> ```
+602c602
+< ~~~json
+---
+> ```json
+609c609
+< ~~~
+---
+> ```
+629c629
+< ~~~json
+---
+> ```json
+634c634
+< ~~~
+---
+> ```
+671c671
+< ~~~java
+---
+> ```java
+686c686
+< ~~~
+---
+> ```
+707c707
+<     ~~~java
+---
+>      ```java
+764c764
+<     ~~~
+---
+>      ```
+770c770
+< ~~~java
+---
+> ```java
+779c779
+< ~~~
+---
+> ```
+790c790
+< ~~~json
+---
+> ```json
+795c795
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/batch/tutorial_batch.md
+60c60
+< ~~~java
+---
+> ```java
+101c101
+< ~~~
+---
+> ```
+109c109
+< ~~~java
+---
+> ```java
+124c124
+< ~~~
+---
+> ```
+130c130
+< ~~~java
+---
+> ```java
+137c137
+< ~~~
+---
+> ```
+141c141
+< ~~~java
+---
+> ```java
+150c150
+< ~~~
+---
+> ```
+154c154
+< ~~~java
+---
+> ```java
+160c160
+< ~~~
+---
+> ```
+164c164
+< ~~~java
+---
+> ```java
+176c176
+< ~~~
+---
+> ```
+184c184
+< ~~~java
+---
+> ```java
+256c256
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.md
+68c68
+< # 2. Implementation
+---
+> # 3. Implementation
+70c70
+< Before we start with the implementation, please have a look at the class `myservice.mynamespace.data.Storage`. In difference to the [navigation tutorial](http://olingo.apache.org/doc/odata4/tutorials/navigation/tutorial_navigation.html) the relations between two entities can not be hard coded because we would like to create and change relations between entities dynamically. In the constructor of the data storage the creation of the sample data is called. After that the method `linkProductsAndCategories`is called. This methods sets a few links between the just created entities. **The linked entites are stored as navigation links**
+---
+> Before we start with the implementation, please have a look at the class `myservice.mynamespace.data.Storage`. In difference to the [navigation tutorial](/doc/odata4/tutorials/navigation/tutorial_navigation.html) the relations between two entities can not be hard coded because we would like to create and change relations between entities dynamically. In the constructor of the data storage the creation of the sample data is called. After that the method `linkProductsAndCategories`is called. This methods sets a few links between the just created entities. **The linked entites are stored as navigation links**
+72,73c72,73
+< To express the relation between two entities, Olingo uses the class [Link](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html). This class is used for related entites (directly connected via Java references) and bindings (which are actually strings) to other entities. To get the related entites for a particual navigation property, you can ask an entity with the method [`getNavigationLink(String name)`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Linked.html#getNavigationLink(java.lang.String)) for an navigation property link. The link will contain either an entity or a collection of entities dependenting on the type of the navigation property. To get the actual entities use the methods [`getInlineEntity()`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getInlineEntity()) or [`getInlineEntitySet()`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getInlineEntitySet())
+< The same can be done for bindings via the method [`getNavigationBinding(String name)`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Linked.html#getNavigationBinding(java.lang.String)). The values of the Binding can be gotten by the methods [`getBindingLink()`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getBindingLink()) and [`getBindingLinks()`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getBindingLinks()). 
+---
+> To express the relation between two entities, Olingo uses the class [Link](/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html). This class is used for related entites (directly connected via Java references) and bindings (which are actually strings) to other entities. To get the related entites for a particual navigation property, you can ask an entity with the method [`getNavigationLink(String name)`](/javadoc/odata4/org/apache/olingo/commons/api/data/Linked.html#getNavigationLink(java.lang.String)) for an navigation property link. The link will contain either an entity or a collection of entities dependenting on the type of the navigation property. To get the actual entities use the methods [`getInlineEntity()`](/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getInlineEntity()) or [`getInlineEntitySet()`](http://javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getInlineEntitySet())
+> The same can be done for bindings via the method [`getNavigationBinding(String name)`](/javadoc/odata4/org/apache/olingo/commons/api/data/Linked.html#getNavigationBinding(java.lang.String)). The values of the Binding can be gotten by the methods [`getBindingLink()`](/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getBindingLink()) and [`getBindingLinks()`](/javadoc/odata4/org/apache/olingo/commons/api/data/Link.html#getBindingLinks()). 
+91c91
+< ~~~java
+---
+> ```java
+117c117
+< ~~~
+---
+> ```
+128c128
+< The first method takes an entity-Id and returns the addressed entity. The OData objects provides a helper object to parse entity-ids. (See [UriHelper](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/server/api/uri/UriHelper.html)). After parsing the id we have to check if the addressed entity set fits to the entity set the navigation property points to. After that the data is read by calling `readEntityData`.
+---
+> The first method takes an entity-Id and returns the addressed entity. The OData objects provides a helper object to parse entity-ids. (See [UriHelper](/javadoc/odata4/org/apache/olingo/server/api/uri/UriHelper.html)). After parsing the id we have to check if the addressed entity set fits to the entity set the navigation property points to. After that the data is read by calling `readEntityData`.
+130c130
+< ~~~java
+---
+> ```java
+150c150
+< ~~~
+---
+> ```
+154c154
+< ~~~java
+---
+> ```java
+165c165
+< ~~~
+---
+> ```
+169c169
+< ~~~java
+---
+> ```java
+185c185
+< ~~~
+---
+> ```
+191c191
+< ~~~java
+---
+> ```java
+207c207
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.md
+167c167
+< ~~~java
+---
+> ```java
+171c171
+< ~~~
+---
+> ```
+182c182
+< ~~~java
+---
+> ```java
+190c190
+< ~~~
+---
+> ```
+200c200
+< ~~~java
+---
+> ```java
+206c206
+< ~~~
+---
+> ```
+211c211
+< ~~~java
+---
+> ```java
+216c216
+< ~~~
+---
+> ```
+240c240
+< ~~~java
+---
+> ```java
+255c255
+< ~~~
+---
+> ```
+260c260
+< ~~~java
+---
+> ```java
+264c264
+< ~~~
+---
+> ```
+275c275
+< ~~~java
+---
+> ```java
+287c287
+< ~~~
+---
+> ```
+291c291
+< ~~~java
+---
+> ```java
+372c372
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/tutorials/od4_basic_write.md
+==== ./content/doc/odata4/tutorials/od4_basic_read.md
+==== ./content/doc/odata4/tutorials/media/tutorial_media.md
+33c33
+< ~~~xml
+---
+> ```xml
+46c46
+< ~~~
+---
+> ```
+62c62
+< ~~~java
+---
+> ```java
+92c92
+< ~~~
+---
+> ```
+96c96
+< ~~~java
+---
+> ```java
+115c115
+< ~~~
+---
+> ```
+119c119
+< ~~~java
+---
+> ```java
+133c133
+< ~~~
+---
+> ```
+142c142
+< ~~~java
+---
+> ```java
+149c149
+< ~~~
+---
+> ```
+153c153
+< ~~~java
+---
+> ```java
+159c159
+< ~~~
+---
+> ```
+163c163
+< ~~~java
+---
+> ```java
+181c181
+< ~~~
+---
+> ```
+185c185
+< ~~~java
+---
+> ```java
+204c204
+< ~~~
+---
+> ```
+208c208
+< ~~~java
+---
+> ```java
+215c215
+< ~~~
+---
+> ```
+219c219
+< ~~~java
+---
+> ```java
+277c277
+< ~~~
+---
+> ```
+281c281
+< As you can see the [`MediaEntityProcessor`(Javadoc)](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/server/api/processor/MediaEntityProcessor.html) extends [`EntityProcessor`](http://olingo.apache.org/javadoc/odata4/org/apache/olingo/server/api/processor/EntityProcessor.html), therefore we will implement `MediaEntityProcessor` in class `DemoEntityProcessor`.
+---
+> As you can see the [`MediaEntityProcessor`(Javadoc)](/javadoc/odata4/org/apache/olingo/server/api/processor/MediaEntityProcessor.html) extends [`EntityProcessor`](/javadoc/odata4/org/apache/olingo/server/api/processor/EntityProcessor.html), therefore we will implement `MediaEntityProcessor` in class `DemoEntityProcessor`.
+285c285
+< ~~~java
+---
+> ```java
+305c305
+< ~~~
+---
+> ```
+309c309
+< ~~~java
+---
+> ```java
+318c318
+< ~~~
+---
+> ```
+322c322
+< ~~~java
+---
+> ```java
+339c339
+< ~~~
+---
+> ```
+343c343
+< ~~~java
+---
+> ```java
+372c372
+< ~~~
+---
+> ```
+376c376
+< ~~~java
+---
+> ```java
+402c402
+< ~~~
+---
+> ```
+424c424
+< ~~~xml
+---
+> ```xml
+431c431
+< ~~~
+---
+> ```
+447c447
+< ~~~json
+---
+> ```json
+452c452
+< ~~~
+---
+> ```
+==== ./content/doc/odata4/eclipse.md
+11,13c11
+< ```
+< mvn eclipse:clean eclipse:eclipse
+< ```
+---
+> `mvn eclipse:clean eclipse:eclipse`
+==== ./content/doc/odata4/download.md
+==== ./content/download.md
+==== ./README.md

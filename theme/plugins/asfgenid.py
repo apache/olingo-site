@@ -26,26 +26,26 @@ Which is BSD licensed, but is very much rewritten.
 '''
 
 ASF_GENID = {
-    'unsafe_tags': 'True',     # fix script, style, and iframe html that gfm filters as unsafe
-    'metadata': True,          # {{ metadata }} inclusion of data in the html.
-    'elements': True,	       # {#id} and {.class} annotations.
-    'headings': True,	       # add slugified id to headings missing id. Can be overridden by page metadata.
-    'headings_re': r'^h[1-6]', # regex for which headings to check.
-    'permalinks': True,	       # add permalinks to elements and headings when id is added.
-    'toc': True,  	       # check for [TOC] and add Table of Content if present.
-    'toc_headers': r'h[1-6]',  # regex for which headings to include in the [TOC]
-    'tables': True,	       # add class="table" for tables missing class.
+    'unsafe_tags': True,        # fix script, style, and iframe html that gfm filters as unsafe
+    'metadata': True,           # {{ metadata }} inclusion of data in the html.
+    'elements': True,	        # {#id} and {.class} annotations.
+    'headings': True,	        # add slugified id to headings missing id. Can be overridden by page metadata.
+    'headings_re': r'^h[1-6]',  # regex for which headings to check.
+    'permalinks': True,	        # add permalinks to elements and headings when id is added.
+    'toc': True,  	        # check for [TOC] and add Table of Content if present.
+    'toc_headers': r'h[1-6]',   # regex for which headings to include in the [TOC]
+    'tables': True,	        # add class="table" for tables missing class.
     'debug': False
 }
 
 # Fixup tuples for HTML that GFM makes into text.
 FIXUP_UNSAFE = [
-    (re.compile(r'&lt;script'),'<script'),
-    (re.compile(r'&lt;/script'),'</script'),
-    (re.compile(r'&lt;style'),'<style'),
-    (re.compile(r'&lt;/style'),'</style'),
-    (re.compile(r'&lt;iframe'),'<iframe'),
-    (re.compile(r'&lt;/iframe'),'</iframe')
+    (re.compile(r'&lt;script'), '<script'),
+    (re.compile(r'&lt;/script'), '</script'),
+    (re.compile(r'&lt;style'), '<style'),
+    (re.compile(r'&lt;/style'), '</style'),
+    (re.compile(r'&lt;iframe'), '<iframe'),
+    (re.compile(r'&lt;/iframe'), '</iframe')
 ]
 
 # Find {{ metadata }} inclusions
@@ -67,6 +67,7 @@ PARA_MAP = {
 
 # Find table tags - to check for ones without class attribute.
 TABLE_RE = re.compile(r'^table')
+
 
 # An item in a Table of Contents - from toc.py
 class HtmlTreeNode(object):
@@ -263,7 +264,7 @@ def generate_toc(content, tags, title, toc_headers):
         # convert the HtmlTreeNode into Beautiful Soup
         tree_string = '{}'.format(tree)
         tree_soup = BeautifulSoup(tree_string, 'html.parser')
-        # Make the ToC availble to the theme's template
+        # Make the ToC available to the theme's template
         content.toc = tree_soup.decode(formatter='html')
     # replace the first [TOC] with the generated table of contents
     for tag in tags:
@@ -271,6 +272,22 @@ def generate_toc(content, tags, title, toc_headers):
         # replace additional [TOC] with nothing
         tree_soup = ''
 
+
+# create breadcrumb html
+def make_breadcrumbs(rel_source_path, title):
+    parts = rel_source_path.split('/')
+    url = '/'
+    crumbs = []
+    crumbs.append(f'<a href="/">Home</a>&nbsp;&raquo&nbsp;')
+    # don't process the filename part
+    last = len(parts)-1
+    for i in range(last):
+        url = f"{url}{parts[i]}/"
+        p = parts[i].capitalize()
+        crumbs.append(f'<a href="{url}">{p}</a>&nbsp;&raquo&nbsp;')
+    crumbs.append(f'<a href="#">{title}</a>')
+    return ''.join(crumbs)
+    
 
 # add the asfdata metadata into GFM content.
 def add_data(content):
@@ -303,7 +320,7 @@ def generate_id(content):
     ids = set()
     # track permalinks
     permalinks = set()
-    
+
     # step 1 - fixup html that cmark marks unsafe - move to later?
     if asf_genid['unsafe_tags']:
         fixup_content(content)
@@ -314,9 +331,14 @@ def generate_id(content):
     # page title
     title = content.metadata.get('title', 'Title')
     # assure relative source path is in the metadata
-    content.metadata['relative_source_path'] = content.relative_source_path
+    content.metadata['relative_source_path'] = rel_source_path = content.relative_source_path
+    # create breadcrumb html
+    content.metadata['breadcrumbs'] = breadcrumbs = make_breadcrumbs(rel_source_path, title)
     # display output path and title
     print(f'{content.relative_source_path} - {title}')
+    # if debug display breadcrumb html
+    if asf_genid['debug']:
+        print(f'    {breadcrumbs}')
     # enhance metadata if done by asfreader
     add_data(content)
 
@@ -373,7 +395,7 @@ def tb_connect(pel_ob):
     """Print any exception, before Pelican chews it into nothingness."""
     try:
         generate_id(pel_ob)
-    except:
+    except Exception:
         print('-----', file=sys.stderr)
         print('FATAL: %s' % (pel_ob.relative_source_path), file=sys.stderr)
         traceback.print_exc()
