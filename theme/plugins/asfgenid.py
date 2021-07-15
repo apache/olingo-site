@@ -39,13 +39,16 @@ ASF_GENID = {
 }
 
 # Fixup tuples for HTML that GFM makes into text.
+# Fixup [ and ] that download templates use for ezt.
 FIXUP_UNSAFE = [
     (re.compile(r'&lt;script'), '<script'),
     (re.compile(r'&lt;/script'), '</script'),
     (re.compile(r'&lt;style'), '<style'),
     (re.compile(r'&lt;/style'), '</style'),
     (re.compile(r'&lt;iframe'), '<iframe'),
-    (re.compile(r'&lt;/iframe'), '</iframe')
+    (re.compile(r'&lt;/iframe'), '</iframe'),
+    (re.compile(r'%5B'), '['),
+    (re.compile(r'%5D'), ']'),
 ]
 
 # Find {{ metadata }} inclusions
@@ -71,12 +74,12 @@ TABLE_RE = re.compile(r'^table')
 
 # An item in a Table of Contents - from toc.py
 class HtmlTreeNode(object):
-    def __init__(self, parent, header, level, id):
+    def __init__(self, parent, header, level, tag_id):
         self.children = []
         self.parent = parent
         self.header = header
         self.level = level
-        self.id = id
+        self.tag_id = tag_id
 
     def add(self, new_header):
         new_level = new_header.name
@@ -105,7 +108,7 @@ class HtmlTreeNode(object):
         ret = ''
         if self.parent:
             ret = "<a class='toc-href' href='#{0}' title='{1}'>{1}</a>".format(
-                self.id, self.header)
+                self.tag_id, self.header)
 
         if self.children:
             ret += "<ul>{}</ul>".format('{}' * len(self.children)).format(
@@ -138,16 +141,16 @@ def slugify(value, separator):
 
 
 # Ensure an id is unique in a set of ids. Append '_1', '_2'... if not
-def unique(id, ids):
-    while id in ids or not id:
-        m = IDCOUNT_RE.match(id)
-        print(f'id="{id}" is a duplicate')
+def unique(tag_id, ids):
+    while tag_id in ids or not tag_id:
+        m = IDCOUNT_RE.match(tag_id)
+        print(f'WARNING: id="{tag_id}" is a duplicate')
         if m:
-            id = '%s_%d' % (m.group(1), int(m.group(2)) + 1)
+            tag_id = '%s_%d' % (m.group(1), int(m.group(2)) + 1)
         else:
-            id = '%s_%d' % (id, 1)
-    ids.add(id)
-    return id
+            tag_id = '%s_%d' % (tag_id, 1)
+    ids.add(tag_id)
+    return tag_id
 
 
 # append a permalink
@@ -174,7 +177,7 @@ def fixup_content(content):
 
 
 # expand metadata found in {{ key }}
-def expand_metadata(tag, metadata):
+def expand_metadata(tag, metadata, debug):
     this_string = str(tag.string)
     m = 1
     modified = False
@@ -185,7 +188,8 @@ def expand_metadata(tag, metadata):
             format_string = '{{{0}}}'.format(this_data)
             try:
                 new_string = format_string.format(**metadata)
-                print(f'{{{{{m.group(1)}}}}} -> {new_string}')
+                if debug:
+                    print(f'{{{{{m.group(1)}}}}} -> {new_string}')
             except Exception:
                 # the data expression was not found
                 print(f'{{{{{m.group(1)}}}}} is not found')
@@ -243,7 +247,7 @@ def headingid_transform(ids, soup, tag, permalinks, perma_set):
 
 
 # generate table of contents from headings after [TOC] content
-def generate_toc(content, tags, title, toc_headers):
+def generate_toc(content, tags, title, toc_headers, debug):
     settoc = False
     tree = node = HtmlTreeNode(None, title, 'h0', '')
     # find the last [TOC]
@@ -260,7 +264,8 @@ def generate_toc(content, tags, title, toc_headers):
     # convert the ToC to Beautiful Soup
     tree_soup = ''
     if settoc:
-        print('  ToC')
+        if debug:
+            print('  ToC')
         # convert the HtmlTreeNode into Beautiful Soup
         tree_string = '{}'.format(tree)
         tree_soup = BeautifulSoup(tree_string, 'html.parser')
@@ -347,7 +352,7 @@ def generate_id(content):
         if asf_genid['debug']:
             print(f'metadata expansion: {content.relative_source_path}')
         for tag in soup.findAll(string=METADATA_RE):
-            expand_metadata(tag, content.metadata)
+            expand_metadata(tag, content.metadata, asf_genid['debug'])
 
     # step 4 - find all id attributes already present
     for tag in soup.findAll(id=True):
@@ -381,14 +386,15 @@ def generate_id(content):
     if asf_genid['toc']:
         tags = soup('p', text='[TOC]')
         if tags:
-            generate_toc(content, tags, title, asf_genid['toc_headers'])
+            generate_toc(content, tags, title, asf_genid['toc_headers'], asf_genid['debug'])
 
     # step 9 - reset the html content
     content._content = soup.decode(formatter='html')
 
     # step 10 - output all of the permalinks created
-    for tag in permalinks:
-        print(f'    #{tag}')
+    if asf_genid['debug']:
+        for tag in permalinks:
+            print(f'    #{tag}')
 
 
 def tb_connect(pel_ob):
