@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="osgi-support">OSGi Support<a class="headerlink" href="#osgi-support" title="Permalink">&para;</a></h1>
+<p>All Apache Olingo artifacts are OSGi enabled and build as bundles. Apache Olingo is using the <a href="http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html">Apache Felix bundle plugin for Maven</a> to generate the manifest.mf file for each bundle.</p>
+<p>The bundles expose the complete api (<code>org.apache.olingo.odata2.api.*</code>). From the implementation part (<code>org.apache.olingo.odata2.core.*</code>) only a minimum set of packages is exposed.</p>
+<p>There is a difficulty in relation to class loading because of Apache Olingo core bundle has to load a specific custom service implementation without having a direct dependency to it.</p>
+<p>In Apache Olingo OData2 Version 1.0.0 we solve this issue as follow:</p>
+<h3 id="servlet-filter-in-osgi">Servlet Filter in OSGi<a class="headerlink" href="#servlet-filter-in-osgi" title="Permalink">&para;</a></h3>
+<p>It is assumed that an OData service implementation is deployed as a native web application (war) or as web application bundle (OSGi Enterprise Expert Group on the RFC66 Web Container specification). In both cases the Apache Olingo core bundle is not aware of this application and its classloader cannot load applications service factory by default.</p>
+<p>Adding this servlet filter to the service servlet configuration can solve this problem. The filter can bind the application classloader to the servlet request object, which is then used by the Apache Olingo core bundle to load applications factory class.</p>
+<pre><code class="language-java">	public class ServiceFactoryFilter implements Filter {
+	
+	  @Override
+	  public void doFilter(ServletRequest request, ServletResponse response, 
+	     FilterChain chain) throws IOException, ServletException { 
+	     
+	    request.setAttribute(ODataServiceFactory.FACTORY_CLASSLOADER_LABEL, 
+	       MyServiceFactory.class.getClassLoader()); 
+	  
+	     chain.doFilter(request, response); 
+	  }
+	}
+</code></pre>
+<h3 id="extended-osgi-support">Extended OSGi Support<a class="headerlink" href="#extended-osgi-support" title="Permalink">&para;</a></h3>
+<p>The filter approach works fine for servlets but the Apache Olingo library can be used also for different, non-servlet based scenarios.</p>
+<h5 id="implement-own-odataapplication">Implement own ODataApplication<a class="headerlink" href="#implement-own-odataapplication" title="Permalink">&para;</a></h5>
+<p>A service has to implement an own <code>ODataApplication</code> and return the service factory class:</p>
+<pre><code class="language-java">	import org.apache.olingo.odata2.core.rest.app.AbstractODataApplication;
+	
+	public class CarODataApplication extends AbstractODataApplication {
+	
+	  @Override
+	  public Class&lt;? extends ODataServiceFactory&gt; getServiceFactoryClass() { 
+	     return CarODataServiceFactory.class; 
+	  }
+	}
+</code></pre>
+<h5 id="register-application-in-servlet-context">Register Application in Servlet Context<a class="headerlink" href="#register-application-in-servlet-context" title="Permalink">&para;</a></h5>
+<p>Then register the application for any JAX-RS servlet implementation. Here it is the Apache CXF JAX-RS servlet.</p>
+<pre><code class="language-xml">	&lt;servlet&gt;
+	  &lt;servlet-name&gt;CarServiceServlet&lt;/servlet-name&gt;
+	  &lt;servlet-class&gt;org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet&lt;/servlet-class&gt;
+	  &lt;init-param&gt;
+	    &lt;param-name&gt;javax.ws.rs.Application&lt;/param-name&gt;
+	    &lt;param-value&gt;org.apache.olingo.odata2.sample.osgi.CarODataApplication&lt;/param-value&gt;
+	  &lt;/init-param&gt;
+	  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+	&lt;/servlet&gt;
+</code></pre>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

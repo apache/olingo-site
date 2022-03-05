@@ -1,0 +1,15 @@
+pelican:
+  notify: commits@olingo.apache.org
+  autobuild: preview/*
+  target: asf-site
+  theme: theme/apache
+  whoami: main
+
+staging:
+  profile: ~
+  whoami: asf-site
+  autostage: preview/*
+
+publish:
+  profile: ~
+  whoami: asf-site

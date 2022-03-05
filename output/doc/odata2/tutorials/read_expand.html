@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="read-scenario-read-with-expand">Read Scenario - Read with $expand<a class="headerlink" href="#read-scenario-read-with-expand" title="Permalink">&para;</a></h1>
+<hr/>
+<h3 id="how-to-guide-extend-basic-read-scenario-with-support-for-expand">How To Guide - Extend basic read scenario with support for $expand<a class="headerlink" href="#how-to-guide-extend-basic-read-scenario-with-support-for-expand" title="Permalink">&para;</a></h3>
+<p>This How To Guide shows how to extend the basic read scenario with support for the $expand system query option.
+It shows how to call the <code>EntityProvider.writeEntry(...)</code> and <code>EntityProvider.writeEntrySet(...)</code> methods with the necessary <code>EntityProviderWriteProperties</code> set and how to implement the necessary <code>OnWriteEntryContent OnWriteFeedContent</code> callbacks.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink">&para;</a></h3>
+<p>Setup of <a href="basicread">Basic Read Scenario</a></p>
+<h3 id="shortcut">Shortcut<a class="headerlink" href="#shortcut" title="Permalink">&para;</a></h3>
+<p>If you like to directly experiment with the results of the extented basic read scenario, you can use this shortcut:</p>
+<ul>
+<li>Download and unzip <a href="apache-olingo-tutorial-adv_read_expand.zip">Olingo Tutorial 'Basic Read with $expand extension' Project</a> to your local drive which is your OData Tutorial project folder (referenced as <code>$ODATA_PROJECT_HOME</code> in the tutorial).</li>
+<li>Start the command line tool and execute the following command in the folder <code>$ODATA_PROJECT_HOME</code>
+<ul>
+<li><code>mvn eclipse:eclipse clean install</code></li>
+</ul>
+</li>
+<li>Go into Eclipse and import the project into your workspace by...
+<ul>
+<li>Menu <em>File -&gt; Import</em>...</li>
+<li><em>Existing projects into workspace</em>, then choose the <code>$ODATA_PROJECT_HOME</code> folder</li>
+<li>Select both projects <em>olingo.odata2.sample.service</em> and <em>olingo.odata2.sample.web</em> and press <em>Finish</em>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="set-up-your-development-project">Set Up your development project<a class="headerlink" href="#set-up-your-development-project" title="Permalink">&para;</a></h3>
+<p>If <a href="basicread">Basic Read Scenario</a> is already set up there is nothing additional to do. Otherwise please refer to the Prerequisites section of the <a href="basicread">Basic Read Scenario</a>.</p>
+<h3 id="extend-basic-read-scenario">Extend Basic Read Scenario<a class="headerlink" href="#extend-basic-read-scenario" title="Permalink">&para;</a></h3>
+<p>The steps to extend the basic read with $expand support for the Car and Manufacturer entities (not entity sets) are to provide the expanded data via ODataCallbacks and register these for the corresponding navigation properties.</p>
+<h3 id="implement-onwriteentrycontent-and-onwritefeedcontent-callbacks">Implement OnWriteEntryContent and OnWriteFeedContent callbacks<a class="headerlink" href="#implement-onwriteentrycontent-and-onwritefeedcontent-callbacks" title="Permalink">&para;</a></h3>
+<p>To support <code>$expand</code> for a single entry the interface <code>org.apache.olingo.odata2.api.ep.callback.OnWriteEntryContent</code> must be implemented. This provides the method <code>WriteEntryCallbackResult retrieveEntryResult(WriteEntryCallbackContext context) throws ODataApplicationException;</code> which is called during processing from the <code>EntityProvider</code> to receive the necessary data which than is inlined in the response.</p>
+<p>In our sample we create a class <code>MyCallback</code> which implements <code>org.apache.olingo.odata2.api.ep.callback.OnWriteEntryContent</code> in following way:</p>
+<h5 id="sample-code">Sample Code<a class="headerlink" href="#sample-code" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">@Override
+public WriteEntryCallbackResult retrieveEntryResult(WriteEntryCallbackContext context) throws ODataApplicationException {
+WriteEntryCallbackResult result = new WriteEntryCallbackResult();
+
+  try {
+    if (isNavigationFromTo(context, ENTITY_SET_NAME_CARS, ENTITY_NAME_MANUFACTURER)) {
+    EntityProviderWriteProperties inlineProperties = EntityProviderWriteProperties.serviceRoot(serviceRoot)
+        .expandSelectTree(context.getCurrentExpandSelectTreeNode())
+        .build();
+
+      Map&lt;String, Object&gt; keys = context.extractKeyFromEntryData();
+      Integer carId = (Integer) keys.get("Id");
+      result.setEntryData(dataStore.getManufacturerFor(carId));
+      result.setInlineProperties(inlineProperties);
+    }
+  } catch (EdmException e) {
+  // TODO: should be handled and not only logged
+  LOG.error("Error in $expand handling.", e);
+  } catch (EntityProviderException e) {
+  // TODO: should be handled and not only logged
+  LOG.error("Error in $expand handling.", e);
+  }
+    
+  return result;
+}
+</code></pre>
+<p>Within this method we first check if the source entity and navigation property are correct for our case (via the method <code>isNavigationFromTo(...):boolean)</code>, then we create the <code>EntityProviderWriteProperties</code> with the new (current) <code>ExpandSelectTreeNode</code>, receive the data from our <code>DataStore</code> and put all into the result which then will be further processed by the <code>EntityProvider</code>.</p>
+<h3 id="implementation-for-expand-for-an-entity-set">Implementation for $expand for an entity set<a class="headerlink" href="#implementation-for-expand-for-an-entity-set" title="Permalink">&para;</a></h3>
+<p>To support <code>$expand</code> for a feed of entries (entity set) the interface <code>org.apache.olingo.odata2.api.ep.callback.OnWriteFeedContent</code> must be implemented. These provides the method <code>WriteFeedCallbackResult retrieveFeedResult(WriteFeedCallbackContext context) throws ODataApplicationException;</code> which is called during processing from the <code>EntityProvider</code> to receive the necessary data which than is inlined in the response.</p>
+<p>It is possible to create an additional callback class but for convenience we expand our already created callback (<code>MyCallback</code>) to implement <code>org.apache.olingo.odata2.api.ep.callback.OnWriteFeedContent</code> and provide the method implementation in following way:</p>
+<h5 id="sample-code_1">Sample Code<a class="headerlink" href="#sample-code_1" title="Permalink">&para;</a></h5>
+<pre><code class="language-java">@Override
+public WriteFeedCallbackResult retrieveFeedResult(WriteFeedCallbackContext context) throws ODataApplicationException {
+WriteFeedCallbackResult result = new WriteFeedCallbackResult();
+  try {
+    if(isNavigationFromTo(context, ENTITY_SET_NAME_MANUFACTURERS, ENTITY_SET_NAME_CARS)) {
+    EntityProviderWriteProperties inlineProperties = EntityProviderWriteProperties.serviceRoot(serviceRoot)
+        .expandSelectTree(context.getCurrentExpandSelectTreeNode())
+        .selfLink(context.getSelfLink())
+        .build();
+
+      Map&lt;String, Object&gt; keys = context.extractKeyFromEntryData();
+      Integer manufacturerId = (Integer) keys.get("Id");
+      result.setFeedData(dataStore.getCarsFor(manufacturerId));
+      result.setInlineProperties(inlineProperties);
+    }
+  } catch (EdmException e) {
+  // TODO: should be handled and not only logged
+  LOG.error("Error in $expand handling.", e);
+  } catch (EntityProviderException e) {
+  // TODO: should be handled and not only logged
+  LOG.error("Error in $expand handling.", e);
+  }
+  return result;
+}
+</code></pre>
+<p>Within this method we first check if the source entity and navigation property are correct for our case (via the method <code>isNavigationFromTo(...):boolean)</code>, then we create the <code>EntityProviderWriteProperties</code> with the new (current) <code>ExpandSelectTreeNode</code>, receive the data from our <code>DataStore</code> and put all into the result which then will be further processed by the <code>EntityProvider</code>.</p>
+<p>This example shows that the basic callback logic between <code>OnWriteEntryConten</code>t and <code>OnWriteFeedContent</code> is very similar. Validation of current element (optional), preparing of <code>EntityProviderWriteProperties</code>, receive of data and putting all together into corresponding result object (<code>WriteEntryCallbackResult</code> or <code>WriteFeedCallbackResult</code>).</p>
+<p>To improve code readability the <code>isNavigationFromTo(...):boolean</code> method was also added to the class. The method is used to check if the retrieved request is related to given entity set and navigation:</p>
+<h4 id="sample-code_2">Sample Code<a class="headerlink" href="#sample-code_2" title="Permalink">&para;</a></h4>
+<pre><code class="language-java">private boolean isNavigationFromTo(WriteCallbackContext context, String entitySetName, String navigationPropertyName) throws EdmException {
+  if(entitySetName == null || navigationPropertyName == null) {
+  return false;
+  }
+  EdmEntitySet sourceEntitySet = context.getSourceEntitySet();
+  EdmNavigationProperty navigationProperty = context.getNavigationProperty();
+  return entitySetName.equals(sourceEntitySet.getName()) &amp;&amp; navigationPropertyName.equals(navigationProperty.getName());
+}
+</code></pre>
+<h3 id="extend-odatasingleprocessorreadentity">Extend ODataSingleProcessor.readEntity(...)<a class="headerlink" href="#extend-odatasingleprocessorreadentity" title="Permalink">&para;</a></h3>
+<p>The necessary callbacks (<code>MyCallback</code> class) now has to be registered during the corresponding <code>readEntity(...)</code> call. Therefore we first create a map with the property name as key and the according callback as value. Additional we need to create the <code>ExpandSelectTreeNode</code> based on current element position. Both then have to be set in the <code>EntityProviderWritePropertiesBuilder</code>.</p>
+<p>The following code show the few lines we need for extending the read of a car with its expanded manufacturer.</p>
+<pre><code class="language-java">// create and register callback
+Map&lt;String, ODataCallback&gt; callbacks = new HashMap&lt;String, ODataCallback&gt;();
+callbacks.put(ENTITY_NAME_MANUFACTURER, new MyCallback(dataStore, serviceRoot));
+ExpandSelectTreeNode expandSelectTreeNode = UriParser.createExpandSelectTree(uriInfo.getSelect(), uriInfo.getExpand());
+propertiesBuilder.expandSelectTree(expandSelectTreeNode).callbacks(callbacks);
+</code></pre>
+<p>The following code show the few lines we need for extending the read of a manufacturer with its expanded cars.</p>
+<pre><code class="language-java">// create and register callback
+Map&lt;String, ODataCallback&gt; callbacks = new HashMap&lt;String, ODataCallback&gt;();
+callbacks.put(ENTITY_SET_NAME_CARS, new MyCallback(dataStore, serviceRoot));
+ExpandSelectTreeNode expandSelectTreeNode = UriParser.createExpandSelectTree(uriInfo.getSelect(), uriInfo.getExpand());
+propertiesBuilder.expandSelectTree(expandSelectTreeNode).callbacks(callbacks);
+</code></pre>
+<p>The complete <code>readEntity(...)</code> method should now look like:</p>
+<pre><code class="language-java">public ODataResponse readEntity(GetEntityUriInfo uriInfo, String contentType) throws ODataException {
+    
+  if (uriInfo.getNavigationSegments().size() == 0) {
+  EdmEntitySet entitySet = uriInfo.getStartEntitySet();
+
+    if (ENTITY_SET_NAME_CARS.equals(entitySet.getName())) {
+    int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
+    Map&lt;String, Object&gt; data = dataStore.getCar(id);
+        
+      if (data != null) {
+        URI serviceRoot = getContext().getPathInfo().getServiceRoot();
+        ODataEntityProviderPropertiesBuilder propertiesBuilder = EntityProviderWriteProperties.serviceRoot(serviceRoot);
+          
+        // create and register callback
+        Map&lt;String, ODataCallback&gt; callbacks = new HashMap&lt;String, ODataCallback&gt;();
+        callbacks.put(ENTITY_NAME_MANUFACTURER, new MyCallback(dataStore, serviceRoot));
+        ExpandSelectTreeNode expandSelectTreeNode = UriParser.createExpandSelectTree(uriInfo.getSelect(), uriInfo.getExpand());
+        //
+        propertiesBuilder.expandSelectTree(expandSelectTreeNode).callbacks(callbacks);
+
+        return EntityProvider.writeEntry(contentType, entitySet, data, propertiesBuilder.build());
+      }
+    } else if (ENTITY_SET_NAME_MANUFACTURERS.equals(entitySet.getName())) {
+      int id = getKeyValue(uriInfo.getKeyPredicates().get(0));
+      Map&lt;String, Object&gt; data = dataStore.getManufacturer(id);
+        
+      if (data != null) {
+        URI serviceRoot = getContext().getPathInfo().getServiceRoot();
+        ODataEntityProviderPropertiesBuilder propertiesBuilder = EntityProviderWriteProperties.serviceRoot(serviceRoot);
+  
+        // create and register callback
+        Map&lt;String, ODataCallback&gt; callbacks = new HashMap&lt;String, ODataCallback&gt;();
+        callbacks.put(ENTITY_SET_NAME_CARS, new MyCallback(dataStore, serviceRoot));
+        ExpandSelectTreeNode expandSelectTreeNode = UriParser.createExpandSelectTree(uriInfo.getSelect(), uriInfo.getExpand());
+        //
+        propertiesBuilder.expandSelectTree(expandSelectTreeNode).callbacks(callbacks);
+
+        return EntityProvider.writeEntry(contentType, entitySet, data, propertiesBuilder.build());
+      }
+    }
+
+    throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
+
+  } else if (uriInfo.getNavigationSegments().size() == 1) {
+    //navigation first level, simplified example for illustration purposes only
+    EdmEntitySet entitySet = uriInfo.getTargetEntitySet();
+    if (ENTITY_SET_NAME_MANUFACTURERS.equals(entitySet.getName())) {
+      int carKey = getKeyValue(uriInfo.getKeyPredicates().get(0));
+      return EntityProvider.writeEntry(contentType, uriInfo.getTargetEntitySet(), dataStore.getManufacturer(carKey),   EntityProviderWriteProperties.serviceRoot(getContext().getPathInfo().getServiceRoot()).build());
+    }
+
+    throw new ODataNotFoundException(ODataNotFoundException.ENTITY);
+  }
+
+  throw new ODataNotImplementedException();
+}
+</code></pre>
+<p>Now we can test out <code>$expand</code> extension in the web application.</p>
+<h3 id="deploy-run-and-test-expand">Deploy, run and test $expand<a class="headerlink" href="#deploy-run-and-test-expand" title="Permalink">&para;</a></h3>
+<p>Like in the basic read scenario follow these steps:</p>
+<ul>
+<li>Build your project: <code>mvn clean install</code></li>
+<li>When build finished in Eclipse, run the Web Application via <em>Run As -&gt; Run on Server</em></li>
+<li>After successful server start and deployment the following uris from the basic read sample work as before:
+<ul>
+<li>Show the Manufacturers: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers</a></li>
+<li>Show one Manufacturer: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)</a></li>
+<li>Show the Cars: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars</a></li>
+<li>Show one Car: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)</a></li>
+<li>Show the related Manufacturer of a Car: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)/Manufacturer">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)/Manufacturer</a></li>
+<li>Show the related Cars of a Manufacturer: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)/Cars">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)/Cars</a></li>
+</ul>
+</li>
+<li>And in addition we can now expand the car and manufacturer with each other:
+<ul>
+<li>Show Car with its Manufacturer: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)?$expand=Manufacturer">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Cars(2)?$expand=Manufacturer </a></li>
+<li>Show Manufacturer with its Cars: <a href="http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)?$expand=Cars">http://localhost:8080/olingo.odata2.sample.cars.web/MyODataSample.svc/Manufacturers(1)?$expand=Cars</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="further-information">Further Information<a class="headerlink" href="#further-information" title="Permalink">&para;</a></h3>
+<p>Next extension step for read scenario are read of <a href="read_media-resource">Media Resources</a>.</p>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
