@@ -1,7 +1,5 @@
 Title:     Apache Olingo
 
-<div class="row row-offcanvas row-offcanvas-right">
-<div class="col-xs-12 col-sm-9">
 <div class="jumbotron">
 <h1>
 Apache Olingo™ &nbsp; <a href="http://odata.org/"><img src="/img/odata/ODataLogo-48.png" alt="OlingoLogo"></a>
@@ -17,6 +15,7 @@ The latter is the OASIS version of the protocol: OASIS Open Data
 Protocol (OData) TC.
 </p>
 <p>
+  <a class="btn btn-lg btn-primary" style="float: right; margin-left:10px" href="https://twitter.com/ApacheOlingo" role="button">Tweets</a>
   <a class="btn btn-lg btn-primary" style="float: right; margin-left:10px" href="/doc/javascript/index.html" role="button">JavaScript V4</a>
   <a class="btn btn-lg btn-primary" style="float: right; margin-left:10px" href="/doc/odata4/index.html" role="button">Java V4</a>
   <a class="btn btn-lg btn-primary" style="float: right; margin-left:10px" href="/doc/odata2/index.html" role="button">Java V2</a>
@@ -68,11 +67,5 @@ width: 131.0625px">read more »</span>
 <p class="centeredImage">
 <img src="/img/OlingoOrangeTM.png" align="middle" alt="OlingoLogo">
 </p>
-</div>
-</div>
-<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/ApacheOlingo"  data-widget-id="485054401392820224">Tweets by @ApacheOlingo</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
 </div>
 <p><!-- opening p required because of markup adds a closing p due to unknown reason -->
