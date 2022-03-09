@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="apache-olingo-release-documentation">Apache Olingo Release Documentation<a class="headerlink" href="#apache-olingo-release-documentation" title="Permalink">&para;</a></h1>
+<hr/>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink">&para;</a></h3>
+<p>This document describes the release guidelines for Apache Olingo. It heavily refers
+to <a href="http://maven.apache.org/developers/release/apache-release.html">standard Apache procedures to release</a>
+Maven based projects at Apache.</p>
+<h3 id="build-environments">Build Environments<a class="headerlink" href="#build-environments" title="Permalink">&para;</a></h3>
+<p>Apache Olingo is built and released with <a href="http://maven.apache.org">Maven 3</a> and uses
+the <a href="http://svn.apache.org/repos/asf/maven/pom/tags/apache-16/pom.xml">Apache POM version 16</a>.</p>
+<h3 id="release-artifacts">Release Artifacts<a class="headerlink" href="#release-artifacts" title="Permalink">&para;</a></h3>
+<p>An Apache Olingo release consists of:</p>
+<ul>
+<li>The main POMs/JARs/WARs built as part of the Maven build process.
+For an overview on the released modules see artifacts with <em>groupId</em>: <code>org.apache.olingo</code> in the <a href="https://repository.apache.org/index.html#nexus-search;gav%7Eorg.apache.olingo%7E%7E4.0.0%7E%7E">Apache Maven Repository</a>.
+In detail the following artifacts are produced for each release module:
+<ul>
+<li><strong>Main artifact</strong>: <code>&lt;artifactId&gt;-&lt;version&gt;.&lt;ext&gt;</code></li>
+<li><strong>Source artifact</strong>: <code>&lt;artifactId&gt;-&lt;version&gt;-sources.&lt;ext&gt;</code></li>
+<li><strong>Javadoc artifact</strong>: <code>&lt;artifactId&gt;-&lt;version&gt;-javadoc.&lt;ext&gt;</code></li>
+<li><strong>POM</strong>: <code>&lt;artifactId&gt;-&lt;version&gt;.pom</code></li>
+</ul>
+</li>
+</ul>
+<p>Also the following additional <em>distribution commodity packages</em> are
+provided as part of the release:</p>
+<ul>
+<li><code>Olingo-OData-${version}-source-release.${ext}</code> <br/> A source-release
+bundle containing all files the sources necessary to build all other artifacts. <br/> <strong>Package formats</strong>: zip.</li>
+<li><code>Olingo-OData-JavaDoc-${version}-javadoc.${ext}</code> <br/> A bundle
+containing JavaDoc of the OData4 library API and annotations, the
+JPA processor API as well as additional documentation and reference scenario
+examples. <br/> <strong>Package formats</strong>: zip.</li>
+<li><code>Olingo-OData-Server-for-Java-${version}-lib.${ext}</code> <br/> A bundle containing the OData4 core
+library and dependencies required to implement an OData V4 Java server/processor. <br/> <strong>Package formats</strong>: zip.</li>
+<li><code>Olingo-OData-Client-for-Java-${version}-jpa.${ext}</code> <br/> A bundle containing the OData4 client library
+and dependencies required to implement an OData V4 Java client. <br/> <strong>Package formats</strong>: zip.</li>
+<li><code>Olingo-OData-Client-for-Android-${version}-lib.${ext}</code> <br/> A bundle containing the OData4 client library
+and dependencies required to implement an OData V4 client for Android devices. <br/> <strong>Package formats</strong>: zip.</li>
+</ul>
+<h3 id="documentation-and-javadoc">Documentation and JavaDoc<a class="headerlink" href="#documentation-and-javadoc" title="Permalink">&para;</a></h3>
+<p>The documentation that will be part of the release must match the code.
+All examples in the documentation must work. The Java package documentation must be
+up-to-date. Release independend documentation is maintained on the <a href="/documentation.html">Apache Olingo Documentation</a> page.</p>
+<h3 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permalink">&para;</a></h3>
+<h5 id="release-manager">Release Manager<a class="headerlink" href="#release-manager" title="Permalink">&para;</a></h5>
+<p>A release manager must be appointed for a release. He or she is in charge of the release process,
+following the guidelines and eventually generating the release artifacts.
+The release manager might tailor the process for a specific release.</p>
+<h5 id="version">Version<a class="headerlink" href="#version" title="Permalink">&para;</a></h5>
+<p>The Olingo community decides if the release will be a major or a minor release and
+agrees on a version number.</p>
+<pre><code>mvn versions:set -DnewVersion=4.0.0-RC01
+find . -name '*.versionsBackup' -type f -delete
+git add .
+git commit -am '[OLINGO-772] make release - set version 4.0.0-RC01'
+git tag -f 4.0.0-RC01
+
+mvn versions:set -DnewVersion=4.1.0-SNAPSHOT
+find . -name '*.versionsBackup' -type f -delete
+git add .
+git commit -am '[OLINGO-772] make release - set version 4.1.0-SNAPSHOT'
+git push
+git push --tags
+</code></pre>
+<h5 id="open-issues">Open Issues<a class="headerlink" href="#open-issues" title="Permalink">&para;</a></h5>
+<p>There must not be any open JIRA issues for this release. There might be open issues for
+future releases. Check with: <a href="https://issues.apache.org/jira/browse/OLINGO/fixforversion/12324804">fix for version view</a></p>
+<h5 id="unit-tests-and-integration-tests">Unit Tests and Integration Tests<a class="headerlink" href="#unit-tests-and-integration-tests" title="Permalink">&para;</a></h5>
+<p>All unit tests and integration tests must succeed on a
+clean machine (starting with an empty local Maven repository). The following Maven
+execution will run all unit and integration tests:</p>
+<pre><code>mvn clean install
+</code></pre>
+<h5 id="apache-license-and-code-style">Apache License and Code Style<a class="headerlink" href="#apache-license-and-code-style" title="Permalink">&para;</a></h5>
+<p>Each source code file must have a current ASF license header. The source
+code should follow the Apache Olingo code style. For verification run following
+Maven execution</p>
+<pre><code>mvn clean install -Pbuild.quality
+</code></pre>
+<h5 id="packaging">Packaging<a class="headerlink" href="#packaging" title="Permalink">&para;</a></h5>
+<p>NOTICE, LICENSE and DISCLAIMER must be present in all bundles and must be up-to-date.</p>
+<p>Remote resources are provided by the ASF and the Maven <code>remote-resources-plugin</code> is
+configured in the parent pom of the project.</p>
+<pre><code class="language-xml">&lt;resourceBundle&gt;org.apache:apache-jar-resource-bundle:1.4&lt;/resourceBundle&gt;
+&lt;resourceBundle&gt;org.apache:apache-disclaimer-resource-bundle:1.1&lt;/resourceBundle&gt;
+</code></pre>
+<p>The Maven module <code>odata-dist</code> (in project sub-folder <code>dist</code>) is responsible to package convenience distribution zip files
+using the assembly plugin. The distributions are created with a release build <code>mvn clean install -Papache-release -Dgpg.passphrase="yourPassphraseHere"</code></p>
+<h5 id="sha-for-distribution-packages">SHA for distribution packages<a class="headerlink" href="#sha-for-distribution-packages" title="Permalink">&para;</a></h5>
+<p>SHA files are created manually for distribution packages:</p>
+<pre><code>gpg --print-md SHA512 ${filename}.zip &gt; ${filename}.zip.sha512
+</code></pre>
+<p>DO NOT create md5 files</p>
+<h5 id="release-tag">Release Tag<a class="headerlink" href="#release-tag" title="Permalink">&para;</a></h5>
+<p>A tag has to be created for every release candidate. The naming rule
+for the tags is <code>${version}-RCxx</code>. This is created as
+part of the Maven release process. The tag will be renamed to the
+final version number upon vote approval.</p>
+<h5 id="release-branch">Release Branch<a class="headerlink" href="#release-branch" title="Permalink">&para;</a></h5>
+<p>A branch has to be created for every release. The naming rule for this
+branch is <code>${version}</code>. This has to be created manually upon release approval.</p>
+<h3 id="release-candidate">Release Candidate<a class="headerlink" href="#release-candidate" title="Permalink">&para;</a></h3>
+<p>Once all preparations are done, a release candidate will be built.</p>
+<p>All release candidates must be cryptographically signed. The string
+"<code>-RCxx</code>" will be attached to the version number of the release candidate
+artifacts, where is the number of the release candidate starting with 01.
+If more than one release candidate is required a new tag has to be created
+and release candidate number will be increased by one.</p>
+<p>The release candidate artifacts:</p>
+<ul>
+<li>Maven artifacts will be staged on repository.apache.org. A new staging repo
+is created per RC and will be communicated upon release.</li>
+<li>Distribution commodity packages are staged at
+<a href="http://people.apache.org/%7E%5Busername%5D/olingo2/%5Bversion%5D">http://people.apache.org/~[username]/olingo2/[version]</a> (e.g. <a href="http://people.apache.org/%7Emibo/olingo4/4.0.0-RC01">http://people.apache.org/~mibo/olingo4/4.0.0-RC01</a>)</li>
+</ul>
+<p>Once candidate artifacts are available, release manager kicks off the [VOTE process][3].</p>
+<p>If the vote fails, the raised issues will be fixed, a new release candidate will be
+built and the VOTE process will be restarted.</p>
+<p>If the release candidate gets approved, we can proceed to release publishing.</p>
+<h4 id="how-to-verify-a-release-candidate">How to verify a Release Candidate<a class="headerlink" href="#how-to-verify-a-release-candidate" title="Permalink">&para;</a></h4>
+<p>This checklist helps verifying if a release candidate is valid:</p>
+<ul>
+<li>Are all files on "<a href="http://people.apache.org/%7E%5Busername%5D/olingo4/%5Bversion%5D">http://people.apache.org/~[username]/olingo4/[version]</a>"?</li>
+<li>Check if md5, sha512 and asc files are filled correctly?</li>
+<li>Can the zip files be unpacked without issues?</li>
+<li>Execute a "mvn clean install -Pbuild.quality" on parent distribution. It should work without issues.</li>
+<li>Does the JavaDoc only contain API documentation?</li>
+<li>Is there a Disclaimer, Notice, License and Dependencies File in every folder?</li>
+<li>Do all License files contain the right amount of licenses?</li>
+<li>Do Notice files mention 3rd party libraries if they are contained in the distribution?</li>
+</ul>
+<p>After all questions of this checklist can be answered with yes it is OK to give a +1 on the mailing list.
+Of course the Release Manager can also use this checklist to make sure all artifacts are correct before publishing the results on the mailing list.</p>
+<h3 id="publishing-the-release">Publishing the Release<a class="headerlink" href="#publishing-the-release" title="Permalink">&para;</a></h3>
+<p>If the release candidate gets approved, we can proceed to release publishing:</p>
+<ul>
+<li>Release candidate maven artifacts are promoted in the Apache Maven Repository and
+made available <a href="https://repository.apache.org/index.html#nexus-search;gav%7Eorg.apache.olingo%7E%7E%7E%7E">here</a>.</li>
+<li>Publish final release Version to <a href="https://repository.apache.org/">Apache Repository</a>
+<ul>
+<li>First publish via <code>mvn deploy -Papache-release</code> into the <em>Staging Area</em></li>
+<li>From <em>Staging Area</em> close and release the staged Artifacts to finish publishing</li>
+<li>Afterwards the Maven artifacts are automatically synced to <a href="http://search.maven.org/#search%7Cga%7C1%7Corg.apache.olingo">Maven Central</a>.</li>
+</ul>
+</li>
+<li>Release candidate commodity packages are synced (together with their checksum and
+signatures) to <a href="http://www.apache.org/dist/olingo/">Apache Distributions</a>.</li>
+<li>Release tag is renamed to final version.</li>
+<li>Release branch is created.</li>
+<li>Release is closed in Jira.</li>
+<li>Release is announced to <a href="mailto:dev@olingo.apache.org">dev@olingo.apache.org</a>, <a href="mailto:announce@apache.org">announce@apache.org</a>.</li>
+</ul>
+<h3 id="maintain-release-distributions">Maintain Release Distributions<a class="headerlink" href="#maintain-release-distributions" title="Permalink">&para;</a></h3>
+<p>To maintain the released Distributions for the download pages following steps are required (for more information see <a href="http://www.apache.org/dev/release-publishing.html#distribution_dist">Apache Distribution Documentation</a>) to upload the new distribution via SVN (<code>svn co https://dist.apache.org/repos/dist/release/olingo</code>):</p>
+<ul>
+<li>Check out latest SVN revision via <code>svn co https://dist.apache.org/repos/dist/release/olingo</code></li>
+<li>Change into the directory according to the released Olingo artifact (e.g. <code>odata2</code>, <code>odata4</code>, ...)</li>
+<li>Create new directory according to release version (e.g <code>rel-x.x.x</code>) and copy all distribution artifacts (includes <em>.zip</em>, <em>.asc</em>, <em>.md5</em>, <em>.sha512</em>).</li>
+<li>Add new directory (e.g. <code>svn add rel-x.x.x</code>) and do the commit (e.g <code>svn ci -m "Added Olingo x.x.x release"</code>)</li>
+<li>Afterwards do a cleanup for the old releases according to the Apache Release Guidelines <a href="http://www.apache.org/dev/release.html#when-to-archive">When</a> and <a href="http://www.apache.org/dev/release.html#how-to-archive">How</a> to archive.</li>
+</ul>
+<h3 id="maintain-version-section-in-doap-file">Maintain Version Section in DOAP File<a class="headerlink" href="#maintain-version-section-in-doap-file" title="Permalink">&para;</a></h3>
+<p><a href="/doap_Olingo.rdf">http://olingo.apache.org/doap_Olingo.rdf</a></p>
+<p>Results are shown here:</p>
+<p><a href="http://projects.apache.org/indexes/alpha.html#O">link text</a></p>
+<h3 id="additional-apache-release-information">Additional Apache Release Information<a class="headerlink" href="#additional-apache-release-information" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://www.apache.org/dev/release.html">Releases Policy</a></li>
+<li><a href="http://www.apache.org/dev/release-publishing.html">Publishing Releases</a></li>
+<li><a href="http://www.apache.org/dev/publishing-maven-artifacts.html">Publishing Maven Artifacts</a></li>
+</ul>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

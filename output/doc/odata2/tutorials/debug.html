@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="debug-support-and-error-handling">Debug Support and Error Handling<a class="headerlink" href="#debug-support-and-error-handling" title="Permalink">&para;</a></h1>
+<hr/>
+<h3 id="odata-error-conditions">OData Error Conditions<a class="headerlink" href="#odata-error-conditions" title="Permalink">&para;</a></h3>
+<p>OData exposes error conditions as HTTP responses with error status code (4xx and 5xx) and it is in the responsibility of a client to handle this situations. For more details see
+<a href="http://www.odata.org/documentation/odata-version-2-0/operations#ErrorConditions">OData Error Conditions</a>.</p>
+<p>In OData the format for error messages is described in <a href="http://www.odata.org/documentation/odata-version-2-0/atom-format/">OData-Atom</a> and <a href="http://www.odata.org/documentation/odata-version-2-0/json-format/">Odata-JSON</a>. Apache Olingo OData2 has implemented this this format for error message.</p>
+<h3 id="debug-support">Debug Support<a class="headerlink" href="#debug-support" title="Permalink">&para;</a></h3>
+<p>The OData V2 error message format is limited to the HTTP status codes and gives indicators for client errors (status code 4xx) and server errors (5xx). For development and support this is not sufficient because of more technical information is needed for doing a deep error analysis.</p>
+<p>Apache Olingo has implemented a feature to return more error information (stack traces, object states, runtime measurements &hellip;) within a response to ease the development and support use case.</p>
+<p>For uses cases in a production environment this feature is by default off. The following explains how to enable the feature and gives options to a service implementation to switch if on and off e.g. role based or by configuration.</p>
+<h5 id="debugcallback">DebugCallback<a class="headerlink" href="#debugcallback" title="Permalink">&para;</a></h5>
+<p>The debug feature can be enabled by the following callback implementation:</p>
+<pre><code>public class MyDebugCallback implements ODataDebugCallback {
+  @Override
+  public boolean isDebugEnabled() {
+  	boolean isDebug = &hellip;; // true|configuration|user role check
+    return isDebug;
+  }
+}
+</code></pre>
+<h5 id="register-debugcallback">Register DebugCallback<a class="headerlink" href="#register-debugcallback" title="Permalink">&para;</a></h5>
+<p>In your service factory (<code>ODataServiceFactory</code>) implement the following method to register the callback:</p>
+<pre><code class="language-java">	public &lt;T extends ODataCallback&gt; T getCallback(final Class&lt;T&gt; callbackInterface) {
+	  T callback
+
+	  if (callbackInterface.isAssignableFrom(MyDebugCallback.class)) {
+	    callback = (T) new MyDebugCallback();
+	  } else {
+	    callback = (T) super.getCallback(callbackInterface);
+	  }
+
+	  return callback;
+	}
+</code></pre>
+<p>If this is in place then the url query option odata-debug=json will return detailed error information in json format for each request.</p>
+<h5 id="query-for-debug-information">Query for Debug Information<a class="headerlink" href="#query-for-debug-information" title="Permalink">&para;</a></h5>
+<p><strong>JSON Debug View</strong></p>
+<p>Request url: <a href="http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=json">http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=json</a></p>
+<p>Response:</p>
+<pre><code class="language-json">	{
+	  "body": "&lt;?xml version='1.0' encoding='utf-8'?&gt;&lt;service xml:base=\"http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/\" xmlns=\"http://www.w3.org/2007/app\" xmlns:atom=\"http://www.w3.org/2005/Atom\"&gt;&lt;workspace&gt;&lt;atom:title&gt;Default&lt;/atom:title&gt;&lt;collection href=\"Employees\"&gt;&lt;atom:title&gt;Employees&lt;/atom:title&gt;&lt;/collection&gt;&lt;collection href=\"Teams\"&gt;&lt;atom:title&gt;Teams&lt;/atom:title&gt;&lt;/collection&gt;&lt;collection href=\"Rooms\"&gt;&lt;atom:title&gt;Rooms&lt;/atom:title&gt;&lt;/collection&gt;&lt;collection href=\"Managers\"&gt;&lt;atom:title&gt;Managers&lt;/atom:title&gt;&lt;/collection&gt;&lt;collection href=\"Buildings\"&gt;&lt;atom:title&gt;Buildings&lt;/atom:title&gt;&lt;/collection&gt;&lt;collection href=\"Container2.Photos\"&gt;&lt;atom:title&gt;Photos&lt;/atom:title&gt;&lt;/collection&gt;&lt;/workspace&gt;&lt;/service&gt;",
+	  "request": {
+	    "method": "GET",
+	    "uri": "https://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=json",
+	    "headers": {
+	      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+	      "accept-encoding": "gzip, deflate",
+	      "accept-language": "de-de,de;q=0.8,en-us;q=0.5,en;q=0.3",
+	      "connection": "keep-alive",
+	      "Content-Type": null,
+	      "cookie": "JSESSIONID=C6A2403F354B61B1E645744FABCB7FB6C6BC5DA41BC841823647CF2DFF001556; BIGipServerlocalhost=3543090186.26911.0000",
+	      "host": "localhost:8080",
+	      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0",
+	      "x-forwarded-for": "173.12.210.11"
+	    }
+	  },
+	  "response": {
+	    "status": {
+	      "code": 200,
+	      "info": "OK"
+	    },
+	    "headers": {
+	      "DataServiceVersion": "1.0",
+	      "Content-Type": "application/xml;charset=utf-8"
+	    }
+	  },
+	  "runtime": [{
+	      "class": "ODataRequestHandler",
+	      "method": "handle",
+	      "duration": 1911,
+	      "memory": 191,
+	      "children": [
+	        {
+	          "class": "UriParserImpl",
+	          "method": "parse",
+	          "duration": 66,
+	          "memory": 0,
+	          "children": {}
+	        },
+	        {
+	          "class": "Dispatcher",
+	          "method": "dispatch",
+	          "duration": 1029,
+	          "memory": 95,
+	          "children": {}
+	        }
+	      ]
+	    }]
+	}
+</code></pre>
+<p><strong>HTML Debug View</strong></p>
+<p>Request url: <a href="http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=html">http://localhost:8080/olingo-odata2-ref-web/ReferenceScenario.svc/?odata-debug=html</a>
+to get a self-contained HTML document with all information that is in the JSON
+output but can be viewed conveniently in a browser.</p>
+<h5 id="custom-debug-output">Custom Debug Output<a class="headerlink" href="#custom-debug-output" title="Permalink">&para;</a></h5>
+<p>Starting with release 1.2, it is possible to create custom debug output.
+The complete formatting of the debug-support information can be implemented
+in a callback method.</p>
+<p>Add to the already existing <code>getCallback</code> method before the line with <code>else</code> a condition check whether the given <code>ODataCallback</code> is a <code>DebugWrapperCallback</code>.</p>
+<pre><code class="language-java">	} else if (callbackInterface.isAssignableFrom(ODataDebugResponseWrapperCallback.class)) {
+	  callback = (T) new DebugWrapperCallback();
+	}
+</code></pre>
+<p>which then results in following method</p>
+<pre><code class="language-java">	public &lt;T extends ODataCallback&gt; T getCallback(final Class&lt;T&gt; callbackInterface) {
+	  T callback
+
+	  if (callbackInterface.isAssignableFrom(MyDebugCallback.class)) {
+	    callback = (T) new MyDebugCallback();
+	  } else if (callbackInterface.isAssignableFrom(ODataDebugResponseWrapperCallback.class)) {
+	    callback = (T) new DebugWrapperCallback();
+	  } else {
+	    callback = (T) super.getCallback(callbackInterface);
+	  }
+
+	  return callback;
+	}
+</code></pre>
+<p>and implement the callback class</p>
+<pre><code class="language-java">	private final class DebugWrapperCallback implements ODataDebugResponseWrapperCallback {
+	  @Override
+	  public ODataResponse handle(final ODataContext context, final ODataRequest request, final ODataResponse response,
+	      final UriInfo uriInfo, final Exception exception) {
+	    if ("true".equals(request.getQueryParameters().get("my-debug"))) {
+	      return DebugResponseWrapper.handle(context, request, response, uriInfo, exception);
+	    } else {
+	      return response;
+	    }
+	  }
+	}
+</code></pre>
+<p>where <code>DebugResponseWrapper</code> is a class you have to implement which does
+the real work.</p>
+<p><strong>Please note</strong> that this callback is not called if the built-in debug output
+is requested as described above.</p>
+<h3 id="log-and-trace-support">Log and Trace Support<a class="headerlink" href="#log-and-trace-support" title="Permalink">&para;</a></h3>
+<p>Apache Olingo has no dependencies to any specific log and trace api (e.g. slf4j, log4j &hellip;) and with that it does not trace anything by default. This is to keep the library independent from a specific api so that it can be used on any JEE compliant platform independent from which l&amp;t api is offered there.</p>
+<p>Anyhow log and trace is required for most production environments and the following recommendations are given:</p>
+<h5 id="servlet-filter">Servlet Filter<a class="headerlink" href="#servlet-filter" title="Permalink">&para;</a></h5>
+<p>For tracing the http traffic (request url, query parameter, http headers, response code &hellip;) to and from the server it is recommended to implement a servlet filter on top of the service. This is completely independent from the Apache Olingo OData library and has no restrictions.</p>
+<h5 id="service-processor-implementation">Service Processor Implementation<a class="headerlink" href="#service-processor-implementation" title="Permalink">&para;</a></h5>
+<p>To trace OData activities (read/write activities) at the server it is recommended to do that within a custom processor implementation.</p>
+<h5 id="error-callback">Error Callback<a class="headerlink" href="#error-callback" title="Permalink">&para;</a></h5>
+<p>Because of OData requires to handle error situations someone can hook into the handling and trace information there.</p>
+<p>Simply implement another <code>ODataCallback</code> interface and register it within a <code>ODataServiceFactory</code>.</p>
+<p>Callback:</p>
+<pre><code>public class MyErrorCallback implements ODataErrorCallback {
+  @Override
+  public ODataResponse handleError(ODataErrorContext context) throws ODataApplicationException {
+    LOGGER.severe(context.getException().getClass().getName() + ":" + context.getMessage());
+        return EntityProvider.writeErrorDocument(context);
+  }
+}
+</code></pre>
+<p>Register Callback:</p>
+<pre><code>public &lt;T extends ODataCallback&gt; T getCallback(final Class&lt;T&gt; callbackInterface) {
+  T callback
+
+  if (callbackInterface.isAssignableFrom(MyDebugCallback.class)) {
+    callback = (T) new MyDebugCallback();
+  } else if (callbackInterface.isAssignableFrom(MyErrorCallback.class)) {
+    callback = (T) new MyErrorCallback();
+  } else {
+    callback = (T) super.getCallback(callbackInterface);
+  }
+
+  return callback;
+}
+</code></pre>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl"?>
+<rdf:RDF xml:lang="en"
+         xmlns="http://usefulinc.com/ns/doap#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:asfext="http://projects.apache.org/ns/asfext#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+  <Project rdf:about="http://olingo.apache.org">
+    <created>2014-03-28</created>
+    <license rdf:resource="http://usefulinc.com/doap/licenses/asl20" />
+    <name>Apache Olingo</name>
+    <homepage rdf:resource="http://olingo.apache.org" />
+    <asfext:pmc rdf:resource="http://olingo.apache.org" />
+    <shortdesc>Apache Olingo is a Java and JavaScript library that implements the Open Data Protocol (OData). Apache Olingo serves client and server aspects of OData. It currently supports OData 2.0 and OData 4.0 (beta). The latter is the OASIS version of the protocol: OASIS Open Data Protocol (OData) TC.
+    </shortdesc>
+    <description>Apache Olingo is a Java library that implements the Open Data Protocol (OData). Apache Olingo serves client and server aspects of OData. It currently supports OData 2.0 and support OData 4.0 (beta). The latter is the OASIS version of the protocol: OASIS Open Data Protocol (OData) TC.
+
+The extensions part of Olingo for OData 2.0 contains additional features like the support of JPA persistency or annotated bean classes.
+    </description>
+    <bug-database rdf:resource="https://issues.apache.org/jira/browse/OLINGO" />
+    <mailing-list rdf:resource="http://olingo.apache.org/support.html" />
+    <download-page rdf:resource="http://olingo.apache.org/download.html" />
+    <programming-language>Java</programming-language>
+    <programming-language>JavaScript</programming-language>
+    <category rdf:resource="http://projects.apache.org/category/library" />
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2020-12-27</created>
+        <revision>4.8.0</revision>
+      </Version>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2019-12-04</created>
+        <revision>4.7.0</revision>
+      </Version>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2019-12-25</created>
+        <revision>4.7.1</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2019-05-05</created>
+        <revision>4.6.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2018-08-13</created>
+        <revision>4.5.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2015-12-21</created>
+        <revision>4.1.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2015-09-21</created>
+        <revision>4.0.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2015-01-29</created>
+        <revision>4.0.0-beta-02</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
+        <created>2014-09-23</created>
+        <revision>4.0.0-beta-01</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData Client for JavaScript</name>
+        <created>2014-09-15</created>
+        <revision>4.0.0-beta-01</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2019-02-16</created>
+        <revision>2.0.11</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2017-07-08</created>
+        <revision>2.0.9</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2016-01-29</created>
+        <revision>2.0.6</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2015-10-05</created>
+        <revision>2.0.5</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2015-05-31</created>
+        <revision>2.0.4</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2015-03-05</created>
+        <revision>2.0.3</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2015-01-30</created>
+        <revision>2.0.2</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2014-11-07</created>
+        <revision>2.0.1</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2014-07-11</created>
+        <revision>2.0.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2014-03-24</created>
+        <revision>1.2.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2014-02-10</created>
+        <revision>1.1.0</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
+        <created>2013-10-16</created>
+        <revision>1.0.0</revision>
+      </Version>
+    </release>
+    <maintainer>
+      <foaf:Person>
+        <foaf:name>Michael Bolz</foaf:name>
+          <foaf:mbox rdf:resource="mailto:mibo@apache.org"/>
+      </foaf:Person>
+    </maintainer>
+    <asfext:implements><asfext:Standard>
+      <asfext:title>OASIS Open Data Protocol (OData)</asfext:title>
+      <asfext:body>OASIS</asfext:body>
+      <asfext:id>ODATA</asfext:id>
+      <asfext:url rdf:resource="http://www.oasis-open.org/committees/odata"/>
+    </asfext:Standard></asfext:implements>
+  </Project>
+</rdf:RDF>
