@@ -9,7 +9,7 @@ implementing [OData V4][1] protocol clients or servers.
 
 [Full download page][2] and [release notes][3].
 
-The Apache *Olingo OData 4 4.9.0* release is the sixth stable release for the *OData V4* specifications.
+The Apache *Olingo OData 4 4.9.0* release is the latest stable release for the *OData V4* specifications.
 
 ### Commodity Packages
 
