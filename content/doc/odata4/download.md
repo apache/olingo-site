@@ -46,5 +46,5 @@ Please make sure you check the following resources:
 
   [1]: https://odata.org
   [2]: https://www.apache.org/dist/olingo/odata4/4.9.0/
-  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12346571
+  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12349547
   [4]: https://archive.apache.org/dist/olingo/
