@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="java-library-for-odata-version-4">Java Library for OData Version 4<a class="headerlink" href="#java-library-for-odata-version-4" title="Permalink">&para;</a></h1>
+<div id="toc"><ul><li><a class="toc-href" href="#overview" title="Overview">Overview</a></li><li><a class="toc-href" href="#entity-data-model-metadata" title="Entity Data Model (Metadata)">Entity Data Model (Metadata)</a></li><li><a class="toc-href" href="#run-time-processing-of-requests" title="Run-Time Processing of Requests">Run-Time Processing of Requests</a><ul><li><a class="toc-href" href="#general-setup" title="General Setup">General Setup</a><ul><li><a class="toc-href" href="#design-considerations" title="Design Considerations">Design Considerations</a></li><li><a class="toc-href" href="#overall-handling" title="Overall Handling">Overall Handling</a></li><li><a class="toc-href" href="#processor-interfaces-and-processing-methods" title="Processor Interfaces and Processing Methods">Processor Interfaces and Processing Methods</a></li></ul></li><li><a class="toc-href" href="#content-negotiation" title="Content Negotiation">Content Negotiation</a><ul><li><a class="toc-href" href="#request-content-type" title="Request Content Type">Request Content Type</a></li><li><a class="toc-href" href="#response-content-type" title="Response Content Type">Response Content Type</a></li></ul></li><li><a class="toc-href" href="#exceptions" title="Exceptions">Exceptions</a></li><li><a class="toc-href" href="#response-status-code" title="Response Status Code">Response Status Code</a></li><li><a class="toc-href" href="#helper-methods" title="Helper Methods">Helper Methods</a><ul><li><a class="toc-href" href="#serialization" title="Serialization">Serialization</a><ul><li><a class="toc-href" href="#serializers-dependent-on-content-negotiation" title="Serializers Dependent on Content Negotiation">Serializers Dependent on Content Negotiation</a></li><li><a class="toc-href" href="#fixed-format-serializers" title="Fixed-Format Serializers">Fixed-Format Serializers</a></li></ul></li><li><a class="toc-href" href="#deserialization" title="Deserialization">Deserialization</a></li><li><a class="toc-href" href="#uri-related-tasks" title="URI-related Tasks">URI-related Tasks</a><ul><li><a class="toc-href" href="#context-url" title="Context URL">Context URL</a></li><li><a class="toc-href" href="#canonical-url" title="Canonical URL">Canonical URL</a></li><li><a class="toc-href" href="#uri-parser" title="URI parser">URI parser</a></li></ul></li><li><a class="toc-href" href="#helpers-for-concurrency-control" title="Helpers for Concurrency Control">Helpers for Concurrency Control</a></li><li><a class="toc-href" href="#helpers-for-preference-handling" title="Helpers for Preference Handling">Helpers for Preference Handling</a></li><li><a class="toc-href" href="#debug-output" title="Debug Output">Debug Output</a></li></ul></li></ul></li><li><a class="toc-href" href="#definition-of-the-web-infrastructure" title="Definition of the Web Infrastructure">Definition of the Web Infrastructure</a></li></ul></div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permalink">&para;</a></h2>
+<p>The Open Data Protocol (OData) is a web-based protocol for querying and
+updating data. It has been defined initially by Microsoft but is now an
+<a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=odata">OASIS standard</a>.
+This allows anyone to freely interoperate with OData implementations. Data
+exposed via the OData standard can be consumed in any environment offering
+HTTP-based connectivity. In addition, there are client SDKs available for
+various platforms such as .Net, Java, PHP, JavaScript, etc.</p>
+<p>For the Java platform, the <a href="/">Apache Olingo project</a>
+offers a library useful for implementing an OData service. It provides
+services such as URL parsing, input validation, (de-)serialization of
+content, request dispatching, etc., according to the OData specification.</p>
+<p>The main parts of an OData service implementation are the metadata
+definition, the run-time processing of requests, and the definition of the
+web infrastructure. These parts will now be described in more detail.</p>
+<h2 id="entity-data-model-metadata">Entity Data Model (Metadata)<a class="headerlink" href="#entity-data-model-metadata" title="Permalink">&para;</a></h2>
+<p>The Entity Data Model (EDM) is the underlying metadata model of the OData
+protocol. Within the EDM the following (main) elements are described:</p>
+<ul>
+<li>Schemas</li>
+<li>Entity Types</li>
+<li>Complex Types</li>
+<li>Type Definitions</li>
+<li>Enum Types</li>
+<li>Properties</li>
+<li>Navigation Properties</li>
+<li>Actions</li>
+<li>Functions</li>
+<li>Entity Container
+<ul>
+<li>Entity Sets</li>
+<li>Singletons</li>
+<li>Action Imports</li>
+<li>Function Imports</li>
+</ul>
+</li>
+</ul>
+<p>A proper OData Service requires a valid and consistent EDM. In order to speed
+up performance, the OData Library does no validation of the EDM.</p>
+<p>The standard way of defining the metadata is to write code in so-called
+EDM provider classes. It would be possible to add other sources for
+metadata, e.g., a predefined metadata document.</p>
+<p>EDM provider classes separate the run-time EDM object instances from code
+that defines OData EDM objects. All provider classes simply define string
+values for the different EDM elements. At run-time, objects are created only
+as far as necessary. Since the typical request (apart from the request for
+the metadata document, of course) can be processed with only the directly
+involved EDM objects, this can be a significant performance improvement.
+Furthermore, this solves the problem that many EDM objects depend on each
+other, making it no easy task to find the right order of object
+instantiation.</p>
+<p>Service implementations can derive from <code>CsdlAbstractEdmProvider</code> and
+override only those methods that should provide EDM objects. Almost all
+provider methods have a parameter of type <code>FullQualifiedName</code> that specifies
+for which (namespace-qualified) name a provider-object instance is to be
+returned. In addition, there are some methods with the purpose of retrieving
+a list of all names of a given object type; these are used only for the
+output of the metadata document.</p>
+<h2 id="run-time-processing-of-requests">Run-Time Processing of Requests<a class="headerlink" href="#run-time-processing-of-requests" title="Permalink">&para;</a></h2>
+<h3 id="general-setup">General Setup<a class="headerlink" href="#general-setup" title="Permalink">&para;</a></h3>
+<h4 id="design-considerations">Design Considerations<a class="headerlink" href="#design-considerations" title="Permalink">&para;</a></h4>
+<p>The OData standard describes many different types of requests that have to be
+answered by an OData service implementation. It would not be useful to have a
+single processing interface or even a single method that a service
+implementation has to implement. Different designs are possible how the
+multitude of requests can be split into more manageable parts.</p>
+<p>This library has been designed to handle a given OData request in a single
+call to a processing method, including the complete query-options part. Which
+method the request dispatcher calls is decided according to the HTTP method
+and the representation type of the expected response. The HTTP method
+describes the fundamental type of operation: <code>GET</code> for read requests, <code>PUT</code>
+or <code>PATCH</code> for update requests, <code>POST</code> for create requests, and <code>DELETE</code> for
+deletion requests. The representation type describes which information can be
+retrieved from the OData service: an Entity representation, or only a link
+URL, or even just a simple number as a count of entities.</p>
+<p>The fact that a single method call occurs for a given request, as complicated
+as it may be, leads immediately to the consequence that almost all processing
+methods must be prepared to handle things like navigation and system query
+options. Navigation in turn means that even if the response in the end may be
+a simple count, the implementation may have to read entity collections, their
+relations, and even function imports or bound functions that may occur before
+the final <code>$count</code> in the request URI. Services therefore have to be
+implemented carefully in order to respond to requests they are not prepared
+to handle with a <code>Not Implemented</code> response and its corresponding HTTP status
+code of 501.</p>
+<p>A major advantage of the one-step approach is that the processing interfaces
+don't have to make any assumptions how application data is to be transported.
+The serialization and deserialization helper methods of the library of course
+use library-defined data objects but service implementations are free to use
+their own code for that tasks and still can use the core run-time library
+functionality.</p>
+<p>Many implementations will re-use large parts of code for essentially the same
+requests that differ only in the returned representation. But there might be
+optimizations: An SQL request could be much more efficient for count
+determination if not all entities are retrieved first. Since this library does
+not favor a specific implementation, the interface is designed to allow the
+necessary flexibility.</p>
+<h4 id="overall-handling">Overall Handling<a class="headerlink" href="#overall-handling" title="Permalink">&para;</a></h4>
+<p>Processor classes have to be registered in order to be called from the
+library core at run-time. The core run-time registers the <code>DefaultProcessor</code>
+API class with default implementations of <code>MetadataProcessor</code>,
+<code>ServiceDocumentProcessor</code>, and <code>ErrorProcessor</code>, but this can be overridden
+simply by registering an own implementation.</p>
+<p>Each class can implement one or more of the processor interfaces; all
+processing methods have unique names across all processor interfaces.</p>
+<p>Since the general design of the library is to have as little constraints as
+possible, as little as possible happens automatically. The service developer
+is responsible for the correct response to a given request. There are several
+helper methods to ease this task considerably. But if you are not satisfied
+with them, it is always possible to use your own implementation, even if that
+does not conform to the OData standard.</p>
+<h4 id="processor-interfaces-and-processing-methods">Processor Interfaces and Processing Methods<a class="headerlink" href="#processor-interfaces-and-processing-methods" title="Permalink">&para;</a></h4>
+<p>All processor interfaces derive from the <code>Processor</code> interface which defines
+a single <code>init()</code> method allowing to get a run-time instance of the <code>OData</code>
+object and the <code>ServiceMetadata</code>. The <code>OData</code> object is the root object for
+serving factory tasks and the single instance connecting the API interfaces
+with their implementations; each thread (processing of one request) should
+keep its own instance. The <code>ServiceMetadata</code> instance contains the Entity
+Data Model and some other objects related to metadata.</p>
+<p>All processing methods have at least <code>ODataRequest</code> and <code>ODataResponse</code>
+objects as parameters. They are supposed to find all necessary information
+about the request body and its headers in the request object and set the
+corresponding information in the response object.</p>
+<p>Processing methods that are not called with a static URI like <code>$batch</code>
+additionally have a <code>UriInfo</code> parameter describing the request URI.</p>
+<p>Processing methods that have to read request-body content additionally have a
+<code>ContentType</code> parameter describing the request-body format in order to select
+the correct deserializer.</p>
+<p>Processing methods that have to deliver content in the response body
+additionally have a <code>ContentType</code> parameter describing the requested format
+in order to select the correct serializer.</p>
+<p>An example with all parameters mentioned above is the method <code>createEntity()</code>
+in the interface <code>EntityProcessor</code>:</p>
+<pre><code class="language-java">void createEntity(ODataRequest request, ODataResponse response,
+    UriInfo uriInfo, ContentType requestFormat, ContentType responseFormat)
+    throws ODataApplicationException, ODataLibraryException;
+</code></pre>
+<h3 id="content-negotiation">Content Negotiation<a class="headerlink" href="#content-negotiation" title="Permalink">&para;</a></h3>
+<h4 id="request-content-type">Request Content Type<a class="headerlink" href="#request-content-type" title="Permalink">&para;</a></h4>
+<p>Requests that send data must provide a <code>Content-Type</code> HTTP header.
+This is checked in the core run-time code. For each representation type
+there is a list of content types that are supported by the implementation.</p>
+<p>The method <code>modifySupportedContentTypes()</code> of the interface
+<code>CustomContentTypeSupport</code> can be implemented to change that; it is even
+possible to remove library-supported content types. Any implementation of
+this interface has to be registered in the same way as processor classes in
+order to have any effect.</p>
+<p>Request content types that do not match the supported content types are
+rejected with error messages and the HTTP status code 406 (Not Acceptable).</p>
+<h4 id="response-content-type">Response Content Type<a class="headerlink" href="#response-content-type" title="Permalink">&para;</a></h4>
+<p>A request for a response with a content type not matching the supported
+content types is rejected with an error message and the HTTP status code 415
+(Unsupported Media Type).</p>
+<p>The list of supported content types can be modified as described for the
+request content type. It is not possible to have different support for
+responses than for requests.</p>
+<h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permalink">&para;</a></h3>
+<p>All processing methods can and should throw exceptions if something went
+wrong.</p>
+<p>Almost all library utility methods declare exceptions that derive from
+<code>ODataLibraryException</code>. Those exceptions are handled by the core run-time
+code which takes care of setting the correct response status code and error
+text.</p>
+<p>If a service implementation wants to signal an error itself, it can throw an
+<code>ODataApplicationException</code>. The constructor of this exception allows to
+define the response status code and the error text. Please note that the
+OData standard mandates specific status codes in many places; this is not
+enforced by the library.</p>
+<p>If a <code>RuntimeException</code> occurs, the core run-time code sets the response
+status code to 500 (Internal Server Error) and delivers a corresponding error
+text.</p>
+<h3 id="response-status-code">Response Status Code<a class="headerlink" href="#response-status-code" title="Permalink">&para;</a></h3>
+<p>Service implementations have to set the response status code explicitly.
+Failing to do so results in a status code of 500 (Internal Server Error).
+Please note that the OData standard mandates specific status codes in many
+places; this is not enforced by the library.</p>
+<h3 id="helper-methods">Helper Methods<a class="headerlink" href="#helper-methods" title="Permalink">&para;</a></h3>
+<h4 id="serialization">Serialization<a class="headerlink" href="#serialization" title="Permalink">&para;</a></h4>
+<h5 id="serializers-dependent-on-content-negotiation">Serializers Dependent on Content Negotiation<a class="headerlink" href="#serializers-dependent-on-content-negotiation" title="Permalink">&para;</a></h5>
+<p>For some representation types the OData standard defines different
+representations, e.g., JSON and XML. For the JSON format there are different
+sub-formats differing in the amount of metadata that is part of the content.</p>
+<p>In order to have a uniform interface and to relieve the service
+implementations from many switch statements, it is possible to get the
+correct serializer from the <code>OData</code> object's <code>createSerializer()</code> method that
+has a content type as parameter. The requested response content type is
+passed as parameter to all processing methods that are supposed to create
+response content.</p>
+<p>The <code>ODataSerializer</code> interface has methods to serialize the following types
+of content:</p>
+<ul>
+<li>service document</li>
+<li>metadata document</li>
+<li>error document</li>
+<li>entity</li>
+<li>entity collection</li>
+<li>primitive value</li>
+<li>collection of primitive values</li>
+<li>complex value</li>
+<li>collection of complex values</li>
+<li>reference to an entity</li>
+<li>collection of references to entities</li>
+</ul>
+<p>Every data serializer gets its run-time data as an instance of a type defined
+in the <code>commons.api.data</code> package. It has also an additional parameter to
+pass options like the context URL or expand settings in a single object.
+Please note that according to the OData standard the context URL is mandatory
+for service responses except for responses with no metadata at all.</p>
+<h5 id="fixed-format-serializers">Fixed-Format Serializers<a class="headerlink" href="#fixed-format-serializers" title="Permalink">&para;</a></h5>
+<p>Fixed-format serializers can be used for formats defined in the OData
+standard that are not subject to content negotiation. The
+<code>FixedFormatSerializer</code> instance to be got from the <code>OData</code> object's
+<code>createFixedFormatSerializer()</code> method has methods for serializing a binary,
+a count, a primitive raw value, a batch, and an asynchronous response.</p>
+<h4 id="deserialization">Deserialization<a class="headerlink" href="#deserialization" title="Permalink">&para;</a></h4>
+<p>Deserialization works along the same principles as serialization, with
+minor differences, however.</p>
+<p>There is no deserializer for the representation types service document,
+metadata document, and error document. There is an additional representation
+type that can be deserialized: action parameters.</p>
+<p>All content-type-dependent methods don't return data objects directly but
+instances of <code>DeserializerResult</code> instead. This makes it possible to return
+additional information like the expand information.</p>
+<h4 id="uri-related-tasks">URI-related Tasks<a class="headerlink" href="#uri-related-tasks" title="Permalink">&para;</a></h4>
+<h5 id="context-url">Context URL<a class="headerlink" href="#context-url" title="Permalink">&para;</a></h5>
+<p>The context URL is a mandatory part of all data-related responses of an OData
+service except for responses with no metadata at all. In some cases it cannot
+be determined from the data alone that is passed to the serialization
+methods. Therefore, the serialization methods expect the correct context URL
+as parameter.</p>
+<p>The <code>ContextURL</code> object has its own builder that allows to build the context
+URL from its parts. For the difficult parts the <code>UriHelper</code> instance to be
+got from the <code>OData</code> object's <code>createUriHelper()</code> method has helper methods
+that assist with building select lists and key predicates.</p>
+<h5 id="canonical-url">Canonical URL<a class="headerlink" href="#canonical-url" title="Permalink">&para;</a></h5>
+<p>The <code>UriHelper</code> instance to be got from the <code>OData</code> object's
+<code>createUriHelper()</code> method has a helper method to construct the canonical URL
+of an entity. This URL can be used as <code>Location</code> HTTP header, for example.</p>
+<h5 id="uri-parser">URI parser<a class="headerlink" href="#uri-parser" title="Permalink">&para;</a></h5>
+<p>The <code>UriHelper</code> instance to be got from the <code>OData</code> object's
+<code>createUriHelper()</code> method has a helper method to parse the entity-ID URI of
+an entity. This method can be used in the handling of reference-changing
+requests.</p>
+<h4 id="helpers-for-concurrency-control">Helpers for Concurrency Control<a class="headerlink" href="#helpers-for-concurrency-control" title="Permalink">&para;</a></h4>
+<p>The OData standard defines optimistic concurrency control, a mechanism to
+ensure that a modification request accesses the current version of the data
+to be modified. Furthermore, this mechanism can be used to enable client-side
+caching, using the information that the requested data are still current.</p>
+<p>To achieve this, OData uses weak entity tags via the <code>ETag</code> HTTP response
+header and its associated <code>If-Match</code> and <code>If-None-Match</code> HTTP request
+headers.</p>
+<p>To enable this functionality for run-time data, service implementations can
+register a class that implements the <code>CustomETagSupport</code> interface with its
+two methods for entities and media-entity data. These methods should return
+for a given entity-set or singleton name whether the service supports entity
+tags for entities out of this entity set or singleton. No finer granularity
+is possible currently. Processing methods still have to check the ETag(s)
+themselves; the <code>ETagHelper</code> instance to be got from the <code>OData</code> object's
+<code>createETagHelper()</code> method has two ready-made methods for read and change
+requests, respectively.</p>
+<p>To enable this functionality for metadata, i.e., for the service document and
+the metadata document, service implementations can pass an instance of an
+implementation of the <code>ServiceMetadataETagSupport</code> interface to the
+<code>ServiceMetadata</code> creation described above. The default processors for
+service- and metadata document requests already take this ETag support into
+account.</p>
+<h4 id="helpers-for-preference-handling">Helpers for Preference Handling<a class="headerlink" href="#helpers-for-preference-handling" title="Permalink">&para;</a></h4>
+<p>Some aspects of OData request processing can be influenced from a client by
+setting preferences in the HTTP <code>Prefer</code> header. The service implementation
+is not obliged to honor these preferences. If it does, it should respond with
+an appropriate <code>Preference-Applied</code> HTTP header.</p>
+<p>The <code>Preferences</code> instance to be got from the <code>OData</code> object's
+<code>createPreferences()</code> method with the HTTP <code>Prefer</code> headers as parameter
+has named access methods for the preferences defined in the OData standard
+plus generic access to other preferences.</p>
+<p>The <code>PreferencesApplied</code> API class has a builder that helps building a
+correct <code>Preference-Applied</code> HTTP response header.</p>
+<h4 id="debug-output">Debug Output<a class="headerlink" href="#debug-output" title="Permalink">&para;</a></h4>
+<p>For support purposes there is a possibility to enrich the service response
+with additional data helpful for finding bugs. Please note that this
+information could also help attackers.</p>
+<p>To enable this functionality, service implementations can register a class
+that implements the <code>DebugSupport</code> interface with its two methods for user
+authorization and creation of output.</p>
+<p>A ready-made <code>DefaultDebugSupport</code> class is already provided where all users
+are always authorized and the additional data consists of information about
+the request, the response, the parsed request URI, the server environment,
+library timings, and the stacktrace in case an error occurred, in a
+self-contained HTML document ready for browser usage or in a JSON document.
+The <code>OData</code> object's <code>createDebugResponseHelper()</code> method returns a
+<code>DebugResponseHelper</code> instance which is used in this default implementation.</p>
+<p>To request the debug output for a request to the OData service the query parameter
+<code>odata-debug=html</code> must be appended to the original request URL
+(e.g. <code>http://localhost:8080/odata-server-tecsvc/odata.svc/?odata-debug=html</code> for a local published test service).</p>
+<h2 id="definition-of-the-web-infrastructure">Definition of the Web Infrastructure<a class="headerlink" href="#definition-of-the-web-infrastructure" title="Permalink">&para;</a></h2>
+<p>To enable an OData service on a web server, the service is wrapped by a web
+application.</p>
+<p>The web application is defined in a <code>web.xml</code> file where a servlet is
+registered. The servlet is a standard <code>HttpServlet</code> configured to dispatch
+all requests to URLs below the service's root URL to the OData handler class.
+This is done by overriding the servlet's <code>service()</code> method. The library
+provides an <code>ODataHttpHandler</code> object, creatable from the <code>OData</code> API class
+with the EDM definition as parameter, that can be used inside the <code>service()</code>
+method.</p>
+<p>It receives the request and delegates it to the processor implementation of
+the OData service if the URL conforms to the OData specification. This means
+that all processor implementations of the OData service have to be registered
+with the <code>register()</code> method. The responses of the registered handlers are
+given back to the servlet infrastructure and will result in corresponding
+HTTP responses.</p>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

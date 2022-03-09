@@ -1,0 +1,1039 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-guide-for-building-a-sample-odata-service-with-the-odata-40-library-for-java">How To Guide for building a Sample OData service with the OData 4.0 Library (for Java)<a class="headerlink" href="#how-to-guide-for-building-a-sample-odata-service-with-the-odata-40-library-for-java" title="Permalink">&para;</a></h1>
+<h3 id="project-setup">Project setup<a class="headerlink" href="#project-setup" title="Permalink">&para;</a></h3>
+<p>First, we setup a simple Maven project and add all necessary dependencies.</p>
+<h5 id="maven-project">Maven project<a class="headerlink" href="#maven-project" title="Permalink">&para;</a></h5>
+<p>Create a new Maven project. Execute the following command in your shell.</p>
+<pre><code>mvn archetype:generate -DgroupId=org.apache.olingo -DartifactId=odata-server-sample -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+</code></pre>
+<p>The Olingo library consists of different sub projects. The dependencies are shown in figure 1 below:</p>
+<p><img alt="Figure1: Olingo library dependencies" src="dependencies.png"/></p>
+<p>We will start with a server implementation, so we need to include the common and the server projects.
+Each of them is split into an implementation and an API project.</p>
+<p>The &bdquo;pom.xml&ldquo; defines to include the following dependencies to the project:</p>
+<ul>
+<li>The Servlet API (javax.servlet.servlet-api)</li>
+<li>Olingo library</li>
+<li>A logging facade used by the tomcat server(slf4j)</li>
+</ul>
+<p>Replace the pom.xml by the following listing.</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+   &lt;artifactId&gt;odata-server-sample&lt;/artifactId&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;name&gt;${project.artifactId}&lt;/name&gt;
+
+    &lt;properties&gt;
+        &lt;odata.version&gt;4.0.0-beta-02&lt;/odata.version&gt;
+    &lt;/properties&gt;
+
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;2.5&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+  &lt;/dependency&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+    &lt;artifactId&gt;odata-server-api&lt;/artifactId&gt;
+    &lt;version&gt;${odata.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+    &lt;artifactId&gt;odata-server-core&lt;/artifactId&gt;
+    &lt;version&gt;${odata.version}&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+  &lt;/dependency&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+    &lt;artifactId&gt;odata-commons-api&lt;/artifactId&gt;
+    &lt;version&gt;${odata.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+    &lt;artifactId&gt;odata-commons-core&lt;/artifactId&gt;
+    &lt;version&gt;${odata.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+    &lt;version&gt;1.7.7&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h5 id="setting-up-the-web-project">Setting up the web project<a class="headerlink" href="#setting-up-the-web-project" title="Permalink">&para;</a></h5>
+<p>Next, setup up the web project by replacing the <code>web.xml</code>.</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5"&gt;
+
+&lt;display-name&gt;Apache Olingo OData 4.0 Sample Service&lt;/display-name&gt;
+
+&lt;welcome-file-list&gt;
+  &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+&lt;/welcome-file-list&gt;
+
+&lt;servlet&gt;
+  &lt;servlet-name&gt;CarsServlet&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;org.apache.olingo.server.sample.CarsServlet&lt;/servlet-class&gt;
+  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;CarsServlet&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/cars.svc/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</code></pre>
+<p>As you can see we define a servlet, which implements the OData service. In addition we define a servlet mapping and set the welcome page.</p>
+<h2 id="implementing-the-odata-service">Implementing the OData service<a class="headerlink" href="#implementing-the-odata-service" title="Permalink">&para;</a></h2>
+<p>Each Olingo OData service consists of several parts.</p>
+<ul>
+<li><strong>EdmProvider</strong>
+Delivers an abstract definition of the service.</li>
+<li><strong>DataProvider</strong>
+The data provider connects the Olingo library with the data source. In this basic tutorial, we will use static data. In real world application, the data provider will may establish a connection to a database. There a no constraints how a DataProvider has to be build.</li>
+<li><strong>Processor</strong>
+The processor receives, validates and deserializes requests, fetches the requested data and delivers a serialized response of the data to the client.</li>
+</ul>
+<h5 id="edmprovider">EdmProvider<a class="headerlink" href="#edmprovider" title="Permalink">&para;</a></h5>
+<p><img alt="Figure 2: Data model" src="er.png"/></p>
+<p>OData services are described in terms of an Entity Data Model (EDM). To do so, the first step is to provide such an EDM. In this basic tutorial, we will define a class that provides an EDM instance. The EDM will be used to determine the types of the entities, properties and so on. In addition, the service can deliver a service meta-document. As we have a static model we define constants for all top level elements of the schema. The data model is shown in figure 2 as entity relationship diagram.</p>
+<p>Create a new class called <code>CarsEdmProvider</code> that inherits from <code>EdmProvider</code></p>
+<pre><code>package org.apache.odata2.server.sample.edmprovider;
+
+import org.apache.olingo.server.api.edm.provider.EdmProvider;
+
+public class CarsEdmProvider extends EdmProvider {
+
+// Service Namespace
+public static final String NAMESPACE = "olingo.odata.sample";
+
+// EDM Container
+public static final String CONTAINER_NAME = "Container";
+public static final FullQualifiedName CONTAINER_FQN = new FullQualifiedName(NAMESPACE, CONTAINER_NAME);
+
+// Entity Types Names
+public static final FullQualifiedName ET_CAR = new FullQualifiedName(NAMESPACE, "Car");
+public static final FullQualifiedName ET_MANUFACTURER = new FullQualifiedName(NAMESPACE, "Manufacturer");
+
+// Complex Type Names
+public static final FullQualifiedName CT_ADDRESS = new FullQualifiedName(NAMESPACE, "Address");
+
+// Entity Set Names
+public static final String ES_CARS_NAME = "Cars";
+public static final String ES_MANUFACTURER_NAME = "Manufacturers";
+</code></pre>
+<p>Implement <code>CarsEdmProvider.getSchemas(...)</code>. This method is used to retrieve the complete structural information in order to build the metadata document and the service document. The implementation makes use of other getter methods of this class for simplicity reasons. If a very performant way of building the whole structural information was required, other implementation strategies could be used.</p>
+<pre><code>@Override
+public List&lt;Schema&gt; getSchemas() throws ODataException {
+  List&lt;Schema&gt; schemas = new ArrayList&lt;Schema&gt;();
+  Schema schema = new Schema();
+  schema.setNamespace(NAMESPACE);
+
+  // EntityTypes
+  List&lt;EntityType&gt; entityTypes = new ArrayList&lt;EntityType&gt;();
+  entityTypes.add(getEntityType(ET_CAR));
+  entityTypes.add(getEntityType(ET_MANUFACTURER));
+  schema.setEntityTypes(entityTypes);
+
+  // ComplexTypes
+  List&lt;ComplexType&gt; complexTypes = new ArrayList&lt;ComplexType&gt;();
+  complexTypes.add(getComplexType(CT_ADDRESS));
+  schema.setComplexTypes(complexTypes);
+
+  // EntityContainer
+  schema.setEntityContainer(getEntityContainer());
+  schemas.add(schema);
+
+  return schemas;
+}
+</code></pre>
+<p>For example the method <code>CarsEdmProvider.getComplexType(...)</code> delivers the definition of a complex type, if there exists a complex type with the same full qualified name. The full qualified name was provided by the getSchemas method as mentioned above.</p>
+<pre><code>public ComplexType getComplexType(final FullQualifiedName complexTypeName) throws ODataException {
+  if (CT_ADDRESS.equals(complexTypeName)) {
+    return new ComplexType()
+      .setName(CT_ADDRESS.getName())
+      .setProperties(Arrays.asList(
+        new Property().setName("Street").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName()),
+        new Property().setName("City").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName()),
+        new Property().setName("ZipCode").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName()),
+        new Property().setName("Country").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName())));
+  }
+  return null;
+}
+</code></pre>
+<p>The same principle is used for all other types.
+<code>CarsEdmProvider.getEntityType(...)</code> returns an Entity Type according to the full qualified name specified. The Entity Type holds all information about its structure like simple properties, complex properties, navigation properties and the definition of its key property (or properties)</p>
+<pre><code>@Override
+public EntityType getEntityType(final FullQualifiedName entityTypeName) throws ODataException {
+  if (ET_CAR.equals(entityTypeName)) {
+    return new EntityType()
+      .setName(ET_CAR.getName())
+      .setKey(Arrays.asList(
+        new PropertyRef().setPropertyName("Id")))
+      .setProperties(Arrays.asList(
+        new Property().setName("Id").setType(EdmPrimitiveTypeKind.Int16.getFullQualifiedName()),
+        new Property().setName("Model").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName()),
+        new Property().setName("ModelYear").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName())
+          .setMaxLength(4),
+        new Property().setName("Price").setType(EdmPrimitiveTypeKind.Decimal.getFullQualifiedName())
+          .setScale(2),
+        new Property().setName("Currency").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName())
+          .setMaxLength(3)
+      ))
+    .setNavigationProperties(Arrays.asList(
+      new NavigationProperty().setName("Manufacturer").setType(ET_MANUFACTURER)
+    ));
+
+  } else if (ET_MANUFACTURER.equals(entityTypeName)) {
+    return new EntityType()
+      .setName(ET_MANUFACTURER.getName())
+      .setKey(Arrays.asList(new PropertyRef().setPropertyName("Id")))
+      .setProperties(Arrays.asList(
+        new Property().setName("Id").setType(EdmPrimitiveTypeKind.Int16.getFullQualifiedName()),
+        new Property().setName("Name").setType(EdmPrimitiveTypeKind.String.getFullQualifiedName()),
+        new Property().setName("Address").setType(CT_ADDRESS))
+      )
+      .setNavigationProperties(Arrays.asList(
+        new NavigationProperty().setName("Cars").setType(ET_CAR).setCollection(true)
+      ));
+  }
+
+  return null;
+}
+
+@Override
+public EntitySet getEntitySet(final FullQualifiedName entityContainer, final String entitySetName) throws ODataException {
+  if (CONTAINER_FQN.equals(entityContainer)) {
+    if (ES_CARS_NAME.equals(entitySetName)) {
+      return new EntitySet()
+          .setName(ES_CARS_NAME)
+          .setType(ET_CAR)
+          .setNavigationPropertyBindings(Arrays.asList(
+                  new NavigationPropertyBinding()
+          .setPath("Manufacturer")
+          .setTarget(new Target()
+            .setTargetName(ES_MANUFACTURER_NAME)
+            .setEntityContainer(CONTAINER_FQN)
+          )
+    )
+  );
+    } else if (ES_MANUFACTURER_NAME.equals(entitySetName)) {
+      return new EntitySet()
+          .setName(ES_MANUFACTURER_NAME)
+          .setType(ET_MANUFACTURER).setNavigationPropertyBindings(
+              Arrays.asList(
+                  new NavigationPropertyBinding()
+          .setPath("Cars")
+          .setTarget(new Target()
+            .setTargetName(ES_CARS_NAME)
+            .setEntityContainer(CONTAINER_FQN)
+          )
+        )
+    );
+    }
+  }
+
+  return null;
+}
+</code></pre>
+<p>Entities are not visible by default. To make them visible, we have to define a so called &ldquo;EntityContainer&rdquo;.
+Override the method <code>getEntityContainer(...)</code> and add the following code:</p>
+<pre><code>@Override
+public EntityContainer getEntityContainer() throws ODataException {
+  EntityContainer container = new EntityContainer();
+  container.setName(CONTAINER_FQN.getName());
+
+  // EntitySets
+  List&lt;EntitySet&gt; entitySets = new ArrayList&lt;EntitySet&gt;();
+  container.setEntitySets(entitySets);
+  entitySets.add(getEntitySet(CONTAINER_FQN, ES_CARS_NAME));
+  entitySets.add(getEntitySet(CONTAINER_FQN, ES_MANUFACTURER_NAME));
+
+  return container;
+}
+
+
+@Override
+public EntityContainerInfo getEntityContainerInfo(final FullQualifiedNam, entityContainerName) throws ODataException {
+  if (entityContainerName == null || CONTAINER_FQN.equals(entityContainerName)) {
+    return new EntityContainerInfo().setContainerName(CONTAINER_FQN);
+  }
+  return null;
+}
+</code></pre>
+<h5 id="servlet">Servlet<a class="headerlink" href="#servlet" title="Permalink">&para;</a></h5>
+<p>As described in project setup, the web projects calls a servlet. Within the servlet the EDM provider has to be loaded. Create a new class CarsServlet which extends HttpServlet.</p>
+<p>In the following steps a processor and a data provider will be created.  Currently there is not processor being registered, so the default processor will be used.  The default processor is been able to display the service document and the metadata document also.</p>
+<p>Insert the following code.</p>
+<pre><code>package org.apache.olingo.server.sample;
+
+public class CarsServlet extends HttpServlet {
+
+  private static final long serialVersionUID = 1L;
+  private static final Logger LOG = LoggerFactory.getLogger(CarsServlet.class);
+
+  @Override
+  protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    try {
+      OData odata = OData.newInstance();
+      ServiceMetadata edm = odata.createServiceMetadata(new CarsEdmProvider(), new 	ArrayList&lt;EdmxReference&gt;());
+      ODataHttpHandler handler = odata.createHandler(edm);
+
+      handler.process(req, resp);
+    } catch (RuntimeException e) {
+      LOG.error("Server Error", e);
+      throw new ServletException(e);
+    }
+  }
+}
+</code></pre>
+<h5 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permalink">&para;</a></h5>
+<p>Conclusion
+After the implementation of the EDM Provider the web application can be executed to show the Service Document and the Metadata Document.</p>
+<ul>
+<li>Build your project: <code>mvn clean install</code></li>
+<li>Deploy the Web Application to the server (e. g. mvn tomcat:run)</li>
+<li>Show the Service Document: <a href="http://localhost:8080/odata-server-sample/cars.svc/">http://localhost:8080/odata-server-sample/cars.svc/</a></li>
+<li>Show the Metadata Document:  <a href="http://localhost:8080/odata-server-sample/cars.svc/$metadata">http://localhost:8080/odata-server-sample/cars.svc/$metadata</a></li>
+</ul>
+<p>The Service Document and the Meta Document are shown by the default processor implementation.</p>
+<h5 id="add-runtime-data">Add runtime data<a class="headerlink" href="#add-runtime-data" title="Permalink">&para;</a></h5>
+<p>In the next steps we will implement read access to the Car and Manufacturer entries and the read access to the Cars and Manufacturers feed. As we need some basis for sample data we create a very simple data store which contains the data as well as access methods to serve the required data.</p>
+<p>We will implement some helper methods to provide a bunch of sample data.</p>
+<p>Create a new class <code>DataProvider</code>.</p>
+<pre><code>package org.apache.olingo.server.sample.data;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.olingo.commons.api.data.EntitySet;
+import org.apache.olingo.commons.api.data.Property;
+import org.apache.olingo.commons.api.data.ValueType;
+import org.apache.olingo.commons.core.data.EntityImpl;
+import org.apache.olingo.commons.core.data.EntitySetImpl;
+import org.apache.olingo.commons.core.data.PropertyImpl;
+
+public class DataProvider {
+
+  private Map&lt;String, EntitySet&gt; data;
+
+  public DataProvider() {
+    data = new HashMap&lt;String, EntitySet&gt;();
+    data.put("Cars", createCars());
+    data.put("Manufacturers", createManufacturers());
+  }
+
+  private EntitySet createCars() {
+    EntitySet entitySet = new EntitySetImpl();
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 1))
+          .addProperty(createPrimitive("Model", "F1 W03"))
+          .addProperty(createPrimitive("ModelYear", "2012"))
+          .addProperty(createPrimitive("Price", 189189.43))
+          .addProperty(createPrimitive("Currency", "EUR")));
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 2))
+          .addProperty(createPrimitive("Model", "F1 W04"))
+          .addProperty(createPrimitive("ModelYear", "2013"))
+          .addProperty(createPrimitive("Price", 199999.99))
+          .addProperty(createPrimitive("Currency", "EUR")));
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 3))
+          .addProperty(createPrimitive("Model", "F2012"))
+          .addProperty(createPrimitive("ModelYear", "2012"))
+          .addProperty(createPrimitive("Price", 137285.33))
+          .addProperty(createPrimitive("Currency", "EUR")));
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 4))
+          .addProperty(createPrimitive("Model", "F2013"))
+          .addProperty(createPrimitive("ModelYear", "2013"))
+          .addProperty(createPrimitive("Price", 145285.00))
+          .addProperty(createPrimitive("Currency", "EUR")));
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 5))
+          .addProperty(createPrimitive("Model", "F1 W02"))
+          .addProperty(createPrimitive("ModelYear", "2011"))
+          .addProperty(createPrimitive("Price", 167189.00))
+          .addProperty(createPrimitive("Currency", "EUR")));
+
+      return entitySet;
+  }
+
+  private EntitySet createManufacturers() {
+      EntitySet entitySet = new EntitySetImpl();
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 1))
+          .addProperty(createPrimitive("Name", "Star Powered Racing"))
+          .addProperty(createAddress("Star Street 137", "Stuttgart", "70173", "Germany")));
+
+      entitySet.getEntities().add(new EntityImpl()
+          .addProperty(createPrimitive("Id", 2))
+          .addProperty(createPrimitive("Name", "Horse Powered Racing"))
+          .addProperty(createAddress("Horse Street 1", "Maranello", "41053", "Italy")));
+
+      return entitySet;
+  }
+
+  private Property createAddress(final String street, final String city, final String zipCode, final String country) {
+      List&lt;Property&gt; addressProperties = new ArrayList&lt;Property&gt;();
+
+      addressProperties.add(createPrimitive("Street", street));
+      addressProperties.add(createPrimitive("City", city));
+      addressProperties.add(createPrimitive("ZipCode", zipCode));
+      addressProperties.add(createPrimitive("Country", country));
+
+      return new PropertyImpl(null, "Address", ValueType.COMPLEX, addressProperties);
+    }
+
+  private Property createPrimitive(final String name, final Object value) {
+      return new PropertyImpl(null, name, ValueType.PRIMITIVE, value);
+    }
+}
+</code></pre>
+<p>To access the data, we implement two helper methods.</p>
+<pre><code>public EntitySet readAll(EdmEntitySet edmEntitySet) {
+    return data.get(edmEntitySet.getName());
+}
+</code></pre>
+<p>The argument <code>edmEntitySet</code> will be provided by the URI parser. Further details can found in the next chapter (See processor implementation).  It contains information about the requested entity set. (e. g. name, type, navigation properties, &hellip;).</p>
+<pre><code>public Entity read(final EdmEntitySet edmEntitySet, final List&lt;UriParameter&gt; keys) throws DataProviderException {
+  final EdmEntityType entityType = edmEntitySet.getEntityType();
+  final EntitySet entitySet = readAll(edmEntitySet);
+
+  if (entitySet == null) {
+    return null;
+  } else {
+    try {
+      for (final Entity entity : entitySet.getEntities()) {
+        boolean found = true;
+        for (final UriParameter key : keys) {
+          final EdmProperty property = (EdmProperty) entityType.getProperty(key.getName());
+          final EdmPrimitiveType type = (EdmPrimitiveType) property.getType();
+
+          if (!type.valueToString(entity.getProperty(key.getName()).getValue(), property.isNullable(),
+              property.getMaxLength(), property.getPrecision(), property.getScale(),
+              property.isUnicode()).equals(key.getText())) {
+            found = false;
+            break;
+          }
+        }
+        if (found) {
+          return entity;
+        }
+      }
+      return null;
+    } catch (final EdmPrimitiveTypeException e) {
+      throw new DataProviderException("Wrong key!", e);
+    }
+  }
+}
+</code></pre>
+<p>The method DataProvider.read(..)  returns a single entity identified by key. The key property and the representation are been obtained by the EDM definition.</p>
+<h5 id="processor-implementation">Processor implementation<a class="headerlink" href="#processor-implementation" title="Permalink">&para;</a></h5>
+<p>The processor handles requests been sent to the server.  Each processor can handle different types of requests.  It is free to the user of library, if a single class implement all needed interfaces or if the implementation will be split in multiple classes. In this example we will implement a single class, which implements the processor interfaces <em>EntityCollectionProcessor</em>, <em>EntityProcessor</em>, <em>ComplexProcessor</em> and <em>PrimitiveProcessor</em>. The processors have to be registered in the Servlet (See chapter: Complete servlet implementation)</p>
+<p>The design of the processor interface is given by the different representations of a resource. Consider the e.g. URI &ldquo;../service/EntityCollection&rdquo;, so the ODataHandler will call a processor that implements the EntityCollectionProcessor interface.  In the other hand a request to "./service/EntityCollection(myKeyValue)&rdquo; will be dispatched to a processor, that implements the EntityProcessor interface. Further information about the detailed processor design can be found in the Processor Interface documentation <a href="https://wiki.apache.org/Olingo/Documentation/ProcessorInterfaces">https://wiki.apache.org/Olingo/Documentation/ProcessorInterfaces</a> and in the corresponding Javadoc.</p>
+<p><strong>Helper methods:</strong></p>
+<pre><code>private EdmEntitySet getEdmEntitySet(final UriInfoResource uriInfo) throws ODataApplicationException {
+  final List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+  /*
+   * To get the entity set we have to interpret all URI segments
+   */
+  if (!(resourcePaths.get(0) instanceof UriResourceEntitySet)) {
+    throw new ODataApplicationException("Invalid resource type for first segment.",
+        HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ENGLISH);
+  }
+
+  /*
+   * Here we should interpret the whole URI but in this example we do not support navigation so we throw an exception
+   */
+
+  final UriResourceEntitySet uriResource = (UriResourceEntitySet) resourcePaths.get(0);
+  return uriResource.getEntitySet();
+}
+
+
+private ContextURL getContextUrl(final ODataSerializer serializer,
+    final EdmEntitySet entitySet, final boolean isSingleEntity,
+    final ExpandOption expand, final SelectOption select, final String navOrPropertyPath)
+    throws SerializerException {
+
+  return ContextURL.with().entitySet(entitySet)
+      .selectList(odata.createUriHelper().buildContextURLSelectList(entitySet.getEntityType(), expand, select))
+      .suffix(isSingleEntity ? Suffix.ENTITY : null)
+      .navOrPropertyPath(navOrPropertyPath)
+      .build();
+}
+
+
+private Entity readEntityInternal(final UriInfoResource uriInfo, final EdmEntitySet entitySet) throws DataProviderException {
+
+  // This method will extract the key values and pass them to the data provider
+  final UriResourceEntitySet resourceEntitySet = (UriResourceEntitySet) uriInfo.getUriResourceParts().get(0);
+  return dataProvider.read(entitySet, resourceEntitySet.getKeyPredicates());
+}
+
+private void readProperty(ODataResponse response, UriInfo uriInfo, ContentType contentType, boolean complex) throws ODataApplicationException, SerializerException {
+
+  // To read a property we have to first get the entity out of the entity set
+  final EdmEntitySet edmEntitySet = getEdmEntitySet(uriInfo.asUriInfoResource());
+  Entity entity;
+  try {
+    entity = readEntityInternal(uriInfo.asUriInfoResource(), edmEntitySet);
+  } catch (DataProviderException e) {
+    throw new ODataApplicationException(e.getMessage(), 500, Locale.ENGLISH);
+  }
+
+  if (entity == null) {
+    // If no entity was found for the given key we throw an exception.
+    throw new ODataApplicationException("No entity found for this key",
+        HttpStatusCode.NOT_FOUND.getStatusCode(), Locale.ENGLISH);
+  } else {
+    // Next we get the property value from the entity and pass the value to serialization
+    UriResourceProperty uriProperty = (UriResourceProperty) uriInfo.getUriResourceParts()
+                        .get(uriInfo.getUriResourceParts().size() - 1);	// Last segment
+    EdmProperty edmProperty = uriProperty.getProperty();
+    Property property = entity.getProperty(edmProperty.getName());
+    if (property == null) {
+      throw new ODataApplicationException("No property found", HttpStatusCode.NOT_FOUND.getStatusCode(),
+          Locale.ENGLISH);
+    } else {
+      if (property.getValue() == null) {
+        response.setStatusCode(HttpStatusCode.NO_CONTENT.getStatusCode());
+      } else {
+        // Create suitable serializer depending on the HTTP accept header.
+        final ODataFormat format = ODataFormat.fromContentType(contentType);
+        ODataSerializer serializer = odata.createSerializer(format);
+
+        // Build context URL. JSON representation with no metadata do not need a context URL.
+        final ContextURL contextURL = (format == ODataFormat.JSON_NO_METADATA)
+                        ? null
+                         : getContextUrl(serializer,
+                             edmEntitySet,
+                             true,
+                             null,
+                             null,
+                             edmProperty.getName());
+
+        // Serialize
+        InputStream serializerContent = complex
+            ? serializer.complex(	(EdmComplexType) edmProperty.getType(),
+                        property,
+                        ComplexSerializerOptions.with().contextURL(contextURL).build())
+            : serializer.primitive(	(EdmPrimitiveType) edmProperty.getType(),
+                        property,
+                        PrimitiveSerializerOptions.with()
+                          .contextURL(contextURL)
+                          .scale(edmProperty.getScale())
+                          .nullable(edmProperty.isNullable())
+                          .precision(edmProperty.getPrecision())
+                          .maxLength(edmProperty.getMaxLength())
+                          .unicode(edmProperty.isUnicode()).build());
+
+        // Set result to the OData response object
+        response.setContent(serializerContent);
+        response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+        response.setHeader(HttpHeader.CONTENT_TYPE, contentType.toContentTypeString());
+      }
+    }
+  }
+}
+</code></pre>
+<ul>
+<li><code>CarsProcessor.getEdmEntitySet(..)</code> extracts the EntitySet from the URI-Parser result.</li>
+<li><code>CarsProcessor.getContextUrl(..)</code> uses the Context  URI Builder to create a context URI. Further information about context URI can be found in the OData specification. (Chapter 10)</li>
+<li><code>CarsProcessor.readEntityInternal(..)</code> will extract the key values and pass them to the date provider.</li>
+<li><code>CarsProcessor.readProperty(..)</code> is used to read all properties. It does not matter if the property is primitive or complex. If case of primitive properties the constaints defined by the EDM has to be passed to the primitive serializer.</li>
+</ul>
+<p><strong>Not implemented methods:</strong></p>
+<p>In this tutorial, we will implement read methods only. So add to the following methods an <em>OdataApplicationException</em>:</p>
+<ul>
+<li><code>createEntity</code></li>
+<li><code>updateComplex</code></li>
+<li><code>deleteComplex</code></li>
+<li><code>updateEntity</code></li>
+<li><code>deleteEntity</code></li>
+<li><code>updatePrimitive</code></li>
+<li><code>deletePrimitive</code></li>
+</ul>
+<p>Example:</p>
+<pre><code>@Override
+public void deletePrimitive(ODataRequest request, ODataResponse response, UriInfo uriInfo) throws ODataApplicationException {
+
+throw new ODataApplicationException("Delete primitive is not supported yet.",
+    HttpStatusCode.NOT_IMPLEMENTED.getStatusCode(), Locale.ROOT);
+}
+</code></pre>
+<p><strong>Procesor methods:</strong></p>
+<p>There are two different interfaces to read primitive and complex properties. We delegate both methods to the helper method <em>readProperty</em>.</p>
+<pre><code>@Override
+public void readComplex(ODataRequest request, ODataResponse response, UriInfo uriInfo,  ContentType requestContentType) throws ODataApplicationException, SerializerException {
+  readProperty(response, uriInfo, requestContentType, true);
+}
+
+@Override
+public void readPrimitive(ODataRequest request, ODataResponse response, UriInfo uriInfo,ContentType requestContentType) throws ODataApplicationException, SerializerException {
+  readProperty(response, uriInfo, requestContentType, false);
+}
+</code></pre>
+<p>In addition we have to implement the methods <code>readEntityCollection(...)</code> and <code>readEntity(...)</code>.</p>
+<pre><code>@Override
+public void readEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo,
+    ContentType requestedContentType) throws ODataApplicationException, SerializerException {
+
+   // First we have to figure out which entity set the requested entity is in
+    final EdmEntitySet edmEntitySet = getEdmEntitySet(uriInfo.asUriInfoResource());
+
+    // Next we fetch the requested entity from the database
+    Entity entity = null;
+    try {
+      entity = readEntityInternal(uriInfo.asUriInfoResource(), edmEntitySet);
+    } catch (DataProviderException e) {
+      throw new ODataApplicationException(e.getMessage(), 500, Locale.ENGLISH);
+    }
+
+    if (entity == null) {
+      // If no entity was found for the given key we throw an exception.
+      throw new ODataApplicationException("No entity found for this key", HttpStatusCode.NOT_FOUND
+          .getStatusCode(), Locale.ENGLISH);
+    } else {
+      // If an entity was found we proceed by serializing it and sending it to the client.
+      final ODataFormat format = ODataFormat.fromContentType(requestedContentType);
+      ODataSerializer serializer = odata.createSerializer(format);
+      final ExpandOption expand = uriInfo.getExpandOption();
+      final SelectOption select = uriInfo.getSelectOption();
+      InputStream serializedContent = serializer.entity(edmEntitySet.getEntityType(), entity,
+          EntitySerializerOptions.with()
+              .contextURL(format == ODataFormat.JSON_NO_METADATA ? null :
+                  getContextUrl(serializer, edmEntitySet, true, expand, select, null))
+              .expand(expand).select(select)
+              .build());
+      response.setContent(serializedContent);
+      response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+      response.setHeader(HttpHeader.CONTENT_TYPE, requestedContentType.toContentTypeString());
+    }
+}
+
+@Override
+public void readEntityCollection(ODataRequest request, ODataResponse response, UriInfo uriInfo,
+    ContentType requestedContentType) throws ODataApplicationException, SerializerException {
+
+  // First we have to figure out which entity set to use
+    final EdmEntitySet edmEntitySet = getEdmEntitySet(uriInfo.asUriInfoResource());
+
+    // Second we fetch the data for this specific entity set from the mock database and transform it into an EntitySet
+    // object which is understood by our serialization
+    EntitySet entitySet = dataProvider.readAll(edmEntitySet);
+
+    // Next we create a serializer based on the requested format. This could also be a custom format but we do not
+    // support them in this example
+    final ODataFormat format = ODataFormat.fromContentType(requestedContentType);
+    ODataSerializer serializer = odata.createSerializer(format);
+
+    // Now the content is serialized using the serializer.
+    final ExpandOption expand = uriInfo.getExpandOption();
+    final SelectOption select = uriInfo.getSelectOption();
+    InputStream serializedContent = serializer.entityCollection(edmEntitySet.getEntityType(), entitySet,
+        EntityCollectionSerializerOptions.with()
+            .contextURL(format == ODataFormat.JSON_NO_METADATA ? null :
+                getContextUrl(serializer, edmEntitySet, false, expand, select, null))
+            .count(uriInfo.getCountOption())
+            .expand(expand).select(select)
+            .build());
+
+    // Finally we set the response data, headers and status code
+    response.setContent(serializedContent);
+    response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+    response.setHeader(HttpHeader.CONTENT_TYPE, requestedContentType.toContentTypeString());
+}
+</code></pre>
+<h5 id="complete-servlet-implementation">Complete servlet implementation<a class="headerlink" href="#complete-servlet-implementation" title="Permalink">&para;</a></h5>
+<p>Replace the <code>CarsServlet.service(..)</code> method with following snipped:</p>
+<pre><code>@Override
+protected void service(final HttpServletRequest req, final HttpServletResponse resp)
+  throws ServletException, IOException {
+
+  try {
+    HttpSession session = req.getSession(true);
+    DataProvider dataProvider = (DataProvider) session.getAttribute(DataProvider.class.getName());
+    if (dataProvider == null) {
+      dataProvider = new DataProvider();
+      session.setAttribute(DataProvider.class.getName(), dataProvider);
+      LOG.info("Created new data provider.");
+    }
+
+    OData odata = OData.newInstance();
+    ServiceMetadata edm = odata.createServiceMetadata(
+                  new CarsEdmProvider(),
+                  new ArrayList&lt;EdmxReference&gt;());
+    ODataHttpHandler handler = odata.createHandler(edm);
+    handler.register(new CarsProcessor(dataProvider));
+    handler.process(req, resp);
+  } catch (RuntimeException e) {
+    LOG.error("Server Error", e);
+    throw new ServletException(e);
+  }
+}
+</code></pre>
+<p>The difference to the previous implementation is that the data provider and the Cars Processor are been instantiated. The data provider is bound to the current HttpSession and reused in subsequent requests. The Cars Processor will be registered in the OData handler. At this point, any number of processors can be registered. The processor is determined by the ODataHandler implementation by using the type of the request.</p>
+<ul>
+<li>Recompile your sample service  (<code>mvn clean install</code>)</li>
+<li>Deploy the war file on a web server</li>
+<li>Test the created service</li>
+</ul>
+<p>Test the following URIs</p>
+<ul>
+<li>Service document: <a href="http://localhost:8080/odata-server-sample/cars.svc/">http://localhost:8080/odata-server-sample/cars.svc/</a></li>
+<li>Metadata document:	<a href="http://localhost:8080/odata-server-sample/cars.svc/$metadata">http://localhost:8080/odata-server-sample/cars.svc/$metadata</a></li>
+<li>EntitySet:	<a href="http://localhost:8080/odata-server-sample/cars.svc/Cars">http://localhost:8080/odata-server-sample/cars.svc/Cars</a></li>
+<li>Entity:	<a href="http://localhost:8080/odata-server-sample/cars.svc/Cars(1)">http://localhost:8080/odata-server-sample/cars.svc/Cars(1)</a></li>
+<li>Primitive property:	<a href="http://localhost:8080/odata-server-sample/cars.svc/Cars(5)/Price">http://localhost:8080/odata-server-sample/cars.svc/Cars(5)/Price</a></li>
+<li>Complex property:	<a href="http://localhost:8080/odata-server-sample/cars.svc/Manufacturers(1)/Address">http://localhost:8080/odata-server-sample/cars.svc/Manufacturers(1)/Address</a></li>
+</ul>
+<h3 id="basis-read-scenario">Basis read scenario<a class="headerlink" href="#basis-read-scenario" title="Permalink">&para;</a></h3>
+<h5 id="setup-maven-project">Setup Maven project<a class="headerlink" href="#setup-maven-project" title="Permalink">&para;</a></h5>
+<p>As described in the previous tutorial, create a new Maven project.</p>
+<p>We will add the dependencies to the OData client library. To do so, replace the pom.xml by the following snipped.</p>
+<pre><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+  &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+  &lt;artifactId&gt;odata-client-sample&lt;/artifactId&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;name&gt;${project.artifactId}&lt;/name&gt;
+
+    &lt;properties&gt;
+        &lt;odata.version&gt;4.0.0-beta-02&lt;/odata.version&gt;
+    &lt;/properties&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;odata-client-api&lt;/artifactId&gt;
+      &lt;version&gt;${odata.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;odata-client-core&lt;/artifactId&gt;
+      &lt;version&gt;${odata.version}&lt;/version&gt;
+      &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;odata-commons-api&lt;/artifactId&gt;
+      &lt;version&gt;${odata.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.olingo&lt;/groupId&gt;
+      &lt;artifactId&gt;odata-commons-core&lt;/artifactId&gt;
+      &lt;version&gt;${odata.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h5 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permalink">&para;</a></h5>
+<p>The following class fetchs data from an OData service.</p>
+<p>To request some data the following steps have to be done:</p>
+<ul>
+<li>Get an instance of the ODataClient</li>
+<li>Create an URIBuilder construct the URI</li>
+<li>Create a request by using the <em>getRetrieveRequestFactory</em></li>
+<li>Use the data, as shown in the class Main</li>
+</ul>
+<p>Create a new class <code>SampleClient</code></p>
+<pre><code>package org.apache.olingo.client.sample;
+
+import java.net.URI;
+import java.util.List;
+
+import org.apache.olingo.client.api.communication.response.ODataRetrieveResponse;
+import org.apache.olingo.client.api.v4.ODataClient;
+import org.apache.olingo.client.core.ODataClientFactory;
+import org.apache.olingo.commons.api.domain.v4.ODataEntity;
+import org.apache.olingo.commons.api.domain.v4.ODataEntitySet;
+import org.apache.olingo.commons.api.edm.Edm;
+import org.apache.olingo.commons.api.format.ODataFormat;
+
+public class SampleClient {
+  private static final String ENTITY_SET_CARS = "Cars";
+  private static final String ENTITY_SET_MANUFACTURERS = "Manufacturers";
+  private static final String SERVICE_ROOT = "http://localhost:8080/odata-server-sample/cars.svc/";
+  private final ODataClient client;
+
+  public SampleClient() {
+    client = ODataClientFactory.getV4();
+    client.getConfiguration().setDefaultPubFormat(ODataFormat.JSON_NO_METADATA);
+  }
+
+  public List&lt;ODataEntity&gt; getAllCars() {
+    final URI carsEntitySetURI = client.newURIBuilder(SERVICE_ROOT).appendEntitySetSegment(ENTITY_SET_CARS).build();
+    final ODataRetrieveResponse&lt;ODataEntitySet&gt; carsEntitySetResponse = client.getRetrieveRequestFactory()
+        .getEntitySetRequest(carsEntitySetURI).execute();
+
+    return carsEntitySetResponse.getBody().getEntities();
+  }
+
+  public ODataEntity getCar(int key) {
+    final URI carEntityURI = client.newURIBuilder(SERVICE_ROOT).appendEntitySetSegment(ENTITY_SET_CARS)
+        .appendKeySegment(key).build();
+    final ODataRetrieveResponse&lt;ODataEntity&gt; car = client.getRetrieveRequestFactory()
+        .getEntityRequest(carEntityURI).execute();
+
+    return car.getBody();
+  }
+
+  public List&lt;ODataEntity&gt; getAllManufacturers() {
+    final URI manufacturersURI = client.newURIBuilder(SERVICE_ROOT)
+        .appendEntitySetSegment(ENTITY_SET_MANUFACTURERS).build();
+    final ODataRetrieveResponse&lt;ODataEntitySet&gt; manufacturersResponse = client.getRetrieveRequestFactory()
+        .getEntitySetRequest(manufacturersURI).execute();
+
+    return manufacturersResponse.getBody().getEntities();
+  }
+
+  public ODataEntity getManufacturer(int key) {
+    final URI manufacturerURI = client.newURIBuilder(SERVICE_ROOT).appendEntitySetSegment(ENTITY_SET_MANUFACTURERS)
+        .appendKeySegment(key).build();
+    final ODataRetrieveResponse&lt;ODataEntity&gt; manufacturerResponse = client.getRetrieveRequestFactory()
+        .getEntityRequest(manufacturerURI).execute();
+
+    return manufacturerResponse.getBody();
+  }
+
+  public Edm getMetaDocument() {
+    ODataRetrieveResponse&lt;Edm&gt; response = client.getRetrieveRequestFactory().getMetadataRequest(SERVICE_ROOT)
+        .execute();
+
+    return response.getBody();
+  }
+}
+</code></pre>
+<p>Create a new class <em>Main</em>.</p>
+<pre><code>package org.apache.olingo.client.sample;
+
+import java.util.List;
+
+import org.apache.olingo.client.api.communication.ODataClientErrorException;
+import org.apache.olingo.commons.api.domain.ODataComplexValue;
+import org.apache.olingo.commons.api.domain.v4.ODataEntity;
+import org.apache.olingo.commons.api.domain.v4.ODataProperty;
+import org.apache.olingo.commons.api.edm.Edm;
+import org.apache.olingo.commons.api.edm.EdmEntitySet;
+
+public class Main {
+  public static void main(String[] args) {
+    final SampleClient myClient = new SampleClient();
+
+    try {
+      final Edm metaDocument = myClient.getMetaDocument();
+      final List&lt;EdmEntitySet&gt; entitySets = metaDocument.getSchemas().get(0).getEntityContainer().getEntitySets();
+      System.out.println("Available entity sets:");
+      for (EdmEntitySet entitySet : entitySets) {
+        System.out.println("\t" + entitySet.getName());
+      }
+      System.out.println();
+
+      for (ODataEntity carEntity : myClient.getAllCars()) {
+        printEntity(carEntity);
+      }
+
+      printEntity(myClient.getCar(5));
+
+      for (ODataEntity manufacturerEntity : myClient.getAllManufacturers()) {
+        printEntity(manufacturerEntity);
+      }
+
+      printEntity(myClient.getManufacturer(1));
+      printEntity(myClient.getManufacturer(10)); // There is no manufacturer with Id = 1
+    } catch (ODataClientErrorException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  private static void printEntity(ODataEntity entity) {
+    for (ODataProperty property : entity.getProperties()) {
+      if (property.hasComplexValue()) {
+        printComplexProperty(property);
+      } else {
+        System.out.println(property.getName() + ":= " + property.getValue());
+      }
+    }
+    System.out.println("-------------------------");
+  }
+
+  private static void printComplexProperty(ODataProperty property) {
+    final ODataComplexValue&lt;ODataProperty&gt; complexValue = property.getComplexValue();
+    System.out.println(property.getName() + ":");
+
+    for (ODataProperty complexProp : complexValue) {
+      System.out.println("\t" + complexProp.getName() + ":= " + complexProp.getValue());
+    }
+  }
+}
+</code></pre>
+<p><strong>Implementation:</strong></p>
+<p>Start the server implementation, as described in the prevoius tutorial.
+Run the just created client example.</p>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

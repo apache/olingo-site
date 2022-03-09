@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="implementation-of-filter-visitor-jdbc">Implementation of Filter Visitor (JDBC)<a class="headerlink" href="#implementation-of-filter-visitor-jdbc" title="Permalink">&para;</a></h1>
+<h3 id="how-to-guide-for-implementing-a-filter-tree-transformation-into-a-jdbc-where-clause">How To Guide for implementing a filter tree transformation into a JDBC where clause<a class="headerlink" href="#how-to-guide-for-implementing-a-filter-tree-transformation-into-a-jdbc-where-clause" title="Permalink">&para;</a></h3>
+<p>The query option $filter can be used to apply a filter query to the result set. This tutorial will be about consuming and working with the filter tree which an application will get from the OData Java library by implementing a transformation of the filter expression into a JDBC where clause. The example explained here will be kept simple to show the mechanism of the visitor pattern. Security problem which occur when using user input (e.g. the filter string of the URI) inside a where clause will be pointed out but not solved for this tutorial. Knowledge about the visitor pattern is not necessary but helpful. If you want to read further please refer to the further information chapter at the end of this tutorial.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permalink">&para;</a></h3>
+<h5 id="simple-example">Simple example<a class="headerlink" href="#simple-example" title="Permalink">&para;</a></h5>
+<p>If a filter expression is parsed by the OData library it will be transformed into a filter tree. A simple tree for the expression &lsquo;a&rsquo; eq &lsquo;b&rsquo; would look like this:</p>
+<p><img alt="Picture:Simple Filter Expression" src="/img/FilterExpressionSimple.png"/></p>
+<p>To visit a filter tree we have to implement the interface <code>org.apache.olingo.odata2.api.uri.expression.ExpressionVisitor</code>. For this simple example we will only need the following methods:</p>
+<ul>
+<li><code>visitFilter(&hellip;)</code></li>
+<li><code>visitBinary(&hellip;)</code></li>
+<li><code>visitLiteral(&hellip;)</code></li>
+</ul>
+<p>These methods will be called if the <code>accept(&hellip;)</code> method of the filter expression is called. The visitor will always start with the far left of the tree. First visitLiteral is called for 'a' and 'b'  before the <code>visitBinary()</code> and finally the <code>visitFilter()</code> is called.</p>
+<p>Now lets have a look at the implementation of the <code>visitLiteral()</code>:</p>
+<pre><code>@Override
+public Object visitLiteral(LiteralExpression literal, EdmLiteral edmLiteral) {
+  if(EdmSimpleTypeKind.String.getEdmSimpleTypeInstance().equals(edmLiteral.getType())) {
+    // we have to be carefull with strings due to sql injection
+    // TODO: Prevent sql injection via escaping
+    return "'" + edmLiteral.getLiteral() + "'";
+  } else {
+    return "'" + edmLiteral.getLiteral() + "'";
+  }
+}
+</code></pre>
+<p>The signature for this method contains the literal expression as an object as well as the edmLiteral representation. In this case the literal would be "a" without the '. Inside this method we just return the literal. Since this literal is coming from the URL it represents user input. In the case of the type Edm.String we would have to escape the String to make sure no SQL Injection is possible.</p>
+<p>Next the method visitBinary is called:</p>
+<pre><code>@Override
+  public Object visitBinary(BinaryExpression binaryExpression, BinaryOperator operator, Object leftSide, Object rightSide) {    
+    //Transform the OData filter operator into an equivalent sql operator
+    String sqlOperator = "";
+    switch (operator) {
+    case EQ:
+      sqlOperator = "=";
+      break;
+    case NE:
+      sqlOperator = "&lt;&gt;";
+      break;
+    case OR:
+      sqlOperator = "OR";
+      break;
+    case AND:
+      sqlOperator = "AND";
+      break;
+    case GE:
+      sqlOperator = "&gt;=";
+      break;
+    case GT:
+      sqlOperator = "&gt;";
+      break;
+    case LE:
+      sqlOperator = "&lt;=";
+      break;
+    case LT:
+      sqlOperator = "&lt;";
+      break;
+    default:
+      //Other operators are not supported for SQL Statements
+      throw new UnsupportetOperatorException("Unsupported operator: " + operator.toUriLiteral());
+    }  
+    //return the binary statement
+    return leftSide + " " + sqlOperator + " " + rightSide;
+  }
+</code></pre>
+<p>The signature for this method contains the binaryExpression as an object as well as the left and right Side of this binary expression. In this example the left side would be "a" and the right side would be "b" which we got from the visitLiteral() method. In between we set the operator in its SQL syntax.</p>
+<p>Finally the <code>visitFilter()</code> method is called:</p>
+<pre><code>  @Override
+  public Object visitFilterExpression(FilterExpression filterExpression, String expressionString, Object expression) {
+      return "WHERE " + expression;
+  }
+</code></pre>
+<p>Here we just append the WHERE at the beginning and give the whole thing back to the caller of the <code>accept()</code> method.</p>
+<p>A simple test can show how the expression is transformed. As one can see the <code>UriParser</code> can parse a filter expression if necessary. Usually the application will already have the filter expression.</p>
+<pre><code>@Test
+public void printExpression() throws Exception {
+    FilterExpression expression = UriParser.parseFilter(null, null, "'a' eq 'b'");
+    String whereClause = (String) expression.accept(new JdbcStringVisitor());
+    System.out.println("Raw: " + rawExpression + " ------&gt; Whereclause: " + whereClause);
+    System.out.println();
+  }
+</code></pre>
+<p>The output will be:</p>
+<pre><code>Raw: 'a' eq 'b' ------&gt; Whereclause: 'a' = 'b'
+</code></pre>
+<p>The implementation right now can only transform literals which will not be sufficient if you want to address a property. If an expression contains properties like "EmployeeId" we have to implement the method <code>visitProperty()</code>.</p>
+<pre><code>@Override
+public Object visitProperty(PropertyExpression propertyExpression, String uriLiteral, EdmTyped edmProperty) {
+  if (edmProperty == null) {
+    //If a property is not found it wont be represented in the database thus we have to throw an exception
+    throw new PropertyNotFoundException("Could not find Property: " + uriLiteral);
+  } else {
+    //It is also possible to use the mapping of the edmProperty if the name differs from the databasename
+    try {
+      return edmProperty.getName();
+    } catch (EdmException e) {
+      throw new PropertyNotFoundException(e);
+    }
+  }
+}
+</code></pre>
+<p>This method has an <code>edmProperty</code> in its signature which is set if the <code>uriLiteral</code> matches a property in the <code>EntityType</code>. Now we could transform an expression like <code>"EmployeeId eq '1'" or "EmployeeId eq '1' and ManagerId eq '2'"</code>. To get a validation if the property exists we have to give an <code>EntityType</code> on which the filter will be applied. In this case we use the <code>EntityType</code> "Employee".</p>
+<pre><code>@Test
+public void printExpressionWithProperty() throws Exception {
+  //Use a mocked edmProvider for this tutorial
+  TestEdmProvider provider = new TestEdmProvider();
+  Edm edm = RuntimeDelegate.createEdm(provider);
+  EdmEntityType entityType = edm.getEntityType(TestEdmProvider.NAMESPACE_1, TestEdmProvider.ENTITY_TYPE_1_1.getName());
+
+  String rawExpression = "EmployeeId eq '1'";
+  FilterExpression expression = UriParser.parseFilter (null, entityType, rawExpression);
+  String whereClause = (String) expression.accept(new JdbcSimpleStringVisitor());
+  System.out.println("Raw: " + rawExpression + " ------&gt; Whereclause: " + whereClause);
+  System.out.println();
+}
+</code></pre>
+<p>The output will be:</p>
+<pre><code>Raw: EmployeeId eq '1' ------&gt; Whereclause: WHERE EmployeeId = '1'
+</code></pre>
+<p>Test in the sources: JdbcSimpleStringVisitorTest.class</p>
+<h5 id="advanced-example">Advanced Example<a class="headerlink" href="#advanced-example" title="Permalink">&para;</a></h5>
+<p>The implementation shown in the previous chapter can transform simple expressions. But if the expression gets more complex like <code>"'a' eq 'b' or ('c' eq 'd' and 'b' eq 'd')"</code> it won&acute;t produce a correct where clause. The following test shows this.</p>
+<pre><code>@Test
+public void compareSimpleAndAdvancedVisitor() throws Exception{
+  String rawExpression = "'a' eq 'b' or ('c' eq 'd' and 'b' eq 'd')";
+  FilterExpression expression = UriParser.parseFilter(null, null, rawExpression);
+
+  String whereClauseSimple = (String) expression.accept(new JdbcSimpleStringVisitor());
+  String whereClauseAdvanced = (String) expression.accept(new JdbcAdvancedStringVisitor());
+  System.out.println("Simple: " + whereClauseSimple + " ------&gt; Advanced: " + whereClauseAdvanced);
+}
+</code></pre>
+<p>The output will be:</p>
+<pre><code>Simple: WHERE 'a' = 'b' OR 'c' = 'd' AND 'b' = 'd' ------&gt; Advanced: WHERE 'a' = 'b' OR ('c' = 'd' AND 'b' = 'd')
+</code></pre>
+<p>In the simple implementation the brackets will not be transformed. To fix this the method <code>visitBinary()</code> has to be enhanced.</p>
+<pre><code>@Override
+public Object visitBinary(BinaryExpression binaryExpression, BinaryOperator operator, Object leftSide, Object rightSide) {
+  String actualLeftSide = leftSide.toString();
+  String actualRightSide = rightSide.toString();
+  if (leftSide instanceof Expression) {
+    //If something is lower in the tree and is of the type AND or OR it needs brackets to show the higher priority
+    if (BinaryOperator.AND.equals(((Expression) leftSide).getOperator()) || BinaryOperator.OR.equals(((Expression) leftSide).getOperator())) {
+    actualLeftSide = "(" + leftSide + ")";
+    }
+  }
+  if (rightSide instanceof Expression) {
+    //If something is lower in the tree and is of the type AND or OR it needs brackets to show the higher priority
+    if (BinaryOperator.AND.equals(((Expression) rightSide).getOperator()) || BinaryOperator.OR.equals(((Expression) rightSide).getOperator())) {
+    actualRightSide = "(" + rightSide + ")";
+    }
+  }
+  //Transform the OData filter operator into an equivalent sql operator
+  String sqlOperator = "";
+  switch (operator) {
+  case EQ:
+    sqlOperator = "=";
+    break;
+  case NE:
+    sqlOperator = "&lt;&gt;";
+    break;
+  case OR:
+    sqlOperator = "OR";
+    break;
+  case AND:
+    sqlOperator = "AND";
+    break;
+  case GE:
+    sqlOperator = "&gt;=";
+    break;
+  case GT:
+    sqlOperator = "&gt;";
+    break;
+  case LE:
+    sqlOperator = "&lt;=";
+    break;
+  case LT:
+    sqlOperator = "&lt;";
+    break;
+  default:
+    //Other operators are not supported for SQL  Statements
+    throw new UnsupportetOperatorException("Unsupported operator: " + operator.toUriLiteral());
+  }
+
+  //return the binary statement
+  return new Expression(actualLeftSide + " " + sqlOperator + " " + actualRightSide, operator);
+}
+</code></pre>
+<p>Since simple strings cannot show this complexity a new private class "Expression" was introduced. The signature of all <code>visit()</code> methods accept any kind of object so we can mix in the new class. Now we only have to check if one side of the tree is of type String or Expression.</p>
+<p>Test in the sources: JdbcAdvancedStringVisitorTest.class</p>
+<h5 id="example-with-prepared-statements">Example with prepared Statements<a class="headerlink" href="#example-with-prepared-statements" title="Permalink">&para;</a></h5>
+<p>Since string concatenation is very vulnerable against SQL Injection a best practice is to use prepared statements. This can be a tough challenge in this case because not only the value of <code>EmployeeId</code> is supplied in the filter expression but the field EmployeeId and the operator as well. Prepared Statements don&acute;t allow statements like <code>"WHERE ? ? ?"</code> thus we have to find a way to prepare the prepared statements in advance which can be very complex as the following example will show: The filter expression <code>"EmployeeId eq '1' and ManagerId eq '2'"</code> is the same as <code>"ManagerId eq '2' and EmployeeId eq '1'"</code> but the prepared statement will always look like <code>"&hellip;. WHERE EmployeeId = ? and ManagerId = ?"</code>.</p>
+<p>This tutorial will not solve this problem. Instead it will show a first idea on how to implement such a prepared statement visitor. Again the Where clause will be created using string concatenation. But this time we will replace literals with a "?". These questionmarks can be set in a prepared statement. The methods <code>visitLiteral</code> and <code>visitProperty</code> will just return their value while the <code>visitBinary</code> will contain the logic.</p>
+<p>VisitLiteral:</p>
+<pre><code>@Override
+public Object visitLiteral(final LiteralExpression literal, final EdmLiteral edmLiteral) {
+  //Sql Injection is not possible anymore since we are using prepared statements. Thus we can just give back the edmLiteral content
+  return edmLiteral.getLiteral();
+}
+</code></pre>
+<p>VisitProperty:</p>
+<pre><code>@Override
+public Object visitProperty(final PropertyExpression propertyExpression, final String uriLiteral, final EdmTyped edmProperty) {
+  if (edmProperty == null) {
+    //If a property is not found it wont be represented in the database thus we have to throw an exception
+    throw new PropertyNotFoundException("Could not find Property: " + uriLiteral);
+  } else {
+    //To distinguish between literals and properties we give back the whole edmProperty in this case
+    return edmProperty;
+  }
+}
+</code></pre>
+<p>In addition we will use the following class as a container for the where clause and the parameters:</p>
+<pre><code>public class Expression {
+  private String preparedWhere;
+  private List&lt;Object&gt; parameters;
+  private BinaryOperator operator;
+
+  public Expression(final BinaryOperator operator) {
+    preparedWhere = "";
+    parameters = new ArrayList&lt;Object&gt;();
+    this.operator = operator;
+  }
+
+  public void addParameter(final Object parameter) {
+  parameters.add(parameter);
+  }
+
+  public void setPrepeparedWhere(final String where) {
+    preparedWhere = where;
+  }
+
+  public List&lt;Object&gt; getParameters() {
+    return parameters;
+  }
+
+  public BinaryOperator getOperator() {
+    return operator;
+  }
+
+  @Override
+  public String toString() {
+    return preparedWhere;
+  }
+}
+</code></pre>
+<p>Finally the visitBinary method:</p>
+<pre><code>@Override
+public Object visitBinary(final BinaryExpression binaryExpression, final BinaryOperator operator, final Object leftSide, final Object rightSide) {
+  //Transform the OData filter operator into an equivalent sql operator
+  String sqlOperator = "";
+  switch (operator) {
+  case EQ:
+    sqlOperator = "=";
+    break;
+  case NE:
+    sqlOperator = "&lt;&gt;";
+    break;
+  case OR:
+    sqlOperator = "OR";
+    break;
+  case AND:
+    sqlOperator = "AND";
+    break;
+  case GE:
+    sqlOperator = "&gt;=";
+    break;
+  case GT:
+    sqlOperator = "&gt;";
+    break;
+  case LE:
+    sqlOperator = "&lt;=";
+    break;
+  case LT:
+    sqlOperator = "&lt;";
+    break;
+  default:
+    //Other operators are not supported for SQL Statements
+    throw new UnsupportetOperatorException("Unsupported operator: " + operator.toUriLiteral());
+  }
+  //The idea is to check if the left side is of type property. If this is the case we append the property name and the operator to the where clause
+  if (leftSide instanceof EdmTyped &amp;&amp; rightSide instanceof String) {
+    Expression expression = new Expression(operator);
+    try {
+      expression.setPrepeparedWhere(((EdmTyped)   leftSide).getName() + " " + sqlOperator + " ?");
+    } catch (EdmException e) {
+      throw new RuntimeException("EdmException occured");
+    }
+    expression.addParameter(rightSide);
+    return expression;
+  } else if (leftSide instanceof Expression &amp;&amp; rightSide instanceof Expression) {
+    Expression returnExpression = new Expression(operator);
+    Expression leftSideExpression = (Expression) leftSide;
+    if (BinaryOperator.AND.equals    (leftSideExpression.getOperator()) || BinaryOperator.OR.equals(leftSideExpression.getOperator())) {
+    leftSideExpression.setPrepeparedWhere("(" + leftSideExpression.toString() + ")");
+    }
+    Expression rightSideExpression = (Expression) rightSide;
+    if (BinaryOperator.AND.equals(rightSideExpression.getOperator()) || BinaryOperator.OR.equals(rightSideExpression.getOperator())) {
+    rightSideExpression.setPrepeparedWhere("(" + rightSideExpression.toString() + ")");
+    }
+    returnExpression.setPrepeparedWhere(leftSideExpression.toString() + " " + sqlOperator + " " + rightSideExpression.toString());
+
+    for (Object parameter : leftSideExpression.getParameters()) {
+    returnExpression.addParameter(parameter);
+    }
+    for (Object parameter : rightSideExpression.getParameters()) {
+      returnExpression.addParameter(parameter);
+    }
+    return returnExpression;
+  } else {
+    throw new RuntimeException("Not right format");
+  }
+}
+</code></pre>
+<p>This implementation will work if the filter supplies a property on the left side and a literal on the right side. The output of this new implementation could look like this:</p>
+<pre><code>Raw: EmployeeId eq '1' or (ManagerId eq '2' and TeamId eq '3') ------&gt; Whereclause: EmployeeId = ? OR (ManagerId = ? AND TeamId = ?)
+1
+2
+3
+</code></pre>
+<p>Test in the sources: JdbcPreparedStatementVisitorTest.class</p>
+<h3 id="further-information">Further Information<a class="headerlink" href="#further-information" title="Permalink">&para;</a></h3>
+<p>Documentation about how to create such a filter expression can be found under <a href="http://www.odata.org" title="External Link">http://www.odata.org</a> in the OData protocol specification.</p>
+<p>Visitor pattern: <a href="http://en.wikipedia.org/wiki/Visitor_pattern" title="External Link">http://en.wikipedia.org/wiki/Visitor_pattern</a></p>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

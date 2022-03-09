@@ -1,0 +1,675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Apache Olingo provides libraries which enable developers to implement OData producers and OData consumers. The available OData Java library implements OData version 2.0. In future on goal is to provide an OData 4.0 compliant library once the OData standard is published at OASIS. The focus within the community is currently on the Java technology but it is up to the community to discuss if other environments find interest.">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Apache Olingo Library</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css"><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <link href="/css/offcanvas.css" rel="stylesheet" type="text/css"><!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/css/main.css">
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <style>
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <script src="/js/ie-emulation-modes-warning.js" type="text/javascript">
+</script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+    <script src="/js/ie10-viewport-bug-workaround.js" type="text/javascript">
+</script><!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.min.js"></script>
+      <script src="/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+            </button>
+              <img class="navbar-brand" src="/img/OlingoOrangeTM.png" style="width:62px;" >
+              <a class="navbar-brand" href="/">Apache Olingo™</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">ASF <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="http://www.apache.org/foundation/">ASF Home</a></li>
+                      <li><a href="http://projects.apache.org/">Projects</a></li>
+                      <li><a href="http://people.apache.org/">People</a></li>
+                      <li><a href="http://www.apache.org/foundation/getinvolved.html">Get Involved</a></li>
+                      <li><a href="http://www.apache.org/dyn/closer.cgi">Download</a></li>
+                      <li><a href="http://www.apache.org/security/">Security</a></li>
+                      <li><a href="http://www.apache.org/foundation/sponsorship.html">Support Apache</a></li>
+                  </ul>
+              </li>
+
+              <li><a href="http://www.apache.org/licenses/">License</a></li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="/doc/odata2/download.html">Download OData 2.0 Java</a></li>
+                      <li><a href="/doc/odata4/download.html">Download OData 4.0 Java</a></li>
+                      <li><a href="/doc/javascript/download.html">Download OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/doc/odata2/index.html">Documentation OData 2.0 Java</a></li>
+                    <li><a href="/doc/odata4/index.html">Documentation OData 4.0 Java</a></li>
+                    <li><a href="/doc/javascript/index.html">Documentation OData 4.0 JavaScript</a></li>
+                  </ul>
+              </li>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/contribute.html">Contribute</a></li>
+
+            </ul>
+
+			  <a class="navbar-right" href="http://www.apache.org/foundation/" target="_blank">
+          <img class="navbar-right" height="50px" src="/img/asf_logo_url.svg" alt="Apache Software Foundation">
+        </a>
+
+			</div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </div><!-- Main component for a primary marketing message or call to action -->
+    <h1 id="how-to-build-an-odata-service-with-olingo-v4">How to build an OData Service with Olingo V4<a class="headerlink" href="#how-to-build-an-odata-service-with-olingo-v4" title="Permalink">&para;</a></h1>
+<h1 id="part-52-system-query-options-select-expand">Part 5.2: System Query Options: <code>$select</code>, <code>$expand</code><a class="headerlink" href="#part-52-system-query-options-select-expand" title="Permalink">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permalink">&para;</a></h2>
+<p>In the present tutorial, we will continue implementing <strong>OData system query options</strong>.
+After we have learned the rather simple system query options <code>$top</code>, <code>$skip</code> and <code>$count</code> in the previous tutorial, we&rsquo;re going to deal with <code>$select</code> and <code>$expand</code> in the present tutorial.</p>
+<p><strong>Note:</strong><br/>
+The final source code can be found in the project <a href="https://gitbox.apache.org/repos/asf/olingo-odata4">git repository</a>.
+A detailed description how to checkout the tutorials can be found <a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">here</a>.<br/>
+This tutorial can be found in subdirectory <em>\samples\tutorials\p6_queryoptions-es</em></p>
+<p><strong>Disclaimer:</strong><br/>
+Again, in the present tutorial, we&rsquo;ll focus only on the relevant implementation, in order to keep the code small and simple. The sample code as it is, shouldn&rsquo;t be reused for advanced scenarios.</p>
+<p><strong>Table of Contents</strong></p>
+<ol>
+<li>Prerequisites</li>
+<li>Preparation</li>
+<li>Implementating system query options
+<ol>
+<li>Implement <code>$select</code></li>
+<li>Implement <code>$expand</code></li>
+</ol>
+</li>
+<li>Run the implemented service</li>
+<li>Summary</li>
+<li>Links</li>
+</ol>
+<hr/>
+<h1 id="1-prerequisites">1. Prerequisites<a class="headerlink" href="#1-prerequisites" title="Permalink">&para;</a></h1>
+<p>Same prerequisites as in <a href="doc/odata4/tutorials/navigation/tutorial_navigation.html">Tutorial Part 4: Navigation</a> as well as basic knowledge about the concepts presented there.</p>
+<p>Furthermore, basic knowledge about <em>System Query Options</em> (see <a href="doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.html">Tutorial Part 5.1</a>) is helpful.</p>
+<hr/>
+<h1 id="2-preparation">2. Preparation<a class="headerlink" href="#2-preparation" title="Permalink">&para;</a></h1>
+<p>Follow <a href="doc/odata4/tutorials/navigation/tutorial_navigation.html">Tutorial Part 4: Navigation</a> or as shortcut import  <em>Part 4: Navigation</em> into your Eclipse workspace.</p>
+<p>Afterwards do a <em>Deploy and run</em>: it should be working.</p>
+<hr/>
+<h1 id="3-implementation">3. Implementation<a class="headerlink" href="#3-implementation" title="Permalink">&para;</a></h1>
+<p>Open the class <code>myservice.mynamespace.service.DemoEntityProcessor</code><br/>
+The method <code>readEntity()</code> contains the code for navigation which was treated in Tutorial Part 4. In the current tutorial we want to focus on query options and to keep the code as simple as possible, therefore we delete the code of the <code>readEntity()</code> method and start from scratch.</p>
+<h2 id="31-implement-select">3.1. Implement <code>$select</code><a class="headerlink" href="#31-implement-select" title="Permalink">&para;</a></h2>
+<p><strong>Background</strong><br/>
+When requesting an entity collection from the backend, the OData service returns a list of entities and each entity contains a list of properties.<br/>
+In some cases, the user might not actually need all the properties. As such, he wants to tell the server to return only those properties that he is interested in.<br/>
+OData supports this requirement with the system query option <code>$select</code>.<br/>
+This parameter can be specified in the following ways:</p>
+<ul>
+<li>Specify one property name only: <code>$select=Name</code></li>
+<li>Specify a comma-separated list of properties: <code>$select=Name,Description</code></li>
+<li>Specify a star to include all properties: <code>$select=*</code></li>
+</ul>
+<p><strong>Example</strong><br/>
+First, just to remember how the full payload looks like, the &ldquo;normal&rdquo; query of the product without query options:<br/>
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products">http://localhost:8080/DemoService/DemoService.svc/Products</a></p>
+<p><img alt="AllProductsNoQueryOption" src="responseProducts_Full.jpg" title="The full list of Products"/></p>
+<p>The following request provides only one property for each entry in the collection:<br/>
+<a href="http://localhost:8080/DemoService/DemoService.svc/Products?$select=Name">http://localhost:8080/DemoService/DemoService.svc/Products?$select=Name</a></p>
+<p><img alt="AllProductsSelectName" src="responseProducts_SelectName.jpg" title="The full list of Products, but displayling only the Name property"/></p>
+<p><strong>Implementation</strong><br/>
+The following section describes how to enable the <code>EntityProcessor</code> class and the <code>readEntity()</code> method for <code>$select</code>.</p>
+<p>Because we start from scratch with the empty <code>readEntity()</code> method, we have to write a bit preparation code before we start with the implementation of the <code>$select</code>.<br/>
+The following lines are a copy of the Tutorial Part 2 and are necessary to fetch the data for a single entity.</p>
+<pre><code class="language-java">    // 1. retrieve the Entity Type
+    List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+    UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
+    EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+    // 2. retrieve the data from backend
+    List&lt;UriParameter&gt; keyPredicates = uriResourceEntitySet.getKeyPredicates();
+    Entity entity = storage.readEntityData(edmEntitySet, keyPredicates);
+</code></pre>
+<p>The Olingo library parses the <code>$select</code> option from the request and provides support in the serializer to serialize only the selected properties.<br/>
+Based on that the simplest implementation for <code>$select</code> is to get the <code>SelectOption</code> from the request (via <code>UriInfo</code> object) and pass this together with the enties to the serializer.<br/>
+The drawback of this implementation is, that the full payload is fetched from the backend and afterwards the unnecessary properties are removed. From performance point of view, this is not optimal. It would be better to fetch only the requested properties from the backend. Which of course depends on the backend.</p>
+<p>In this tutorial we use the simple implementation to show the concept for <code>$select</code> so that there are only a few steps that have to be done by us.</p>
+<ul>
+<li>
+<p>We have to get the SelectOption from the UriInfo:</p>
+<pre><code class="language-java">    // 3rd: apply system query options
+    SelectOption selectOption = uriInfo.getSelectOption();
+</code></pre>
+</li>
+<li>
+<p>We have to take care about the context URL, which is different in case that <code>$select</code> is used.
+Again, the Olingo library provides some support, which we use to build the select list that has to be passed to the ContextURL builder:</p>
+<pre><code class="language-java">    // we need the property names of the $select, in order to build the context URL
+    String selectList = odata.createUriHelper().buildContextURLSelectList(edmEntityType,
+                                                                          null, selectOption);
+    ContextURL contextUrl = ContextURL.with()
+                                      .entitySet(edmEntitySet)
+                                      .selectList(selectList)
+                                      .build();
+</code></pre>
+</li>
+<li>
+<p>Furthermore, the serializer has to know about the usage of <code>$select</code>.
+Therefore, the serializer options instance is initialized with the selectOption object that we&rsquo;ve obtained above. If this object is not null, then the serializer will take care to consider the <code>$select</code> statement</p>
+<pre><code class="language-java">    EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
+                                                                              .contextURL(contextUrl)
+                                                                              .select(selectOption)
+                                                                              .build();
+</code></pre>
+</li>
+</ul>
+<p><strong>The full implementation of the <code>readEntityCollection()</code> method:</strong></p>
+<pre><code class="language-java">    public void readEntityCollection(ODataRequest request, ODataResponse response,
+                        UriInfo uriInfo, ContentType responseFormat)
+                          throws ODataApplicationException, SerializerException {
+
+      // 1st retrieve the requested EdmEntitySet from the uriInfo
+      List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+      UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
+      EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+
+      // 2nd: fetch the data from backend for this requested EntitySetName  
+      EntityCollection entityCollection = storage.readEntitySetData(edmEntitySet);
+
+      // 3rd: apply system query options
+      // Note: $select is handled by the lib, we only configure ContextURL + SerializerOptions
+      // for performance reasons, it might be necessary to implement the $select manually
+      SelectOption selectOption = uriInfo.getSelectOption();
+
+      // 4th: create a serializer based on the requested format (json)
+      ODataSerializer serializer = odata.createSerializer(responseFormat);
+
+      // and serialize the content: transform from the EntitySet object to InputStream
+      EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+      // we need the property names of the $select, in order to build the context URL
+      String selectList = odata.createUriHelper().buildContextURLSelectList(edmEntityType,
+                                                                            null, selectOption);
+      ContextURL contextUrl = ContextURL.with()
+                                        .entitySet(edmEntitySet)
+                                        .selectList(selectList)
+                                        .build();
+
+
+      // adding the selectOption to the serializerOpts will tell the lib to do the job
+      final String id = request.getRawBaseUri() + "/" + edmEntitySet.getName();
+      EntityCollectionSerializerOptions opts = EntityCollectionSerializerOptions.with()
+                                                                                .contextURL(contextUrl)
+                                                                                .select(selectOption)
+                                                                                .id(id)
+                                                                                .build();
+
+      SerializerResult serializerResult = serializer.entityCollection(srvMetadata, edmEntityType,
+                                                                          entityCollection, opts);
+
+      // 5th: configure the response object: set the body, headers and status code
+      response.setContent(serializerResult.getContent());
+      response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+      response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
+    }
+</code></pre>
+<h2 id="32-implement-expand">3.2. Implement <code>$expand</code><a class="headerlink" href="#32-implement-expand" title="Permalink">&para;</a></h2>
+<p><strong>Background</strong></p>
+<p>In order to understand the <code>$expand</code> system query option, let&rsquo;s first quickly recap what we&rsquo;ve learned in the navigation-tutorial:</p>
+<ol>
+<li>
+<p>In order to be able to navigate from one entity to another entity, we need at least 2 EntityTypes and at least one NavigationProperty<br/>
+<img alt="Metadata" src="metadataNav.jpg" title="Declaring the navigation in the metadata"/></p>
+</li>
+<li>
+<p>We can invoke one single entity, e.g. display one product:<br/>
+<img alt="Products(1)SingleRead" src="responseProducts_1.jpg" title="The result of a single read"/></p>
+</li>
+<li>
+<p>And we can follow the navigation to the second entity, by appending the navigation property name, e.g. invoke the category of that product.
+As we&rsquo;ve seen in the metadata above, the name of the navigation property is <em>Category</em><br/>
+<img alt="Products(1)NavToCat" src="responseProducts_1_navCat.jpg" title="Navigating from a Product to its Category"/></p>
+</li>
+</ol>
+<p>We have executed two requests to our OData service, in order to obtain the data for the product and for its related category.<br/>
+Now, since the category info is so tightly bound to the selected product, we&rsquo;d like to get the same info by executing only <strong>one</strong> request.</p>
+<p>This can be achieved with the <code>$expand</code></p>
+<p>The URL is built as follows:</p>
+<ul>
+<li>specify the request URI for the single read operation: <a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)">http://localhost:8080/DemoService/DemoService.svc/Products(1)</a></li>
+<li>append the <code>?</code> to indicate that system query options will follow</li>
+<li>append the <code>$expand</code></li>
+<li>specify the name of the desired navigation property:  <a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category</a></li>
+</ul>
+<p>As a result, the data of both entities is provided within one payload.<br/>
+The data of the target entity is presented <em>inline</em>, which means as a child element of the source entity.</p>
+<p><img alt="Products(1)Expanded" src="responseProducts_1_expandCat.jpg" title="The Product with its expanded Category"/></p>
+<p>One more advantage is that the system query option <code>$expand</code> can also be applied to an entity collection:</p>
+<p><img alt="AllProductsExpanded" src="responseProducts_expandCat.jpg" title="All Products with expanded Category"/></p>
+<p>More details can be found in the <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part1-protocol/odata-v4.0-errata02-os-part1-protocol-complete.html#_Toc406398298">OData specification - Protocol</a> and <a href="http://docs.oasis-open.org/odata/odata/v4.0/errata02/os/complete/part2-url-conventions/odata-v4.0-errata02-os-part2-url-conventions-complete.html#_Toc406398162">OData specification - Url Conventions</a></p>
+<p><strong>Implementation</strong></p>
+<p>In the following section, we&rsquo;ll focus on the implementation of the <code>$expand</code> for a single entity request e.g. <a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category</a></p>
+<p><strong>Note:</strong><br/>
+The implementation for the entity collection is the same, just that we have to loop over all entities and apply the below code to each of them.</p>
+<p>In brief, what we have to do is: fetch the data for both entities and merge into one entity</p>
+<p>We can distinguish the following steps:</p>
+<ol>
+<li>Retrieve the ExpandOption from Uri.<br/>
+In our example: <code>$expand=Category</code></li>
+<li>Retrieve the (target) EdmEntityType which corresponds to the expand.<br/>
+In our example: <em>Category</em></li>
+<li>Build the response data for the entity, enriched with the data of the expand entity.<br/>
+In our example: <em>product1</em> merged with <em>category1</em></li>
+</ol>
+<p>Let's have a detailed look.</p>
+<h5 id="step-1-retrieve-the-expandoption-from-uri">Step 1: Retrieve the ExpandOption from Uri<a class="headerlink" href="#step-1-retrieve-the-expandoption-from-uri" title="Permalink">&para;</a></h5>
+<p>We need the retrieve the ExpandOption from the UriInfo:</p>
+<pre><code class="language-java">    ExpandOption expandOption = uriInfo.getExpandOption();
+</code></pre>
+<p>As usual, if this object is <code>null</code>, then the user hasn&rsquo;t used the <code>$expand</code> in his request, and we don&rsquo;t need to do anything.</p>
+<h5 id="step-2-retrieve-the-edmentitytype-corresponding-to-the-expand">Step 2: Retrieve the EdmEntityType corresponding to the expand<a class="headerlink" href="#step-2-retrieve-the-edmentitytype-corresponding-to-the-expand" title="Permalink">&para;</a></h5>
+<p>In brief: <code>ExpandOption</code> -&gt; <code>NavigationProperty</code> -&gt; <code>EdmEntityType</code></p>
+<p>From the <code>ExpandOption</code>, we can get the ExpandItems.<br/>
+An <code>ExpandItem</code> corresponds to the name of the navigation property.<br/>
+So for the URL <a href="http://localhost:8080/DemoService/DemoService.svc/Products?$expand=Category">http://localhost:8080/DemoService/DemoService.svc/Products?$expand=Category</a> we get one <code>ExpandItem</code>, which corresponds to the navigation property <em>Category</em>.</p>
+<p>In the present tutorial, we&rsquo;re keeping the implementation as simple as possible.
+So we&rsquo;re relying on the fact that our example service only contains one navigation property per entity type.
+Therefore, we can directly access the first <code>ExpandItem</code>.</p>
+<pre><code class="language-java">    ExpandItem expandItem = expandOption.getExpandItems().get(0);
+</code></pre>
+<p><strong>Note:</strong><br/>
+Most OData services will have more entity types and more navigation possibilities. In such services, it might be desired to invoke <code>$expand</code> with more than one navigation property, like for example: <a href="http://localhost:8080/DemoService/DemoService.svc/Products?$expand=Category,Supplier,Sales">http://localhost:8080/DemoService/DemoService.svc/Products?$expand=Category,Supplier,Sales</a><br/>
+Such <code>$expand</code> expression is not considered in our example.</p>
+<p>Now that we have the <code>ExpandItem</code>, the next step is to extract the navigation property (<code>EdmNavicationProperty</code>) from it.</p>
+<p>For the case of a request with <code>$expand=*</code> (to expand all navigation items which is checked via <code>expandItem.isStar()</code>), all known <code>EdmNavigationPropertyBinding</code>s from the expanded <code>EdmEntityType</code> have to be checked.
+For our (reduced) sample service we know that only one navigation exists, hence the implementation is:</p>
+<pre><code class="language-java">    if(expandItem.isStar()) {
+      List&lt;EdmNavigationPropertyBinding&gt; bindings = edmEntitySet.getNavigationPropertyBindings();
+      // we know that there are navigation bindings
+      // however normally in this case a check if navigation bindings exists is done
+      if(!bindings.isEmpty()) {
+        // can in our case only be 'Category' or 'Products', so we can take the first
+        EdmNavigationPropertyBinding binding = bindings.get(0);
+        EdmElement property = edmEntitySet.getEntityType().getProperty(binding.getPath());
+        // we don't need to handle error cases, as it is done in the Olingo library
+        if(property instanceof EdmNavigationProperty) {
+          edmNavigationProperty = (EdmNavigationProperty) property;
+        }
+      }
+    } else {
+    ...
+</code></pre>
+<p>For the case of a request with defined name of navigation property to expand (e.g. <code>$expand=Category</code>), we have to ask the ExpandItem for its list if resource segments.<br/>
+The reason why an ExpandItem can be formed by multiple segments is that a navigation property can be in a <code>ComplexType</code>, such that it would be required to address it by a path.</p>
+<p>In our simple example, we don&rsquo;t need to specify a path, therefore we can safely write</p>
+<pre><code class="language-java">    ...
+    } else {
+      // can be 'Category' or 'Products', no path supported
+      UriResource uriResource = expandItem.getResourcePath().getUriResourceParts().get(0);
+      // we don't need to handle error cases, as it is done in the Olingo library
+      if(uriResource instanceof UriResourceNavigation) {
+        edmNavigationProperty = ((UriResourceNavigation) uriResource).getProperty();
+      }
+    }
+</code></pre>
+<p>This <code>uriResource</code> corresponds to the navigation property that we want to extract.<br/>
+We expect that the <code>uriResource</code> is of type <code>UriResourceNavigation</code>, such that we can cast.<br/>
+The <code>UriResourceNavigation</code> can then be asked for the <code>NavigationProperty</code> which in turn delivers the corresponding <code>EdmEntityType</code>, which we&rsquo;re interested in.</p>
+<p>Finally after one of above cases we have the necessary <code>EdmNavigationProperty</code> from which we need the <code>EdmEntityType</code> and the <code>name</code> of the navigation property to build the resopnse data.</p>
+<pre><code class="language-java">    if(edmNavigationProperty != null) {
+      EdmEntityType expandEdmEntityType = edmNavigationProperty.getType();
+      String navPropName = edmNavigationProperty.getName();
+      ...
+</code></pre>
+<h5 id="step-3-build-the-response-data">Step 3: Build the response data<a class="headerlink" href="#step-3-build-the-response-data" title="Permalink">&para;</a></h5>
+<p>Lets follow our example.
+As we have said, we have to merge the data of two entities.<br/>
+The first one, the product, is already fetched, as we&rsquo;ve done that earlier in the code:</p>
+<pre><code class="language-java">    Entity entity = storage.readEntityData(edmEntitySet, keyPredicates);
+</code></pre>
+<p>This entity corresponds to the product.</p>
+<p>Now we&rsquo;re ready to fetch the category, as we&rsquo;ve already retrieved the <code>EdmEntityType</code> from the expand expression.<br/>
+We can invoke a helper method that we created in Tutorial Part 4 (Navigation), a helper method that is located in our database-mock and that returns the category entity corresponding to a given product entity:</p>
+<pre><code class="language-java">    Entity expandEntity = storage.getRelatedEntity(entity, expandEdmEntityType);
+</code></pre>
+<p>In our example, this <code>expandEntity</code> contains the data of the related category.</p>
+<p>Now we have to merge both entities.<br/>
+This is done via a <code>Link</code> object that contains the inline entity object.<br/>
+And the link is added to the source entity.<br/>
+The relevant code is:</p>
+<pre><code class="language-java">    Link link = new Link();
+    link.setTitle(navPropName);
+    link.setInlineEntity(expandEntity);
+    entity.getNavigationLinks().add(link);
+</code></pre>
+<p><strong>Note:</strong><br/>
+It is important to set the correct navigation property name, otherwise the linking doesn&rsquo;t work and the inline data cannot be displayed.</p>
+<h5 id="final-step">Final step<a class="headerlink" href="#final-step" title="Permalink">&para;</a></h5>
+<p>Now that the response data has been built, we need to tell the serializer to consider the expand, otherwise the data will not be displayed.<br/>
+Also, the <code>expandOption</code> has to be considered while building the <code>ContextUrl</code>.</p>
+<pre><code class="language-java">    String selectList = odata.createUriHelper().buildContextURLSelectList(
+                                                edmEntityType, expandOption, selectOption);
+    ContextURL contextUrl = ContextURL.with()
+                                      .entitySet(edmEntitySet)
+                                      .selectList(selectList)
+                                      .suffix(Suffix.ENTITY).build();
+
+    // make sure that `$expand` and $select are considered by the serializer
+    // adding the selectOption to the serializerOpts will actually tell the lib to do the job
+    final String id = request.getRawBaseUri() + "/" + edmEntitySet.getName();
+    EntitySerializerOptions opts = EntitySerializerOptions.with()
+                                                          .contextURL(contextUrl)
+                                                          .select(selectOption)
+                                                          .expand(expandOption)
+                                                          .id(id)
+                                                          .build();
+</code></pre>
+<p><strong>Note:</strong><br/>
+The complete <code>readEntity(...)</code> method can be found in the <em>Appendix</em> at the end of the site or together with the <code>readEntityCollection(...)</code> method in the <a href="http://www.apache.org/dyn/closer.cgi/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip">sample project zip</a> (<a href="https://dist.apache.org/repos/dist/release/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip.md5">md5</a>, <a href="https://dist.apache.org/repos/dist/release/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip.sha512">sha512</a>, <a href="https://dist.apache.org/repos/dist/release/olingo/odata4/Tutorials/DemoService_Tutorial_sqo_es.zip.asc">pgp</a>).</p>
+<h2 id="33-implement-expand-with-options">3.3. Implement <code>$expand</code> with options<a class="headerlink" href="#33-implement-expand-with-options" title="Permalink">&para;</a></h2>
+<p><strong>Background</strong></p>
+<p>As of OData v4 spec, the expand can also be further refined with system query options</p>
+<p>Some samples:</p>
+<ul>
+<li>
+<p>Expand an navigation with only the first entity:</p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Categories?$expand=Products($top=1)">http://localhost:8080/DemoService/DemoService.svc/Categories?$expand=Products($top=1)</a></li>
+</ul>
+</li>
+<li>
+<p>A common use case would be the following request, where all products are displayed along with their corresponding category, but only the interesting properties:</p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products?$select=Name,Description&amp;$expand=Category($select=Name)">http://localhost:8080/DemoService/DemoService.svc/Products?$select=Name,Description&amp;$expand=Category($select=Name)</a></li>
+</ul>
+</li>
+<li>
+<p>With respect to the system query options that are applied to the expand, multiple options are allowed, which are separated by semicolon, e.g.</p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=Products($top=1;$select=Name)">http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=Products($top=1;$select=Name)</a></li>
+</ul>
+</li>
+<li>
+<p>The $select option can itself define a list of comma-separated properties:</p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=NavToProducts($top=1;$select=Name,Description)">http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=NavToProducts($top=1;$select=Name,Description)</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Implementation</strong></p>
+<p>The code for applying system query options to the <code>$expand</code> is similar to what is described in the Tutorial Part 5.1.
+We only need to know from where to get the information about the query options used in the request URL:   It is located in the <code>ExpandItem</code> instance.</p>
+<p>The procedure is:</p>
+<ul>
+<li>Get the data for the navigation property (the normal expand)</li>
+<li>Refine the result by applying the system query options</li>
+</ul>
+<p><strong>Support for <code>$select</code> with <code>$expand</code></strong><br/>
+Like described in section 3.1, the Olingo library provides support and convenience methods for <code>$select</code> implementation. So the necessary creation and pass of the <code>selectList</code> to the creation of <code>ContextURL</code> and pass of the <code>selectOptions</code> to the <code>EntitySerializerOptions</code> is already done (see also code sample in the final step in section 3.2).</p>
+<hr/>
+<h1 id="4-run-the-implemented-service">4. Run the implemented service<a class="headerlink" href="#4-run-the-implemented-service" title="Permalink">&para;</a></h1>
+<p>After building and deploying your service to your server, you can try the following URLs:</p>
+<ul>
+<li>
+<p>The &ldquo;normal&rdquo; payload without query option</p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)">http://localhost:8080/DemoService/DemoService.svc/Products(1)</a></li>
+</ul>
+</li>
+<li>
+<p>Using <code>$select</code></p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Description">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Description</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name,Description">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name,Description</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=*">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=*</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$select=Name">http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$select=Name</a></li>
+</ul>
+</li>
+<li>
+<p>Using <code>$expand</code></p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=Products">http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=Products</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=*">http://localhost:8080/DemoService/DemoService.svc/Categories(1)?$expand=*</a></li>
+</ul>
+</li>
+<li>
+<p>Using <code>$select</code> and <code>$expand</code></p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name&amp;$expand=Category">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name&amp;$expand=Category</a></li>
+</ul>
+</li>
+<li>
+<p>Using <code>$expand</code> with nested <code>$select</code><br/>
+We&rsquo;re interested in <em>Product</em> and the name of its <em>Category</em></p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category($select=Name)">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category($select=Name)</a></li>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category($select=Name,ID)">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category($select=Name,ID)</a></li>
+</ul>
+</li>
+<li>
+<p>Using <code>$select</code> and <code>$expand</code> with nested $select<br/>
+We&rsquo;re interested in <em>Product</em> and its <em>Category</em>, but only the <em>name</em> of both</p>
+<ul>
+<li><a href="http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name&amp;$expand=Category($select=Name)">http://localhost:8080/DemoService/DemoService.svc/Products(1)?$select=Name&amp;$expand=Category($select=Name)</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong>
+The same system query option expressions can be applied to entity collections</p>
+<hr/>
+<h1 id="5-summary">5. Summary<a class="headerlink" href="#5-summary" title="Permalink">&para;</a></h1>
+<p>In this tutorial we have learned the basics of the <code>$select</code> and <code>$expand</code> <em>system query options</em> within the OData context as well as how to implement those features with the <em>Apache Olingo library</em> by using the provided convenience and support methods.</p>
+<hr/>
+<h1 id="6-links">6. Links<a class="headerlink" href="#6-links" title="Permalink">&para;</a></h1>
+<h3 id="tutorials">Tutorials<a class="headerlink" href="#tutorials" title="Permalink">&para;</a></h3>
+<ul>
+<li>Tutorial OData V4 service part 1: <a href="/doc/odata4/tutorials/read/tutorial_read.html">Read Entity Collection</a></li>
+<li>Tutorial OData V4 service part 2: <a href="/doc/odata4/tutorials/readep/tutorial_readep.html">Read Entity, Read Property</a></li>
+<li>Tutorial OData V4 service part 3: <a href="/doc/odata4/tutorials/write/tutorial_write.html">Write (Create, Update, Delete Entity)</a></li>
+<li>Tutorial OData V4 service, part 4: <a href="/doc/odata4/tutorials/navigation/tutorial_navigation.html">Navigation</a></li>
+<li>Tutorial OData V4 service, part 5.1: <a href="/doc/odata4/tutorials/sqo_tcs/tutorial_sqo_tcs.html">System Query Options $top, $skip, $count (this page)</a></li>
+<li>Tutorial OData V4 service, part 5.2: System Query Options $select, $expand (this page)</li>
+<li>Tutorial OData V4 service, part 5.3: <a href="/doc/odata4/tutorials/sqo_o/tutorial_sqo_o.html">System Query Options $orderby</a></li>
+<li>Tutorial OData V4 service, part 5.4: <a href="/doc/odata4/tutorials/sqo_f/tutorial_sqo_f.html">System Query Options $filter</a></li>
+<li>Tutorial ODATA V4 service, part 6: <a href="/doc/odata4/tutorials/action/tutorial_action.html">Action and Function Imports</a></li>
+<li>Tutorial ODATA V4 service, part 7: <a href="/doc/odata4/tutorials/media/tutorial_media.html">Media Entities</a></li>
+<li>Tutorial OData V4 service, part 8: <a href="/doc/odata4/tutorials/batch/tutorial_batch.html">Batch Request support</a></li>
+<li>Tutorial OData V4 service, part 9: <a href="/doc/odata4/tutorials/deep_insert/tutorial_deep_insert.html">Handling "Deep Insert" requests</a></li>
+</ul>
+<h3 id="code-and-repository">Code and Repository<a class="headerlink" href="#code-and-repository" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="https://gitbox.apache.org/repos/asf/olingo-odata4">Git Repository</a></li>
+<li><a href="/doc/odata4/tutorials/prerequisites/prerequisites.html">Guide - To fetch the tutorial sources</a></li>
+<li><a href="http://www.apache.org/dyn/closer.lua/olingo/odata4/4.6.0/DemoService_Tutorial.zip">Demo Service source code as zip file (contains all tutorials)</a></li>
+</ul>
+<h3 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permalink">&para;</a></h3>
+<ul>
+<li><a href="http://odata.org/">Official OData Homepage</a></li>
+<li><a href="http://www.odata.org/documentation/">OData documentation</a></li>
+<li><a href="/javadoc/odata4/index.html">Olingo Javadoc</a></li>
+</ul>
+<h1 id="7-appendix">7. Appendix<a class="headerlink" href="#7-appendix" title="Permalink">&para;</a></h1>
+<h3 id="sample-code-snippets">Sample code snippets<a class="headerlink" href="#sample-code-snippets" title="Permalink">&para;</a></h3>
+<p><strong>readEntity(...)</strong></p>
+<pre><code class="language-java">    public void readEntity(ODataRequest request, ODataResponse response, UriInfo uriInfo, ContentType responseFormat)
+            throws ODataApplicationException, SerializerException {
+
+      // 1. retrieve the Entity Type
+      List&lt;UriResource&gt; resourcePaths = uriInfo.getUriResourceParts();
+      // Note: only in our example we can assume that the first segment is the EntitySet
+      UriResourceEntitySet uriResourceEntitySet = (UriResourceEntitySet) resourcePaths.get(0);
+      EdmEntitySet edmEntitySet = uriResourceEntitySet.getEntitySet();
+
+      // 2. retrieve the data from backend
+      List&lt;UriParameter&gt; keyPredicates = uriResourceEntitySet.getKeyPredicates();
+      Entity entity = storage.readEntityData(edmEntitySet, keyPredicates);
+
+      // 3. apply system query options
+
+      // handle $select
+      SelectOption selectOption = uriInfo.getSelectOption();
+      // in our example, we don't have performance issues, so we can rely upon the handling in the Olingo lib
+      // nothing else to be done
+
+      // handle $expand
+      ExpandOption expandOption = uriInfo.getExpandOption();
+      // in our example: http://localhost:8080/DemoService/DemoService.svc/Categories(1)/$expand=Products
+      // or http://localhost:8080/DemoService/DemoService.svc/Products(1)?$expand=Category
+      if(expandOption != null) {
+        // retrieve the EdmNavigationProperty from the expand expression
+        // Note: in our example, we have only one NavigationProperty, so we can directly access it
+        EdmNavigationProperty edmNavigationProperty = null;
+        ExpandItem expandItem = expandOption.getExpandItems().get(0);
+        if(expandItem.isStar()) {
+          List&lt;EdmNavigationPropertyBinding&gt; bindings = edmEntitySet.getNavigationPropertyBindings();
+          // we know that there are navigation bindings
+          // however normally in this case a check if navigation bindings exists is done
+          if(!bindings.isEmpty()) {
+            // can in our case only be 'Category' or 'Products', so we can take the first
+            EdmNavigationPropertyBinding binding = bindings.get(0);
+            EdmElement property = edmEntitySet.getEntityType().getProperty(binding.getPath());
+            // we don't need to handle error cases, as it is done in the Olingo library
+            if(property instanceof EdmNavigationProperty) {
+              edmNavigationProperty = (EdmNavigationProperty) property;
+            }
+          }
+        } else {
+          // can be 'Category' or 'Products', no path supported
+          UriResource uriResource = expandItem.getResourcePath().getUriResourceParts().get(0);
+          // we don't need to handle error cases, as it is done in the Olingo library
+          if(uriResource instanceof UriResourceNavigation) {
+            edmNavigationProperty = ((UriResourceNavigation) uriResource).getProperty();
+          }
+        }
+
+        // can be 'Category' or 'Products', no path supported
+        // we don't need to handle error cases, as it is done in the Olingo library
+        if(edmNavigationProperty != null) {
+          EdmEntityType expandEdmEntityType = edmNavigationProperty.getType();
+          String navPropName = edmNavigationProperty.getName();
+
+          // build the inline data
+          Link link = new Link();
+          link.setTitle(navPropName);
+          link.setType(Constants.ENTITY_NAVIGATION_LINK_TYPE);
+          link.setRel(Constants.NS_ASSOCIATION_LINK_REL + navPropName);
+
+          if(edmNavigationProperty.isCollection()){ // in case of Categories(1)/$expand=Products
+            // fetch the data for the $expand (to-many navigation) from backend
+            // here we get the data for the expand
+            EntityCollection expandEntityCollection = storage.getRelatedEntityCollection(entity, expandEdmEntityType);
+            link.setInlineEntitySet(expandEntityCollection);
+            link.setHref(expandEntityCollection.getId().toASCIIString());
+          } else {  // in case of Products(1)?$expand=Category
+            // fetch the data for the $expand (to-one navigation) from backend
+            // here we get the data for the expand
+            Entity expandEntity = storage.getRelatedEntity(entity, expandEdmEntityType);
+            link.setInlineEntity(expandEntity);
+            link.setHref(expandEntity.getId().toASCIIString());
+          }
+
+          // set the link - containing the expanded data - to the current entity
+          entity.getNavigationLinks().add(link);
+        }
+      }
+
+
+      // 4. serialize
+      EdmEntityType edmEntityType = edmEntitySet.getEntityType();
+      // we need the property names of the $select, in order to build the context URL
+      String selectList = odata.createUriHelper().buildContextURLSelectList(edmEntityType, expandOption, selectOption);
+      ContextURL contextUrl = ContextURL.with().entitySet(edmEntitySet)
+                                                .selectList(selectList)
+                                                .suffix(Suffix.ENTITY)
+                                                .build();
+
+      // make sure that $expand and $select are considered by the serializer
+      // adding the selectOption to the serializerOpts will actually tell the lib to do the job
+      EntitySerializerOptions opts = EntitySerializerOptions.with()
+                                                            .contextURL(contextUrl)
+                                                            .select(selectOption)
+                                                            .expand(expandOption)
+                                                            .build();
+
+      ODataSerializer serializer = this.odata.createSerializer(responseFormat);
+      SerializerResult serializerResult = serializer.entity(srvMetadata, edmEntityType, entity, opts);
+
+      // 5. configure the response object
+      response.setContent(serializerResult.getContent());
+      response.setStatusCode(HttpStatusCode.OK.getStatusCode());
+      response.setHeader(HttpHeader.CONTENT_TYPE, responseFormat.toContentTypeString());
+    }
+</code></pre>
+
+      <div align="center">
+	<p>Copyright © 2013-2022, The Apache Software Foundation<br>
+				                Apache Olingo, Olingo, Apache, the Apache feather, and
+				the Apache Olingo project logo are trademarks of the Apache Software
+				Foundation.</p>
+        <small><a href="/doc/odata2/privacy.html">Privacy</a></small>
+      </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js" type="text/javascript">
+    </script>
+    <script src="/js/bootstrap.js" type="text/javascript">
+    </script>
+    <script src="/js/offcanvas.js" type="text/javascript">
+    </script>
+    <link rel="stylesheet" href="/css/docco.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>
