@@ -5,11 +5,11 @@ Title: Download OData 2.0 Java Library
 Apache Olingo OData2 is a collection of Java libraries for
 implementing [OData V2][1] protocol clients or servers.
 
-### Release 2.0.11 (2019-02-16)
+### Release 2.0.12 (2022-04-23)
 
 [Release notes][3]
 
-The Apache Olingo OData2 2.0.11 release is a patch release.
+The Apache Olingo OData2 2.0.12 release is a patch release.
 
 ### Commodity Packages
 
@@ -20,10 +20,10 @@ The *Core Library* is developed for production environment usage in business sce
 
 Package | zip | Description
 --------|-----|------
-Olingo OData2 Library            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-dist-lib-2.0.11-lib.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-lib-2.0.11-lib.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-lib-2.0.11-lib.zip.asc)) | All you need to implement an OData V2 client or server.
-Olingo OData2 Sources            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-parent-2.0.11-source-release.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-parent-2.0.11-source-release.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-parent-2.0.11-source-release.zip.asc)) | Olingo OData2 source code.
-Olingo OData2 Docs               | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-dist-javadoc-2.0.11-javadoc.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-javadoc-2.0.11-javadoc.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-javadoc-2.0.11-javadoc.zip.asc)) | Documentation and JavaDoc.
-Olingo OData2 Reference Scenario | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-dist-ref-2.0.11-ref.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-ref-2.0.11-ref.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-ref-2.0.11-ref.zip.asc)) | Deployable WAR files with reference scenario services using <a href="https://cxf.apache.org">Apache CXF</a>.
+Olingo OData2 Library            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-dist-lib-2.0.12-lib.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-lib-2.0.12-lib.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-lib-2.0.12-lib.zip.asc)) | All you need to implement an OData V2 client or server.
+Olingo OData2 Sources            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-parent-2.0.12-source-release.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-parent-2.0.12-source-release.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-parent-2.0.12-source-release.zip.asc)) | Olingo OData2 source code.
+Olingo OData2 Docs               | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-dist-javadoc-2.0.12-javadoc.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-javadoc-2.0.12-javadoc.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-javadoc-2.0.12-javadoc.zip.asc)) | Documentation and JavaDoc.
+Olingo OData2 Reference Scenario | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-dist-ref-2.0.12-ref.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-ref-2.0.12-ref.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-ref-2.0.12-ref.zip.asc)) | Deployable WAR files with reference scenario services using <a href="https://cxf.apache.org">Apache CXF</a>.
 
 ##### Extension Packages
 
@@ -35,13 +35,13 @@ Feature enhancements or optimizations of the extensions have to be done by the i
 
 Package | zip | Description
 --------|-----|------
-Olingo OData2 JPA Processor      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-dist-jpa-2.0.11-jpa.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-jpa-2.0.11-jpa.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-jpa-2.0.11-jpa.zip.asc)) | All you need to expose your JPA model as OData service.
-Olingo OData2 Java Annotation Processor      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-dist-janos-2.0.11-janos.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-janos-2.0.11-janos.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-dist-janos-2.0.11-janos.zip.asc)) | Use Java Annotations to create a simple OData service for e.g. test cases (without persistence).
-Olingo OData2 Spring Extension Sources      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.11/olingo-odata2-spring-2.0.11-source-release.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-spring-2.0.11-source-release.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.11/olingo-odata2-spring-2.0.11-source-release.zip.asc)) | Support for use of OData library in Spring context.
+Olingo OData2 JPA Processor      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-dist-jpa-2.0.12-jpa.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-jpa-2.0.12-jpa.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-jpa-2.0.12-jpa.zip.asc)) | All you need to expose your JPA model as OData service.
+Olingo OData2 Java Annotation Processor      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-dist-janos-2.0.12-janos.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-janos-2.0.12-janos.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-dist-janos-2.0.12-janos.zip.asc)) | Use Java Annotations to create a simple OData service for e.g. test cases (without persistence).
+Olingo OData2 Spring Extension Sources      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata2/2.0.12/olingo-odata2-spring-2.0.12-source-release.zip) ([sha512](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-spring-2.0.12-source-release.zip.sha512), [pgp](https://www.apache.org/dist/olingo/odata2/2.0.12/olingo-odata2-spring-2.0.12-source-release.zip.asc)) | Support for use of OData library in Spring context.
 
 ### Maven
 
-Apache Olingo OData2 artifacts for latest version at [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.olingo%22%20AND%20v%3A%222.0.11%22).
+Apache Olingo OData2 artifacts for latest version at [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.olingo%22%20AND%20v%3A%222.0.12%22).
 For POM dependencies see [here](/doc/odata2/maven.html).
 
 All other Apache Olingo artifacts are also available at [Maven Central](https://search.maven.org/#search|ga|1|org.apache.olingo).
@@ -63,5 +63,5 @@ Please make sure you check the following resources:
 
 
   [1]: https://odata.org
-  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12342435
+  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12344932
   [4]: https://archive.apache.org/dist/olingo/
