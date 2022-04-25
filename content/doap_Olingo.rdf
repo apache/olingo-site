@@ -113,6 +113,13 @@ The extensions part of Olingo for OData 2.0 contains additional features like th
     <release>
       <Version>
         <name>OData 2.0 Library</name>
+        <created>2022-04-24</created>
+        <revision>2.0.12</revision>
+      </Version>
+    </release>
+    <release>
+      <Version>
+        <name>OData 2.0 Library</name>
         <created>2019-02-16</created>
         <revision>2.0.11</revision>
       </Version>
