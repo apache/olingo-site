@@ -6,9 +6,6 @@
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
@@ -602,7 +599,8 @@
             
             
             
-            <td class="description last">Version value. If the request has already a version value higher than the one supplied the this function does nothing.</td>
+            <td class="description last">Version value.
+ If the request has already a version value higher than the one supplied the this function does nothing.</td>
         </tr>
 	
 	
@@ -1579,7 +1577,10 @@
     
             
 <div class="param-desc">
-    True if the handler can process the mime type; false otherwise.The following check isn't as strict because if cType.mediaType = application/; it will match an accept value of "application/xml";however in practice we don't not expect to see such "suffixed" mimeTypes for the handlers.
+    True if the handler can process the mime type; false otherwise.
+
+The following check isn't as strict because if cType.mediaType = application/; it will match an accept value of "application/xml";
+however in practice we don't not expect to see such "suffixed" mimeTypes for the handlers.
 </div>
 
 
