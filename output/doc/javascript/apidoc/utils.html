@@ -6,9 +6,6 @@
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
@@ -253,7 +250,9 @@
     
             
 <div class="param-desc">
-    Data item type name; null if the type name cannot be found within the value or the metadataThis function will first try to get the type name from the data item's value itself if it is an object with a __metadata property; otherwiseit will try to recover it from the metadata.  If both attempts fail, it will return null.
+    Data item type name; null if the type name cannot be found within the value or the metadata
+This function will first try to get the type name from the data item's value itself if it is an object with a __metadata property; otherwise
+it will try to recover it from the metadata.  If both attempts fail, it will return null.
 </div>
 
 
@@ -537,7 +536,8 @@
     
             
 <div class="param-desc">
-    Formatted text.If the value is already as string it's returned as-is
+    Formatted text.
+If the value is already as string it's returned as-is
 ´
 </div>
 
@@ -839,7 +839,8 @@
     
             
 <div class="param-desc">
-    Formatted text.If the value is already as string it's returned as-is.
+    Formatted text.
+If the value is already as string it's returned as-is.
 </div>
 
 
@@ -3340,7 +3341,8 @@
     
             
 <div class="param-desc">
-    True is the value is a primitive type value.Date objects are considered primitive types by the library.
+    True is the value is a primitive type value.
+Date objects are considered primitive types by the library.
 </div>
 
 
@@ -6466,7 +6468,11 @@
     
             
 <div class="param-desc">
-    The parsed value.The resulting object is annotated with an __edmType property andan __offset property reflecting the original intended offset ofthe value. The time is adjusted for UTC time, as the currenttimezone-aware Date APIs will only work with the local timezone.
+    The parsed value.
+The resulting object is annotated with an __edmType property and
+an __offset property reflecting the original intended offset of
+the value. The time is adjusted for UTC time, as the current
+timezone-aware Date APIs will only work with the local timezone.
 </div>
 
 
@@ -6549,7 +6555,8 @@
             
             
             
-            <td class="description last">Duration value.This method will throw an exception if the input string has a year or a month component.</td>
+            <td class="description last">Duration value.
+This method will throw an exception if the input string has a year or a month component.</td>
         </tr>
 	
 	
@@ -7369,7 +7376,8 @@
     
             
 <div class="param-desc">
-    The traversed object.Unlike the JSON reviver, this won't delete null members.
+    The traversed object.
+Unlike the JSON reviver, this won't delete null members.
 </div>
 
 

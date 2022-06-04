@@ -6,9 +6,6 @@
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
@@ -1777,7 +1774,8 @@
     
     
     <div class="description">
-        Loop through the properties of an JSON payload object, look up the type info of the property and callthe appropriate add*MetadataToJsonPayloadObject function
+        Loop through the properties of an JSON payload object, look up the type info of the property and call
+the appropriate add*MetadataToJsonPayloadObject function
     </div>
     
 
@@ -2365,7 +2363,11 @@
             
             
             
-            <td class="description last">Object describing an OData conceptual schema.If the arguments passed to the function don't convey enough information about the payload to determine without doubt that the payload is a feed then itwill try to use the payload object structure instead.  If the payload looks like a feed (has value property that is an array or non-primitive values) thenthe function will report its kind as PAYLOADTYPE_FEED unless the inferFeedAsComplexType flag is set to true. This flag comes from the user requestand allows the user to control how the library behaves with an ambigous JSON payload.</td>
+            <td class="description last">Object describing an OData conceptual schema.
+If the arguments passed to the function don't convey enough information about the payload to determine without doubt that the payload is a feed then it
+will try to use the payload object structure instead.  If the payload looks like a feed (has value property that is an array or non-primitive values) then
+the function will report its kind as PAYLOADTYPE_FEED unless the inferFeedAsComplexType flag is set to true. This flag comes from the user request
+and allows the user to control how the library behaves with an ambigous JSON payload.</td>
         </tr>
 	
 	

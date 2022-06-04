@@ -6,9 +6,6 @@
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
@@ -47,7 +44,29 @@
     
     
     <div class="description">
-        Initializes a new DjsDeferred object.<ul><li> Compability Note A - Ordering of callbacks through chained 'then' invocations <br>The Wiki entry at http://wiki.commonjs.org/wiki/Promises/Aimplies that .then() returns a distinct object.For compatibility with http://api.jquery.com/category/deferred-object/we return this same object. This affects ordering, asthe jQuery version will fire callbacks in registrationorder regardless of whether they occur on the resultor the original object.</li><li>Compability Note B - Fulfillment value <br>The Wiki entry at http://wiki.commonjs.org/wiki/Promises/Aimplies that the result of a success callback is thefulfillment value of the object and is received byother success callbacks that are chained.For compatibility with http://api.jquery.com/category/deferred-object/we disregard this value instead.</li></ul>
+        Initializes a new DjsDeferred object.
+<ul>
+<li> Compability Note A - Ordering of callbacks through chained 'then' invocations <br>
+
+The Wiki entry at http://wiki.commonjs.org/wiki/Promises/A
+implies that .then() returns a distinct object.
+
+For compatibility with http://api.jquery.com/category/deferred-object/
+we return this same object. This affects ordering, as
+the jQuery version will fire callbacks in registration
+order regardless of whether they occur on the result
+or the original object.
+</li>
+<li>Compability Note B - Fulfillment value <br>
+
+The Wiki entry at http://wiki.commonjs.org/wiki/Promises/A
+implies that the result of a success callback is the
+fulfillment value of the object and is received by
+other success callbacks that are chained.
+
+For compatibility with http://api.jquery.com/category/deferred-object/
+we disregard this value instead.
+</li></ul>
     </div>
     
 
@@ -213,7 +232,8 @@
     
     
     <div class="description">
-        Invokes error callbacks for this deferred object.All arguments are forwarded to error callbacks.
+        Invokes error callbacks for this deferred object.
+All arguments are forwarded to error callbacks.
     </div>
     
 
@@ -282,7 +302,8 @@
     
     
     <div class="description">
-        Invokes success callbacks for this deferred object.All arguments are forwarded to success callbacks.
+        Invokes success callbacks for this deferred object.
+All arguments are forwarded to success callbacks.
     </div>
     
 
@@ -351,7 +372,8 @@
     
     
     <div class="description">
-        Adds success and error callbacks for this deferred object.See Compatibility Note A.
+        Adds success and error callbacks for this deferred object.
+See Compatibility Note A.
     </div>
     
 

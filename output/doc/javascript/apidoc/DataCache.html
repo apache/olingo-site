@@ -6,9 +6,6 @@
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
@@ -92,7 +89,8 @@
             
             
             
-            <td class="description last">Options for the data cache, including name, source, pageSize,prefetchSize, cacheSize, storage mechanism, and initial prefetch and local-data handler.</td>
+            <td class="description last">Options for the data cache, including name, source, pageSize,
+prefetchSize, cacheSize, storage mechanism, and initial prefetch and local-data handler.</td>
         </tr>
 	
 	
@@ -544,7 +542,9 @@
     
     
     <div class="description">
-        Cancels all running operations and clears all local data associated with this cache.New read requests made while a clear operation is in progress will not be canceled.Instead they will be queued for execution once the operation is completed.
+        Cancels all running operations and clears all local data associated with this cache.
+New read requests made while a clear operation is in progress will not be canceled.
+Instead they will be queued for execution once the operation is completed.
     </div>
     
 
@@ -726,7 +726,8 @@
     
     
     <div class="description">
-        Filters the cache data based a predicate.Specifying a negative count value will yield all the items in the cache that satisfy the predicate.
+        Filters the cache data based a predicate.
+Specifying a negative count value will yield all the items in the cache that satisfy the predicate.
     </div>
     
 
@@ -911,7 +912,8 @@
     
     
     <div class="description">
-        Filters the cache data based a predicate.Specifying a negative count value will yield all the items in the cache that satisfy the predicate.
+        Filters the cache data based a predicate.
+Specifying a negative count value will yield all the items in the cache that satisfy the predicate.
     </div>
     
 
@@ -1096,7 +1098,9 @@
     
     
     <div class="description">
-        Reads a range of adjacent records.New read requests made while a clear operation is in progress will not be canceled.Instead they will be queued for execution once the operation is completed.
+        Reads a range of adjacent records.
+New read requests made while a clear operation is in progress will not be canceled.
+Instead they will be queued for execution once the operation is completed.
     </div>
     
 
@@ -1225,7 +1229,8 @@
     
             
 <div class="param-desc">
-    A promise for an array of records; less records may be returned if theend of the collection is found.
+    A promise for an array of records; less records may be returned if the
+end of the collection is found.
 </div>
 
 
@@ -1443,7 +1448,9 @@
     
             
 <div class="param-desc">
-    Function to use as error callback.This function will specifically handle problems with critical store resourcesduring cache initialization.
+    Function to use as error callback.
+This function will specifically handle problems with critical store resources
+during cache initialization.
 </div>
 
 
@@ -1748,7 +1755,8 @@
             
             
             
-            <td class="description last">New cache state.This method is a no-op if the cache's current state and the new state are the same.</td>
+            <td class="description last">New cache state.
+This method is a no-op if the cache's current state and the new state are the same.</td>
         </tr>
 	
 	
@@ -1956,7 +1964,8 @@
             
             
             
-            <td class="description last">Operation to dequeue.This method is used as a handler for the operation's oncomplete event.</td>
+            <td class="description last">Operation to dequeue.
+This method is used as a handler for the operation's oncomplete event.</td>
         </tr>
 	
 	
@@ -2119,7 +2128,9 @@
             
             
             
-            <td class="description last">Current cache state.Clear operations have the highest priority and can't be interrupted by other operations; however,they will preempt any other operation currently executing.</td>
+            <td class="description last">Current cache state.
+Clear operations have the highest priority and can't be interrupted by other operations; however,
+they will preempt any other operation currently executing.</td>
         </tr>
 	
 	
@@ -2444,7 +2455,8 @@
             
             
             
-            <td class="description last">True if the filtering should move backward from the specified index, falsey otherwise.Specifying a negative count value will yield all the items in the cache that satisfy the predicate.</td>
+            <td class="description last">True if the filtering should move backward from the specified index, falsey otherwise.
+Specifying a negative count value will yield all the items in the cache that satisfy the predicate.</td>
         </tr>
 	
 	
@@ -2652,7 +2664,12 @@
             
             
             
-            <td class="description last">Zero-based index of the items to prefetch.This method is a no-op if any of the following conditions is true:    1.- prefetchSize is 0    2.- All data has been read and stored locally in the cache.    3.- There is already an all data prefetch operation queued.    4.- The cache has run out of available space (overflowed).</td>
+            <td class="description last">Zero-based index of the items to prefetch.
+This method is a no-op if any of the following conditions is true:
+    1.- prefetchSize is 0
+    2.- All data has been read and stored locally in the cache.
+    3.- There is already an all data prefetch operation queued.
+    4.- The cache has run out of available space (overflowed).</td>
         </tr>
 	
 	
@@ -2874,7 +2891,12 @@
             
             
             
-            <td class="description last">Prefetch operations have the lowest priority and will be interrupted by operations of other kinds. A preempted prefetch operation will resume its execution only when the state of the cache returns to idle. If a clear operation starts executing then all the prefetch operations are canceled, even if they haven't started executing yet.</td>
+            <td class="description last">Prefetch operations have the lowest priority and will be interrupted by operations of
+ other kinds. A preempted prefetch operation will resume its execution only when the state
+ of the cache returns to idle.
+
+ If a clear operation starts executing then all the prefetch operations are canceled,
+ even if they haven't started executing yet.</td>
         </tr>
 	
 	
@@ -3266,7 +3288,8 @@
             
             
             
-            <td class="description last">Flag indicating whether a read (false) or prefetch (true) operation is running.This state machine contains behavior common to read and prefetch operations.</td>
+            <td class="description last">Flag indicating whether a read (false) or prefetch (true) operation is running.
+This state machine contains behavior common to read and prefetch operations.</td>
         </tr>
 	
 	
@@ -3488,7 +3511,13 @@
             
             
             
-            <td class="description last">Read operations have a higher priority than prefetch operations, but lower thanclear operations. They will preempt any prefetch operation currently runningbut will be interrupted by a clear operation.         If a clear operation starts executing then all the currently runningread operations are canceled. Read operations that haven't started yet willwait in the start state until the destory operation finishes.</td>
+            <td class="description last">Read operations have a higher priority than prefetch operations, but lower than
+clear operations. They will preempt any prefetch operation currently running
+but will be interrupted by a clear operation.
+         
+If a clear operation starts executing then all the currently running
+read operations are canceled. Read operations that haven't started yet will
+wait in the start state until the destory operation finishes.</td>
         </tr>
 	
 	
@@ -3963,7 +3992,8 @@
     
             
 <div class="param-desc">
-    Function to use as error callback.This function will specifically handle problems when interacting with the store.
+    Function to use as error callback.
+This function will specifically handle problems when interacting with the store.
 </div>
 
 

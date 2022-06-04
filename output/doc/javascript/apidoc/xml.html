@@ -6,9 +6,6 @@
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
@@ -708,7 +705,11 @@
     
             
 <div class="param-desc">
-    New MSXML 3.0 ActiveX object.This function will try to create a new MSXML 6.0 ActiveX object. If it fails thenit will fallback to create a new MSXML 3.0 ActiveX object. Any exception thathappens during the creation of the MSXML 6.0 will be handled by the function whilethe ones that happend during the creation of the MSXML 3.0 will be thrown.
+    New MSXML 3.0 ActiveX object.
+This function will try to create a new MSXML 6.0 ActiveX object. If it fails then
+it will fallback to create a new MSXML 3.0 ActiveX object. Any exception that
+happens during the creation of the MSXML 6.0 will be handled by the function while
+the ones that happend during the creation of the MSXML 3.0 will be thrown.
 </div>
 
 
@@ -799,7 +800,9 @@
     
             
 <div class="param-desc">
-    New MSXML 3.0 ActiveX object.This function throws any exception that occurs during the creationof the MSXML 3.0 ActiveX object.
+    New MSXML 3.0 ActiveX object.
+This function throws any exception that occurs during the creation
+of the MSXML 3.0 ActiveX object.
 </div>
 
 
@@ -890,7 +893,10 @@
     
             
 <div class="param-desc">
-    New MSXML DOMDocument node representing the parsed XML string.This function throws any exception that occurs during the creationof the MSXML ActiveX object.  It also will throw an exceptionin case of a parsing error.
+    New MSXML DOMDocument node representing the parsed XML string.
+This function throws any exception that occurs during the creation
+of the MSXML ActiveX object.  It also will throw an exception
+in case of a parsing error.
 </div>
 
 
@@ -1195,7 +1201,9 @@
     
             
 <div class="param-desc">
-    The parent with the appended child or string value.If child is a string value, then a new DOM text node is going to be createdfor it and then appended to the parent.
+    The parent with the appended child or string value.
+If child is a string value, then a new DOM text node is going to be created
+for it and then appended to the parent.
 </div>
 
 
@@ -1340,7 +1348,9 @@
     
             
 <div class="param-desc">
-    The parent with the appended children or string values. If a value in the children collection is a string, then a new DOM text node is going to be created for it and then appended to the parent.
+    The parent with the appended children or string values.
+ If a value in the children collection is a string, then a new DOM text node is going to be created
+ for it and then appended to the parent.
 </div>
 
 
@@ -2344,7 +2354,14 @@
     
             
 <div class="param-desc">
-    New DOM document node.This function will first try to create a native DOM document usingthe browsers createDocument function.  If the browser doesn'tsupport this but supports ActiveXObject, then an attempt to createan MSXML 6.0 DOM will be made. If this attempt fails too, then an attemptfor creating an MXSML 3.0 DOM will be made.  If this last attemp fails orthe browser doesn't support ActiveXObject then an exception will be thrown.
+    New DOM document node.
+
+This function will first try to create a native DOM document using
+the browsers createDocument function.  If the browser doesn't
+support this but supports ActiveXObject, then an attempt to create
+an MSXML 6.0 DOM will be made. If this attempt fails too, then an attempt
+for creating an MXSML 3.0 DOM will be made.  If this last attemp fails or
+the browser doesn't support ActiveXObject then an exception will be thrown.
 </div>
 
 
@@ -2512,7 +2529,9 @@
     
             
 <div class="param-desc">
-    The element specified by path and namespace URI.All the elements in the path are matched against namespaceURI.The function will stop searching on the first element that doesn't match the namespace and the path.
+    The element specified by path and namespace URI.
+All the elements in the path are matched against namespaceURI.
+The function will stop searching on the first element that doesn't match the namespace and the path.
 </div>
 
 
@@ -2680,7 +2699,10 @@
     
             
 <div class="param-desc">
-    The node specified by path and namespace URI.This function will traverse the path and match each node associated to a path segement against the namespace URI.The traversal stops when the whole path has been exahusted or a node that doesn't belogong the specified namespace is encountered.The last segment of the path may be decorated with a starting @ character to indicate that the desired node is a DOM attribute.
+    The node specified by path and namespace URI.
+This function will traverse the path and match each node associated to a path segement against the namespace URI.
+The traversal stops when the whole path has been exahusted or a node that doesn't belogong the specified namespace is encountered.
+The last segment of the path may be decorated with a starting @ character to indicate that the desired node is a DOM attribute.
 </div>
 
 
@@ -3249,7 +3271,8 @@
             
             
             
-            <td class="description last">- True if the search should include all the descendants of the DOM node.  - False if the search should be scoped only to the direct children of the DOM node.</td>
+            <td class="description last">- True if the search should include all the descendants of the DOM node.  
+- False if the search should be scoped only to the direct children of the DOM node.</td>
         </tr>
 	
 	
@@ -4125,7 +4148,9 @@
     
             
 <div class="param-desc">
-    New DOM element.If a value in the children collection is a string, then a new DOM text node is going to be createdfor it and then appended to the new DOM element.
+    New DOM element.
+If a value in the children collection is a string, then a new DOM text node is going to be created
+for it and then appended to the new DOM element.
 </div>
 
 
@@ -4479,7 +4504,11 @@
     
             
 <div class="param-desc">
-    DOM element or attribute node for the last segment of the path.This function will traverse the path and will create a new DOM element with the specified namespace URI and prefixfor each segment that doesn't have a matching element under root.The last segment of the path may be decorated with a starting @ character. In this case a new DOM attribute nodewill be created.
+    DOM element or attribute node for the last segment of the path.
+This function will traverse the path and will create a new DOM element with the specified namespace URI and prefix
+for each segment that doesn't have a matching element under root.
+The last segment of the path may be decorated with a starting @ character. In this case a new DOM attribute node
+will be created.
 </div>
 
 
@@ -5041,7 +5070,8 @@
     
             
 <div class="param-desc">
-    XML DOM document.This function will throw an exception in case of a parse error
+    XML DOM document.
+This function will throw an exception in case of a parse error
 </div>
 
 
@@ -6050,7 +6080,8 @@
             
             
             
-            <td class="description last">- True if the traversal should include all the descenants of the DOM node.- False if the traversal should be scoped only to the direct children of the DOM node.</td>
+            <td class="description last">- True if the traversal should include all the descenants of the DOM node.
+- False if the traversal should be scoped only to the direct children of the DOM node.</td>
         </tr>
 	
 	
