@@ -57,4 +57,4 @@ Whereas the variable `${olingo.version}` has to be replaced with the concrete ve
 See also:
 
 * [Download Page](/doc/odata4/download.html)
-* [Maven Central](http://search.maven.org/#search|ga|1|org.apache.olingo)
+* [Maven Central](https://search.maven.org/#search|ga|1|org.apache.olingo)

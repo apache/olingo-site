@@ -74,7 +74,7 @@ Default are the environment variables *HTTP_PROXY* and *http_proxy* for **proxy*
 
 ##### Java #####
 
-If you want to run the Apache release audit tools ([Apache Rat™](http://creadur.apache.org/rat/) ) please perform the 
+If you want to run the Apache release audit tools ([Apache Rat™](https://creadur.apache.org/rat/) ) please perform the 
 following steps:
 
 * Navigate to 

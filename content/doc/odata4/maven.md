@@ -23,5 +23,5 @@ to run the build, execute JUnit tests and create all artifacts.
 
 Further information to Git and Maven is available here:
 
-* http://git-scm.com/
-* http://maven.apache.org
+* https://git-scm.com/
+* https://maven.apache.org

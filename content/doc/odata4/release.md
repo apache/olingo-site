@@ -7,13 +7,13 @@ Title: Apache Olingo Release Documentation
 ### Introduction
 
 This document describes the release guidelines for Apache Olingo. It heavily refers
-to [standard Apache procedures to release](http://maven.apache.org/developers/release/apache-release.html)
+to [standard Apache procedures to release](https://maven.apache.org/developers/release/apache-release.html)
  Maven based projects at Apache.
 
 ### Build Environments
 
-Apache Olingo is built and released with [Maven 3](http://maven.apache.org) and uses
-the <a href="http://svn.apache.org/repos/asf/maven/pom/tags/apache-16/pom.xml">Apache POM version 16</a>.
+Apache Olingo is built and released with [Maven 3](https://maven.apache.org) and uses
+the <a href="https://svn.apache.org/repos/asf/maven/pom/tags/apache-16/pom.xml">Apache POM version 16</a>.
 
 ### Release Artifacts
 
@@ -148,7 +148,7 @@ The release candidate artifacts:
   - Maven artifacts will be staged on repository.apache.org. A new staging repo
 is created per RC and will be communicated upon release.
   - Distribution commodity packages are staged at
-http://people.apache.org/~[username]/olingo2/[version] (e.g. http://people.apache.org/~mibo/olingo4/4.0.0-RC01)
+https://people.apache.org/~[username]/olingo2/[version] (e.g. https://people.apache.org/~mibo/olingo4/4.0.0-RC01)
 
 Once candidate artifacts are available, release manager kicks off the [VOTE process][3].
 
@@ -161,7 +161,7 @@ If the release candidate gets approved, we can proceed to release publishing.
 
 This checklist helps verifying if a release candidate is valid:
 
-* Are all files on "http://people.apache.org/~[username]/olingo4/[version]"?
+* Are all files on "https://people.apache.org/~[username]/olingo4/[version]"?
 * Check if md5, sha512 and asc files are filled correctly?
 * Can the zip files be unpacked without issues?
 * Execute a "mvn clean install -Pbuild.quality" on parent distribution. It should work without issues.
@@ -183,9 +183,9 @@ made available [here](https://repository.apache.org/index.html#nexus-search;gav~
   - Publish final release Version to [Apache Repository](https://repository.apache.org/)
     - First publish via `mvn deploy -Papache-release` into the *Staging Area*
     - From *Staging Area* close and release the staged Artifacts to finish publishing
-    - Afterwards the Maven artifacts are automatically synced to [Maven Central](http://search.maven.org/#search|ga|1|org.apache.olingo).
+    - Afterwards the Maven artifacts are automatically synced to [Maven Central](https://search.maven.org/#search|ga|1|org.apache.olingo).
   - Release candidate commodity packages are synced (together with their checksum and
-signatures) to [Apache Distributions](http://www.apache.org/dist/olingo/).
+signatures) to [Apache Distributions](https://www.apache.org/dist/olingo/).
   - Release tag is renamed to final version.
   - Release branch is created.
   - Release is closed in Jira.
@@ -193,18 +193,18 @@ signatures) to [Apache Distributions](http://www.apache.org/dist/olingo/).
 
 ### Maintain Release Distributions
 
-To maintain the released Distributions for the download pages following steps are required (for more information see [Apache Distribution Documentation](http://www.apache.org/dev/release-publishing.html#distribution_dist)) to upload the new distribution via SVN (`svn co https://dist.apache.org/repos/dist/release/olingo`):
+To maintain the released Distributions for the download pages following steps are required (for more information see [Apache Distribution Documentation](https://www.apache.org/dev/release-publishing.html#distribution_dist)) to upload the new distribution via SVN (`svn co https://dist.apache.org/repos/dist/release/olingo`):
 
   - Check out latest SVN revision via `svn co https://dist.apache.org/repos/dist/release/olingo`
   - Change into the directory according to the released Olingo artifact (e.g. `odata2`, `odata4`, ...)
   - Create new directory according to release version (e.g `rel-x.x.x`) and copy all distribution artifacts (includes *.zip*, *.asc*, *.md5*, *.sha512*).
   - Add new directory (e.g. `svn add rel-x.x.x`) and do the commit (e.g `svn ci -m "Added Olingo x.x.x release"`)
-  - Afterwards do a cleanup for the old releases according to the Apache Release Guidelines [When](http://www.apache.org/dev/release.html#when-to-archive) and [How](http://www.apache.org/dev/release.html#how-to-archive) to archive.
+  - Afterwards do a cleanup for the old releases according to the Apache Release Guidelines [When](https://www.apache.org/dev/release.html#when-to-archive) and [How](https://www.apache.org/dev/release.html#how-to-archive) to archive.
 
 
 ### Maintain Version Section in DOAP File
 
-[http://olingo.apache.org/doap_Olingo.rdf][4]
+[https://olingo.apache.org/doap_Olingo.rdf][4]
 
 Results are shown here:
 
@@ -220,7 +220,7 @@ Results are shown here:
   [1]: /documentation.html
   [2]: https://issues.apache.org/jira/browse/OLINGO/fixforversion/12324804
   [4]: /doap_Olingo.rdf
-  [5]: http://projects.apache.org/indexes/alpha.html#O
-  [6]: http://www.apache.org/dev/release.html
-  [7]: http://www.apache.org/dev/release-publishing.html
-  [8]: http://www.apache.org/dev/publishing-maven-artifacts.html
+  [5]: https://projects.apache.org/indexes/alpha.html#O
+  [6]: https://www.apache.org/dev/release.html
+  [7]: https://www.apache.org/dev/release-publishing.html
+  [8]: https://www.apache.org/dev/publishing-maven-artifacts.html

@@ -75,7 +75,7 @@ To clone the current master branch of the Olingo project please use one of the f
 #### Providing bugfix / code
 To provide a bug fix, checkout the current master branch of the project and develop your solution. In Olingo we truly believe in tests, so your contribution should at least contain tests that show that your contribution works as expected and also tests that reproduces the previous reported bug. If you provide a new feature your tests should reach at least 80 percent test-coverage.
 
-To ensure this we have lots of tests and use [Cobertura](http://cobertura.github.io/cobertura/) as *code coverage tool*. In addition there exists separate build jobs on the Apache Build servers for latest versions of [Olingo V2](https://builds.apache.org/job/olingo-odata2-cobertura/) and [Olingo V4](https://builds.apache.org/job/olingo-odata4-cobertura/).
+To ensure this we have lots of tests and use [Cobertura](https://cobertura.github.io/cobertura/) as *code coverage tool*. In addition there exists separate build jobs on the Apache Build servers for latest versions of [Olingo V2](https://builds.apache.org/job/olingo-odata2-cobertura/) and [Olingo V4](https://builds.apache.org/job/olingo-odata4-cobertura/).
 
 To append your contribution to a JIRA ticket, please create a patch file as explained in the chapter.
 

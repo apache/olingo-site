@@ -49,4 +49,4 @@ To use the JPA Processor Extension following dependencies are required:
 ${olingo.version} == the concrete version of the library. See also:
 
 * [Download Page](/doc/odata2/download.html)
-* [Maven Central](http://search.maven.org/#search|ga|1|org.apache.olingo)
+* [Maven Central](https://search.maven.org/#search|ga|1|org.apache.olingo)

@@ -6,14 +6,14 @@ Title: Verification
 
 It is essential that you verify the integrity of the downloaded 
 files using the PGP signatures. Please read 
-[Verifying Apache HTTP Server Releases](http://httpd.apache.org/dev/verification.html) 
+[Verifying Apache HTTP Server Releases](https://httpd.apache.org/dev/verification.html) 
 for more information on why you should verify our releases.
 
 The PGP signatures can be verified using PGP or GPG. First download 
-the [KEYS](http://www.apache.org/dist/olingo/KEYS) file as well 
+the [KEYS](https://www.apache.org/dist/olingo/KEYS) file as well 
 as the .asc signature files for the relevant release packages. Make sure 
 you get these files from the 
-[main distribution directory](http://www.apache.org/dist/olingo/), 
+[main distribution directory](https://www.apache.org/dist/olingo/), 
 rather than from a mirror. Then verify the signatures using
 
 ```sh

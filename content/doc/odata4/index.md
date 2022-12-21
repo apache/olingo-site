@@ -58,9 +58,9 @@ Title:     Documentation
   * [JPA Extension library for Olingo V4](https://github.com/SAP/olingo-jpa-processor-v4)
   * Series of blog articles which show a tutorial on how to use Olingo as client library
     * [Connection and Data-Exchange Java with Microsoft Dynamics with Olingo V4.5.0](https://egmont-petersen.nl/mesmerize/java-html/connection-and-data-exchange-java-with-microsoft-dynamics/)
-    * [Accessing data of OData v4 services with Olingo](http://templth.wordpress.com/2014/12/03/accessing-odata-v4-service-with-olingo/)
-    * [Manipulating data of OData v4 services with Olingo](http://templth.wordpress.com/2014/12/05/manipulating-data-of-odata-v4-services-with-olingo/)
-    * [Updating data links of OData v4 services with Olingo](http://templth.wordpress.com/2014/12/08/updating-data-links-of-odata-v4-services-with-olingo/)
+    * [Accessing data of OData v4 services with Olingo](https://templth.wordpress.com/2014/12/03/accessing-odata-v4-service-with-olingo/)
+    * [Manipulating data of OData v4 services with Olingo](https://templth.wordpress.com/2014/12/05/manipulating-data-of-odata-v4-services-with-olingo/)
+    * [Updating data links of OData v4 services with Olingo](https://templth.wordpress.com/2014/12/08/updating-data-links-of-odata-v4-services-with-olingo/)
   * Blog articles which show different topics on how to use Olingo as server library
     * [Implementing an OData service with Olingo](https://templth.wordpress.com/2015/04/27/implementing-an-odata-service-with-olingo/)
     * [Handling OData queries with ElasticSearch](https://templth.wordpress.com/2015/04/03/handling-odata-queries-with-elasticsearch/)

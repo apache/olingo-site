@@ -4,7 +4,7 @@ Title:     Eclipse
 
 ---
 
-[Eclipse](http://eclipse.org) (in version `Juno` and `Kepler`) is supported by the project.
+[Eclipse](https://eclipse.org) (in version `Juno` and `Kepler`) is supported by the project.
 
 With the Maven project files can be generated with:
 
