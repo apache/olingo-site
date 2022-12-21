@@ -2,7 +2,7 @@ Title:     Apache Olingo
 
 <div class="jumbotron">
 <h1>
-Apache Olingo™ &nbsp; <a href="http://odata.org/"><img src="/img/odata/ODataLogo-48.png" alt="OlingoLogo"></a>
+Apache Olingo™ &nbsp; <a href="https://www.odata.org/"><img src="/img/odata/ODataLogo-48.png" alt="OlingoLogo"></a>
 </h1>
 <h3>
 What is the Apache Olingo Project?

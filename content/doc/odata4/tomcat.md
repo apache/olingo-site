@@ -1,11 +1,11 @@
 Title: Run with Tomcat
 
 ### Run with Tomcat
-Necessary steps to get your project run with [Tomcat](http://tomcat.apache.org/index.html) (tested with version `7.0.32`).
+Necessary steps to get your project run with [Tomcat](https://tomcat.apache.org/index.html) (tested with version `7.0.32`).
 
 #### Required steps
-  * Download Tomcat 7.0.x from [Tomcat Downloads](http://tomcat.apache.org/download-70.cgi)
-  * Install Tomcat as described in [Tomcat Documentation](http://tomcat.apache.org/tomcat-7.0-doc/setup.html)
+  * Download Tomcat 7.0.x from [Tomcat Downloads](https://tomcat.apache.org/download-70.cgi)
+  * Install Tomcat as described in [Tomcat Documentation](https://tomcat.apache.org/tomcat-7.0-doc/setup.html)
   * Start Tomcat e.g. via `$TOMCAT_HOME/bin/startup.sh` (Linux) or `$TOMCAT_HOME/bin/startup.bat` (Windows)
   * Build of OData Application
     * Build your `WAR` file of your own project

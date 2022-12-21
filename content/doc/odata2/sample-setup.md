@@ -5,7 +5,7 @@ Title: Sample Project Setup
 Olingo has prepared a very simple sample car service that can work as a starting point for implementing a custom OData service.
 This service consists of a very simple EDM with two entity sets that are cars and manufactures and a memory based data provider that is a simple hash map.
 Therefore the project implements a very basic single OData processor supporting a minimal readonly scenario.
-If build with Maven the build result is a web application (`war` file) which can be deployed to any JEE compliant web application server (e.g. [Tomcat](http://tomcat.apache.org)).
+If build with Maven the build result is a web application (`war` file) which can be deployed to any JEE compliant web application server (e.g. [Tomcat](https://tomcat.apache.org)).
 
 ---
 
@@ -36,7 +36,7 @@ To generate the sample project for the `ODataService`  implementation with use o
       -DarchetypeArtifactId=olingo-odata2-sample-cars-annotation-archetype \
       -DarchetypeVersion=RELEASE
 
-If an archetype is not available via Maven standard configuration then an additional parameter `-DarchetypeRepository=http://repository.apache.org/snapshots` can solve the issue.
+If an archetype is not available via Maven standard configuration then an additional parameter `-DarchetypeRepository=https://repository.apache.org/snapshots` can solve the issue.
 
 Based on the Olingo project template Maven will generate a new project with the specified GAV*) coordinates: `com.sample:my-car-service:1.0.0-SNAPSHOT`.
 GAV coordinates can be freely chosen during generation with the interactive mode. To enable the interactive mode `-DinteractiveMode` must be set to true or omitted (to use Maven default setting of `true`).
@@ -53,7 +53,7 @@ If a Apache Olingo dependency is not available via Maven standard configuration 
         <repository>
           <id>apache.central</id>
           <name>Central Repository</name>
-          <url>http://repo.maven.apache.org/maven2</url>
+          <url>https://repo.maven.apache.org/maven2</url>
         </repository>
 
         <repository>

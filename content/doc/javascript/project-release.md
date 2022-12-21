@@ -7,13 +7,13 @@ Title: Javascript Release Documentation
 ### Introduction
 
 This document describes the release guidelines for Apache Olingo OData Client for JavaScript (referenced in this document as ODataJS).
-This is similar to [standard Apache procedures to release](http://maven.apache.org/developers/release/apache-release.html)
+This is similar to [standard Apache procedures to release](https://maven.apache.org/developers/release/apache-release.html)
 for Maven based projects at Apache, but since it is an JavaScript library it is adopted to be used with grunt js.
 
 ### Build Environment
 
-Apache Olingo is built and released with [Node.js®](http://nodejs.org/) in combination with
-[grunt task runner](http://gruntjs.com/)
+Apache Olingo is built and released with [Node.js®](https://nodejs.org/) in combination with
+[grunt task runner](https://gruntjs.com/)
 
 ### Release Artifacts
 
@@ -152,7 +152,7 @@ The release candidate artifacts:
   - Maven artifacts will be staged on repository.apache.org. A new staging repo
 is created per RC and will be communicated upon release.
   - Distribution commodity packages are staged at
-http://people.apache.org/~[username]/olingo4/js/[version] (e.g. http://people.apache.org/~mibo/olingo4/js/4.0.0-RC01)
+https://people.apache.org/~[username]/olingo4/js/[version] (e.g. https://people.apache.org/~mibo/olingo4/js/4.0.0-RC01)
 
 Once candidate artifacts are available, release manager kicks off the [VOTE process][2].
 
@@ -165,7 +165,7 @@ If the release candidate gets approved, we can proceed to release publishing.
 
 This checklist helps verifying if a release candidate is valid:
 
-* Are all files on "http://people.apache.org/~[username]/olingo4/js/[version]"?
+* Are all files on "https://people.apache.org/~[username]/olingo4/js/[version]"?
 * Check if md5, sha512 and asc files are filled correctly?
 * Can the zip files be unpacked without issues?
 * Execute a "grunt build"
@@ -185,9 +185,9 @@ If the release candidate gets approved, we can proceed to release publishing:
   - Publish final release Version to [Apache Repository](https://repository.apache.org/)
     - Copy the release Artifacts into the *Staging Area*
     - From *Staging Area* close and release the staged Artifacts to finish publishing
-    - Afterwards the Maven artifacts are automatically synced to [Maven Central](http://search.maven.org/#search|ga|1|org.apache.olingo).
+    - Afterwards the Maven artifacts are automatically synced to [Maven Central](https://search.maven.org/#search|ga|1|org.apache.olingo).
   - Release candidate commodity packages are synced (together with their checksum and
-signatures) to [Apache Distributions](http://www.apache.org/dist/olingo/).
+signatures) to [Apache Distributions](https://www.apache.org/dist/olingo/).
   - Release tag is renamed to final version.
   - Release branch is created.
   - Release is closed in Jira.
@@ -195,7 +195,7 @@ signatures) to [Apache Distributions](http://www.apache.org/dist/olingo/).
 
 ### Maintain Version Section in DOAP File
 
-[http://olingo.apache.org/doap_Olingo.rdf][3]
+[https://olingo.apache.org/doap_Olingo.rdf][3]
 
 Results are shown here:
 
@@ -210,7 +210,7 @@ Results are shown here:
 
   [1]: /documentation.html
   [3]: /doap_Olingo.rdf
-  [4]: http://projects.apache.org/indexes/alpha.html#O
-  [5]: http://www.apache.org/dev/release.html
-  [6]: http://www.apache.org/dev/release-publishing.html
-  [7]: http://www.apache.org/dev/publishing-maven-artifacts.html
+  [4]: https://projects.apache.org/indexes/alpha.html#O
+  [5]: https://www.apache.org/dev/release.html
+  [6]: https://www.apache.org/dev/release-publishing.html
+  [7]: https://www.apache.org/dev/publishing-maven-artifacts.html
