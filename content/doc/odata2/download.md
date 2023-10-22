@@ -63,5 +63,5 @@ Please make sure you check the following resources:
 
 
   [1]: https://odata.org
-  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12344932
+  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12351658
   [4]: https://archive.apache.org/dist/olingo/
