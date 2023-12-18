@@ -42,6 +42,11 @@ The extensions part of Olingo for OData 2.0 contains additional features like th
     <release>
       <Version>
         <name>OData 4.0 Library for Java</name>
+        <created>2023-12-18</created>
+        <revision>5.0.0</revision>
+      </Version>
+      <Version>
+        <name>OData 4.0 Library for Java</name>
         <created>2023-10-22</created>
         <revision>4.10.0</revision>
       </Version>

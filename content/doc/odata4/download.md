@@ -5,26 +5,26 @@ Title:     Download OData 4.0 Java Library
 Apache Olingo OData4 is a collection of Java libraries for
 implementing [OData V4][1] protocol clients or servers.
 
-### Release 4.10.0 (2023-10-22)
+### Release 5.0.0 (2023-12-18)
 
 [Full download page][2] and [release notes][3].
 
-The Apache *Olingo OData 4 4.10.0* release is the latest stable release for the *OData V4* specifications.
+The Apache *Olingo OData 4 5.0.0* release is the latest stable release for the *OData V4* specifications.
 
 ### Commodity Packages
 
 Package | zip | Description
 --------|-----|-----
-Olingo OData Sources            |[Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/4.10.0/Olingo-OData-4.10.0-source-release.zip) ([sha512](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-4.10.0-source-release.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-4.10.0-source-release.zip.asc)) | Complete source code.
-Olingo OData Docs               | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/4.10.0/Olingo-OData-JavaDoc-4.10.0-javadoc.zip) ([sha512](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-JavaDoc-4.10.0-javadoc.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-JavaDoc-4.10.0-javadoc.zip.asc)) | Documentation and JavaDoc.
-Olingo OData Server for Java            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/4.10.0/Olingo-OData-Server-for-Java-4.10.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Server-for-Java-4.10.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Server-for-Java-4.10.0-lib.zip.asc)) | All you need to implement an OData V4 Java server.
-Olingo OData Server Extension for Java            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/4.10.0/Olingo-OData-Server-Extension-for-Java-4.10.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Server-Extension-for-Java-4.10.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Server-Extension-for-Java-4.10.0-lib.zip.asc)) | Convenience API to implement an OData V4 Java server.
-Olingo OData Client for Java      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/4.10.0/Olingo-OData-Client-for-Java-4.10.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Client-for-Java-4.10.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Client-for-Java-4.10.0-lib.zip.asc)) | All you need to implement an OData V4 Java client.
-Olingo OData Client for Android     | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/4.10.0/Olingo-OData-Client-for-Android-4.10.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Client-for-Android-4.10.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/4.10.0/Olingo-OData-Client-for-Android-4.10.0-lib.zip.asc)) | All you need to implement an OData V4 Android client.
+Olingo OData Sources            |[Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/5.0.0/Olingo-OData-5.0.0-source-release.zip) ([sha512](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-5.0.0-source-release.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-5.0.0-source-release.zip.asc)) | Complete source code.
+Olingo OData Docs               | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/5.0.0/Olingo-OData-JavaDoc-5.0.0-javadoc.zip) ([sha512](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-JavaDoc-5.0.0-javadoc.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-JavaDoc-5.0.0-javadoc.zip.asc)) | Documentation and JavaDoc.
+Olingo OData Server for Java            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/5.0.0/Olingo-OData-Server-for-Java-5.0.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Server-for-Java-5.0.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Server-for-Java-5.0.0-lib.zip.asc)) | All you need to implement an OData V4 Java server.
+Olingo OData Server Extension for Java            | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/5.0.0/Olingo-OData-Server-Extension-for-Java-5.0.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Server-Extension-for-Java-5.0.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Server-Extension-for-Java-5.0.0-lib.zip.asc)) | Convenience API to implement an OData V4 Java server.
+Olingo OData Client for Java      | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/5.0.0/Olingo-OData-Client-for-Java-5.0.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Client-for-Java-5.0.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Client-for-Java-5.0.0-lib.zip.asc)) | All you need to implement an OData V4 Java client.
+Olingo OData Client for Android     | [Download](https://www.apache.org/dyn/closer.lua/olingo/odata4/5.0.0/Olingo-OData-Client-for-Android-5.0.0-lib.zip) ([sha512](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Client-for-Android-5.0.0-lib.zip.sha512), [pgp](https://downloads.apache.org/olingo/odata4/5.0.0/Olingo-OData-Client-for-Android-5.0.0-lib.zip.asc)) | All you need to implement an OData V4 Android client.
 
 ### Maven
 
-The Apache Olingo 4.10.0 only artifacts are also available at [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cg:%22org.apache.olingo%22%20AND%20v:%224.10.0%22).
+The Apache Olingo 5.0.0 only artifacts are also available at [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cg:%22org.apache.olingo%22%20AND%20v:%225.0.0%22).
 All Apache Olingo OData 4 artifacts are available at [Maven Central](https://search.maven.org/#search|ga|1|org.apache.olingo).
 For POM dependencies see [here](/doc/odata4/maven.html).
 
@@ -45,6 +45,6 @@ Please make sure you check the following resources:
 
 
   [1]: https://odata.org
-  [2]: https://downloads.apache.org/olingo/odata4/4.10.0/
-  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12351435
+  [2]: https://downloads.apache.org/olingo/odata4/5.0.0/
+  [3]: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314520&version=12353663
   [4]: https://archive.apache.org/dist/olingo/
