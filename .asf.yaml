@@ -6,5 +6,4 @@ pelican:
   whoami: main
 
 publish:
-  profile: ~
   whoami: asf-site
