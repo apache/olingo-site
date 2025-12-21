@@ -26,7 +26,7 @@
     <license rdf:resource="http://usefulinc.com/doap/licenses/asl20" />
     <name>Apache Olingo</name>
     <homepage rdf:resource="http://olingo.apache.org" />
-    <asfext:pmc rdf:resource="http://olingo.apache.org" />
+    <asfext:pmc rdf:resource="http://attic.apache.org" />
     <shortdesc>Apache Olingo is a Java and JavaScript library that implements the Open Data Protocol (OData). Apache Olingo serves client and server aspects of OData. It currently supports OData 2.0 and OData 4.0 (beta). The latter is the OASIS version of the protocol: OASIS Open Data Protocol (OData) TC.
     </shortdesc>
     <description>Apache Olingo is a Java library that implements the Open Data Protocol (OData). Apache Olingo serves client and server aspects of OData. It currently supports OData 2.0 and support OData 4.0 (beta). The latter is the OASIS version of the protocol: OASIS Open Data Protocol (OData) TC.
@@ -39,6 +39,7 @@ The extensions part of Olingo for OData 2.0 contains additional features like th
     <programming-language>Java</programming-language>
     <programming-language>JavaScript</programming-language>
     <category rdf:resource="http://projects.apache.org/category/library" />
+    <category rdf:resource="http://projects.apache.org/category/retired" />
     <release>
       <Version>
         <name>OData 4.0 Library for Java</name>
